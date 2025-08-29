@@ -2,3 +2,4 @@ streamlit
 pillow
 python-dotenv
 google-generativeai
+plotly
