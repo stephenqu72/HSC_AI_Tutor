@@ -280,7 +280,7 @@ for k, v in _defaults.items():
 # ---------- Sidebar: Course & Mode Selection ----------
 ############################################
 st.sidebar.markdown("## 🔍 Select HSC Math Exam Level")
-course_level = st.sidebar.selectbox("🎓 Course:", ["Math_3U", "Math_2U", "Physics"], key="course_level")
+course_level = st.sidebar.selectbox("🎓 Course:", ["Math_3U", "Math_2U", "Physics" , "Economics"], key="course_level")
 
 st.sidebar.markdown("## 🧭 Select Practice Mode")
 mode = st.sidebar.radio("Choose practice mode:", ["Topic by Topic", "Past Paper"], key="practice_mode")
