@@ -10,7 +10,6 @@ import binascii
 from datetime import datetime
 import google.generativeai as genai
 from dotenv import load_dotenv
-import base64
 
 ############################################
 # 💼 Multi-user Auth + Per-user Storage (Streamlit Cloud ready)
@@ -76,7 +75,7 @@ st.set_page_config(page_title=APP_TITLE, layout="wide")
 if "auth_user" not in st.session_state:
     st.session_state.auth_user = None
 
-st.markdown("<h1 style='text-align: center;'> Your personal HSC Assistant ✨</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'> Welcome to HSC Math Centre ✨</h1>", unsafe_allow_html=True)
 
 with st.expander("🔐 Sign in (Auto sign-up if no account)", expanded=st.session_state.auth_user is None):
     colA, colB = st.columns([2, 1])
@@ -148,7 +147,7 @@ model = genai.GenerativeModel("gemini-2.5-flash")
 ############################################
 # 🎯 Prompt Template
 ############################################
-prompt_generating = """
+prompt_template = """
 You are a top HSC teacher. Based on the concepts shown in the input image, generate a high-quality Y12 NSW HSC-style question (not limited to multiple choice). Follow this structure:
 {
   "Question": "The question in text format, including mathematical notation if applicable.",
@@ -245,101 +244,12 @@ def extract_dot(text: str) -> str:
         return m.group(1).strip()
     return ""
 
-def image_to_b64_png(pil_img: Image.Image) -> str:
-    import base64
-    buf = BytesIO()
-    pil_img.save(buf, format="PNG")
-    return base64.b64encode(buf.getvalue()).decode()
 
 # Sort by numeric suffix before .png
 
 def extract_picture_number(filename):
     match = re.search(r'(?:Picture|Group)\s(\d+)\.png$', filename)
     return int(match.group(1)) if match else 0
-
-def call_model(prompt, image):
-    model = genai.GenerativeModel("gemini-2.5-flash")
-    return model.generate_content([prompt, image])
-
-def _extract_plot_code(data: dict) -> str:
-      b64 = (data.get("Image_DataTable_b64") or "").strip()
-      if b64:
-          try:
-              return base64.b64decode(b64).decode("utf-8", errors="replace")
-          except Exception:
-              pass  # fall back to plain
-      return (data.get("Image_DataTable") or "").strip()
-
-def extract_json_from_response_tolerant(response_text):
-    """
-    Parse a JSON object from an LLM response, tolerating bad escaping inside
-    Image_DataTable. Strategy:
-      1) Try the strict extractor.
-      2) If that fails, find a JSON-looking block (```json ...``` or { ... }).
-      3) Try json.loads; if it fails, remove/empty Image_DataTable and reparse.
-      4) If a separate fenced Python code block exists, attach it back as Image_DataTable.
-    Returns: dict
-    """
-    raw = getattr(response_text, "text", str(response_text)).strip()
-
-    # 1) Try your strict path first
-    try:
-        return extract_json_from_response(response_text)
-    except Exception:
-        pass  # continue with tolerant path
-
-    # 2) Find a JSON candidate (prefer fenced json)
-    m_fenced_json = re.search(r"```json\s*([\s\S]+?)\s*```", raw, re.IGNORECASE)
-    if m_fenced_json:
-        json_candidate = m_fenced_json.group(1)
-    else:
-        m_obj = re.search(r"(\{[\s\S]+?\})", raw)
-        if not m_obj:
-            raise ValueError("⚠️ Couldn't locate a JSON object in the model response.")
-        json_candidate = m_obj.group(1)
-
-    # 3) Try plain parse
-    try:
-        return json.loads(json_candidate)
-    except json.JSONDecodeError:
-        pass
-
-    # 3a) Capture a separate fenced python block (if any) to reattach later
-    code_in_fence = ""
-    # Prefer a python fence that is NOT the json fence we already used
-    for lang in ("python", "py"):
-        m_code = re.search(rf"```{lang}\s*([\s\S]+?)\s*```", raw, re.IGNORECASE)
-        if m_code:
-            code_in_fence = m_code.group(1)
-            break
-    if not code_in_fence:
-        # fallback: any non-json fenced block
-        m_any = re.search(r"```(?!json)[A-Za-z0-9_+-]*\s*([\s\S]+?)\s*```", raw, re.IGNORECASE)
-        if m_any:
-            code_in_fence = m_any.group(1)
-
-    # 4) Try to blank out or remove the Image_DataTable value and reparse
-    #    (first attempt: replace its value with empty string)
-    pat_value = r'"Image_DataTable"\s*:\s*"[\s\S]*?"'
-    json_fixed = re.sub(pat_value, '"Image_DataTable": ""', json_candidate)
-    # also clean trailing commas like ,}
-    json_fixed = re.sub(r",\s*}", "}", json_fixed)
-    try:
-        data = json.loads(json_fixed)
-    except json.JSONDecodeError:
-        # second attempt: remove the whole field (plus trailing comma if present)
-        pat_field = r'"Image_DataTable"\s*:\s*"[\s\S]*?"\s*,?'
-        json_fixed2 = re.sub(pat_field, "", json_candidate)
-        json_fixed2 = re.sub(r",\s*}", "}", json_fixed2)
-        data = json.loads(json_fixed2)
-
-    # 5) Reattach code if we captured any
-    if code_in_fence:
-        data["Image_DataTable"] = code_in_fence
-    else:
-        data.setdefault("Image_DataTable", "")
-
-    return data
 
 
 ############################################
@@ -369,7 +279,7 @@ for k, v in _defaults.items():
 ############################################
 # ---------- Sidebar: Course & Mode Selection ----------
 ############################################
-st.sidebar.markdown("## 🔍 Select HSC Course")
+st.sidebar.markdown("## 🔍 Select HSC Math Exam Level")
 course_level = st.sidebar.selectbox("🎓 Course:", ["Math_3U", "Math_2U", "Physics" , "Economics"], key="course_level")
 
 st.sidebar.markdown("## 🧭 Select Practice Mode")
@@ -379,10 +289,6 @@ base_root = os.path.join(BASE_ROOT, course_level)
 if not os.path.isdir(base_root):
     st.warning(f"⚠️ The path '{base_root}' was not found. Please check your course folder structure.")
     st.stop()
-
-# 🔄 LLM Model Selection
-st.sidebar.markdown("## 🧠 Choose LLM Model")
-selected_model = st.sidebar.selectbox("LLM Provider:", ["Gemini", "Chatgpt"], key="llm_choice")
 
 ############################################
 # ---------- Topic or Past Paper Selection ----------
@@ -483,18 +389,16 @@ st.sidebar.caption(f"🗂️ Feedback log (per-user, append-only): **{FEEDBACK_F
 ############################################
 # ---------- Main layout ----------
 ############################################
-col1, col2 = st.columns([2, 2])
+col1, col2, col3 = st.columns([3, 2, 1])
 
 with col2:
-    b1, b2 = st.columns(2)
-    with b1:
-        if st.button("⬅️ Previous", disabled=st.session_state.question_index == 0):
-            st.session_state.questions.pop(st.session_state.question_index, None)
-            st.session_state.question_index -= 1
-    with b2:
-        if st.button("➡️ Next", disabled=st.session_state.question_index >= len(st.session_state.image_files) - 1):
-            st.session_state.questions.pop(st.session_state.question_index, None)
-            st.session_state.question_index += 1
+    if st.button("⬅️ Previous", disabled=st.session_state.question_index == 0):
+        st.session_state.questions.pop(st.session_state.question_index, None)
+        st.session_state.question_index -= 1
+
+    if st.button("➡️ Next", disabled=st.session_state.question_index >= len(st.session_state.image_files) - 1):
+        st.session_state.questions.pop(st.session_state.question_index, None)
+        st.session_state.question_index += 1
 
 # progress
 total_imgs = len(st.session_state.image_files)
@@ -515,139 +419,14 @@ if st.session_state.image_files:
 
         # Explain / Video / Generate (in col2)
         with col2:
-            c1, c2 = st.columns(2)
-            clicked_explain = c1.button("🧠 Answer", key=f"explain_{q_index}")
-            clicked_regen   = c2.button("🔄 Regenerate", key=f"regen_{q_index}")
-
-            if clicked_explain or clicked_regen:
-            
-                import base64, sys, importlib.util
-
-                force_regen = clicked_regen
-
-                base_no_ext = os.path.splitext(os.path.basename(img_name))[0]
-                json_filename = f"{base_no_ext}.explain.json"
-                explain_path = os.path.join(folder_path, json_filename)
-                
-                prompt_answer = """
-You are a top HSC teacher. Read the image and question below, then ANSWER the question and EXPLAIN how to solve it.
-Return ONLY a single JSON object wrapped in a fenced code block like:
-{
-  "Answer": "Answer in text format, include math/physics notation where helpful.",
-  "Image_DataTable": "Base64 of UTF-8 Python code to generate any diagram or data table, using Plotly or Matplotlib. Must define a function `generate_plot()`, by end of code, return fig.",",
-  "Detailed_Explanation": "Step-by-step explanation with key HSC concepts.",
-  "Others": "Any other relevant info from an HSC teacher's perspective."
-}
-"""
-                  # Try to load existing JSON to avoid re-running the LLM
-                data = None
-                loaded_from_cache = False
-                if (not force_regen) and os.path.exists(explain_path):
-                    try:
-                        with open(explain_path, "r", encoding="utf-8") as f:
-                            data = json.load(f)
-                        loaded_from_cache = True
-                        st.success(f"Loaded saved explanation: {json_filename}")
-                    except Exception as e:
-                        st.warning(f"⚠️ Could not read saved explanation, regenerating… ({e})")
-                
-                # If no cached JSON, call LLM and save
-                if data is None:
-                    with open(img_path, "rb") as img_file:
-                        img_bytes = img_file.read()
-                    image = Image.open(BytesIO(img_bytes))
-
-                    response = call_model(prompt_answer, image)
-                    print("Model response:", response.text)
-                    # Prefer strict; if it fails, fall back to tolerant
-                    try:
-                        data = extract_json_from_response(response)
-                    except Exception:
-                        try:
-                            data = extract_json_from_response_tolerant(response)
-                        except Exception as e:
-                            st.error(f"❌ Failed to parse model response as JSON: {e}")
-                            with st.expander("Raw model output"):
-                                #st.code(response.text[:4000])
-                                st.warning("⚠️ Response too long to display.")
-                            st.stop()
-
-                    # Save JSON right next to the image
-                    try:
-                        with open(explain_path, "w", encoding="utf-8") as f:
-                            json.dump(data, f, indent=2, ensure_ascii=False)
-                        st.info(f"💾 Explanation saved to: {explain_path}")
-                    except Exception as e:
-                        st.warning(f"⚠️ Could not save explanation JSON: {e}")
-
-                # --- Render the structured output ---
-                # 1) Answer
-                ans = (data.get("Answer") or "").strip()
-                if ans:
-                    st.markdown("#### ✅ Answer")
-                    st.markdown(ans)
-                else:
-                    st.info("No 'Answer' field returned.")
-
-                # 2) Plot/table (optional)
-                code_block = _extract_plot_code(data)
-                if code_block:
-                    try:
-                        explain_py = os.path.join(user_tmp_dir, f"explain_plot_{base_no_ext}.py")
-                        with open(explain_py, "w", encoding="utf-8") as f:
-                            f.write(code_block)
-
-                        mod = load_plot_module(explain_py)
-                        fig = getattr(mod, "generate_plot", lambda: None)()
-                        if fig is not None:
-                            # Try Plotly first
-                            try:
-                                import plotly.basedatatypes as pbdt
-                                if isinstance(fig, pbdt.BaseFigure):
-                                    st.plotly_chart(fig, use_container_width=True)
-                                else:
-                                    # Fallback: Matplotlib
-                                    try:
-                                        import matplotlib.figure as mpl_figure
-                                        import matplotlib.axes as mpl_axes
-                                        if isinstance(fig, (mpl_figure.Figure, mpl_axes.Axes)):
-                                            st.pyplot(fig)
-                                        else:
-                                            st.warning("generate_plot() did not return a recognized Plotly or Matplotlib figure.")
-                                    except Exception:
-                                        st.warning("Matplotlib not available or figure type not recognized.")
-                            except Exception:
-                                # If Plotly not available, try Matplotlib directly
-                                try:
-                                    import matplotlib.figure as mpl_figure
-                                    import matplotlib.axes as mpl_axes
-                                    if isinstance(fig, (mpl_figure.Figure, mpl_axes.Axes)):
-                                        st.pyplot(fig)
-                                    else:
-                                        st.warning("Returned figure type not recognized.")
-                                except Exception:
-                                    st.warning("Could not display the generated figure.")
-                        else:
-                            st.info("No figure returned by generate_plot().")
-                    except Exception as e:
-                        st.warning(f"⚠️ Unable to run Image_DataTable code: {e}")
-
-                # 3) Details (accept common variants)
-                detail = (
-                    data.get("Detailed_Explanation")
-                    or data.get("Detailed explanation")
-                    or data.get("Detailed explaination")  # common misspelling
-                    or ""
-                ).strip()
-                if detail:
-                    st.markdown("#### 📘 Details")
-                    st.markdown(detail)
-
-                # 4) Others
-                others = (data.get("Others") or "").strip()
-                if others:
-                    st.markdown("#### 🧩 Other Information")
-                    st.markdown(others)
+            if st.button("🧠 Explain", key=f"explain_{q_index}"):
+                prompt = "You are a HSC expert teacher. Read the image and question below, then explain how to solve it."
+                with open(img_path, "rb") as img_file:
+                    img_bytes = img_file.read()
+                image = Image.open(BytesIO(img_bytes))
+                response = model.generate_content([prompt, image])
+                st.markdown("### 💡 Explanation")
+                st.markdown(response.text.strip())
 
         with col2:
             if st.button("🎮 Video Help", key=f"video_{q_index}"):
@@ -659,22 +438,18 @@ Please format like:
                 with open(img_path, "rb") as img_file:
                     img_bytes = img_file.read()
                 image = Image.open(BytesIO(img_bytes))
-                response = call_model(video_prompt, image)
+                response = model.generate_content([video_prompt, image])
                 st.markdown("### 🎥 Recommended Video")
                 st.markdown(response.text.strip())
 
         with col2:
             if st.button("✨ Generate Question"):
                 with st.spinner("Generating your magical question... 👩‍✨"):
-                    img_name = st.session_state.image_files[q_index]
-                    img_path = os.path.join(folder_path, img_name)
-
                     with open(img_path, "rb") as img_file:
                         img_bytes = img_file.read()
                     image = Image.open(BytesIO(img_bytes))
-                    
                     try:
-                        response_text = call_model(prompt_generating, image)
+                        response_text = model.generate_content([prompt_template, image])
                         data = extract_json_from_response(response_text)
                         st.session_state.questions[q_index] = data
                         tk_dir = os.path.join(user_tmp_dir, "TK_questions")
@@ -690,6 +465,7 @@ Please format like:
                         st.success(f"Saved generated question to {out_json}")
                     except Exception as e:
                         st.error(f"❌ Oops! Something went wrong: {str(e)}")
+
         with col2:
             if q_index in st.session_state.questions:
                 question = st.session_state.questions[q_index]
@@ -732,7 +508,7 @@ Please format like:
                         st.info(f"✅ Your answer is saved. Here's the marking guide or solution:\n\n**{correct}**")
 
         # 📝 Feedback & Notes Section (append-only log + auto-load previous notes)
-        with col1:
+        with col2:
             st.markdown("### 📝 Your Feedback")
             feedback_key = f"{course_level}/{selected_topic}/{selected_subtopic}/{img_name}"
 
