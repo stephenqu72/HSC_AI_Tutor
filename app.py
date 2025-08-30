@@ -491,10 +491,12 @@ with col2:
         if st.button("⬅️ Previous", disabled=st.session_state.question_index == 0):
             st.session_state.questions.pop(st.session_state.question_index, None)
             st.session_state.question_index -= 1
+            st.session_state.gemini_chat_history = []
     with b2:
         if st.button("➡️ Next", disabled=st.session_state.question_index >= len(st.session_state.image_files) - 1):
             st.session_state.questions.pop(st.session_state.question_index, None)
             st.session_state.question_index += 1
+            st.session_state.gemini_chat_history = []
 
 # progress
 total_imgs = len(st.session_state.image_files)
@@ -790,6 +792,50 @@ Please format like:
                 }
                 append_json_log(FEEDBACK_FILE, entry)
                 st.success("✅ Logged! (Appended to feedback file)")
+
+        with col2:
+            # 🔮 Gemini Chatbox on Main Page (latest on top)
+            st.markdown("### 🤖 Chat with Gemini about this Question")
+
+            if "gemini_chat_history" not in st.session_state:
+                st.session_state.gemini_chat_history = []
+
+            with st.expander("💬 Open Chat with Gemini", expanded=True):
+                user_input = st.chat_input("Ask a question about the image, explanation, or topic...")
+                if user_input:
+                    # Show user message
+                    with st.chat_message("user"):
+                        st.markdown(user_input)
+                    st.session_state.gemini_chat_history.append(("user", user_input))
+
+                    # Get image for context
+                    if st.session_state.image_files and 0 <= q_index < len(st.session_state.image_files):
+                        img_name = st.session_state.image_files[q_index]
+                        img_path = os.path.join(folder_path, img_name)
+                        with open(img_path, "rb") as f:
+                            image = Image.open(BytesIO(f.read()))
+
+                        model = genai.GenerativeModel("gemini-2.5-flash")
+                        with st.spinner("Gemini is thinking..."):
+                            try:
+                                response = model.generate_content([user_input, image])
+                                reply = response.text
+                            except Exception as e:
+                                reply = f"❌ Error: {e}"
+                    else:
+                        reply = "⚠️ No image context available."
+
+                    # Show assistant response
+                    with st.chat_message("assistant"):
+                        st.markdown(reply)
+                    st.session_state.gemini_chat_history.append(("assistant", reply))
+
+                    st.rerun()  # Refresh UI to show new message at top
+                
+                # Show latest messages at the top
+                for role, message in reversed(st.session_state.gemini_chat_history):
+                    with st.chat_message(role):
+                        st.markdown(message)
 
 else:
     st.warning("⚠️ No PNG images found in the selected sub-topic.")
