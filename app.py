@@ -143,7 +143,8 @@ if not GEMINI_API_KEY:
     st.stop()
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.5-flash")
+#model = genai.GenerativeModel(selected_model)
+
 
 ############################################
 # 🎯 Prompt Template
@@ -258,7 +259,8 @@ def extract_picture_number(filename):
     return int(match.group(1)) if match else 0
 
 def call_model(prompt, image):
-    model = genai.GenerativeModel("gemini-2.5-flash")
+    #model = genai.GenerativeModel("gemini-2.5-flash")
+    model = genai.GenerativeModel(selected_model)
     return model.generate_content([prompt, image])
 
 def _extract_plot_code(data: dict) -> str:
@@ -382,7 +384,7 @@ if not os.path.isdir(base_root):
 
 # 🔄 LLM Model Selection
 st.sidebar.markdown("## 🧠 Choose LLM Model")
-selected_model = st.sidebar.selectbox("LLM Provider:", ["Gemini", "Chatgpt"], key="llm_choice")
+selected_model = st.sidebar.selectbox("LLM Provider:", ["gemini-2.0-flash", "gemini-2.5-flash"], key="llm_choice")
 
 ############################################
 # ---------- Topic or Past Paper Selection ----------
@@ -815,7 +817,8 @@ Please format like:
                         with open(img_path, "rb") as f:
                             image = Image.open(BytesIO(f.read()))
 
-                        model = genai.GenerativeModel("gemini-2.5-flash")
+                        #model = genai.GenerativeModel("gemini-2.5-flash")
+                        model = genai.GenerativeModel(selected_model)
                         with st.spinner("Gemini is thinking..."):
                             try:
                                 response = model.generate_content([user_input, image])
