@@ -28,7 +28,7 @@ USERS_ROOT = os.path.join(PERSIST_DIR, "users")
 os.makedirs(os.path.dirname(ACCOUNTS_DB), exist_ok=True)
 os.makedirs(USERS_ROOT, exist_ok=True)
 
-# password hashing helpers
+# password hashing helpers (no external deps)
 _DEF_ITER = 200_000
 _DEF_ALG = "sha256"
 
@@ -143,7 +143,6 @@ if not GEMINI_API_KEY:
     st.stop()
 
 genai.configure(api_key=GEMINI_API_KEY)
-#model = genai.GenerativeModel(selected_model)
 
 
 ############################################
@@ -159,6 +158,11 @@ You are a top HSC teacher. Based on the concepts shown in the input image, gener
   "Answer": "Correct answer or marking guide.",
   "Marks": "Total marks allocated, if applicable."
 }
+⚠️ IMPORTANT: Please format all LaTeX math expressions using:
+- `$...$` for inline math
+- `$$...$$` for block math
+
+Do not use `\\(...\\)` or `\\[...\\]`.
 """
 
 ############################################
@@ -221,7 +225,6 @@ def get_last_feedback_for_key(path: str, key: str):
         if item.get("key") == key:
             return item
     return None
-
 
 def get_all_feedback_for_key(path: str, key: str):
     """Return all feedback entries for a key, sorted ascending by timestamp."""
@@ -448,7 +451,7 @@ else:
 
 # Determine full image path depending on mode
 if mode == "Past Paper":
-    folder_path = st.session_state.folder  # base QuestionLibrary
+    folder_path = st.session_state.folder  
     selected_topic = "PastPaper"
     selected_subtopic = st.session_state.selected_paper.replace(" ", "_")
 else:
@@ -499,6 +502,8 @@ with col2:
             st.session_state.questions.pop(st.session_state.question_index, None)
             st.session_state.question_index += 1
             st.session_state.gemini_chat_history = []
+    if "question_number" not in st.session_state or st.session_state.question_number != st.session_state.question_index + 1:
+        st.session_state.question_number = st.session_state.question_index + 1
 
 # progress
 total_imgs = len(st.session_state.image_files)
@@ -515,8 +520,10 @@ if st.session_state.image_files:
         img_path = os.path.join(folder_path, img_name)
 
         with col1:
+            total_questions = len(st.session_state.image_files)
+            current_question = st.session_state.question_index + 1
+            st.markdown(f"### 📘 Question {current_question} of {total_questions}")
             st.image(img_path, caption=f"🖼️ Question Image {q_index+1}: {img_name}")
-
         # Explain / Video / Generate (in col2)
         with col2:
             c1, c2 = st.columns(2)
@@ -524,134 +531,139 @@ if st.session_state.image_files:
             clicked_regen   = c2.button("🔄 Regenerate", key=f"regen_{q_index}")
 
             if clicked_explain or clicked_regen:
-            
-                import base64, sys, importlib.util
+                with st.spinner("LLM is thinking ... ... 👩‍✨"):
+                    import base64, sys, importlib.util
 
-                force_regen = clicked_regen
+                    force_regen = clicked_regen
 
-                base_no_ext = os.path.splitext(os.path.basename(img_name))[0]
-                json_filename = f"{base_no_ext}.explain.json"
-                explain_path = os.path.join(folder_path, json_filename)
-                
-                prompt_answer = """
-You are a top HSC teacher. Read the image and question below, then ANSWER the question and EXPLAIN how to solve it.
-Return ONLY a single JSON object wrapped in a fenced code block like:
-{
-  "Answer": "Answer in text format, include math/physics notation where helpful.",
-  "Image_DataTable": "Base64 of UTF-8 Python code to generate any diagram or data table, using Plotly or Matplotlib. Must define a function `generate_plot()`, by end of code, return fig.",",
-  "Detailed_Explanation": "Step-by-step explanation with key HSC concepts.",
-  "Others": "Any other relevant info from an HSC teacher's perspective."
-}
+                    base_no_ext = os.path.splitext(os.path.basename(img_name))[0]
+                    json_filename = f"{base_no_ext}.explain.json"
+                    explain_path = os.path.join(folder_path, json_filename)
+                    
+                    prompt_answer = """
+    You are a top HSC teacher. Read the image and question below, then ANSWER the question and EXPLAIN how to solve it.
+    Return ONLY a single JSON object wrapped in a fenced code block like:
+    {
+    "Answer": "Answer in text format, include math/physics notation where helpful.",
+    "Image_DataTable": "Base64 of UTF-8 Python code to generate any diagram or data table, using Plotly or Matplotlib. Must define a function `generate_plot()`, by end of code, return fig.",",
+    "Detailed_Explanation": "Step-by-step explanation with key HSC concepts.",
+    "Others": "Any other relevant info from an HSC teacher's perspective."
+    }
+    ⚠️ IMPORTANT: Please format all LaTeX math expressions using:
+    - `$...$` for inline math
+    - `$$...$$` for block math
+
+    Do not use `\\(...\\)` or `\\[...\\]`.
 """
-                  # Try to load existing JSON to avoid re-running the LLM
-                data = None
-                loaded_from_cache = False
-                if (not force_regen) and os.path.exists(explain_path):
-                    try:
-                        with open(explain_path, "r", encoding="utf-8") as f:
-                            data = json.load(f)
-                        loaded_from_cache = True
-                        st.success(f"Loaded saved explanation: {json_filename}")
-                    except Exception as e:
-                        st.warning(f"⚠️ Could not read saved explanation, regenerating… ({e})")
-                
-                # If no cached JSON, call LLM and save
-                if data is None:
-                    with open(img_path, "rb") as img_file:
-                        img_bytes = img_file.read()
-                    image = Image.open(BytesIO(img_bytes))
-
-                    response = call_model(prompt_answer, image)
-                    print("Model response:", response.text)
-                    # Prefer strict; if it fails, fall back to tolerant
-                    try:
-                        data = extract_json_from_response(response)
-                    except Exception:
+                    # Try to load existing JSON to avoid re-running the LLM
+                    data = None
+                    loaded_from_cache = False
+                    if (not force_regen) and os.path.exists(explain_path):
                         try:
-                            data = extract_json_from_response_tolerant(response)
+                            with open(explain_path, "r", encoding="utf-8") as f:
+                                data = json.load(f)
+                            loaded_from_cache = True
+                            st.success(f"Loaded saved explanation: {json_filename}")
                         except Exception as e:
-                            st.error(f"❌ Failed to parse model response as JSON: {e}")
-                            with st.expander("Raw model output"):
-                                #st.code(response.text[:4000])
-                                st.warning("⚠️ Response too long to display.")
-                            st.stop()
+                            st.warning(f"⚠️ Could not read saved explanation, regenerating… ({e})")
+                    
+                    # If no cached JSON, call LLM and save
+                    if data is None:
+                        with open(img_path, "rb") as img_file:
+                            img_bytes = img_file.read()
+                        image = Image.open(BytesIO(img_bytes))
 
-                    # Save JSON right next to the image
-                    try:
-                        with open(explain_path, "w", encoding="utf-8") as f:
-                            json.dump(data, f, indent=2, ensure_ascii=False)
-                        st.info(f"💾 Explanation saved to: {explain_path}")
-                    except Exception as e:
-                        st.warning(f"⚠️ Could not save explanation JSON: {e}")
-
-                # --- Render the structured output ---
-                # 1) Answer
-                ans = (data.get("Answer") or "").strip()
-                if ans:
-                    st.markdown("#### ✅ Answer")
-                    st.markdown(ans)
-                else:
-                    st.info("No 'Answer' field returned.")
-
-                # 2) Plot/table (optional)
-                code_block = _extract_plot_code(data)
-                if code_block:
-                    try:
-                        explain_py = os.path.join(user_tmp_dir, f"explain_plot_{base_no_ext}.py")
-                        with open(explain_py, "w", encoding="utf-8") as f:
-                            f.write(code_block)
-
-                        mod = load_plot_module(explain_py)
-                        fig = getattr(mod, "generate_plot", lambda: None)()
-                        if fig is not None:
-                            # Try Plotly first
+                        response = call_model(prompt_answer, image)
+                        # Prefer strict; if it fails, fall back to tolerant
+                        try:
+                            data = extract_json_from_response(response)
+                        except Exception:
                             try:
-                                import plotly.basedatatypes as pbdt
-                                if isinstance(fig, pbdt.BaseFigure):
-                                    st.plotly_chart(fig, use_container_width=True)
-                                else:
-                                    # Fallback: Matplotlib
+                                data = extract_json_from_response_tolerant(response)
+                            except Exception as e:
+                                st.error(f"❌ Failed to parse model response as JSON: {e}")
+                                with st.expander("Raw model output"):
+                                    #st.code(response.text[:4000])
+                                    st.warning("⚠️ Response too long to display.")
+                                st.stop()
+
+                        # Save JSON right next to the image
+                        try:
+                            with open(explain_path, "w", encoding="utf-8") as f:
+                                json.dump(data, f, indent=2, ensure_ascii=False)
+                            st.info(f"💾 Explanation saved to: {explain_path}")
+                        except Exception as e:
+                            st.warning(f"⚠️ Could not save explanation JSON: {e}")
+
+                    # --- Render the structured output ---
+                    # 1) Answer
+                    ans = (data.get("Answer") or "").strip()
+                    if ans:
+                        st.markdown("#### ✅ Answer")
+                        st.markdown(ans)
+                    else:
+                        st.info("No 'Answer' field returned.")
+
+                    # 2) Plot/table (optional)
+                    code_block = _extract_plot_code(data)
+                    if code_block:
+                        try:
+                            explain_py = os.path.join(user_tmp_dir, f"explain_plot_{base_no_ext}.py")
+                            with open(explain_py, "w", encoding="utf-8") as f:
+                                f.write(code_block)
+
+                            mod = load_plot_module(explain_py)
+                            fig = getattr(mod, "generate_plot", lambda: None)()
+                            if fig is not None:
+                                # Try Plotly first
+                                try:
+                                    import plotly.basedatatypes as pbdt
+                                    if isinstance(fig, pbdt.BaseFigure):
+                                        st.plotly_chart(fig, use_container_width=True)
+                                    else:
+                                        # Fallback: Matplotlib
+                                        try:
+                                            import matplotlib.figure as mpl_figure
+                                            import matplotlib.axes as mpl_axes
+                                            if isinstance(fig, (mpl_figure.Figure, mpl_axes.Axes)):
+                                                st.pyplot(fig)
+                                            else:
+                                                st.warning("generate_plot() did not return a recognized Plotly or Matplotlib figure.")
+                                        except Exception:
+                                            st.warning("Matplotlib not available or figure type not recognized.")
+                                except Exception:
+                                    # If Plotly not available, try Matplotlib directly
                                     try:
                                         import matplotlib.figure as mpl_figure
                                         import matplotlib.axes as mpl_axes
                                         if isinstance(fig, (mpl_figure.Figure, mpl_axes.Axes)):
                                             st.pyplot(fig)
                                         else:
-                                            st.warning("generate_plot() did not return a recognized Plotly or Matplotlib figure.")
+                                            st.warning("Returned figure type not recognized.")
                                     except Exception:
-                                        st.warning("Matplotlib not available or figure type not recognized.")
-                            except Exception:
-                                # If Plotly not available, try Matplotlib directly
-                                try:
-                                    import matplotlib.figure as mpl_figure
-                                    import matplotlib.axes as mpl_axes
-                                    if isinstance(fig, (mpl_figure.Figure, mpl_axes.Axes)):
-                                        st.pyplot(fig)
-                                    else:
-                                        st.warning("Returned figure type not recognized.")
-                                except Exception:
-                                    st.warning("Could not display the generated figure.")
-                        else:
-                            st.info("No figure returned by generate_plot().")
-                    except Exception as e:
-                        st.warning(f"⚠️ Unable to run Image_DataTable code: {e}")
+                                        st.warning("Could not display the generated figure.")
+                            else:
+                                st.info("No figure returned by generate_plot().")
+                        except Exception as e:
+                            st.warning(f"⚠️ Unable to run Image_DataTable code: {e}")
 
-                # 3) Details (accept common variants)
-                detail = (
-                    data.get("Detailed_Explanation")
-                    or data.get("Detailed explanation")
-                    or data.get("Detailed explaination")  # common misspelling
-                    or ""
-                ).strip()
-                if detail:
-                    st.markdown("#### 📘 Details")
-                    st.markdown(detail)
+                    # 3) Details (accept common variants)
+                    detail = (
+                        data.get("Detailed_Explanation")
+                        or data.get("Detailed explanation")
+                        or data.get("Detailed explaination")  # common misspelling
+                        or ""
+                    ).strip()
+                    if detail:
+                        st.markdown("#### 📘 Details")
+                        
+                        st.markdown(detail)
 
-                # 4) Others
-                others = (data.get("Others") or "").strip()
-                if others:
-                    st.markdown("#### 🧩 Other Information")
-                    st.markdown(others)
+                    # 4) Others
+                    others = (data.get("Others") or "").strip()
+                    if others:
+                        st.markdown("#### 🧩 Other Information")
+                        st.markdown(others)
 
         with col2:
             if st.button("🎮 Video Help", key=f"video_{q_index}"):
@@ -739,7 +751,6 @@ Please format like:
         with col1:
             st.markdown("### 📝 Your Feedback")
             feedback_key = f"{course_level}/{selected_topic}/{selected_subtopic}/{img_name}"
-
             # --- Load ALL previous notes immediately when question loads ---
             history = get_all_feedback_for_key(FEEDBACK_FILE, feedback_key)
             if history:
@@ -790,6 +801,7 @@ Please format like:
                     "image": img_name,
                     "key": feedback_key,
                     "status": selected_feedback,
+                    "question_number": st.session_state.question_number,  # or another source
                     "note": user_note,
                 }
                 append_json_log(FEEDBACK_FILE, entry)
@@ -817,7 +829,6 @@ Please format like:
                         with open(img_path, "rb") as f:
                             image = Image.open(BytesIO(f.read()))
 
-                        #model = genai.GenerativeModel("gemini-2.5-flash")
                         model = genai.GenerativeModel(selected_model)
                         with st.spinner("Gemini is thinking..."):
                             try:
@@ -839,9 +850,97 @@ Please format like:
                 for role, message in reversed(st.session_state.gemini_chat_history):
                     with st.chat_message(role):
                         st.markdown(message)
-
 else:
     st.warning("⚠️ No PNG images found in the selected sub-topic.")
+
+import pandas as pd
+
+if mode == "Past Paper":
+    if st.sidebar.button("📊 Show Past Paper Summary"):
+        st.markdown("## 📊 Past Paper Feedback Summary")
+
+        # Load all feedback entries for this user and course
+        all_feedback = read_json_list(FEEDBACK_FILE)
+
+        # Filter for only past paper entries (topic == "PastPaper")
+        current_paper = st.session_state.get("selected_paper", "")
+        past_paper_feedback = [
+            fb for fb in all_feedback
+            if fb.get("topic") == "PastPaper" and fb.get("subtopic") == current_paper.replace(" ", "_")
+        ]
+
+        if not past_paper_feedback:
+            st.info("ℹ️ No past paper feedback available yet.")
+        else:
+            # Build a nested dictionary: { paper: { Q#: feedback_status } }
+            summary = {}
+            for fb in past_paper_feedback:
+                paper = fb.get("subtopic", "Unknown Paper")
+                image = fb.get("image", "")
+                q_num = fb.get("question_number")
+                if not q_num:
+                    continue  # skip if missing
+
+                feedback_status = fb.get("status", "-")
+
+                if paper not in summary:
+                    summary[paper] = {}
+                summary[paper][q_num] = feedback_status
+
+            # Determine the max number of questions for column layout
+            max_q = max((max(qs.keys()) for qs in summary.values()), default=0)
+            df = pd.DataFrame([
+                {"Past Paper": paper, **{f"Q{q}": status for q, status in questions.items()}}
+                for paper, questions in summary.items()
+            ])
+
+            # Reorder columns: put 'Past Paper' first, then Q1, Q2, ...
+            desired_columns = ["Past Paper"] + [f"Q{i}" for i in range(1, max_q + 1)]
+            df = df.reindex(columns=desired_columns, fill_value="-")
+
+            df.fillna("-", inplace=True)
+
+            # Style feedback cells
+            def style_feedback(val):
+                color_map = {
+                    "good": "#a7f3d0",
+                    "review": "#fde68a",
+                    "challenge": "#fca5a5",
+                }
+                color = color_map.get(val, "")
+                if color:
+                    return f"background-color: {color}; color: transparent;"  # Hide text
+                return ""
+
+            # Assumes: df contains columns like "Past Paper", "Q1", ..., "Q20"
+            chunk_size = 10
+
+            # Extract only question columns (Q1, Q2, ...)
+            question_cols = [col for col in df.columns if col.startswith("Q")]
+            chunks = [question_cols[i:i + chunk_size] for i in range(0, len(question_cols), chunk_size)]
+
+            for chunk in chunks:
+                display_cols = ["Past Paper"] + chunk
+                sub_df = df[display_cols]
+
+                styled_chunk = sub_df.style.map(style_feedback, subset=chunk)
+
+                # Optional: Add section header
+                q_start = chunk[0]
+                q_end = chunk[-1]
+                
+                st.table(styled_chunk)
+
+            # Add legend
+            st.markdown("""
+                <div style='margin-top:10px;'>
+                <strong>Legend:</strong><br>
+                <span style='background-color:#a7f3d0;padding:4px;'>✅ good</span>
+                <span style='background-color:#fde68a;padding:4px;'>🔄 review</span>
+                <span style='background-color:#fca5a5;padding:4px;'>❗ challenge</span>
+                <span style='padding:4px;'>➖ no feedback</span>
+                </div>
+            """, unsafe_allow_html=True)
 
 st.markdown("---")
 st.markdown("<p style='text-align:center; font-size:16px;'>👧 Keep going! Every question makes you stronger 💪 and smarter 🧠.</p>", unsafe_allow_html=True)
