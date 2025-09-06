@@ -59,6 +59,7 @@ HSC 2020
 HSC 2021
 HSC 2022
 HSC 2023
+HSC 2024
 Hunters Hill 2020
 Hunters Hill 2022
 Hunters Hill 2023
@@ -72,6 +73,7 @@ James Ruse 2019
 James Ruse 2020
 James Ruse 2022
 James Ruse 2023
+James Ruse 2024
 Killara 2019
 Killara 2020
 Killara 2021
@@ -93,6 +95,7 @@ Moriah 2022
 Moriah 2023
 Newington 2020
 Newington 2021
+Newington 2024
 Normanhurst Boys 2019
 Normanhurst Boys 2020
 Normanhurst Boys 2021
@@ -108,10 +111,14 @@ NS Girls 2019
 NS Girls 2020
 NS Girls 2022
 NS Girls 2023
+NSYD Boys 2024
+NSYD Girls 2024
 Penrith 2024
 PLC 2024
 Reddam 2024
 Riverview 2024
+St George Girls 2024
+St Ignatius 2024
 SYD BOYS 2024
 SYD GIRLS 2024
 SYD Grammar 2019

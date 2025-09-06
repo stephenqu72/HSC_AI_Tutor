@@ -41,6 +41,7 @@ HSC 2020
 HSC 2021
 HSC 2022
 HSC 2023
+HSC 2024
 Hunter Hills 2024
 Hunters Hill 2022 2U
 Hunters Hill 2023 2U
@@ -51,6 +52,7 @@ Hurlstone 2024
 James Ruse 2020 2U
 James Ruse 2022 2U
 James Ruse 2023 2U
+James Ruse 2024
 Killara 2021 2U
 Killara 2023 2U 
 Killara 2024
@@ -82,11 +84,13 @@ Nth SYD GIRLS 2024
 Penrith 2022 2U
 Penrith 2023 2U
 Penrith 2024
+Penrith High 2025
 Pymble 2022 2U 
 Pymble 2023 2U 
 Riverview 2022 2U
 Riverview 2023 2U
 Riverview 2024
+Ryde 2nd College 2023
 Shore 2023 2U
 Shore 2024
 St George Girls 2021 2U
