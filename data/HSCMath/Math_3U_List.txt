@@ -1,116 +1,48 @@
-Abbotsleigh 2020
-Abbotsleigh 2023
+Ascham 2025
+Barker 2025
+Baulkam Hills 2025
+BLK Boys 2025
+Caringbah High 2025
+CSSA 2025
+Fort St. 2025
+Girraween High 2025
+Gosford High 2025
+Hornsby Girls 2025
+Hurlstone 2025
+Independ 2025
+James Ruse 2025
+Killara High 2025
+Merewether 2025
+Normanhurst Boys 2025
+North Syd Boys 2025
+North Syd Girls 2025
+Penrith High 2025
+Prariewood 2025
+Pymble Ladies 2025
+St. George Girls 2025
+Syd Boys 2025
+Syd Girls 2025
+Syd Grammar 2025
+Syd Tech High 2025
 Abbotsleigh 2024
-Ascham 2020
-Ascham 2021
-Ascham 2022
-Ascham 2023
 Ascham 2024
-Baulkham Hills 2019
-Baulkham Hills 2020
-Baulkham Hills 2022
-Baulkham Hills 2023
 Baulkham Hills 2024
-Blacktown Boys 2020
-Blacktown Boys 2022
-Blacktown Boys 2023
 BLK Boys 2024
-Caringbah 2019
-Caringbah 2020
-Caringbah 2021
-Caringbah 2022
-Caringbah 2023
 Caringbah 2024
 Carlingford 2024
-Cheltenham Girls 2020
-Cheltenham Girls 2021
-Cherrybrook Tech 2020
-Cherrybrook Tech 2021
-Cherrybrook Tech 2022
 Epping Boy 2024
-Fort St 2019
-Fort St 2020
-Fort St 2022
-Fort St 2023
 Fort St 2024
-Girraween 2019
-Girraween 2020
-Girraween 2021
-Girraween 2022
-Girraween 2023
 Girraween 2024
-Glenwood 2023
-Gosford 2019
-Gosford 2020
-Gosford 2022
-Gosford 2023
 Gosford 2024
 Hornsby Girl 2024
-Hornsby Girls 2019
-Hornsby Girls 2020
-Hornsby Girls 2022
-Hornsby Girls 2023
-HSC 2015
-HSC 2016
-HSC 2017
-HSC 2018
-HSC 2019
-HSC 2020
-HSC 2021
-HSC 2022
-HSC 2023
 HSC 2024
-Hunters Hill 2020
-Hunters Hill 2022
-Hunters Hill 2023
 Hunters Hill 2024
-Hurlstone 2020
-Hurlstone 2021
-Hurlstone 2022
-Hurlstone 2023
 Hurlstone 2024
-James Ruse 2019
-James Ruse 2020
-James Ruse 2022
-James Ruse 2023
 James Ruse 2024
-Killara 2019
-Killara 2020
-Killara 2021
-Killara 2022
-Killara 2023
 Killara 2024
-Kings 2021
-Kinross 2023
-Knox 2021
-Knox 2023
-Manly 2019
-Manly 2020
-Manly 2021
-Manly 2022
-Manly 2023
 Manly 2024
-Moriah 2021
-Moriah 2022
-Moriah 2023
-Newington 2020
-Newington 2021
 Newington 2024
-Normanhurst Boys 2019
-Normanhurst Boys 2020
-Normanhurst Boys 2021
-Normanhurst Boys 2022
-Normanhurst Boys 2023
 Normanhurst Boys 2024
-NS BOYs 2019
-NS BOYs 2020
-NS BOYs 2021
-NS BOYs 2022
-NS BOYs 2023
-NS Girls 2019
-NS Girls 2020
-NS Girls 2022
-NS Girls 2023
 NSYD Boys 2024
 NSYD Girls 2024
 Penrith 2024
@@ -121,15 +53,109 @@ St George Girls 2024
 St Ignatius 2024
 SYD BOYS 2024
 SYD GIRLS 2024
-SYD Grammar 2019
-SYD Grammar 2020
-SYD Grammar 2021
-SYD Grammar 2022
-SYD Grammar 2023
 SYD Grammar 2024
-SYD Tech 2019
-SYD Tech 2020
-SYD Tech 2021
-SYD Tech 2022
-SYD Tech 2023
 SYD TECH 2024
+Abbotsleigh 2023
+Ascham 2023
+Baulkham Hills 2023
+Blacktown Boys 2023
+Caringbah 2023
+Fort St 2023
+Girraween 2023
+Glenwood 2023
+Gosford 2023
+Hornsby Girls 2023
+HSC 2023
+Hunters Hill 2023
+Hurlstone 2023
+James Ruse 2023
+Killara 2023
+Kinross 2023
+Knox 2023
+Manly 2023
+Moriah 2023
+Normanhurst Boys 2023
+NS BOYs 2023
+NS Girls 2023
+SYD Grammar 2023
+SYD Tech 2023
+Ascham 2022
+Baulkham Hills 2022
+Blacktown Boys 2022
+Caringbah 2022
+Cherrybrook Tech 2022
+Fort St 2022
+Girraween 2022
+Gosford 2022
+Hornsby Girls 2022
+HSC 2022
+Hunters Hill 2022
+Hurlstone 2022
+James Ruse 2022
+Killara 2022
+Manly 2022
+Moriah 2022
+Normanhurst Boys 2022
+NS BOYs 2022
+NS Girls 2022
+SYD Grammar 2022
+SYD Tech 2022
+Ascham 2021
+Caringbah 2021
+Cheltenham Girls 2021
+Cherrybrook Tech 2021
+Girraween 2021
+HSC 2021
+Hurlstone 2021
+Killara 2021
+Kings 2021
+Knox 2021
+Manly 2021
+Moriah 2021
+Newington 2021
+Normanhurst Boys 2021
+NS BOYs 2021
+SYD Grammar 2021
+SYD Tech 2021
+Abbotsleigh 2020
+Ascham 2020
+Baulkham Hills 2020
+Blacktown Boys 2020
+Caringbah 2020
+Cheltenham Girls 2020
+Cherrybrook Tech 2020
+Fort St 2020
+Girraween 2020
+Gosford 2020
+Hornsby Girls 2020
+HSC 2020
+Hunters Hill 2020
+Hurlstone 2020
+James Ruse 2020
+Killara 2020
+Manly 2020
+Newington 2020
+Normanhurst Boys 2020
+NS BOYs 2020
+NS Girls 2020
+SYD Grammar 2020
+SYD Tech 2020
+Baulkham Hills 2019
+Caringbah 2019
+Fort St 2019
+Girraween 2019
+Gosford 2019
+Hornsby Girls 2019
+HSC 2019
+James Ruse 2019
+Killara 2019
+Manly 2019
+Normanhurst Boys 2019
+NS BOYs 2019
+NS Girls 2019
+SYD Grammar 2019
+SYD Tech 2019
+HSC 2018
+HSC 2017
+HSC 2016
+HSC 2015

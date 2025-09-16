@@ -1,0 +1,6 @@
+{
+  "Answer": "The unit vector in the direction of $\\vec{u} = \\vec{i} - 2\\vec{j}$ is $\\frac{1}{\\sqrt{5}}(\\vec{i} - 2\\vec{j})$.",
+  "Image_DataTable": "",
+  "Detailed_Explanation": "To find the unit vector in the direction of a given vector, we need to divide the vector by its magnitude. The given vector is $\\vec{u} = \\vec{i} - 2\\vec{j}$. The magnitude of $\\vec{u}$ is calculated as follows:\n\n$$\\|\\vec{u}\\| = \\sqrt{1^2 + (-2)^2} = \\sqrt{1 + 4} = \\sqrt{5}$$\n\nThe unit vector in the direction of $\\vec{u}$ is then given by:\n\n$$\\hat{u} = \\frac{\\vec{u}}{\\|\\vec{u}\\|} = \\frac{1}{\\sqrt{5}}(\\vec{i} - 2\\vec{j})$$\n\nThis matches option D.",
+  "Others": "This problem is a fundamental concept in vector algebra, which is a key topic in HSC Physics and Mathematics. It involves understanding vector magnitude and direction, which are essential for solving problems in mechanics and electromagnetism."
+}
