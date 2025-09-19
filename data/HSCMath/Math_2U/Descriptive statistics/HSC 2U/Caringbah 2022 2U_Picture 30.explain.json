@@ -1,0 +1,6 @@
+{
+  "Answer": "Julie will have to refund approximately 1.96 times the number of bags under 100 g. Given she sells 200 bags, she will have to refund about 3.92 bags, which rounds to 4 bags.",
+  "Image_DataTable": "",
+  "Detailed_Explanation": "To solve this problem, we need to use the properties of the normal distribution. The mean weight of the bags is 105 g, and the standard deviation is 2.5 g. We are interested in the number of bags that weigh less than 100 g. This can be calculated using the Z-score formula and the standard normal distribution table.\n\nThe Z-score for 100 g is calculated as follows:\n$$ Z = \frac{X - \\mu}{\\sigma} = \frac{100 - 105}{2.5} = -2 $$\n\nUsing the standard normal distribution table, we find that the probability of a bag weighing less than 100 g (Z < -2) is approximately 0.0228. This means that about 2.28% of the bags will weigh less than 100 g. Given that Julie sells 200 bags, the expected number of bags under 100 g is:\n$$ 200 \times 0.0228 = 4.56 $$\n\nRounding to the nearest whole number, Julie will have to refund about 4 bags.",
+  "Others": "This problem involves understanding the normal distribution and its application in real-world scenarios. It's a good example of how statistical concepts can be used to make predictions and decisions in business and commerce."
+}
