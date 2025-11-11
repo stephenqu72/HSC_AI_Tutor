@@ -527,8 +527,8 @@ if st.session_state.image_files:
         # Explain / Video / Generate (in col2)
         with col2:
             c1, c2 = st.columns(2)
-            clicked_explain = c1.button("🧠 Answer", key=f"explain_{q_index}")
-            clicked_regen   = c2.button("🔄 Regenerate", key=f"regen_{q_index}")
+            clicked_explain = c1.button("🧠 Answer with Text", key=f"explain_{q_index}")
+            clicked_regen   = c2.button("🔄 Answer with Graph", key=f"regen_{q_index}")
 
             if clicked_explain:
                 with st.spinner("LLM is thinking ... ... 👩‍✨"):
