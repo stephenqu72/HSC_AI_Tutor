@@ -1,6 +1,9 @@
 Abbotsleigh 2021
 Abbotsleigh 2023
 Abbotsleigh 2024
+Amity College 2021  AT1
+Amity College 2022  AT1
+Amity College 2023  AT1
 Arthur Phillip 2021
 Ascham 2020
 Ascham 2021
@@ -8,9 +11,15 @@ Ascham 2022
 Ascham 2023
 Ascham 2024
 Barker 2020
+Barker 2021  AT1
+Barker 2022  AT1
+Barker 2023  AT1
 Baulkham Hills 2020
+Baulkham Hills 2021  AT1
 Baulkham Hills 2022
+Baulkham Hills 2022  AT1
 Baulkham Hills 2023
+Baulkham Hills 2023  AT1
 Baulkham Hills 2024
 Blacktown Boys 2020
 Blacktown Boys 2022
@@ -34,8 +43,11 @@ Fort St 2024
 Girraween 2020
 Girraween 2021
 Girraween 2022
+Girraween 2022  AT1
 Girraween 2023
+Girraween 2023  AT1
 Girraween 2024
+Girraween 2024  AT1
 Glenwood 2023
 Gosford 2020
 Gosford 2022
@@ -63,15 +75,23 @@ Hurlstone 2023
 Hurlstone 2024
 Inaburra 2024
 James Ruse 2020
+James Ruse 2020  AT1
 James Ruse 2021
+James Ruse 2021  AT1
 James Ruse 2022
+James Ruse 2022  AT1
 James Ruse 2023
+James Ruse 2023  AT1
 James Ruse 2024
 Killara 2020
 Killara 2021
 Killara 2022
 Killara 2023
 Killara 2024
+Kings 2022  AT1
+Kings 2023  AT1
+Kings 2024  AT1
+Kings 2025 AT1
 Kinross Wolaroi 2022
 Kinross Wolaroi 2023
 Knox 2021
@@ -92,6 +112,11 @@ Normanhurst Boy 2020
 Normanhurst Boys 2022
 Normanhurst Boys 2023
 Normanhurst Boys 2024
+NSY Boys 2020  AT1
+NSY Girls 2020  AT1
+NSY Girls 2021  AT1
+NSY Girls 2022  AT1
+NSY Girls 2023  AT1
 NSYD Boys 2020
 NSYD Boys 2021
 NSYD Boys 2022
@@ -106,6 +131,7 @@ Penrith 2023
 Penrith 2024
 Prariewood 2021
 Pymble 2022
+Scot College 2024  AT1
 Scots 2021
 Shore 2022
 Shore 2023
@@ -115,7 +141,10 @@ St George Girls 2022
 St George Girls 2023
 St George Girls 2024
 St Mary 2021
+St. George Girls 2019  AT1
 St. George Girls 2020
+St. George Girls 2021  AT1
+St. George Girls 2022  AT1
 SYD Boys 2020
 SYD Boys 2022
 SYD Boys 2023
@@ -135,4 +164,13 @@ SYD Tech 2021
 SYD TECH 2022
 SYD Tech 2023
 SYD Tech 2024
+Sydney Boys 2020  AT1
+Sydney Boys 2021  AT1
+Sydney Boys 2022  AT1
+Sydney Girls 2020  AT1
+Sydney Girls 2021  AT1
+Sydney Girls 2022  AT1
+Sydney Girls 2023  AT1
+Sydney Girls 2024  AT1
+Sydney Girls 2025  AT1
 Wyndham College 2021
