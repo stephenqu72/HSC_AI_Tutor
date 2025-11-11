@@ -3,3 +3,4 @@ pillow
 python-dotenv
 google-generativeai
 plotly
+matplotlib
