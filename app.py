@@ -560,137 +560,116 @@ if st.session_state.image_files:
                         st.markdown(reply)
                     else:
                         st.info("No 'Answer' field returned.")
-
             if clicked_regen:
-            
-                import base64, sys, importlib.util
+                with st.spinner("LLM is thinking ... ... 👩‍✨"):
+                    import base64, sys, importlib.util
 
-                force_regen = clicked_regen
+                    force_regen = clicked_regen
 
-                base_no_ext = os.path.splitext(os.path.basename(img_name))[0]
-                json_filename = f"{base_no_ext}.explain.json"
-                explain_path = os.path.join(folder_path, json_filename)
-                
-                prompt_answer = """
-You are a top HSC teacher. Read the image and question below, then ANSWER the question and EXPLAIN how to solve it.
-Return ONLY a single JSON object wrapped in a fenced code block like:
-{
-  "Answer": "Answer in text format, include math/physics notation where helpful.",
-  "Image_DataTable": "Base64 of UTF-8 Python code to generate any diagram or data table, using Plotly or Matplotlib. Must define a function `generate_plot()`, by end of code, return fig.",",
-  "Detailed_Explanation": "Step-by-step explanation with key HSC concepts.",
-  "Others": "Any other relevant info from an HSC teacher's perspective."
-}
-"""
-                  # Try to load existing JSON to avoid re-running the LLM
-                data = None
-                loaded_from_cache = False
-                if (not force_regen) and os.path.exists(explain_path):
-                    try:
+                    base_no_ext = os.path.splitext(os.path.basename(img_name))[0]
+                    txt_filename  = f"{base_no_ext}.explain.json"
+                    explain_path = os.path.join(folder_path, txt_filename )
+                    
+                    prompt_answer = """
+                        You are a top HSC teacher.
+
+                        ⬇️ RETURN PLAIN TEXT ONLY (NO JSON).  
+                        Format your answer using these exact section headers:
+
+                        ###ANSWER
+                        (write the final answer only, concise)
+
+                        ###PLOT_CODE (optional)
+                        # Python code that defines generate_plot() and returns a Plotly or Matplotlib figure as `fig`
+                        ###EXPLANATION
+                        (step-by-step reasoning, key HSC concepts)
+
+                        ###OTHERS
+                        (any extra insights)
+
+                        ⚠️ Do NOT return JSON. Do NOT escape characters. Just plain text.
+                        """
+                    # Load from cache if available
+                    data = {"ANSWER": "", "PLOT_CODE": "", "EXPLANATION": "", "OTHERS": ""}
+                    loaded_from_cache = False
+
+                    if (not force_regen) and os.path.exists(explain_path):
                         with open(explain_path, "r", encoding="utf-8") as f:
-                            data = json.load(f)
+                            raw = f.read()
                         loaded_from_cache = True
-                        st.success(f"Loaded saved explanation: {json_filename}")
-                    except Exception as e:
-                        st.warning(f"⚠️ Could not read saved explanation, regenerating… ({e})")
-                
-                # If no cached JSON, call LLM and save
-                if data is None:
-                    with open(img_path, "rb") as img_file:
-                        img_bytes = img_file.read()
-                    image = Image.open(BytesIO(img_bytes))
+                        st.success(f"Loaded saved explanation: {txt_filename}")
+                    else:
+                        # call LLM
+                        with open(img_path, "rb") as img_file:
+                            img_bytes = img_file.read()
+                        image = Image.open(BytesIO(img_bytes))
 
-                    response = call_model(prompt_answer, image)
-                    print("Model response:", response.text)
-                    # Prefer strict; if it fails, fall back to tolerant
-                    try:
-                        data = extract_json_from_response(response)
-                    except Exception:
-                        try:
-                            data = extract_json_from_response_tolerant(response)
-                        except Exception as e:
-                            st.error(f"❌ Failed to parse model response as JSON: {e}")
-                            with st.expander("Raw model output"):
-                                #st.code(response.text[:4000])
-                                st.warning("⚠️ Response too long to display.")
-                            st.stop()
+                        response = call_model(prompt_answer, image)
+                        raw = response.text
 
-                    # Save JSON right next to the image
-                    try:
                         with open(explain_path, "w", encoding="utf-8") as f:
-                            json.dump(data, f, indent=2, ensure_ascii=False)
+                            f.write(raw)
                         st.info(f"💾 Explanation saved to: {explain_path}")
-                    except Exception as e:
-                        st.warning(f"⚠️ Could not save explanation JSON: {e}")
+                    
+                    # ---- Parse sections ----
+                    def extract_section(text, key):
+                        """
+                        Extract a section using ###KEY and removes ``` fences if present.
+                        """
+                        marker = f"###{key}"
+                        if marker not in text:
+                            return ""
 
-                # --- Render the structured output ---
-                # 1) Answer
-                ans = (data.get("Answer") or "").strip()
-                if ans:
-                    st.markdown("#### ✅ Answer")
-                    st.markdown(ans)
-                else:
-                    st.info("No 'Answer' field returned.")
+                        part = text.split(marker, 1)[1]
 
-                # 2) Plot/table (optional)
-                code_block = _extract_plot_code(data)
-                if code_block:
-                    try:
-                        explain_py = os.path.join(user_tmp_dir, f"explain_plot_{base_no_ext}.py")
-                        with open(explain_py, "w", encoding="utf-8") as f:
-                            f.write(code_block)
+                        # Stop section at next heading
+                        for next_header in ["###ANSWER", "###PLOT_CODE", "###EXPLANATION", "###OTHERS"]:
+                            if next_header != marker and next_header in part:
+                                part = part.split(next_header, 1)[0]
 
-                        mod = load_plot_module(explain_py)
-                        fig = getattr(mod, "generate_plot", lambda: None)()
-                        if fig is not None:
-                            # Try Plotly first
-                            try:
-                                import plotly.basedatatypes as pbdt
-                                if isinstance(fig, pbdt.BaseFigure):
-                                    st.plotly_chart(fig, use_container_width=True)
-                                else:
-                                    # Fallback: Matplotlib
-                                    try:
-                                        import matplotlib.figure as mpl_figure
-                                        import matplotlib.axes as mpl_axes
-                                        if isinstance(fig, (mpl_figure.Figure, mpl_axes.Axes)):
-                                            st.pyplot(fig)
-                                        else:
-                                            st.warning("generate_plot() did not return a recognized Plotly or Matplotlib figure.")
-                                    except Exception:
-                                        st.warning("Matplotlib not available or figure type not recognized.")
-                            except Exception:
-                                # If Plotly not available, try Matplotlib directly
-                                try:
-                                    import matplotlib.figure as mpl_figure
-                                    import matplotlib.axes as mpl_axes
-                                    if isinstance(fig, (mpl_figure.Figure, mpl_axes.Axes)):
-                                        st.pyplot(fig)
-                                    else:
-                                        st.warning("Returned figure type not recognized.")
-                                except Exception:
-                                    st.warning("Could not display the generated figure.")
-                        else:
-                            st.info("No figure returned by generate_plot().")
-                    except Exception as e:
-                        st.warning(f"⚠️ Unable to run Image_DataTable code: {e}")
+                        cleaned = part.strip()
 
-                # 3) Details (accept common variants)
-                detail = (
-                    data.get("Detailed_Explanation")
-                    or data.get("Detailed explanation")
-                    or data.get("Detailed explaination")  # common misspelling
-                    or ""
-                ).strip()
-                if detail:
-                    st.markdown("#### 📘 Details")
-                    st.markdown(detail)
+                        # ✅ Strip code fences if LLM wrapped it
+                        if cleaned.startswith("```"):
+                            cleaned = cleaned.lstrip("`")  # remove opening backticks
+                            cleaned = cleaned.lstrip("python")  # if format is ```python
+                            cleaned = cleaned.strip()  # remove whitespace
+                        if cleaned.endswith("```"):
+                            cleaned = cleaned[:-3].rstrip()
 
-                # 4) Others
-                others = (data.get("Others") or "").strip()
-                if others:
-                    st.markdown("#### 🧩 Other Information")
-                    st.markdown(others)
+                        return cleaned
 
+                    data["ANSWER"]       = extract_section(raw, "ANSWER")
+                    data["PLOT_CODE"]    = extract_section(raw, "PLOT_CODE")
+                    data["EXPLANATION"]  = extract_section(raw, "EXPLANATION")
+                    data["OTHERS"]       = extract_section(raw, "OTHERS")
+                    
+                    # ---- Display ----
+                    if data["ANSWER"]:
+                        st.markdown("#### ✅ Answer")
+                        st.markdown(data["ANSWER"])
+
+                    # plot / code
+                    if data["PLOT_CODE"]:
+                        try:
+                            explain_py = os.path.join(user_tmp_dir, f"explain_plot_{base_no_ext}.py")
+                            with open(explain_py, "w", encoding="utf-8") as f:
+                                f.write(data["PLOT_CODE"])
+
+                            mod = load_plot_module(explain_py)
+                            fig = getattr(mod, "generate_plot", lambda: None)()
+                            if fig is not None:
+                                st.plotly_chart(fig, use_container_width=True)
+                        except Exception as e:
+                            st.warning(f"⚠️ Unable to execute plot code: {e}")
+
+                    if data["EXPLANATION"]:
+                        st.markdown("#### 📘 Detailed Explanation")
+                        st.markdown(data["EXPLANATION"])
+
+                    if data["OTHERS"]:
+                        st.markdown("#### 🧩 Other Information")
+                        st.markdown(data["OTHERS"])
         with col2:
             if st.button("🎮 Video Help", key=f"video_{q_index}"):
                 video_prompt = """
