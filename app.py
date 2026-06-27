@@ -461,6 +461,10 @@ def load_plot_module(module_path: str):
     return image_module
 
 
+def question_cache_key(course: str, topic: str, subtopic: str, image_name: str) -> str:
+    return f"{course}/{topic}/{subtopic}/{image_name}"
+
+
 QUESTION_TYPES = [
     "Multiple choice",
     "Short answer",
