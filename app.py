@@ -15,7 +15,18 @@ import streamlit.components.v1 as components
 from src.password_reset import set_user_password
 
 try:
-    from src.student_answers import estimate_study_panel_height, parse_flash_card, study_markdown_to_html
+    from src.student_answers import (
+        append_answer_log,
+        build_answer_feedback_prompt,
+        build_answer_summary,
+        canonical_question_cache_key,
+        estimate_study_panel_height,
+        latest_answers_by_key,
+        parse_flash_card,
+        question_type_course_for_cache_key,
+        read_json_list,
+        study_markdown_to_html,
+    )
 except Exception:
     def parse_flash_card(text: str) -> dict:
         front_match = re.search(r"###\s*Front\s*([\s\S]*?)(?=###\s*Back|$)", text or "", re.IGNORECASE)
