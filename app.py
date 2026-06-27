@@ -131,6 +131,7 @@ except Exception:
         return GeminiKeySelection(key_name, api_key)
 
 from src.gemini_requests import generate_with_gemini
+from src.past_papers import extract_picture_number, matches_selected_paper
 
 from src.student_answers import (
     append_answer_log,
@@ -1064,12 +1065,6 @@ def image_to_b64_png(pil_img: Image.Image) -> str:
     pil_img.save(buf, format="PNG")
     return base64.b64encode(buf.getvalue()).decode()
 
-# Sort by numeric suffix before .png
-
-def extract_picture_number(filename):
-    match = re.search(r'(?:Picture|Group)\s(\d+)\.png$', filename)
-    return int(match.group(1)) if match else 0
-
 def call_model(prompt, image):
     selection = configure_gemini_for_current_user()
     return generate_with_gemini(
@@ -1233,11 +1228,10 @@ if mode == "Past Paper":
         st.error(f"❌ Question library folder not found at: {question_library}")
         st.stop()
 
-    paper_prefix = selected_paper
     past_paper_images = []
     for root, _, files in os.walk(question_library):
         for f in files:
-            if f.startswith(paper_prefix) and f.endswith(".png"):
+            if f.endswith(".png") and matches_selected_paper(f, selected_paper):
                 past_paper_images.append(os.path.relpath(os.path.join(root, f), question_library))
 
     past_paper_images.sort(key=extract_picture_number)
