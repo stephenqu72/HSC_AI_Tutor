@@ -11,6 +11,79 @@ from datetime import datetime
 import google.generativeai as genai
 from dotenv import load_dotenv
 import base64
+import streamlit.components.v1 as components
+
+try:
+    from src.student_answers import estimate_study_panel_height, parse_flash_card, study_markdown_to_html
+except Exception:
+    def parse_flash_card(text: str) -> dict:
+        front_match = re.search(r"###\s*Front\s*([\s\S]*?)(?=###\s*Back|$)", text or "", re.IGNORECASE)
+        back_match = re.search(r"###\s*Back\s*([\s\S]*)", text or "", re.IGNORECASE)
+        return {
+            "front": front_match.group(1).strip() if front_match else "Review this key HSC Mathematics idea.",
+            "back": back_match.group(1).strip() if back_match else (text or "").strip(),
+        }
+
+    def _flash_card_inline_markdown_to_html(text: str) -> str:
+        rendered = re.sub(r"`([^`]+)`", r"<code>\1</code>", text or "")
+        rendered = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", rendered)
+        return rendered
+
+    def study_markdown_to_html(text: str) -> str:
+        blocks = []
+        list_items = []
+        paragraph_lines = []
+
+        def flush_list():
+            if list_items:
+                blocks.append("<ul>" + "".join(f"<li>{item}</li>" for item in list_items) + "</ul>")
+                list_items.clear()
+
+        def flush_paragraph():
+            if paragraph_lines:
+                blocks.append(f"<p>{_flash_card_inline_markdown_to_html(' '.join(paragraph_lines))}</p>")
+                paragraph_lines.clear()
+
+        for raw_line in (text or "").splitlines():
+            line = raw_line.strip()
+            if not line:
+                flush_paragraph()
+                flush_list()
+                continue
+            heading = re.match(r"^(#{1,6})\s+(.+)$", line)
+            if heading:
+                flush_paragraph()
+                flush_list()
+                level = min(len(heading.group(1)), 4)
+                blocks.append(f"<h{level}>{_flash_card_inline_markdown_to_html(heading.group(2))}</h{level}>")
+                continue
+            if line.startswith(("- ", "* ")):
+                flush_paragraph()
+                list_items.append(_flash_card_inline_markdown_to_html(line[2:].strip()))
+                continue
+            flush_list()
+            paragraph_lines.append(line)
+
+        flush_paragraph()
+        flush_list()
+        return "\n".join(blocks)
+
+    def estimate_study_panel_height(text: str, min_height: int = 220, max_height: int = 1800) -> int:
+        raw_lines = (text or "").splitlines() or [""]
+        visual_lines = 0
+        for raw_line in raw_lines:
+            line = raw_line.strip()
+            if not line:
+                visual_lines += 1
+                continue
+            line_weight = 1
+            if re.match(r"^#{1,6}\s+", line):
+                line_weight = 2
+            elif line.startswith(("- ", "* ")):
+                line_weight = 1.15
+            visual_lines += max(line_weight, len(line) / 82)
+        estimated = 118 + int(visual_lines * 29)
+        return max(min_height, min(max_height, estimated))
 from src.usernames import normalize_user_db, normalize_username
 from src.auth_approval import apply_approval_policy, is_root_user, is_user_approved, llm_owner_username
 from src.gemini_keys import ROOT_GEMINI_KEY_NAMES, STUDENT_GEMINI_KEY_NAME, select_gemini_key
@@ -447,6 +520,176 @@ def extract_json_from_response_tolerant(response_text):
     return data
 
 
+def call_text_model(prompt):
+    model = genai.GenerativeModel(selected_model)
+    return model.generate_content(prompt)
+
+
+def build_flash_card_prompt(saved_answer: str) -> str:
+    return f"""
+You are a concise NSW HSC Mathematics study coach. Create one flash card from the saved answer below.
+
+Saved answer:
+{saved_answer}
+
+Format exactly:
+### Front
+A short recall question about the key formula, theorem, method, definition, graph feature, or common trap.
+
+### Back
+- Key idea:
+- Formula / theorem / method:
+- When to use it:
+- Common trap:
+
+Keep it compact and exam-focused. If no fixed formula or theorem applies, write "No fixed formula or theorem".
+""".strip()
+
+
+def answer_cache_path(cache_key: str, answer_type: str) -> str:
+    cache_root = os.path.join(user_root, "saved_answers")
+    os.makedirs(cache_root, exist_ok=True)
+    cache_name = hashlib.sha1(cache_key.encode("utf-8")).hexdigest()
+    return os.path.join(cache_root, f"{cache_name}.{answer_type}.txt")
+
+
+def load_saved_answer(cache_key: str, answer_type: str):
+    path = answer_cache_path(cache_key, answer_type)
+    if not os.path.exists(path):
+        return ""
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read()
+    except Exception:
+        return ""
+
+
+def save_answer(cache_key: str, answer_type: str, text: str) -> str:
+    path = answer_cache_path(cache_key, answer_type)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text or "")
+    return path
+
+
+def render_flash_card(card_text: str, card_key: str):
+    card = parse_flash_card(card_text)
+    front_html = study_markdown_to_html(card["front"])
+    back_html = study_markdown_to_html(card["back"])
+    element_id = f"flash-card-{hashlib.sha1(card_key.encode('utf-8')).hexdigest()}"
+    components.html(
+        f"""
+<script>
+  window.MathJax = {{
+    tex: {{
+      inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+      displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']]
+    }},
+    svg: {{ fontCache: 'global' }}
+  }};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  .flash-card-wrap {{
+    width: 100%;
+    min-height: 280px;
+    perspective: 1200px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }}
+  .flash-card-toggle {{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }}
+  .flash-card {{
+    display: block;
+    width: 100%;
+    min-height: 260px;
+    cursor: pointer;
+  }}
+  .flash-card-inner {{
+    position: relative;
+    width: 100%;
+    min-height: 260px;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+  }}
+  .flash-card-toggle:checked + .flash-card .flash-card-inner {{
+    transform: rotateY(180deg);
+  }}
+  .flash-card-face {{
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    padding: 22px 24px;
+    border: 1px solid #d9dee8;
+    border-radius: 8px;
+    backface-visibility: hidden;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.10);
+    color: #172033;
+    overflow: auto;
+  }}
+  .flash-card-front {{
+    background: linear-gradient(135deg, #fff7d6, #e8f4ff);
+  }}
+  .flash-card-back {{
+    background: linear-gradient(135deg, #e9fff3, #fff1f1);
+    transform: rotateY(180deg);
+  }}
+  .flash-card-label {{
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #5b6475;
+    text-transform: uppercase;
+  }}
+  .flash-card-content {{
+    font-size: 17px;
+    line-height: 1.55;
+    white-space: normal;
+  }}
+  .flash-card-content p {{
+    margin: 0 0 12px;
+  }}
+  .flash-card-content ul {{
+    margin: 0;
+    padding-left: 22px;
+  }}
+  .flash-card-content li {{
+    margin: 0 0 10px;
+  }}
+  .flash-card-content code {{
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.72);
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    font-size: 0.95em;
+  }}
+  .flash-card-content strong {{
+    font-weight: 750;
+  }}
+</style>
+<div class="flash-card-wrap">
+  <input class="flash-card-toggle" id="{element_id}" type="checkbox">
+  <label class="flash-card" for="{element_id}">
+    <div class="flash-card-inner">
+      <section class="flash-card-face flash-card-front">
+        <div class="flash-card-label">Front</div>
+        <div class="flash-card-content">{front_html}</div>
+      </section>
+      <section class="flash-card-face flash-card-back">
+        <div class="flash-card-label">Back</div>
+        <div class="flash-card-content">{back_html}</div>
+      </section>
+    </div>
+  </label>
+</div>
+""",
+        height=300,
+    )
+
+
 ############################################
 # ---------- Session Init ----------
 ############################################
@@ -489,6 +732,7 @@ if not os.path.isdir(base_root):
 # 🔄 LLM Model Selection
 st.sidebar.markdown("## 🧠 Choose LLM Model")
 selected_model = st.sidebar.selectbox("LLM Provider:", ["gemini-3.1-flash-lite","gemini-3.5-flash"], key="llm_choice")
+selected_question_type = 'All types'
 render_root_admin_sidebar()
 
 ############################################
@@ -878,6 +1122,28 @@ Please format like:
                             st.error(f"😢 Not quite. The correct answer is: {correct}")
                     else:
                         st.info(f"✅ Your answer is saved. Here's the marking guide or solution:\n\n**{correct}**")
+
+                current_question_key = f"{current_course_key}/{current_topic_key}/{current_subtopic_key}/{img_name}"
+                saved_flash_card = load_saved_answer(current_question_key, "flash_card")
+                flash_card_requested = st.button("🃏 Flash Card", key=f"flash_card_{q_index}")
+
+                if flash_card_requested:
+                    if (saved_flash_card or "").strip():
+                        st.info("Saved flash card loaded below.")
+                    elif not (question.get("Answer", "") or "").strip():
+                        st.warning("No answer is available yet. Generate the question first so I can build a flash card.")
+                    else:
+                        with st.spinner("Creating flash card..."):
+                            response = call_text_model(build_flash_card_prompt(question.get("Answer", "")))
+                        saved_flash_card = response.text.strip()
+                        save_answer(current_question_key, "flash_card", saved_flash_card)
+                        st.success("Flash card saved.")
+                        st.rerun()
+
+                if (saved_flash_card or "").strip():
+                    with st.expander("🃏 Flash Card Review", expanded=True):
+                        st.caption("Click the card to flip it. The card is saved in your per-user study cache.")
+                        render_flash_card(saved_flash_card, f"{current_question_key}:{q_index}")
 
         # 📝 Feedback & Notes Section (append-only log + auto-load previous notes)
         with col1:
