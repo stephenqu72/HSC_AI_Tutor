@@ -98,6 +98,7 @@ APP_TITLE = "HSC AI Tutoring Centre"
 # Use secrets or env to configure base paths for deployment
 PERSIST_DIR = os.getenv("PERSIST_DIR") or st.secrets.get("PERSIST_DIR", "persist")
 BASE_ROOT = os.getenv("BASE_ROOT") or st.secrets.get("BASE_ROOT", "data/HSCMath")
+NOTES_ROOT = os.getenv("NOTES_ROOT") or st.secrets.get("NOTES_ROOT", os.path.join(os.path.dirname(BASE_ROOT), "Notes"))
 
 ACCOUNTS_DB = os.path.join(PERSIST_DIR, "server", "users.json")
 USERS_ROOT = os.path.join(PERSIST_DIR, "users")
