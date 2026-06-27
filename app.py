@@ -430,6 +430,191 @@ def load_plot_module(module_path: str):
     return image_module
 
 
+QUESTION_TYPES = [
+    "Multiple choice",
+    "Short answer",
+    "Calculation question",
+    "Essay",
+    "Experimental questions",
+    "Data analysis questions",
+    "Other questions",
+]
+QUESTION_TYPE_FILTERS = ["All types"] + QUESTION_TYPES
+DEFAULT_QUESTION_TYPE = "Other questions"
+
+
+def normalize_question_type(value: str) -> str:
+    cleaned = (value or "").strip().lower()
+    aliases = {
+        "multiple choice": "Multiple choice",
+        "multiple-choice": "Multiple choice",
+        "mcq": "Multiple choice",
+        "short answer": "Short answer",
+        "short-answer": "Short answer",
+        "calculation": "Calculation question",
+        "calculation question": "Calculation question",
+        "numerical": "Calculation question",
+        "essay": "Essay",
+        "extended response": "Essay",
+        "experimental": "Experimental questions",
+        "experiment": "Experimental questions",
+        "experimental question": "Experimental questions",
+        "experimental questions": "Experimental questions",
+        "data analysis": "Data analysis questions",
+        "data analysis question": "Data analysis questions",
+        "data analysis questions": "Data analysis questions",
+        "other": "Other questions",
+        "other question": "Other questions",
+        "other questions": "Other questions",
+    }
+    return aliases.get(cleaned, DEFAULT_QUESTION_TYPE)
+
+
+def read_json_dict(path: str) -> dict:
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def get_question_type(path: str, key: str) -> str:
+    data = read_json_dict(path)
+    entry = data.get(key, {})
+    if isinstance(entry, dict):
+        return normalize_question_type(entry.get("type"))
+    return normalize_question_type(entry)
+
+
+def question_type_exists(path: str, key: str) -> bool:
+    return key in read_json_dict(path)
+
+
+def save_question_type(path: str, key: str, question_type: str, metadata: dict):
+    db = read_json_dict(path)
+    db[key] = {
+        "type": normalize_question_type(question_type),
+        "updated_at": datetime.utcnow().isoformat() + "Z",
+        **(metadata or {}),
+    }
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(db, f, indent=2, ensure_ascii=False)
+
+
+def classify_question_type_from_text(text: str) -> str:
+    marker = re.search(r"###QUESTION_TYPE\s*([\s\S]+?)$", text or "", re.IGNORECASE)
+    if marker:
+        return normalize_question_type(marker.group(1).strip().splitlines()[0])
+    return DEFAULT_QUESTION_TYPE
+
+
+def strip_question_type_section(text: str) -> str:
+    if not text:
+        return ""
+    return re.split(r"###QUESTION_TYPE[\s\S]*$", text, flags=re.IGNORECASE)[0].strip()
+
+
+def list_note_pdfs(notes_root: str) -> list:
+    if not os.path.isdir(notes_root):
+        return []
+    pdfs = []
+    for root, _, files in os.walk(notes_root):
+        for filename in files:
+            if filename.lower().endswith(".pdf"):
+                path = os.path.join(root, filename)
+                pdfs.append(os.path.relpath(path, notes_root))
+    return sorted(pdfs, key=str.lower)
+
+
+@st.cache_data(show_spinner=False)
+def pdf_page_count(pdf_path: str) -> int:
+    import fitz
+
+    with fitz.open(pdf_path) as doc:
+        return doc.page_count
+
+
+@st.cache_data(show_spinner=False)
+def render_pdf_page(pdf_path: str, page_number: int, zoom: float = 1.8) -> bytes:
+    import fitz
+
+    with fitz.open(pdf_path) as doc:
+        page = doc.load_page(page_number - 1)
+        pix = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), alpha=False)
+        return pix.tobytes("png")
+
+
+def show_pdf_page_viewer(pdf_path: str, viewer_key: str):
+    try:
+        total_pages = pdf_page_count(pdf_path)
+    except ImportError:
+        st.error("PyMuPDF is required to render PDF notes. Install the PyMuPDF package.")
+        return
+    except Exception as e:
+        st.warning(f"⚠️ Unable to open this PDF: {e}")
+        return
+
+    if total_pages <= 0:
+        st.warning("⚠️ This PDF has no pages to show.")
+        return
+
+    page_key = f"note_page_{viewer_key}"
+    input_key = f"note_page_input_{viewer_key}"
+    if page_key not in st.session_state:
+        st.session_state[page_key] = 1
+    st.session_state[page_key] = min(max(st.session_state[page_key], 1), total_pages)
+    if input_key not in st.session_state:
+        st.session_state[input_key] = st.session_state[page_key]
+    st.session_state[input_key] = min(max(st.session_state[input_key], 1), total_pages)
+
+    def set_note_page(delta=0):
+        next_page = min(max(st.session_state[page_key] + delta, 1), total_pages)
+        st.session_state[page_key] = next_page
+        st.session_state[input_key] = next_page
+
+    def sync_note_page_input():
+        st.session_state[page_key] = min(max(st.session_state[input_key], 1), total_pages)
+
+    nav_prev, nav_page, nav_next = st.columns([1, 2, 1])
+    with nav_prev:
+        st.button(
+            "⬅️ Previous page",
+            key=f"prev_{viewer_key}",
+            disabled=st.session_state[page_key] <= 1,
+            on_click=set_note_page,
+            args=(-1,),
+        )
+    with nav_page:
+        st.number_input(
+            "Page",
+            min_value=1,
+            max_value=total_pages,
+            step=1,
+            key=input_key,
+            on_change=sync_note_page_input,
+            label_visibility="collapsed",
+        )
+        st.caption(f"Page {st.session_state[page_key]} of {total_pages}")
+    with nav_next:
+        st.button(
+            "Next page ➡️",
+            key=f"next_{viewer_key}",
+            disabled=st.session_state[page_key] >= total_pages,
+            on_click=set_note_page,
+            args=(1,),
+        )
+
+    try:
+        page_png = render_pdf_page(pdf_path, st.session_state[page_key])
+        st.image(page_png, use_container_width=True)
+    except Exception as e:
+        st.warning(f"⚠️ Unable to render this PDF page: {e}")
+
+
 def read_json_list(path: str) -> list:
     if not os.path.exists(path):
         return []
@@ -491,6 +676,12 @@ def image_to_b64_png(pil_img: Image.Image) -> str:
     buf = BytesIO()
     pil_img.save(buf, format="PNG")
     return base64.b64encode(buf.getvalue()).decode()
+
+
+def load_image_for_model(img_path: str):
+    with open(img_path, "rb") as img_file:
+        img_bytes = img_file.read()
+    return Image.open(BytesIO(img_bytes))
 
 # Sort by numeric suffix before .png
 
@@ -610,6 +801,212 @@ Keep it compact and exam-focused. If no fixed formula or theorem applies, write 
 """.strip()
 
 
+TEXT_ANSWER_PROMPT = """
+You are a top NSW HSC Mathematics teacher. Read the image and answer the question carefully.
+
+Return plain text only using exactly these sections:
+
+###ANSWER
+(concise final answer)
+
+###EXPLANATION
+(step-by-step reasoning)
+
+###OTHERS
+(optional extra tips, traps, or shortcuts)
+
+If the question needs a diagram or graph, mention it naturally in the answer, but do not return JSON.
+
+⚠️ IMPORTANT: Use `$...$` for inline math and `$$...$$` for display math.
+Do not use `\\(...\\)` or `\\[...\\]`.
+""".strip()
+
+
+GRAPH_ANSWER_PROMPT = """
+You are a top NSW HSC Mathematics teacher. Read the image and answer the question carefully.
+
+Return plain text only using exactly these sections:
+
+###ANSWER
+(concise final answer)
+
+###PLOT_CODE
+If a graph, diagram, or plot would help, provide Python code that defines generate_plot() and returns a Plotly or Matplotlib figure as fig. If no plot is needed, leave this blank.
+
+###EXPLANATION
+(step-by-step reasoning)
+
+###OTHERS
+(optional extra tips, traps, or shortcuts)
+
+⚠️ IMPORTANT: Use `$...$` for inline math and `$$...$$` for display math.
+Do not use `\\(...\\)` or `\\[...\\]`.
+""".strip()
+
+
+def display_text_answer(reply: str, question_type: str):
+    st.markdown("### ✅ Answer")
+    st.caption(f"Question type: {question_type}")
+    st.markdown(strip_question_type_section(reply))
+
+
+def display_graph_answer(raw: str, base_no_ext: str):
+    data = {"ANSWER": "", "PLOT_CODE": "", "EXPLANATION": "", "OTHERS": ""}
+
+    def extract_section(text, key):
+        marker = f"###{key}"
+        if marker not in text:
+            return ""
+        part = text.split(marker, 1)[1]
+        for next_header in ["###ANSWER", "###PLOT_CODE", "###EXPLANATION", "###OTHERS"]:
+            if next_header != marker and next_header in part:
+                part = part.split(next_header, 1)[0]
+        return part.strip()
+
+    data["ANSWER"] = extract_section(raw, "ANSWER")
+    data["PLOT_CODE"] = extract_section(raw, "PLOT_CODE")
+    data["EXPLANATION"] = extract_section(raw, "EXPLANATION")
+    data["OTHERS"] = extract_section(raw, "OTHERS")
+
+    if data["ANSWER"]:
+        st.markdown("### ✅ Answer")
+        st.markdown(data["ANSWER"])
+
+    if data["PLOT_CODE"]:
+        try:
+            explain_py = os.path.join(user_tmp_dir, f"explain_plot_{base_no_ext}.py")
+            with open(explain_py, "w", encoding="utf-8") as f:
+                f.write(data["PLOT_CODE"])
+            mod = load_plot_module(explain_py)
+            fig = getattr(mod, "generate_plot", lambda: None)()
+            if fig is not None:
+                st.plotly_chart(fig, use_container_width=True)
+        except Exception as e:
+            st.warning(f"⚠️ Unable to execute plot code: {e}")
+
+    if data["EXPLANATION"]:
+        st.markdown("### 📘 Detailed Explanation")
+        st.markdown(data["EXPLANATION"])
+
+    if data["OTHERS"]:
+        st.markdown("### 🧩 Other Information")
+        st.markdown(data["OTHERS"])
+
+
+def render_text_answer_card(reply: str, question_type: str, card_key: str):
+    answer_text = strip_question_type_section(reply)
+    answer_html = study_markdown_to_html(answer_text)
+    panel_height = estimate_study_panel_height(answer_text)
+    element_id = f"answer-card-{hashlib.sha1(card_key.encode('utf-8')).hexdigest()}"
+    components.html(
+        f"""
+<script>
+  window.MathJax = {{
+    tex: {{
+      inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+      displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']]
+    }},
+    svg: {{ fontCache: 'global' }}
+  }};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  #{element_id} {{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 22px 24px;
+    border: 1px solid #d9dee8;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f8fbff, #fff8ed);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+    color: #172033;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }}
+  #{element_id} .answer-card-label {{
+    display: inline-block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #5b6475;
+    text-transform: uppercase;
+  }}
+  #{element_id} .answer-card-type {{
+    margin: 0 0 16px;
+    color: #687386;
+    font-size: 13px;
+  }}
+  #{element_id} .answer-card-content {{
+    font-size: 16px;
+    line-height: 1.58;
+  }}
+  #{element_id} p {{
+    margin: 0 0 12px;
+  }}
+  #{element_id} ul {{
+    margin: 0 0 12px;
+    padding-left: 22px;
+  }}
+  #{element_id} li {{
+    margin: 0 0 9px;
+  }}
+  #{element_id} h1,
+  #{element_id} h2,
+  #{element_id} h3,
+  #{element_id} h4 {{
+    margin: 16px 0 10px;
+    color: #172033;
+    font-size: 18px;
+    line-height: 1.25;
+  }}
+  #{element_id} h1:first-child,
+  #{element_id} h2:first-child,
+  #{element_id} h3:first-child,
+  #{element_id} h4:first-child {{
+    margin-top: 0;
+  }}
+  #{element_id} code {{
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.78);
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    font-size: 0.95em;
+  }}
+  #{element_id} strong {{
+    font-weight: 750;
+  }}
+</style>
+<section id="{element_id}">
+  <div class="answer-card-label">Answer</div>
+  <div class="answer-card-type">Question type: {html.escape(question_type or DEFAULT_QUESTION_TYPE)}</div>
+  <div class="answer-card-content">{answer_html}</div>
+</section>
+""",
+        height=panel_height,
+    )
+
+
+def generate_text_answer_for_question(
+    img_path: str,
+    cache_key: str,
+    question_type_file: str,
+    metadata: dict,
+    force_regen: bool = False,
+):
+    reply = None if force_regen else load_saved_answer(cache_key, "text")
+    if not (reply or "").strip():
+        image = load_image_for_model(img_path)
+        response = call_model(TEXT_ANSWER_PROMPT, image)
+        reply = response.text
+        if not (reply or "").strip():
+            raise RuntimeError("LLM returned an empty Text Answer.")
+        save_answer(cache_key, "text", reply)
+
+    question_type = classify_question_type_from_text(reply)
+    save_question_type(question_type_file, cache_key, question_type, metadata)
+    return reply, question_type
+
+
 def answer_cache_path(cache_key: str, answer_type: str) -> str:
     cache_root = os.path.join(user_root, "saved_answers")
     os.makedirs(cache_root, exist_ok=True)
@@ -620,12 +1017,12 @@ def answer_cache_path(cache_key: str, answer_type: str) -> str:
 def load_saved_answer(cache_key: str, answer_type: str):
     path = answer_cache_path(cache_key, answer_type)
     if not os.path.exists(path):
-        return ""
+        return None
     try:
         with open(path, "r", encoding="utf-8") as f:
             return f.read()
     except Exception:
-        return ""
+        return None
 
 
 def save_answer(cache_key: str, answer_type: str, text: str) -> str:
@@ -861,6 +1258,26 @@ else:
 st.sidebar.markdown("## 🧠 Choose LLM Model")
 selected_model = st.sidebar.selectbox("LLM Provider:", ["gemini-3.1-flash-lite","gemini-3.5-flash"], key="llm_choice")
 
+question_type_file = os.path.join(user_root, f"question_type_{course_level}.json")
+if st.sidebar.checkbox("Filter by question type", value=False, key="enable_question_type_filter"):
+    if st.session_state.get("question_type_filter") not in QUESTION_TYPE_FILTERS:
+        st.session_state.question_type_filter = "All types"
+    selected_question_type = st.sidebar.selectbox("🏷️ Type of question:", QUESTION_TYPE_FILTERS, key="question_type_filter")
+else:
+    selected_question_type = "All types"
+
+st.sidebar.markdown("## 📚 Notes")
+note_pdf_options = list_note_pdfs(NOTES_ROOT)
+selected_note_pdf = None
+if note_pdf_options:
+    note_options = ["None"] + note_pdf_options
+    if st.session_state.get("selected_note_pdf") not in note_options:
+        st.session_state.selected_note_pdf = "None"
+    note_choice = st.sidebar.selectbox("Open note PDF:", note_options, key="selected_note_pdf")
+    selected_note_pdf = note_choice if note_choice != "None" else None
+else:
+    st.sidebar.caption(f"No PDF notes found in {NOTES_ROOT}")
+
 # Determine full image path depending on mode
 if mode == "Past Paper":
     folder_path = st.session_state.folder
@@ -921,6 +1338,264 @@ save_session_prefs(
         "question_index": st.session_state.get("question_index", 0),
     },
 )
+
+USER_ANSWER_FILE = os.path.join(user_fb_dir, f"user_answers_{course_level}.json")
+
+if mode == "Topic by Topic" and selected_question_type != "All types" and os.path.exists(question_type_file):
+    filtered_images = []
+    for image_name in st.session_state.image_files:
+        filter_key = question_cache_key(course_level, current_topic_key, current_subtopic_key, image_name)
+        if get_question_type(question_type_file, filter_key) == selected_question_type:
+            filtered_images.append(image_name)
+    if filtered_images:
+        st.session_state.image_files = filtered_images
+
+show_answer_summary = st.sidebar.button("📊 Show Answer Summary")
+
+st.sidebar.markdown("## ⚙️ Bulk Actions")
+if st.sidebar.button("🧠 Bulk generate Text Answers"):
+    pending_images = list(st.session_state.image_files)
+    if not pending_images:
+        st.sidebar.info("No questions in the current selection.")
+    else:
+        progress = st.sidebar.progress(0, text=f"Starting 0/{len(pending_images)}")
+        status = st.sidebar.empty()
+        generated_count = 0
+        failed_count = 0
+        failed_images = []
+        for i, image_name in enumerate(pending_images, 1):
+            image_path = os.path.join(folder_path, image_name)
+            cache_key = canonical_question_cache_key(
+                BASE_ROOT,
+                image_path,
+                question_cache_key(course_level, current_topic_key, current_subtopic_key, image_name),
+            )
+            last_error = None
+            for attempt in range(1, 4):
+                status.caption(f"Generating {i}/{len(pending_images)}: {image_name} (attempt {attempt}/3)")
+                try:
+                    generate_text_answer_for_question(
+                        image_path,
+                        cache_key,
+                        question_type_file,
+                        {
+                            "user": current_user,
+                            "course": course_level,
+                            "topic": current_topic_key,
+                            "subtopic": current_subtopic_key,
+                            "image": image_name,
+                            "question_number": i,
+                        },
+                        force_regen=True,
+                    )
+                    generated_count += 1
+                    last_error = None
+                    break
+                except Exception as e:
+                    last_error = e
+                    if attempt < 3:
+                        time.sleep(2 * attempt)
+            if last_error is not None:
+                failed_count += 1
+                failed_images.append(image_name)
+            progress.progress(i / len(pending_images), text=f"Processed {i}/{len(pending_images)}")
+        if failed_count:
+            st.sidebar.warning(f"Generated {generated_count}; failed {failed_count}.")
+            with st.sidebar.expander("Failed questions"):
+                for image_name in failed_images:
+                    st.caption(image_name)
+        else:
+            st.sidebar.success(f"Generated {generated_count} Text Answers.")
+
+col1, col2 = st.columns([2, 2])
+
+with col2:
+    nav_left, nav_right = st.columns(2)
+    with nav_left:
+        if st.button("⬅️ Previous", disabled=st.session_state.question_index == 0):
+            st.session_state.question_index -= 1
+            st.session_state.gemini_chat_history = []
+    with nav_right:
+        if st.button("➡️ Next", disabled=st.session_state.question_index >= len(st.session_state.image_files) - 1):
+            st.session_state.question_index += 1
+            st.session_state.gemini_chat_history = []
+
+if st.session_state.image_files:
+    q_index = st.session_state.question_index
+    q_index = min(max(q_index, 0), len(st.session_state.image_files) - 1)
+    img_name = st.session_state.image_files[q_index]
+    img_path = os.path.join(folder_path, img_name)
+    generated_question_key = canonical_question_cache_key(
+        BASE_ROOT,
+        img_path,
+        question_cache_key(course_level, current_topic_key, current_subtopic_key, img_name),
+    )
+    current_question_type = get_question_type(question_type_file, generated_question_key) if question_type_exists(question_type_file, generated_question_key) else DEFAULT_QUESTION_TYPE
+    saved_flash_card = load_saved_answer(generated_question_key, "flash_card")
+
+if show_answer_summary and st.session_state.image_files:
+    selected_answer_items = []
+    for image_name in st.session_state.image_files:
+        answer_path = os.path.join(folder_path, image_name)
+        answer_key = canonical_question_cache_key(
+            BASE_ROOT,
+            answer_path,
+            question_cache_key(course_level, current_topic_key, current_subtopic_key, image_name),
+        )
+        selected_answer_items.append(
+            {
+                "key": answer_key,
+                "image": os.path.basename(image_name),
+                "question_type": get_question_type(question_type_file, answer_key)
+                if question_type_exists(question_type_file, answer_key)
+                else DEFAULT_QUESTION_TYPE,
+            }
+        )
+
+    answer_summary = build_answer_summary(read_json_list(USER_ANSWER_FILE), selected_answer_items)
+    st.markdown("### 📊 Your Answer Summary")
+    st.caption(
+        f"Answered {answer_summary['answered_count']} of {answer_summary['total_count']} questions in the current selection."
+    )
+    if answer_summary["rows"]:
+        display_rows = []
+        for row in answer_summary["rows"]:
+            answer_preview = str(row["Answer"]).replace("\\n", " ").strip()
+            if len(answer_preview) > 160:
+                answer_preview = answer_preview[:157] + "..."
+            feedback_preview = str(row.get("Feedback", "")).replace("\\n", " ").strip()
+            if len(feedback_preview) > 160:
+                feedback_preview = feedback_preview[:157] + "..."
+            display_rows.append({**row, "Answer": answer_preview, "Feedback": feedback_preview})
+        st.dataframe(display_rows, use_container_width=True, hide_index=True)
+    else:
+        st.info("No student answers saved for this selection yet.")
+
+    with col1:
+        st.markdown(f"### 📘 Question {q_index + 1} of {len(st.session_state.image_files)}")
+        st.image(img_path, caption=f"🖼️ Question Image {q_index + 1}: {img_name}")
+        st.caption(f"🏷️ Type of question: {current_question_type}")
+
+        if (saved_flash_card or "").strip():
+            st.markdown("### 🃏 Flash Card")
+            render_flash_card(saved_flash_card, f"{generated_question_key}:{q_index}")
+
+        st.markdown("### ✍️ Your Answer")
+        answer_widget_id = hashlib.sha1(generated_question_key.encode("utf-8")).hexdigest()
+        previous_student_answer = latest_answers_by_key(read_json_list(USER_ANSWER_FILE)).get(generated_question_key)
+        previous_answer_text = (previous_student_answer or {}).get("answer", "")
+
+        if current_question_type == "Multiple choice":
+            choices = ["A", "B", "C", "D"]
+            selected_index = choices.index(previous_answer_text) if previous_answer_text in choices else 0
+            student_answer = st.radio("Choose your answer:", choices, index=selected_index, horizontal=True, key=f"student_answer_choice_{answer_widget_id}")
+        else:
+            student_answer = st.text_area("Write your answer:", value=previous_answer_text, height=140, key=f"student_answer_text_{answer_widget_id}")
+
+        if st.button("💾 Submit Answer", key=f"submit_student_answer_{answer_widget_id}"):
+            answer_text = (student_answer or "").strip()
+            if current_question_type != "Multiple choice" and not answer_text:
+                st.warning("Please write an answer before submitting.")
+            else:
+                append_answer_log(
+                    USER_ANSWER_FILE,
+                    {
+                        "ts": datetime.utcnow().isoformat() + "Z",
+                        "user": current_user,
+                        "course": course_level,
+                        "topic": current_topic_key,
+                        "subtopic": current_subtopic_key,
+                        "question_type": current_question_type,
+                        "image": img_name,
+                        "key": generated_question_key,
+                        "answer": answer_text,
+                        "feedback": "",
+                        "question_number": q_index + 1,
+                    },
+                )
+                st.success("✅ Answer saved.")
+
+    with col2:
+        c1, c2 = st.columns(2)
+        has_text_answer = bool(load_saved_answer(generated_question_key, "text"))
+        has_graph_answer = bool(load_saved_answer(generated_question_key, "graph"))
+        clicked_text = c1.button("🧠 Show Text Answer" if has_text_answer else "🧠 Answer with Text", key=f"explain_{q_index}")
+        clicked_text_regen = c1.button("🔄 Regenerate Text", key=f"regen_text_{q_index}")
+        clicked_graph = c2.button("📈 Show Graph Answer" if has_graph_answer else "📈 Answer with Graph", key=f"graph_{q_index}")
+        clicked_graph_regen = c2.button("🔄 Regenerate Graph", key=f"regen_graph_{q_index}")
+
+        if clicked_text or clicked_text_regen:
+            if has_text_answer and not clicked_text_regen:
+                reply = load_saved_answer(generated_question_key, "text")
+                question_type = current_question_type
+            else:
+                with st.spinner("LLM is thinking ... ... 👩‍✨"):
+                    reply, question_type = generate_text_answer_for_question(
+                        img_path,
+                        generated_question_key,
+                        question_type_file,
+                        {
+                            "user": current_user,
+                            "course": course_level,
+                            "topic": current_topic_key,
+                            "subtopic": current_subtopic_key,
+                            "image": img_name,
+                            "question_number": q_index + 1,
+                        },
+                        force_regen=clicked_text_regen,
+                    )
+            st.session_state.visible_text_answers[generated_question_key] = {"reply": reply, "question_type": question_type}
+
+        if clicked_graph or clicked_graph_regen:
+            with st.spinner("LLM is thinking ... ... 👩‍✨"):
+                raw = None if clicked_graph_regen else load_saved_answer(generated_question_key, "graph")
+                if not (raw or "").strip():
+                    response = call_model(GRAPH_ANSWER_PROMPT, load_image_for_model(img_path))
+                    raw = response.text
+                    save_answer(generated_question_key, "graph", raw)
+                st.session_state.visible_graph_answers[generated_question_key] = raw
+
+        video_col, flash_col = st.columns(2)
+        if video_col.button("🎮 Video Help", key=f"video_{q_index}"):
+            video_prompt = """
+You are an expert NSW HSC Mathematics teacher. Based on the image below, recommend one or two YouTube tutorial resources that help explain the concepts or topic shown.
+
+Please format like:
+- [Video Title](https://youtube.com/...)
+  Short reason this matches the question.
+"""
+            response = call_model(video_prompt, load_image_for_model(img_path))
+            st.markdown("### 🎥 Recommended Video")
+            st.markdown(response.text.strip())
+
+        if flash_col.button("🃏 Flash Card", key=f"flash_card_{q_index}"):
+            saved_text_answer = load_saved_answer(generated_question_key, "text")
+            if (saved_flash_card or "").strip():
+                st.info("Saved flash card is shown under the question.")
+            elif not (saved_text_answer or "").strip():
+                st.warning("No saved Text Answer is available yet. Please show or generate the Text Answer first.")
+            else:
+                with st.spinner("Creating flash card..."):
+                    response = call_text_model(build_flash_card_prompt(strip_question_type_section(saved_text_answer)))
+                saved_flash_card = response.text.strip()
+                save_answer(generated_question_key, "flash_card", saved_flash_card)
+                st.rerun()
+
+        if (reply := st.session_state.visible_text_answers.get(generated_question_key)):
+            render_text_answer_card(reply["reply"], reply["question_type"], f"{generated_question_key}:{q_index}:text")
+        if (raw_graph := st.session_state.visible_graph_answers.get(generated_question_key)):
+            display_graph_answer(raw_graph, os.path.splitext(os.path.basename(img_name))[0])
+
+    if selected_note_pdf:
+        with st.expander(f"📚 Note: {selected_note_pdf}", expanded=True):
+            show_pdf_page_viewer(os.path.join(NOTES_ROOT, selected_note_pdf), f"{course_level}_{selected_note_pdf}")
+else:
+    st.warning("⚠️ No PNG images found in the selected sub-topic.")
+
+st.markdown("---")
+st.markdown("<p style='text-align:center; font-size:16px;'>👧 Keep going! Every question makes you stronger 💪 and smarter 🧠.</p>", unsafe_allow_html=True)
+
+st.stop()
 
 ############################################
 # ---------- Main layout ----------
