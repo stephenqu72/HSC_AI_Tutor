@@ -1267,7 +1267,12 @@ else:
     selected_question_type = "All types"
 
 st.sidebar.markdown("## 📚 Notes")
-note_pdf_options = list_note_pdfs(NOTES_ROOT)
+note_pdf_options = []
+if os.path.isdir(NOTES_ROOT):
+    try:
+        note_pdf_options = list_note_pdfs(NOTES_ROOT)
+    except Exception:
+        note_pdf_options = []
 selected_note_pdf = None
 if note_pdf_options:
     note_options = ["None"] + note_pdf_options
@@ -1276,7 +1281,7 @@ if note_pdf_options:
     note_choice = st.sidebar.selectbox("Open note PDF:", note_options, key="selected_note_pdf")
     selected_note_pdf = note_choice if note_choice != "None" else None
 else:
-    st.sidebar.caption(f"No PDF notes found in {NOTES_ROOT}")
+    st.sidebar.caption("No PDF notes available yet.")
 
 # Determine full image path depending on mode
 if mode == "Past Paper":
@@ -1587,8 +1592,12 @@ Please format like:
             display_graph_answer(raw_graph, os.path.splitext(os.path.basename(img_name))[0])
 
     if selected_note_pdf:
-        with st.expander(f"📚 Note: {selected_note_pdf}", expanded=True):
-            show_pdf_page_viewer(os.path.join(NOTES_ROOT, selected_note_pdf), f"{course_level}_{selected_note_pdf}")
+        note_path = os.path.join(NOTES_ROOT, selected_note_pdf)
+        if os.path.exists(note_path):
+            with st.expander(f"📚 Note: {selected_note_pdf}", expanded=True):
+                show_pdf_page_viewer(note_path, f"{course_level}_{selected_note_pdf}")
+        else:
+            st.sidebar.caption("The selected note PDF is not available yet.")
 else:
     st.warning("⚠️ No PNG images found in the selected sub-topic.")
 
