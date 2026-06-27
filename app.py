@@ -1251,7 +1251,7 @@ if mode == "Past Paper":
 
 else:
     st.sidebar.markdown("## 🔍 Select HSC Course")
-    course_options = ["M1.Kinematics","M2.Dynamics","M3.Waves and thermodynamics","M4.Electricity and magnetism","M5.Advanced Mechanics","M6.Electromagnetism","M7.The nature of light","M8.From the universe to the atom"]
+    course_options = ["MODULE 1 Complex numbers","MODULE 2 The nature of proof","MODULE 3 Further work with vectors","MODULE 4 Integration by substitution","MODULE 5 Further integration","MODULE 6 Mechanics"]
     if st.session_state.get("course_level") not in course_options:
         st.session_state.course_level = course_options[0]
     course_level = st.sidebar.selectbox("🎓 Module:", course_options, key="course_level")
