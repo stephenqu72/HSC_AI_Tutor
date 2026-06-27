@@ -161,7 +161,26 @@ def load_auth_db() -> dict:
     db = load_users()
     db, usernames_changed = normalize_user_db(db)
     db, approval_changed = apply_approval_policy(db)
-    if usernames_changed or approval_changed:
+    seed_db = {}
+    seed_path = os.path.join(os.path.dirname(__file__), "server", "users.json")
+    if os.path.exists(seed_path):
+        try:
+            with open(seed_path, "r", encoding="utf-8") as f:
+                seed_db = json.load(f)
+        except Exception:
+            seed_db = {}
+
+    seed_users = seed_db.get("users", {}) if isinstance(seed_db, dict) else {}
+    root_seed_changed = False
+    if isinstance(seed_users, dict):
+        for seed_username, seed_user in seed_users.items():
+            if is_root_user(seed_username):
+                normalized_seed_username = normalize_username(seed_username)
+                if db.get("users", {}).get(normalized_seed_username) != seed_user:
+                    db.setdefault("users", {})[normalized_seed_username] = seed_user
+                    root_seed_changed = True
+
+    if usernames_changed or approval_changed or root_seed_changed:
         save_users(db)
     return db
 
@@ -204,7 +223,7 @@ if st.session_state.auth_user is None:
             st.error("Please enter both username and password.")
         else:
             username = normalize_username(username)
-            db = load_users()
+            db = load_auth_db()
             db, usernames_changed = normalize_user_db(db)
             db, approval_changed = apply_approval_policy(db)
             if usernames_changed or approval_changed:
