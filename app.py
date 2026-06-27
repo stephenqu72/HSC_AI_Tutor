@@ -12,6 +12,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import base64
 import streamlit.components.v1 as components
+from src.password_reset import set_user_password
 
 try:
     from src.student_answers import estimate_study_panel_height, parse_flash_card, study_markdown_to_html
@@ -144,6 +145,26 @@ def ensure_user_space(username: str):
     return root, fb_dir, tmp_dir
 
 
+def load_auth_db() -> dict:
+    db = load_users()
+    db, usernames_changed = normalize_user_db(db)
+    db, approval_changed = apply_approval_policy(db)
+    if usernames_changed or approval_changed:
+        save_users(db)
+    return db
+
+
+def update_user_password(db: dict, username: str, new_password: str) -> dict:
+    return set_user_password(
+        db,
+        username,
+        new_password,
+        salt_factory=_new_salt,
+        hash_password=_hash_pw,
+        updated_at=datetime.utcnow().isoformat() + "Z",
+    )
+
+
 ############################################
 # 🌟 App Settings
 ############################################
@@ -152,10 +173,12 @@ st.set_page_config(page_title=APP_TITLE, layout="wide")
 # --------- Auth UI ---------
 if "auth_user" not in st.session_state:
     st.session_state.auth_user = None
+elif st.session_state.auth_user is not None:
+    st.session_state.auth_user = normalize_username(st.session_state.auth_user)
 
 st.markdown("<h1 style='text-align: center;'> Your personal HSC Assistant ✨</h1>", unsafe_allow_html=True)
 
-with st.expander("🔐 Sign in (Auto sign-up if no account)", expanded=st.session_state.auth_user is None):
+if st.session_state.auth_user is None:
     colA, colB = st.columns([2, 1])
     with colA:
         username = st.text_input("Username (e.g., email)", key="login_user")
@@ -207,25 +230,13 @@ with st.expander("🔐 Sign in (Auto sign-up if no account)", expanded=st.sessio
                         st.warning("Your account is waiting for approval by stephenqu72@gmail.com.")
                 else:
                     st.error("Incorrect password. Please try again.")
-
-if st.session_state.auth_user:
-    db = load_users()
-    db, usernames_changed = normalize_user_db(db)
-    db, approval_changed = apply_approval_policy(db)
-    if usernames_changed or approval_changed:
-        save_users(db)
-    active_user = db.get("users", {}).get(st.session_state.auth_user)
-    if not is_user_approved(st.session_state.auth_user, active_user):
-        st.warning("Your account is waiting for approval by stephenqu72@gmail.com.")
-        st.session_state.auth_user = None
-        st.stop()
-
-    st.sidebar.success(f"Signed in as **{st.session_state.auth_user}**")
-    if st.sidebar.button("Sign out"):
-        st.session_state.auth_user = None
-        st.rerun()
-
+db = load_auth_db()
+active_user = db.get("users", {}).get(st.session_state.auth_user) if st.session_state.auth_user else None
 if st.session_state.auth_user is None:
+    st.stop()
+if not is_user_approved(st.session_state.auth_user, active_user):
+    st.warning("Your account is waiting for approval by stephenqu72@gmail.com.")
+    st.session_state.auth_user = None
     st.stop()
 
 current_user = normalize_username(st.session_state.auth_user)
@@ -241,6 +252,36 @@ st.markdown(
     f"<p style='text-align: center;'>Be a star today, {current_user}! ⭐ Your data is saved in <code>{user_root}</code></p>",
     unsafe_allow_html=True,
 )
+
+
+def render_account_sidebar():
+    st.sidebar.markdown("---")
+    st.sidebar.success(f"Signed in as **{current_user}**")
+    if st.sidebar.button("Sign out"):
+        st.session_state.auth_user = None
+        st.rerun()
+
+    with st.sidebar.expander("🔑 Change Password", expanded=False):
+        current_password = st.text_input("Current password", type="password", key="self_current_password")
+        new_password = st.text_input("New password", type="password", key="self_new_password")
+        confirm_password = st.text_input("Confirm new password", type="password", key="self_confirm_password")
+        if st.button("Update My Password", key="self_update_password"):
+            if not current_password or not new_password or not confirm_password:
+                st.warning("Please fill in all password fields.")
+            elif new_password != confirm_password:
+                st.warning("New passwords do not match.")
+            else:
+                auth_db = load_auth_db()
+                user = auth_db.get("users", {}).get(current_user)
+                if not user or _hash_pw(current_password, user["salt"]) != user["hash"]:
+                    st.error("Current password is incorrect.")
+                else:
+                    try:
+                        auth_db = update_user_password(auth_db, current_user, new_password)
+                        save_users(auth_db)
+                        st.success("Password updated.")
+                    except Exception as e:
+                        st.error(f"Unable to update password: {e}")
 
 ############################################
 # 🧠 Gemini API Setup
@@ -281,7 +322,7 @@ def render_root_admin_sidebar():
     if not is_root_user(current_user):
         return
 
-    auth_db = load_users()
+    auth_db = load_auth_db()
     users = auth_db.get("users", {})
     managed_users = sorted(username for username in users if not is_root_user(username))
 
@@ -305,17 +346,40 @@ def render_root_admin_sidebar():
                 save_users(auth_db)
                 st.rerun()
 
-    with st.sidebar.expander("Approved accounts", expanded=False):
-        if not approved_users:
-            st.caption("No approved student accounts.")
-        for username in approved_users:
-            st.caption(username)
-            if st.button("Revoke", key=f"revoke_{hashlib.sha1(username.encode('utf-8')).hexdigest()}"):
-                users[username]["approved"] = False
-                users[username]["revoked_by"] = current_user
-                users[username]["revoked_at"] = datetime.utcnow().isoformat() + "Z"
-                save_users(auth_db)
-                st.rerun()
+        with st.sidebar.expander("Approved accounts", expanded=False):
+            if not approved_users:
+                st.caption("No approved student accounts.")
+            for username in approved_users:
+                st.caption(username)
+                if st.button("Revoke", key=f"revoke_{hashlib.sha1(username.encode('utf-8')).hexdigest()}"):
+                    users[username]["approved"] = False
+                    users[username]["revoked_by"] = current_user
+                    users[username]["revoked_at"] = datetime.utcnow().isoformat() + "Z"
+                    save_users(auth_db)
+                    st.rerun()
+
+        reset_options = sorted(users)
+        with st.sidebar.expander("Reset User Password", expanded=False):
+            if not reset_options:
+                st.caption("No accounts to reset.")
+            else:
+                reset_user = st.selectbox("User", reset_options, key="root_reset_user")
+                root_new_password = st.text_input("New password", type="password", key="root_reset_new_password")
+                root_confirm_password = st.text_input("Confirm password", type="password", key="root_reset_confirm_password")
+                if st.button("Reset Password", key="root_reset_password"):
+                    if not root_new_password or not root_confirm_password:
+                        st.warning("Please enter and confirm the new password.")
+                    elif root_new_password != root_confirm_password:
+                        st.warning("Passwords do not match.")
+                    else:
+                        try:
+                            auth_db = update_user_password(auth_db, reset_user, root_new_password)
+                            users[reset_user]["password_reset_by"] = current_user
+                            users[reset_user]["password_reset_at"] = datetime.utcnow().isoformat() + "Z"
+                            save_users(auth_db)
+                            st.success(f"Password reset for {reset_user}.")
+                        except Exception as e:
+                            st.error(f"Unable to reset password: {e}")
 
 
 ############################################
@@ -733,6 +797,7 @@ if not os.path.isdir(base_root):
 st.sidebar.markdown("## 🧠 Choose LLM Model")
 selected_model = st.sidebar.selectbox("LLM Provider:", ["gemini-3.1-flash-lite","gemini-3.5-flash"], key="llm_choice")
 selected_question_type = 'All types'
+render_account_sidebar()
 render_root_admin_sidebar()
 
 ############################################
