@@ -793,9 +793,6 @@ if not os.path.isdir(base_root):
     st.warning(f"⚠️ The path '{base_root}' was not found. Please check your course folder structure.")
     st.stop()
 
-# 🔄 LLM Model Selection
-st.sidebar.markdown("## 🧠 Choose LLM Model")
-selected_model = st.sidebar.selectbox("LLM Provider:", ["gemini-3.1-flash-lite","gemini-3.5-flash"], key="llm_choice")
 selected_question_type = 'All types'
 render_account_sidebar()
 render_root_admin_sidebar()
@@ -859,6 +856,10 @@ else:
         image_files = sorted([f for f in os.listdir(folder_path) if f.lower().endswith(".png")])
         st.session_state.folder = folder_path
         st.session_state.image_files = image_files
+
+# 🔄 LLM Model Selection
+st.sidebar.markdown("## 🧠 Choose LLM Model")
+selected_model = st.sidebar.selectbox("LLM Provider:", ["gemini-3.1-flash-lite","gemini-3.5-flash"], key="llm_choice")
 
 # Determine full image path depending on mode
 if mode == "Past Paper":
