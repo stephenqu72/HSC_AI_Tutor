@@ -1283,11 +1283,9 @@ else:
 
     selected_subtopic = st.sidebar.selectbox("📁 Sub-topic:", subtopics)
     folder_path = os.path.join(subtopic_path, selected_subtopic)
-
-    if st.session_state.folder != folder_path:
-        image_files = sorted([f for f in os.listdir(folder_path) if f.lower().endswith(".png")])
-        st.session_state.folder = folder_path
-        st.session_state.image_files = image_files
+    image_files = sorted([f for f in os.listdir(folder_path) if f.lower().endswith(".png")])
+    st.session_state.folder = folder_path
+    st.session_state.image_files = image_files
 
 # 🔄 LLM Model Selection
 st.sidebar.markdown("## 🧠 Choose LLM Model")
