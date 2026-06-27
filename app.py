@@ -11,6 +11,10 @@ from datetime import datetime
 import google.generativeai as genai
 from dotenv import load_dotenv
 import base64
+from src.usernames import normalize_user_db, normalize_username
+from src.auth_approval import apply_approval_policy, is_root_user, is_user_approved, llm_owner_username
+from src.gemini_keys import ROOT_GEMINI_KEY_NAMES, STUDENT_GEMINI_KEY_NAME, select_gemini_key
+from src.session_prefs import load_session_prefs, save_session_prefs
 
 ############################################
 # 💼 Multi-user Auth + Per-user Storage (Streamlit Cloud ready)
@@ -91,32 +95,58 @@ with st.expander("🔐 Sign in (Auto sign-up if no account)", expanded=st.sessio
         if not username or not password:
             st.error("Please enter both username and password.")
         else:
+            username = normalize_username(username)
             db = load_users()
+            db, usernames_changed = normalize_user_db(db)
+            db, approval_changed = apply_approval_policy(db)
+            if usernames_changed or approval_changed:
+                save_users(db)
+
             user = db["users"].get(username)
             if user is None:
-                # auto sign-up
                 salt = _new_salt()
                 pw_hash = _hash_pw(password, salt)
+                approved = is_root_user(username)
                 db["users"][username] = {
                     "salt": salt,
                     "hash": pw_hash,
                     "created": datetime.utcnow().isoformat() + "Z",
+                    "approved": approved,
+                    "role": "root" if approved else "user",
                 }
                 save_users(db)
                 ensure_user_space(username)
-                st.success("Account created and signed in ✨")
-                st.session_state.auth_user = username
+                if approved:
+                    st.success("Account created and signed in ✨")
+                    st.session_state.auth_user = username
+                    st.rerun()
+                else:
+                    st.info("Account created and waiting for approval by stephenqu72@gmail.com.")
             else:
                 calc = _hash_pw(password, user["salt"])
                 if calc == user["hash"]:
-                    ensure_user_space(username)
-                    st.success("Signed in ✅")
-                    st.session_state.auth_user = username
+                    if is_user_approved(username, user):
+                        ensure_user_space(username)
+                        st.success("Signed in ✅")
+                        st.session_state.auth_user = username
+                        st.rerun()
+                    else:
+                        st.warning("Your account is waiting for approval by stephenqu72@gmail.com.")
                 else:
                     st.error("Incorrect password. Please try again.")
 
-# sign-out
 if st.session_state.auth_user:
+    db = load_users()
+    db, usernames_changed = normalize_user_db(db)
+    db, approval_changed = apply_approval_policy(db)
+    if usernames_changed or approval_changed:
+        save_users(db)
+    active_user = db.get("users", {}).get(st.session_state.auth_user)
+    if not is_user_approved(st.session_state.auth_user, active_user):
+        st.warning("Your account is waiting for approval by stephenqu72@gmail.com.")
+        st.session_state.auth_user = None
+        st.stop()
+
     st.sidebar.success(f"Signed in as **{st.session_state.auth_user}**")
     if st.sidebar.button("Sign out"):
         st.session_state.auth_user = None
@@ -125,8 +155,14 @@ if st.session_state.auth_user:
 if st.session_state.auth_user is None:
     st.stop()
 
-current_user = st.session_state.auth_user
+current_user = normalize_username(st.session_state.auth_user)
+st.session_state.auth_user = current_user
 user_root, user_fb_dir, user_tmp_dir = ensure_user_space(current_user)
+USER_SESSION_PREFS_FILE = os.path.join(user_root, "ui_session_state.json")
+if st.session_state.get("_session_prefs_loaded_for") != current_user:
+    for key, value in load_session_prefs(USER_SESSION_PREFS_FILE).items():
+        st.session_state[key] = value
+    st.session_state["_session_prefs_loaded_for"] = current_user
 
 st.markdown(
     f"<p style='text-align: center;'>Be a star today, {current_user}! ⭐ Your data is saved in <code>{user_root}</code></p>",
@@ -137,12 +173,76 @@ st.markdown(
 # 🧠 Gemini API Setup
 ############################################
 load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    st.error("GEMINI_API_KEY not set in environment or secrets")
+
+
+def get_config_value(name: str):
+    env_value = os.getenv(name)
+    if env_value:
+        return env_value
+    try:
+        return st.secrets.get(name)
+    except Exception:
+        return None
+
+
+gemini_key_values = {
+    key_name: get_config_value(key_name)
+    for key_name in [*ROOT_GEMINI_KEY_NAMES, STUDENT_GEMINI_KEY_NAME]
+}
+
+
+def configure_gemini_for_current_user():
+    gemini_key_selection = select_gemini_key(current_user, gemini_key_values)
+    genai.configure(api_key=gemini_key_selection.api_key)
+    return gemini_key_selection
+
+
+try:
+    configure_gemini_for_current_user()
+except ValueError as e:
+    st.error(str(e))
     st.stop()
 
-genai.configure(api_key=GEMINI_API_KEY)
+
+def render_root_admin_sidebar():
+    if not is_root_user(current_user):
+        return
+
+    auth_db = load_users()
+    users = auth_db.get("users", {})
+    managed_users = sorted(username for username in users if not is_root_user(username))
+
+    st.sidebar.markdown("## 🔐 User Approval")
+    if not managed_users:
+        st.sidebar.caption("No student accounts yet.")
+        return
+
+    pending_users = [username for username in managed_users if not users[username].get("approved")]
+    approved_users = [username for username in managed_users if users[username].get("approved")]
+
+    with st.sidebar.expander("Pending accounts", expanded=True):
+        if not pending_users:
+            st.caption("No pending accounts.")
+        for username in pending_users:
+            st.caption(username)
+            if st.button("Approve", key=f"approve_{hashlib.sha1(username.encode('utf-8')).hexdigest()}"):
+                users[username]["approved"] = True
+                users[username]["approved_by"] = current_user
+                users[username]["approved_at"] = datetime.utcnow().isoformat() + "Z"
+                save_users(auth_db)
+                st.rerun()
+
+    with st.sidebar.expander("Approved accounts", expanded=False):
+        if not approved_users:
+            st.caption("No approved student accounts.")
+        for username in approved_users:
+            st.caption(username)
+            if st.button("Revoke", key=f"revoke_{hashlib.sha1(username.encode('utf-8')).hexdigest()}"):
+                users[username]["approved"] = False
+                users[username]["revoked_by"] = current_user
+                users[username]["revoked_at"] = datetime.utcnow().isoformat() + "Z"
+                save_users(auth_db)
+                st.rerun()
 
 
 ############################################
@@ -365,6 +465,7 @@ _defaults = {
     "last_mode": None,
     "last_paper": None,
     "selected_paper": "",
+    "gemini_chat_history": [],
 }
 for k, v in _defaults.items():
     if k not in st.session_state:
@@ -375,7 +476,7 @@ for k, v in _defaults.items():
 # ---------- Sidebar: Course & Mode Selection ----------
 ############################################
 st.sidebar.markdown("## 🔍 Select HSC Course")
-course_level = st.sidebar.selectbox("🎓 Course:", ["Math_4U","Math_2U"], key="course_level")
+course_level = st.sidebar.selectbox("🎓 Course:", ["Math_4U", "Math_3U", "Math_2U"], key="course_level")
 
 st.sidebar.markdown("## 🧭 Select Practice Mode")
 mode = st.sidebar.radio("Choose practice mode:", ["Topic by Topic", "Past Paper"], key="practice_mode")
@@ -388,6 +489,7 @@ if not os.path.isdir(base_root):
 # 🔄 LLM Model Selection
 st.sidebar.markdown("## 🧠 Choose LLM Model")
 selected_model = st.sidebar.selectbox("LLM Provider:", ["gemini-3.1-flash-lite","gemini-3.5-flash"], key="llm_choice")
+render_root_admin_sidebar()
 
 ############################################
 # ---------- Topic or Past Paper Selection ----------
@@ -451,32 +553,43 @@ else:
 
 # Determine full image path depending on mode
 if mode == "Past Paper":
-    folder_path = st.session_state.folder  
-    selected_topic = "PastPaper"
-    selected_subtopic = st.session_state.selected_paper.replace(" ", "_")
+    folder_path = st.session_state.folder
+    current_topic_key = "PastPaper"
+    current_subtopic_key = st.session_state.selected_paper.replace(" ", "_")
 else:
     selected_topic = selected_topic if 'selected_topic' in locals() else st.session_state.last_selected_topic
     selected_subtopic = selected_subtopic if 'selected_subtopic' in locals() else st.session_state.last_selected_subtopic
     folder_path = os.path.join(base_root, selected_topic, selected_subtopic)
+    current_topic_key = selected_topic
+    current_subtopic_key = selected_subtopic
+
+current_course_key = course_level
+current_paper_key = st.session_state.get("selected_paper", "") if mode == "Past Paper" else ""
+current_question_type_key = selected_question_type if mode == "Topic by Topic" else "All types"
 
 ############################################
 # ---------- Selection Changed ----------
 ############################################
 selection_changed = (
-    st.session_state.last_selected_course != course_level or
-    st.session_state.last_selected_topic != st.session_state.get("last_selected_topic") or
-    st.session_state.last_selected_subtopic != st.session_state.get("last_selected_subtopic") or
+    st.session_state.last_selected_course != current_course_key or
+    st.session_state.last_selected_topic != current_topic_key or
+    st.session_state.last_selected_subtopic != current_subtopic_key or
+    st.session_state.last_selected_question_type != current_question_type_key or
     st.session_state.last_mode != mode or
-    st.session_state.last_paper != st.session_state.get("selected_paper")
+    st.session_state.last_paper != current_paper_key
 )
 
 if selection_changed:
     st.session_state.question_index = 0
-    st.session_state.last_selected_course = course_level
-    st.session_state.last_selected_topic = st.session_state.get("last_selected_topic")
-    st.session_state.last_selected_subtopic = st.session_state.get("last_selected_subtopic")
+    st.session_state.questions = {}
+    st.session_state.user_answers = {}
+    st.session_state.gemini_chat_history = []
+    st.session_state.last_selected_course = current_course_key
+    st.session_state.last_selected_topic = current_topic_key
+    st.session_state.last_selected_subtopic = current_subtopic_key
+    st.session_state.last_selected_question_type = current_question_type_key
     st.session_state.last_mode = mode
-    st.session_state.last_paper = st.session_state.get("selected_paper")
+    st.session_state.last_paper = current_paper_key
     st.session_state.thinking_map_dot = ""
 
 ############################################
@@ -484,6 +597,20 @@ if selection_changed:
 ############################################
 FEEDBACK_FILE = os.path.join(user_fb_dir, f"question_feedback_{course_level}.json")
 st.sidebar.caption(f"🗂️ Feedback log (per-user, append-only): **{FEEDBACK_FILE}**")
+
+save_session_prefs(
+    USER_SESSION_PREFS_FILE,
+    {
+        "practice_mode": mode,
+        "course_level": course_level,
+        "selected_topic": current_topic_key,
+        "selected_subtopic": current_subtopic_key,
+        "selected_paper": st.session_state.get("selected_paper", ""),
+        "question_type_filter": selected_question_type,
+        "llm_choice": selected_model,
+        "question_index": st.session_state.get("question_index", 0),
+    },
+)
 
 ############################################
 # ---------- Main layout ----------
