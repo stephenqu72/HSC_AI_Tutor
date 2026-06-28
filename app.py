@@ -803,7 +803,7 @@ def render_flash_card(card_text: str, card_key: str):
 def render_text_answer_card(reply: str, question_type: str, card_key: str):
     answer_text = strip_question_type_section(reply)
     answer_html = study_markdown_to_html(answer_text)
-    panel_height = estimate_study_panel_height(answer_text)
+    panel_height = min(estimate_study_panel_height(answer_text), 1080)
     element_id = f"answer-card-{hashlib.sha1(card_key.encode('utf-8')).hexdigest()}"
     components.html(
         f"""
@@ -818,6 +818,11 @@ def render_text_answer_card(reply: str, question_type: str, card_key: str):
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <style>
+  html, body {{
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }}
   #{element_id} {{
     box-sizing: border-box;
     width: 100%;
