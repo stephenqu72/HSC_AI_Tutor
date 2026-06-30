@@ -1,0 +1,33 @@
+To solve the integral $I = \int \ln(x + \sqrt{x^2 - 4}) \, dx$, we will use the method of integration by parts.
+
+### Part a
+
+Let the integral be:
+$$I = \int \ln(x + \sqrt{x^2 - 4}) \, dx$$
+
+We use integration by parts, where $\int u \, dv = uv - \int v \, du$. Let:
+$u = \ln(x + \sqrt{x^2 - 4})$
+$dv = dx$
+
+Then, calculate $du$ using the chain rule:
+$$\frac{du}{dx} = \frac{1}{x + \sqrt{x^2 - 4}} \cdot \left( 1 + \frac{1}{2}(x^2 - 4)^{-1/2} \cdot 2x \right)$$
+$$\frac{du}{dx} = \frac{1}{x + \sqrt{x^2 - 4}} \cdot \left( 1 + \frac{x}{\sqrt{x^2 - 4}} \right)$$
+$$\frac{du}{dx} = \frac{1}{x + \sqrt{x^2 - 4}} \cdot \left( \frac{\sqrt{x^2 - 4} + x}{\sqrt{x^2 - 4}} \right)$$
+Canceling the common factor $(x + \sqrt{x^2 - 4})$:
+$$du = \frac{1}{\sqrt{x^2 - 4}} \, dx$$
+
+Now, applying integration by parts:
+$$I = x \ln(x + \sqrt{x^2 - 4}) - \int \frac{x}{\sqrt{x^2 - 4}} \, dx$$
+
+To evaluate the remaining integral $\int \frac{x}{\sqrt{x^2 - 4}} \, dx$, we use the substitution $w = x^2 - 4$, which implies $dw = 2x \, dx$ or $x \, dx = \frac{1}{2} dw$:
+$$\int \frac{x}{\sqrt{x^2 - 4}} \, dx = \frac{1}{2} \int w^{-1/2} \, dw$$
+$$= \frac{1}{2} \cdot \frac{w^{1/2}}{1/2} = \sqrt{w} = \sqrt{x^2 - 4}$$
+
+Substituting this back into our expression for $I$:
+$$I = x \ln(x + \sqrt{x^2 - 4}) - \sqrt{x^2 - 4} + C$$
+
+**Final Answer:**
+$$\int \ln(x + \sqrt{x^2 - 4}) \, dx = x \ln(x + \sqrt{x^2 - 4}) - \sqrt{x^2 - 4} + C$$
+
+###QUESTION_TYPE
+Calculation Question

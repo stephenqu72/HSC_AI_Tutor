@@ -1,0 +1,30 @@
+To solve the integral $\int \frac{1+x}{4+x^2} dx$, we observe that the integrand can be split into two separate fractions to simplify the integration process using standard integral forms.
+
+### Step-by-step Solution
+
+**1. Decomposition of the Integral**
+We can rewrite the integrand as:
+$$\int \frac{1+x}{4+x^2} dx = \int \frac{1}{4+x^2} dx + \int \frac{x}{4+x^2} dx$$
+
+**2. Evaluating the first integral**
+The first part, $\int \frac{1}{4+x^2} dx$, is in the standard form $\int \frac{1}{a^2+x^2} dx = \frac{1}{a} \tan^{-1}\left(\frac{x}{a}\right) + C$.
+Here, $a^2 = 4$, so $a = 2$.
+$$\int \frac{1}{2^2+x^2} dx = \frac{1}{2} \tan^{-1}\left(\frac{x}{2}\right)$$
+
+**3. Evaluating the second integral**
+For the second part, $\int \frac{x}{4+x^2} dx$, we use the method of substitution.
+Let $u = 4+x^2$. Then $du = 2x \, dx$, which implies $\frac{1}{2} du = x \, dx$.
+$$\int \frac{x}{4+x^2} dx = \int \frac{1}{u} \cdot \frac{1}{2} du = \frac{1}{2} \ln|u|$$
+Substituting $u = 4+x^2$ back into the expression:
+$$\frac{1}{2} \ln(4+x^2)$$
+*(Note: we drop the absolute value bars because $4+x^2$ is always positive for all real $x$)*.
+
+**4. Combining the results**
+Adding the two parts together and including the constant of integration $C$:
+$$\int \frac{1+x}{4+x^2} dx = \frac{1}{2} \tan^{-1}\left(\frac{x}{2}\right) + \frac{1}{2} \ln(4+x^2) + C$$
+
+**Final Answer:**
+$$\frac{1}{2} \tan^{-1}\left(\frac{x}{2}\right) + \frac{1}{2} \ln(4+x^2) + C$$
+
+###QUESTION_TYPE
+Calculation Question

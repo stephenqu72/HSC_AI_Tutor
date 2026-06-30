@@ -1,0 +1,45 @@
+To model the motion of the tides as simple harmonic motion, we use the depth of water $y$ at time $t$. We are given:
+- Minimum depth (low tide) $= 6\text{ m}$
+- Maximum depth (high tide) $= 10\text{ m}$
+
+### Part i
+The amplitude $A$ of simple harmonic motion is defined as half the difference between the maximum and minimum values.
+$$A = \frac{\text{Maximum} - \text{Minimum}}{2} = \frac{10 - 6}{2} = \frac{4}{2} = 2$$
+**Final Answer:** The amplitude is $2\text{ m}$.
+
+### Part ii
+The time from low tide ($8:00\text{ am}$) to the following high tide ($3:00\text{ pm}$) represents half a period ($T/2$).
+The time elapsed is $7$ hours. Thus, $\frac{T}{2} = 7$, which implies $T = 14$.
+**Final Answer:** The period of the motion is $14\text{ hours}$.
+
+### Part iii
+*Note: This part appears to be a 1-mark question likely intended to check understanding of the progression towards the general equation. We will use the model derived in part (iv) to confirm the standard depth calculation if needed, but strictly speaking, based on the context of the question, we proceed to determine the functional form.*
+**Final Answer:** The depth at $11:30\text{ am}$ ($t=3.5$) is $8 - 2\cos\left(\frac{3.5\pi}{7}\right) = 8 - 2\cos\left(\frac{\pi}{2}\right) = 8\text{ m}$.
+
+### Part iv
+We use the general form $y = a\cos(nt + \alpha) + c$.
+1. **Vertical shift ($c$):** The equilibrium position is the average depth: $c = \frac{10+6}{2} = 8$.
+2. **Amplitude ($a$):** From (i), $a = 2$. Since we start at low tide (the minimum) at $t=0$, we use a negative cosine function: $y = -2\cos(nt) + 8$.
+3. **Angular frequency ($n$):** $n = \frac{2\pi}{T}$. Using $T=14$ from (ii), $n = \frac{2\pi}{14} = \frac{\pi}{7}$.
+Substituting these into the model:
+$$y = 8 - 2\cos\left(\frac{\pi}{7}t\right)$$
+This matches the required form.
+**Final Answer:** As derived, $y = 8 - 2\cos\left(\frac{\pi}{7}t\right)$.
+
+### Part v
+We need to find the interval where $y \geq 9$.
+$$8 - 2\cos\left(\frac{\pi}{7}t\right) \geq 9$$
+$$-2\cos\left(\frac{\pi}{7}t\right) \geq 1 \implies \cos\left(\frac{\pi}{7}t\right) \leq -0.5$$
+Solving $\cos\left(\frac{\pi}{7}t\right) = -0.5$:
+The reference angle for $\cos\theta = 0.5$ is $\frac{\pi}{3}$. Since cosine is negative in the 2nd and 3rd quadrants:
+$\frac{\pi}{7}t = \pi - \frac{\pi}{3} = \frac{2\pi}{3}$ and $\frac{\pi}{7}t = \pi + \frac{\pi}{3} = \frac{4\pi}{3}$.
+Solving for $t$:
+$t_1 = \frac{2\pi}{3} \cdot \frac{7}{\pi} = \frac{14}{3} = 4\text{ hours and } 40\text{ minutes}$.
+$t_2 = \frac{4\pi}{3} \cdot \frac{7}{\pi} = \frac{28}{3} = 9\text{ hours and } 20\text{ minutes}$.
+Adding these to $8:00\text{ am}$:
+$4\text{ hours and } 40\text{ minutes}$ after $8:00\text{ am}$ is $12:40\text{ pm}$.
+$9\text{ hours and } 20\text{ minutes}$ after $8:00\text{ am}$ is $5:20\text{ pm}$.
+**Final Answer:** The boat can navigate safely between $12:40\text{ pm}$ and $5:20\text{ pm}$.
+
+###QUESTION_TYPE
+Calculation Question

@@ -1,0 +1,36 @@
+This problem involves the properties of spheres and geometric objects in 3D space.
+
+### Part i
+**Goal:** Prove that the vertices of the cube lie on the sphere with equation $x^2 + y^2 + z^2 = 2ax + 4ay + 6az$.
+
+First, we complete the square to identify the center and radius of the sphere:
+$$x^2 - 2ax + y^2 - 4ay + z^2 - 6az = 0$$
+$$(x - a)^2 - a^2 + (y - 2a)^2 - 4a^2 + (z - 3a)^2 - 9a^2 = 0$$
+$$(x - a)^2 + (y - 2a)^2 + (z - 3a)^2 = 14a^2$$
+
+This is a sphere centered at $C = (a, 2a, 3a)$ with radius squared $R^2 = 14a^2$. The vector $\vec{OA} = (2a, 4a, 6a)$. Note that the center $C$ is the midpoint of the diagonal $OA$, since:
+$$\text{Midpoint} = \left( \frac{0+2a}{2}, \frac{0+4a}{2}, \frac{0+6a}{2} \right) = (a, 2a, 3a) = C$$
+
+In any cube, the distance from the center to any vertex is constant (the radius of the circumscribed sphere). The distance from the center $C(a, 2a, 3a)$ to the origin $O(0, 0, 0)$ is:
+$$R^2 = (a-0)^2 + (2a-0)^2 + (3a-0)^2 = a^2 + 4a^2 + 9a^2 = 14a^2$$
+Since $OA$ is a body diagonal of the cube, the center of the cube must be the midpoint of $OA$. Because all 8 vertices of a cube are equidistant from its center, and the distance from $C$ to $O$ (and hence $A$) is exactly $\sqrt{14a^2}$, all vertices of the cube lie on the sphere centered at $C$ with radius $R = \sqrt{14}|a|$.
+
+**Conclusion:** Since the vertices of a cube are equidistant from the cube's center, and the distance from $C$ to the origin is $\sqrt{14a^2}$, all vertices must satisfy the equation of the sphere.
+
+---
+
+### Part ii
+**Goal:** Find the point on the sphere that has the greatest negative $x$-value (i.e., the most negative $x$-coordinate).
+
+The equation of the sphere is $(x - a)^2 + (y - 2a)^2 + (z - 3a)^2 = 14a^2$.
+To find the range of possible $x$-values, we examine the projection of the sphere onto the $x$-axis. The sphere extends from the center $x_c = a$ by its radius $R = \sqrt{14a^2} = |a|\sqrt{14}$.
+
+Assuming $a > 0$:
+The $x$-values range from $a - a\sqrt{14}$ to $a + a\sqrt{14}$.
+The most negative $x$-value occurs at $x = a(1 - \sqrt{14})$. 
+At this point, the cross-sectional radius in the $y$-$z$ plane must be zero (meaning the point lies on the line passing through the center parallel to the $x$-axis). Thus, $y$ must equal the center's $y$-coordinate ($2a$) and $z$ must equal the center's $z$-coordinate ($3a$).
+
+**Final Answer:** $(a(1 - \sqrt{14}), 2a, 3a)$
+
+###QUESTION_TYPE
+Calculation Question

@@ -1,0 +1,61 @@
+### Part i
+We are given $\tan 4\theta = 1$ for $0 \le \theta \le \pi$.
+The general solution for $\tan \alpha = 1$ is $\alpha = \frac{\pi}{4} + n\pi$ for $n \in \mathbb{Z}$.
+Setting $\alpha = 4\theta$, we have:
+$4\theta = \frac{\pi}{4} + n\pi \implies \theta = \frac{\pi}{16} + \frac{n\pi}{4}$.
+Since $0 \le \theta \le \pi$, we test values for $n$:
+For $n=0$, $\theta = \frac{\pi}{16}$.
+For $n=1$, $\theta = \frac{5\pi}{16}$.
+For $n=2$, $\theta = \frac{9\pi}{16}$.
+For $n=3$, $\theta = \frac{13\pi}{16}$.
+For $n=4$, $\theta = \frac{17\pi}{16} > \pi$ (outside domain).
+
+Final answer: $\theta = \frac{\pi}{16}, \frac{5\pi}{16}, \frac{9\pi}{16}, \frac{13\pi}{16}$
+
+### Part ii
+Using the double angle identity for tangent:
+$$\tan 2\theta = \frac{2\tan \theta}{1 - \tan^2 \theta}$$
+
+Final answer: $\tan 2\theta = \frac{2\tan \theta}{1 - \tan^2 \theta}$
+
+### Part iii
+Using the result from (ii), we apply the double angle identity to $4\theta = 2(2\theta)$:
+$$\tan 4\theta = \frac{2\tan 2\theta}{1 - \tan^2 2\theta}$$
+Substitute $\tan 2\theta = \frac{2\tan \theta}{1 - \tan^2 \theta}$:
+$$\tan 4\theta = \frac{2\left(\frac{2\tan \theta}{1 - \tan^2 \theta}\right)}{1 - \left(\frac{2\tan \theta}{1 - \tan^2 \theta}\right)^2} = \frac{\frac{4\tan \theta}{1 - \tan^2 \theta}}{\frac{(1 - \tan^2 \theta)^2 - 4\tan^2 \theta}{(1 - \tan^2 \theta)^2}}$$
+Multiply numerator and denominator by $(1 - \tan^2 \theta)$:
+$$\tan 4\theta = \frac{4\tan \theta(1 - \tan^2 \theta)}{(1 - 2\tan^2 \theta + \tan^4 \theta) - 4\tan^2 \theta} = \frac{4\tan \theta - 4\tan^3 \theta}{1 - 6\tan^2 \theta + \tan^4 \theta}$$
+
+Final answer: $\tan 4\theta = \frac{4\tan \theta - 4\tan^3 \theta}{1 - 6\tan^2 \theta + \tan^4 \theta}$
+
+### Part iv
+From (i), $\tan 4\theta = 1$ when $\theta = \frac{\pi}{16}, \frac{5\pi}{16}, \frac{9\pi}{16}, \frac{13\pi}{16}$.
+Using (iii), $\tan 4\theta = 1$ implies:
+$$\frac{4\tan \theta - 4\tan^3 \theta}{1 - 6\tan^2 \theta + \tan^4 \theta} = 1$$
+$$4\tan \theta - 4\tan^3 \theta = 1 - 6\tan^2 \theta + \tan^4 \theta$$
+Rearranging to one side, let $x = \tan \theta$:
+$$x^4 + 4x^3 - 6x^2 - 4x + 1 = 0$$
+Since this equation holds for $\theta = \frac{\pi}{16}, \frac{5\pi}{16}, \frac{9\pi}{16}, \frac{13\pi}{16}$, these are the roots.
+
+Final answer: The roots are $\tan \frac{\pi}{16}, \tan \frac{5\pi}{16}, \tan \frac{9\pi}{16}, \tan \frac{13\pi}{16}$.
+
+### Part v
+The equation $x^4 + 4x^3 - 6x^2 - 4x + 1 = 0$ is a monic polynomial. By Vieta's formulas, the product of the roots is the constant term divided by the leading coefficient ($1/1$).
+Product $= \tan \frac{\pi}{16} \tan \frac{5\pi}{16} \tan \frac{9\pi}{16} \tan \frac{13\pi}{16} = 1$.
+
+Final answer: $1$
+
+### Part vi
+Given $x^4 + 4x^3 - 6x^2 - 4x + 1 = 0$, divide by $x^2$:
+$$x^2 + 4x - 6 - \frac{4}{x} + \frac{1}{x^2} = 0 \implies \left(x^2 + \frac{1}{x^2}\right) + 4\left(x - \frac{1}{x}\right) - 6 = 0$$
+Let $u = x - \frac{1}{x}$. Then $u^2 = x^2 - 2 + \frac{1}{x^2} \implies x^2 + \frac{1}{x^2} = u^2 + 2$.
+Substitute into the equation:
+$$(u^2 + 2) + 4u - 6 = 0 \implies u^2 + 4u - 4 = 0$$
+Roots for $u$ are $\frac{-4 \pm \sqrt{16 - 4(1)(-4)}}{2} = -2 \pm 2\sqrt{2}$.
+For $\theta = \frac{\pi}{16}$, $x = \tan \frac{\pi}{16}$. Note $\frac{1}{x} = \cot \frac{\pi}{16}$.
+Since $0 < \frac{\pi}{16} < \frac{\pi}{4}$, $0 < \tan \frac{\pi}{16} < 1$, so $x - \frac{1}{x} < 0$. We choose $u = -2 - 2\sqrt{2}$.
+
+Final answer: $\tan \frac{\pi}{16} - \cot \frac{\pi}{16} = -2 - 2\sqrt{2}$
+
+###QUESTION_TYPE
+Calculation Question

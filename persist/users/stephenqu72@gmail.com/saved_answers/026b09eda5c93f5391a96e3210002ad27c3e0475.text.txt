@@ -1,0 +1,45 @@
+### Part i
+We are given $S = (\sqrt{50} + 7)^{2000} + (\sqrt{50} - 7)^{2000}$.
+Using the Binomial Theorem, $(a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^k b^{n-k}$, we expand the terms:
+1. $(\sqrt{50} + 7)^{2000} = \sum_{k=0}^{2000} \binom{2000}{k} (\sqrt{50})^k (7)^{2000-k}$
+2. $(\sqrt{50} - 7)^{2000} = \sum_{k=0}^{2000} \binom{2000}{k} (\sqrt{50})^k (-7)^{2000-k}$
+
+Summing these expressions:
+$$S = \sum_{k=0}^{2000} \binom{2000}{k} (\sqrt{50})^k \left( 7^{2000-k} + (-1)^{2000-k} 7^{2000-k} \right)$$
+If $k$ is odd, $(\sqrt{50})^k$ contains an odd power of $\sqrt{50}$, resulting in an irrational term. However, the terms $7^{2000-k} + (-1)^{2000-k} 7^{2000-k}$ will be $7^m - 7^m = 0$ for all odd $k$. Thus, all irrational terms cancel out.
+If $k$ is even, let $k = 2j$. Then $(\sqrt{50})^k = (50)^j$, which is an integer. The coefficient $7^{2000-k} + (-1)^{2000-k} 7^{2000-k} = 2 \cdot 7^{2000-k}$.
+Thus, $S = 2 \sum_{j=0}^{1000} \binom{2000}{2j} 50^j 7^{2000-2j}$, which is clearly an integer multiplied by 2.
+
+**Final Answer:** $S$ is an even integer.
+
+### Part ii
+We need to show $0 < \sqrt{50} - 7 < 0.1$.
+First, note that $\sqrt{49} < \sqrt{50} < \sqrt{64}$, so $7 < \sqrt{50} < 8$, hence $\sqrt{50} - 7 > 0$.
+To show $\sqrt{50} - 7 < 0.1$, we examine the equivalent inequality $\sqrt{50} < 7.1$.
+Squaring both sides (since both are positive):
+$$(\sqrt{50})^2 < (7.1)^2$$
+$$50 < 50.41$$
+This is clearly true. Since $\sqrt{50} - 7$ is positive and $\sqrt{50} - 7 < 7.1 - 7 = 0.1$, the inequality is proven.
+
+**Final Answer:** $0 < \sqrt{50} - 7 < 0.1$
+
+### Part iii
+From Part i, we know $S = (\sqrt{50} + 7)^{2000} + (\sqrt{50} - 7)^{2000} = 2N$ for some integer $N$.
+Let $x = (\sqrt{50} + 7)^{2000}$ and $y = (\sqrt{50} - 7)^{2000}$. Then $x + y = 2N$.
+Rearranging, $x = 2N - y$.
+From Part ii, $0 < \sqrt{50} - 7 < 0.1$.
+Raising this to the power of 2000:
+$0 < y < (0.1)^{2000} = 10^{-2000}$.
+This means $0 < y < 0.\underbrace{00\dots0}_{1999 \text{ zeros}}1$.
+Substitute this into $x = 2N - y$:
+$x = 2N - (\text{a very small positive number})$.
+Therefore, $x$ is just slightly less than the even integer $2N$.
+This means $x = (2N - 1) + (1 - y)$.
+Since $0 < y < 10^{-2000}$, it follows that $1 - 10^{-2000} < 1 - y < 1$.
+$x = (2N - 1) + 0.\underbrace{99\dots9}_{2000 \text{ nines}}$.
+Thus, the decimal expansion of $(\sqrt{50} + 7)^{2000}$ must have 2000 nines immediately after the decimal point.
+
+**Final Answer:** The first 2000 digits after the decimal point are 9.
+
+###QUESTION_TYPE
+Proof Question

@@ -1,0 +1,53 @@
+This is a classic HSC Extension 2 problem involving inequalities and the squeeze theorem to define $e$.
+
+### Part i
+**Goal:** Prove that $1 - x \le \frac{1}{1+x} \le 1$ for $x \ge 0$.
+
+1.  Consider the right inequality: $\frac{1}{1+x} \le 1$.
+    Since $x \ge 0$, then $1+x \ge 1$. Taking the reciprocal reverses the inequality:
+    $$\frac{1}{1+x} \le 1$$
+2.  Consider the left inequality: $1 - x \le \frac{1}{1+x}$.
+    Since $1+x > 0$ for $x \ge 0$, we can multiply both sides by $(1+x)$ without reversing the inequality:
+    $$(1-x)(1+x) \le 1$$
+    $$1 - x^2 \le 1$$
+    $$-x^2 \le 0$$
+    This is true for all $x \in \mathbb{R}$ because $x^2 \ge 0$.
+    Thus, combining these results: $1 - x \le \frac{1}{1+x} \le 1$.
+
+**Final Answer:** $1 - x \le \frac{1}{1+x} \le 1$ for $x \ge 0$.
+
+---
+
+### Part ii
+**Goal:** Show that $1 - \frac{1}{2x} \le x \ln\left(1 + \frac{1}{x}\right) \le 1$ for $x > 0$.
+
+1.  Recall that $\ln(1+u) = \int_0^u \frac{1}{1+t} dt$. Let $u = \frac{1}{x}$.
+2.  Using the result from Part (i), replace $x$ with $t$: $1 - t \le \frac{1}{1+t} \le 1$.
+3.  Integrate this inequality with respect to $t$ from $0$ to $\frac{1}{x}$:
+    $$\int_0^{1/x} (1 - t) dt \le \int_0^{1/x} \frac{1}{1+t} dt \le \int_0^{1/x} 1 dt$$
+4.  Evaluate the integrals:
+    $$\left[ t - \frac{t^2}{2} \right]_0^{1/x} \le \ln(1+t) \Big|_0^{1/x} \le [t]_0^{1/x}$$
+    $$\left(\frac{1}{x} - \frac{1}{2x^2}\right) \le \ln\left(1 + \frac{1}{x}\right) \le \frac{1}{x}$$
+5.  Multiply the entire inequality by $x$ (noting $x > 0$, so the direction remains):
+    $$x\left(\frac{1}{x} - \frac{1}{2x^2}\right) \le x \ln\left(1 + \frac{1}{x}\right) \le x \left(\frac{1}{x}\right)$$
+    $$1 - \frac{1}{2x} \le x \ln\left(1 + \frac{1}{x}\right) \le 1$$
+
+**Final Answer:** $1 - \frac{1}{2x} \le x \ln\left(1 + \frac{1}{x}\right) \le 1$
+
+---
+
+### Part iii
+**Goal:** Hence deduce that $\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e$.
+
+1.  From Part (ii), we have $1 - \frac{1}{2x} \le \ln\left(1 + \frac{1}{x}\right)^x \le 1$ (using the log power rule $k \ln a = \ln a^k$).
+2.  As $x \to \infty$, the term $\frac{1}{2x} \to 0$. Therefore, $1 - \frac{1}{2x} \to 1$.
+3.  By the Squeeze Theorem, since $1 - \frac{1}{2x} \le \ln\left(1 + \frac{1}{x}\right)^x \le 1$ and both limits of the bounding functions are $1$ as $x \to \infty$:
+    $$\lim_{x \to \infty} \ln\left(1 + \frac{1}{x}\right)^x = 1$$
+4.  Since the exponential function $f(u) = e^u$ is continuous:
+    $$\exp\left(\lim_{x \to \infty} \ln\left(1 + \frac{1}{x}\right)^x\right) = e^1$$
+    $$\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e$$
+
+**Final Answer:** $\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e$
+
+###QUESTION_TYPE
+Proof Question

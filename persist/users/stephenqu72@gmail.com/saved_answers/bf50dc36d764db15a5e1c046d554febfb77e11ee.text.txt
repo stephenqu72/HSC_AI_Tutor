@@ -1,0 +1,34 @@
+To find the velocity vector $\underset{\sim}{v}(t)$, we must integrate the acceleration vector $\underset{\sim}{a}(t)$ with respect to time $t$. 
+
+### Step-by-Step Derivation
+
+Given the acceleration vector:
+$$\underset{\sim}{a}(t) = -4\sin(2t)\underset{\sim}{i} + 20\cos(2t)\underset{\sim}{j} - 20e^{-2t}\underset{\sim}{k}$$
+
+The velocity vector is the integral of the acceleration vector:
+$$\underset{\sim}{v}(t) = \int \underset{\sim}{a}(t) \, dt$$
+
+Integrating each component individually:
+1. **$i$-component:** $\int -4\sin(2t) \, dt = -4 \left( -\frac{1}{2}\cos(2t) \right) + C_1 = 2\cos(2t) + C_1$
+2. **$j$-component:** $\int 20\cos(2t) \, dt = 20 \left( \frac{1}{2}\sin(2t) \right) + C_2 = 10\sin(2t) + C_2$
+3. **$k$-component:** $\int -20e^{-2t} \, dt = -20 \left( \frac{e^{-2t}}{-2} \right) + C_3 = 10e^{-2t} + C_3$
+
+Thus, the general velocity vector is:
+$$\underset{\sim}{v}(t) = (2\cos(2t) + C_1)\underset{\sim}{i} + (10\sin(2t) + C_2)\underset{\sim}{j} + (10e^{-2t} + C_3)\underset{\sim}{k}$$
+
+### Applying Initial Conditions
+The particle starts from rest, meaning at $t = 0$, $\underset{\sim}{v}(0) = \underset{\sim}{0} = 0\underset{\sim}{i} + 0\underset{\sim}{j} + 0\underset{\sim}{k}$.
+
+Substitute $t = 0$ into the expression for $\underset{\sim}{v}(t)$:
+1. **$i$-component:** $2\cos(0) + C_1 = 0 \implies 2(1) + C_1 = 0 \implies C_1 = -2$
+2. **$j$-component:** $10\sin(0) + C_2 = 0 \implies 10(0) + C_2 = 0 \implies C_2 = 0$
+3. **$k$-component:** $10e^{0} + C_3 = 0 \implies 10(1) + C_3 = 0 \implies C_3 = -10$
+
+### Final Velocity Vector
+Substituting the constants back into the general vector:
+$$\underset{\sim}{v}(t) = (2\cos(2t) - 2)\underset{\sim}{i} + (10\sin(2t))\underset{\sim}{j} + (10e^{-2t} - 10)\underset{\sim}{k}$$
+
+Comparing this result with the given choices, it matches **Option B**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

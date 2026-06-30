@@ -1,0 +1,49 @@
+### Part i
+
+We are given $I_n = \int_{0}^{\frac{\pi}{4}} \tan^n x \, dx$ for $n \ge 3$. We want to show $I_n + I_{n-2} = \frac{1}{n-1}$.
+
+First, express the sum:
+$$I_n + I_{n-2} = \int_{0}^{\frac{\pi}{4}} \tan^n x \, dx + \int_{0}^{\frac{\pi}{4}} \tan^{n-2} x \, dx$$
+
+Factor out the common term $\tan^{n-2} x$:
+$$I_n + I_{n-2} = \int_{0}^{\frac{\pi}{4}} \tan^{n-2} x (\tan^2 x + 1) \, dx$$
+
+Using the trigonometric identity $1 + \tan^2 x = \sec^2 x$:
+$$I_n + I_{n-2} = \int_{0}^{\frac{\pi}{4}} \tan^{n-2} x \sec^2 x \, dx$$
+
+To evaluate this integral, we use the method of substitution. Let $u = \tan x$. Then $du = \sec^2 x \, dx$.
+Change the limits of integration:
+- When $x = 0$, $u = \tan(0) = 0$.
+- When $x = \frac{\pi}{4}$, $u = \tan(\frac{\pi}{4}) = 1$.
+
+Substituting these into the integral:
+$$I_n + I_{n-2} = \int_{0}^{1} u^{n-2} \, du$$
+
+Evaluate the power rule:
+$$I_n + I_{n-2} = \left[ \frac{u^{n-1}}{n-1} \right]_{0}^{1}$$
+$$I_n + I_{n-2} = \frac{1^{n-1}}{n-1} - \frac{0^{n-1}}{n-1} = \frac{1}{n-1}$$
+
+**Conclusion:** We have shown $I_n + I_{n-2} = \frac{1}{n-1}$.
+
+### Part ii
+
+We are asked to determine $I_4 = \int_{0}^{\frac{\pi}{4}} \tan^4 x \, dx$.
+
+Using the result from Part (i) where $I_n + I_{n-2} = \frac{1}{n-1}$, we set $n=4$:
+$$I_4 + I_2 = \frac{1}{4-1} = \frac{1}{3}$$
+$$I_4 = \frac{1}{3} - I_2$$
+
+Now, evaluate $I_2 = \int_{0}^{\frac{\pi}{4}} \tan^2 x \, dx$:
+$$I_2 = \int_{0}^{\frac{\pi}{4}} (\sec^2 x - 1) \, dx$$
+$$I_2 = [\tan x - x]_{0}^{\frac{\pi}{4}}$$
+$$I_2 = \left(\tan\left(\frac{\pi}{4}\right) - \frac{\pi}{4}\right) - (\tan(0) - 0)$$
+$$I_2 = 1 - \frac{\pi}{4}$$
+
+Substitute $I_2$ back into the expression for $I_4$:
+$$I_4 = \frac{1}{3} - \left(1 - \frac{\pi}{4}\right)$$
+$$I_4 = \frac{1}{3} - 1 + \frac{\pi}{4} = \frac{\pi}{4} - \frac{2}{3}$$
+
+**Final Answer:** $\int_{0}^{\frac{\pi}{4}} \tan^4 x \, dx = \frac{\pi}{4} - \frac{2}{3}$
+
+###QUESTION_TYPE
+Calculation Question

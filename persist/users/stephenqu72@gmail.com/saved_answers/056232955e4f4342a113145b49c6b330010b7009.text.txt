@@ -1,0 +1,42 @@
+To solve these problems, we use the properties of a regular tetrahedron with side length 1 and vector notation. Let $\vec{OA} = \mathbf{a}$, $\vec{OB} = \mathbf{b}$, and $\vec{OC} = \mathbf{c}$. Since the tetrahedron is regular and side lengths are 1, we have $|\mathbf{a}| = |\mathbf{b}| = |\mathbf{c}| = 1$. The angle between any two edges meeting at a vertex is $60^\circ$ (or $\frac{\pi}{3}$ radians).
+
+### Part i
+**Show that $\mathbf{a} \cdot \mathbf{b} = \mathbf{b} \cdot \mathbf{c} = \mathbf{a} \cdot \mathbf{c} = \frac{1}{2}$.**
+
+The dot product of two vectors is defined as $\mathbf{u} \cdot \mathbf{v} = |\mathbf{u}| |\mathbf{v}| \cos \theta$, where $\theta$ is the angle between them. For a regular tetrahedron, the angle between any two vectors originating from the same vertex is $60^\circ$. Thus:
+$$\mathbf{a} \cdot \mathbf{b} = |\mathbf{a}| |\mathbf{b}| \cos(60^\circ) = (1)(1)\left(\frac{1}{2}\right) = \frac{1}{2}$$
+By symmetry, the same logic applies to all pairs:
+$$\mathbf{b} \cdot \mathbf{c} = (1)(1)\left(\frac{1}{2}\right) = \frac{1}{2} \quad \text{and} \quad \mathbf{a} \cdot \mathbf{c} = (1)(1)\left(\frac{1}{2}\right) = \frac{1}{2}$$
+Thus, $\mathbf{a} \cdot \mathbf{b} = \mathbf{b} \cdot \mathbf{c} = \mathbf{a} \cdot \mathbf{c} = \frac{1}{2}$.
+
+### Part ii
+**Show that $|\vec{OY}| = \sqrt{1-x+x^2}$.**
+
+Given $|\vec{AY}| : |\vec{YB}| = x : 1-x$, point $Y$ divides the line segment $AB$ in the ratio $x : 1-x$. Using the section formula, $\vec{OY} = (1-x)\vec{OA} + x\vec{OB} = (1-x)\mathbf{a} + x\mathbf{b}$.
+To find $|\vec{OY}|$, we compute $|\vec{OY}|^2$:
+$$|\vec{OY}|^2 = ((1-x)\mathbf{a} + x\mathbf{b}) \cdot ((1-x)\mathbf{a} + x\mathbf{b})$$
+$$|\vec{OY}|^2 = (1-x)^2 |\mathbf{a}|^2 + 2x(1-x)(\mathbf{a} \cdot \mathbf{b}) + x^2 |\mathbf{b}|^2$$
+Substitute $|\mathbf{a}|^2 = |\mathbf{b}|^2 = 1$ and $\mathbf{a} \cdot \mathbf{b} = \frac{1}{2}$:
+$$|\vec{OY}|^2 = (1-2x+x^2)(1) + 2x(1-x)\left(\frac{1}{2}\right) + x^2(1)$$
+$$|\vec{OY}|^2 = 1 - 2x + x^2 + x - x^2 + x^2 = x^2 - x + 1$$
+Therefore, $|\vec{OY}| = \sqrt{x^2 - x + 1} = \sqrt{1-x+x^2}$.
+
+### Part iii
+**Determine the range of values of $\angle YOX$.**
+
+First, find $\vec{OX}$. Since $|\vec{BX}| : |\vec{XC}| = x : 1-x$, $X$ divides $BC$ in ratio $x:1-x$. Thus, $\vec{OX} = (1-x)\mathbf{b} + x\mathbf{c}$.
+The cosine of the angle $\theta$ between $\vec{OY}$ and $\vec{OX}$ is $\cos \theta = \frac{\vec{OY} \cdot \vec{OX}}{|\vec{OY}||\vec{OX}|}$.
+From Part (ii), $|\vec{OY}| = |\vec{OX}| = \sqrt{x^2-x+1}$.
+Next, compute $\vec{OY} \cdot \vec{OX}$:
+$$\vec{OY} \cdot \vec{OX} = ((1-x)\mathbf{a} + x\mathbf{b}) \cdot ((1-x)\mathbf{b} + x\mathbf{c})$$
+$$= (1-x)^2 (\mathbf{a} \cdot \mathbf{b}) + x(1-x) (\mathbf{a} \cdot \mathbf{c}) + x(1-x) (\mathbf{b} \cdot \mathbf{b}) + x^2 (\mathbf{b} \cdot \mathbf{c})$$
+Using dot products from (i) and $|\mathbf{b}|^2 = 1$:
+$$= (1-2x+x^2)(\frac{1}{2}) + (x-x^2)(\frac{1}{2}) + (x-x^2)(1) + x^2(\frac{1}{2})$$
+$$= \frac{1}{2} - x + \frac{x^2}{2} + \frac{x}{2} - \frac{x^2}{2} + x - x^2 + \frac{x^2}{2} = \frac{1}{2} + \frac{x}{2} - \frac{x^2}{2} = \frac{1-x+x^2}{2}$$
+Now, calculate $\cos \theta$:
+$$\cos \theta = \frac{\frac{1}{2}(1-x+x^2)}{(\sqrt{1-x+x^2})^2} = \frac{\frac{1}{2}(1-x+x^2)}{1-x+x^2} = \frac{1}{2}$$
+Since $\cos \theta = \frac{1}{2}$, $\theta = 60^\circ$ (or $\frac{\pi}{3}$ radians).
+As $x$ is in the domain $0 < x < 1$, the value is constant. The range of $\angle YOX$ is $\{60^\circ\}$.
+
+###QUESTION_TYPE
+Calculation Question

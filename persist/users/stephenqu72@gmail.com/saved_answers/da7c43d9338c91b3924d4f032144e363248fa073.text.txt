@@ -1,0 +1,37 @@
+This problem explores the geometric interpretation of complex numbers on the Argand diagram. We are given $z_1 = \cos \alpha + i \sin \alpha$ and $z_2 = \cos \beta + i \sin \beta$ with $0 < \alpha < \beta < \frac{\pi}{2}$.
+
+### Part i
+**Reason why $OACB$ is a rhombus:**
+The points $A$ and $B$ represent the complex numbers $z_1$ and $z_2$ respectively. Since both $z_1$ and $z_2$ are in polar form with modulus 1, the distance from the origin $O$ to both $A$ and $B$ is $|z_1| = |z_2| = 1$. The complex number $z_1 + z_2$ is represented by the point $C$, which by vector addition completes the parallelogram $OACB$. Because the adjacent sides $OA$ and $OB$ have equal length ($|z_1| = |z_2| = 1$), the parallelogram $OACB$ is a rhombus.
+
+### Part ii
+**Show that $r = 2 \cos\left(\frac{\beta - \alpha}{2}\right)$:**
+We are given $z_1 + z_2 = r(\cos \theta + i \sin \theta)$. Thus, $r = |z_1 + z_2|$.
+Using the definition of modulus:
+$$r = |(\cos \alpha + \cos \beta) + i(\sin \alpha + \sin \beta)|$$
+$$r = \sqrt{(\cos \alpha + \cos \beta)^2 + (\sin \alpha + \sin \beta)^2}$$
+Expanding the terms inside the square root:
+$$r = \sqrt{(\cos^2 \alpha + 2\cos \alpha \cos \beta + \cos^2 \beta) + (\sin^2 \alpha + 2\sin \alpha \sin \beta + \sin^2 \beta)}$$
+Using the Pythagorean identity $\cos^2 x + \sin^2 x = 1$:
+$$r = \sqrt{(1 + 1) + 2(\cos \alpha \cos \beta + \sin \alpha \sin \beta)}$$
+Applying the cosine addition formula $\cos(A-B) = \cos A \cos B + \sin A \sin B$:
+$$r = \sqrt{2 + 2\cos(\beta - \alpha)}$$
+Using the double-angle identity $\cos 2x = 2\cos^2 x - 1$, so $1 + \cos 2x = 2\cos^2 x$. Letting $2x = \beta - \alpha$:
+$$r = \sqrt{2(1 + \cos(\beta - \alpha))} = \sqrt{2(2\cos^2\left(\frac{\beta - \alpha}{2}\right))} = \sqrt{4\cos^2\left(\frac{\beta - \alpha}{2}\right)}$$
+Given the domain $0 < \alpha < \beta < \frac{\pi}{2}$, we have $0 < \frac{\beta-\alpha}{2} < \frac{\pi}{4}$, so the cosine is positive.
+**Final Answer:** $r = 2\cos\left(\frac{\beta - \alpha}{2}\right)$
+
+### Part iii
+**Show that $\theta = \frac{1}{2}(\alpha + \beta)$ and derive the sum identity:**
+From $z_1 + z_2 = r(\cos \theta + i \sin \theta)$, the argument $\theta$ is given by $\text{arg}(z_1 + z_2)$.
+Using the identity $e^{i\alpha} + e^{i\beta} = e^{i\frac{\alpha+\beta}{2}}(e^{i\frac{\alpha-\beta}{2}} + e^{i\frac{\beta-\alpha}{2}})$:
+$$z_1 + z_2 = e^{i\frac{\alpha+\beta}{2}} \left( 2 \cos\left( \frac{\alpha-\beta}{2} \right) \right)$$
+Since $\cos$ is an even function, $\cos\left(\frac{\alpha-\beta}{2}\right) = \cos\left(\frac{\beta-\alpha}{2}\right)$. Thus:
+$$z_1 + z_2 = 2\cos\left(\frac{\beta-\alpha}{2}\right) \cdot e^{i\frac{\alpha+\beta}{2}} = 2\cos\left(\frac{\beta-\alpha}{2}\right) \left[ \cos\left(\frac{\alpha+\beta}{2}\right) + i \sin\left(\frac{\alpha+\beta}{2}\right) \right]$$
+Equating the real parts of $z_1 + z_2$ from the rectangular form and the polar form:
+$$\text{Re}(z_1 + z_2) = \cos \alpha + \cos \beta = r \cos \theta$$
+Substituting $r = 2\cos\left(\frac{\beta-\alpha}{2}\right)$ and $\theta = \frac{\alpha+\beta}{2}$:
+**Final Answer:** $\cos \alpha + \cos \beta = 2\cos\left(\frac{\beta-\alpha}{2}\right)\cos\left(\frac{\beta+\alpha}{2}\right)$
+
+###QUESTION_TYPE
+Proof Question

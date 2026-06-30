@@ -1,0 +1,49 @@
+### Part a
+To evaluate $\int_{-1}^{2} \sqrt{8 - 2x - x^2} \, dx$, we first complete the square for the expression inside the square root:
+$$8 - 2x - x^2 = 8 - (x^2 + 2x) = 8 - (x^2 + 2x + 1) + 1 = 9 - (x+1)^2$$
+The integral becomes:
+$$\int_{-1}^{2} \sqrt{3^2 - (x+1)^2} \, dx$$
+Let $x+1 = 3\sin\theta$. Then $dx = 3\cos\theta \, d\theta$.
+Changing limits:
+- When $x = -1$, $0 = 3\sin\theta \implies \theta = 0$.
+- When $x = 2$, $3 = 3\sin\theta \implies \sin\theta = 1 \implies \theta = \frac{\pi}{2}$.
+The integral is:
+$$\int_{0}^{\pi/2} \sqrt{9 - 9\sin^2\theta} \cdot 3\cos\theta \, d\theta = \int_{0}^{\pi/2} 3\cos\theta \cdot 3\cos\theta \, d\theta = 9 \int_{0}^{\pi/2} \cos^2\theta \, d\theta$$
+Using the identity $\cos^2\theta = \frac{1 + \cos 2\theta}{2}$:
+$$9 \int_{0}^{\pi/2} \frac{1 + \cos 2\theta}{2} \, d\theta = \frac{9}{2} \left[ \theta + \frac{1}{2}\sin 2\theta \right]_{0}^{\pi/2} = \frac{9}{2} \left( \left( \frac{\pi}{2} + 0 \right) - (0 + 0) \right) = \frac{9\pi}{4}$$
+Final Answer: $\frac{9\pi}{4}$
+
+### Part b
+We prove the contrapositive: "If $n$ is even, then $3^n - 4$ is not prime."
+Let $n = 2k$ for some integer $k \geq 2$ (since $n \geq 3$ and $n$ is even).
+Then $3^n - 4 = 3^{2k} - 4 = (3^k)^2 - 2^2$.
+Using the difference of two squares:
+$$3^{2k} - 4 = (3^k - 2)(3^k + 2)$$
+For $k \geq 2$, $3^k - 2 > 1$ and $3^k + 2 > 1$. Specifically, for $k=2$, $(3^2-2) = 7$ and $(3^2+2) = 11$, so $3^4-4 = 77$ (not prime).
+Since $3^n - 4$ is the product of two integers greater than 1, it is composite. Thus, if $n$ is even, $3^n - 4$ is not prime. By contraposition, if $3^n - 4$ is prime, then $n$ must be odd.
+
+### Part c i
+The forces acting on the particle of mass $m$ are gravity ($mg$ downwards) and resistance ($R = \frac{1}{10}mv^2$ upwards).
+Taking downwards as positive:
+$$F_{net} = mg - R = m\ddot{x}$$
+$$m\ddot{x} = mg - \frac{1}{10}mv^2$$
+Dividing by $m$ and substituting $g = 10$:
+$$\ddot{x} = 10 - \frac{1}{10}v^2 = \frac{100 - v^2}{10} = \frac{1}{10}(100 - v^2)$$
+Final Answer: $\ddot{x} = \frac{1}{10}(100 - v^2)$
+
+### Part c ii
+We have $\frac{dv}{dt} = \frac{100 - v^2}{10}$. Separating variables:
+$$\int \frac{10}{100 - v^2} \, dv = \int dt$$
+Using partial fractions: $\frac{10}{(10-v)(10+v)} = \frac{A}{10-v} + \frac{B}{10+v} \implies 10 = A(10+v) + B(10-v)$.
+$v=10 \implies 20A = 10 \implies A = 1/2$. $v=-10 \implies 20B = 10 \implies B = 1/2$.
+$$\frac{1}{2} \int \left( \frac{1}{10-v} + \frac{1}{10+v} \right) \, dv = \int dt \implies \frac{1}{2} \ln \left| \frac{10+v}{10-v} \right| = t + C$$
+At $t=0, v=0 \implies C=0$. Thus $\ln \left( \frac{10+v}{10-v} \right) = 2t \implies \frac{10+v}{10-v} = e^{2t}$.
+Solving for $v$: $10+v = 10e^{2t} - ve^{2t} \implies v(1+e^{2t}) = 10(e^{2t}-1) \implies v = \frac{dx}{dt} = 10 \frac{e^{2t}-1}{e^{2t}+1} = 10 \tanh(t)$.
+Integrating to find $x$:
+$$x = \int_0^{\ln\sqrt{5}} 10 \tanh(t) \, dt = 10 \left[ \ln(\cosh t) \right]_0^{\ln\sqrt{5}} = 10 \ln(\cosh(\ln\sqrt{5}))$$
+Using $\cosh u = \frac{e^u + e^{-u}}{2}$: $\cosh(\ln\sqrt{5}) = \frac{\sqrt{5} + 1/\sqrt{5}}{2} = \frac{5+1}{2\sqrt{5}} = \frac{6}{2\sqrt{5}} = \frac{3}{\sqrt{5}}$.
+$x = 10 \ln\left( \frac{3}{\sqrt{5}} \right) = 10 (\ln 3 - \frac{1}{2} \ln 5) = 10 \ln 3 - 5 \ln 5$.
+Final Answer: $10 \ln\left(\frac{3}{\sqrt{5}}\right)$
+
+###QUESTION_TYPE
+<Calculation Question>

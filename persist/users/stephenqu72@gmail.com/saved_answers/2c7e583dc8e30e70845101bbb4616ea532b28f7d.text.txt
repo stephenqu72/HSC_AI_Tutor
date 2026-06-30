@@ -1,0 +1,38 @@
+To solve this problem, we are given $z = e^{i\theta}$ where $0 < \theta < \frac{\pi}{2}$.
+The points are represented by complex numbers:
+- $O$ is the origin, $0$.
+- $A$ is $z$.
+- $B$ is $z^2 = (e^{i\theta})^2 = e^{i2\theta}$.
+- $C$ is $z + z^2$.
+
+### Part i
+The quadrilateral $OACB$ has vertices at $0$, $z$, $z+z^2$, and $z^2$ in the Argand diagram.
+By the definition of vector addition in the complex plane, the complex number $z + z^2$ corresponds to the fourth vertex of a parallelogram formed by the vectors $z$ and $z^2$ starting from the origin. Since $O, A, C, B$ form a figure where the vector $\vec{OC} = \vec{OA} + \vec{OB}$, the figure $OACB$ is a parallelogram.
+
+**Final Answer:** $OACB$ is a **parallelogram**.
+
+### Part ii
+We are given $C$ represents $z + z^2$. Substituting $z = e^{i\theta}$:
+$$z + z^2 = e^{i\theta} + e^{i2\theta}$$
+To find the argument, we factor out $e^{i\frac{3\theta}{2}}$ to exploit the symmetry of the remaining terms:
+$$z + z^2 = e^{i\frac{3\theta}{2}} (e^{-i\frac{\theta}{2}} + e^{i\frac{\theta}{2}})$$
+Recall the Euler identity for cosine: $\cos(\frac{\theta}{2}) = \frac{e^{i\frac{\theta}{2}} + e^{-i\frac{\theta}{2}}}{2}$, hence $e^{i\frac{\theta}{2}} + e^{-i\frac{\theta}{2}} = 2\cos(\frac{\theta}{2})$.
+Substituting this back:
+$$z + z^2 = 2\cos\left(\frac{\theta}{2}\right) e^{i\frac{3\theta}{2}}$$
+Since $0 < \theta < \frac{\pi}{2}$, it follows that $0 < \frac{\theta}{2} < \frac{\pi}{4}$, so $\cos(\frac{\theta}{2}) > 0$. Thus, $2\cos(\frac{\theta}{2})$ is a positive real scalar representing the modulus, and the argument is the angle of the exponential term.
+
+**Final Answer:** $\arg(z + z^2) = \frac{3\theta}{2}$
+
+### Part iii
+From the derivation in Part ii, we have the expression:
+$$z + z^2 = 2\cos\left(\frac{\theta}{2}\right) e^{i\frac{3\theta}{2}}$$
+The modulus of a product of complex numbers is the product of their moduli:
+$$|z + z^2| = |2\cos\left(\frac{\theta}{2}\right)| \cdot |e^{i\frac{3\theta}{2}}|$$
+We know that $|e^{i\phi}| = 1$ for any real $\phi$. Since $0 < \theta < \frac{\pi}{2}$, we have $\cos(\frac{\theta}{2}) > 0$, so $|2\cos(\frac{\theta}{2})| = 2\cos(\frac{\theta}{2})$.
+Therefore:
+$$|z + z^2| = 2\cos\left(\frac{\theta}{2}\right) \cdot 1 = 2\cos\left(\frac{\theta}{2}\right)$$
+
+**Final Answer:** $|z + z^2| = 2\cos\left(\frac{\theta}{2}\right)$
+
+###QUESTION_TYPE
+Calculation Question

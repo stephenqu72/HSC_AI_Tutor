@@ -1,0 +1,47 @@
+To determine the displacement $x$ as a function of time $t$ for a particle undergoing simple harmonic motion, we follow these steps:
+
+### Analysis of the Differential Equation
+The given equation of motion is:
+$$\ddot{x} = -4x$$
+This is the standard form for simple harmonic motion, $\ddot{x} = -n^2x$, where $n^2 = 4$, implying $n = 2$. The general solution for this differential equation is:
+$$x(t) = A \cos(nt) + B \sin(nt)$$
+Substituting $n = 2$:
+$$x(t) = A \cos(2t) + B \sin(2t)$$
+
+### Applying Initial Conditions
+We are given the initial conditions at $t = 0$: $x = 3$ and $\dot{x} = -6\sqrt{3}$.
+
+**1. Finding A:**
+Using $x(0) = 3$:
+$$x(0) = A \cos(0) + B \sin(0) = 3$$
+Since $\cos(0) = 1$ and $\sin(0) = 0$:
+$$A(1) + B(0) = 3 \implies A = 3$$
+
+**2. Finding B:**
+First, we find the velocity function $\dot{x}(t)$ by differentiating $x(t) = 3 \cos(2t) + B \sin(2t)$ with respect to $t$:
+$$\dot{x}(t) = \frac{d}{dt}(3 \cos(2t) + B \sin(2t))$$
+$$\dot{x}(t) = -6 \sin(2t) + 2B \cos(2t)$$
+Using the initial condition $\dot{x}(0) = -6\sqrt{3}$:
+$$\dot{x}(0) = -6 \sin(0) + 2B \cos(0) = -6\sqrt{3}$$
+Since $\sin(0) = 0$ and $\cos(0) = 1$:
+$$0 + 2B(1) = -6\sqrt{3}$$
+$$2B = -6\sqrt{3}$$
+$$B = -3\sqrt{3}$$
+
+### Final Displacement Function
+Substituting the values $A = 3$ and $B = -3\sqrt{3}$ into the general solution:
+$$x(t) = 3 \cos(2t) - 3\sqrt{3} \sin(2t)$$
+
+Comparing this result to the given options:
+- A) $x = 3 \cos 2t - 3\sqrt{3} \sin 2t$
+- B) $x = 3 \sin 2t - 3\sqrt{3} \cos 2t$
+- C) $x = 3 \cos 2t + 3\sqrt{3} \sin 2t$
+- D) $x = 3 \sin 2t + 3\sqrt{3} \cos 2t$
+
+The derived function matches option A.
+
+**Final Answer:**
+The displacement function is $x = 3 \cos 2t - 3\sqrt{3} \sin 2t$, which corresponds to **A**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

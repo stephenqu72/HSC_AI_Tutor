@@ -1,0 +1,29 @@
+To determine which point represents a square root of $p$, we use the properties of complex numbers in polar form and the geometry of the roots of unity.
+
+### Worked Solution
+
+**1. Identify the form of the fifth roots of unity:**
+The fifth roots of unity are given by $\omega_k = e^{i\frac{2\pi k}{5}}$ for $k = 0, 1, 2, 3, 4$. From the diagram, point $a$ lies on the positive real axis, so $a = e^{i(0)} = 1$. The points are arranged counter-clockwise, so we can denote:
+- $a = e^{i(0)}$
+- $b = e^{i(\frac{2\pi}{5})}$
+- $c = e^{i(\frac{4\pi}{5})}$
+- $d = e^{i(\frac{6\pi}{5})}$ (or $e^{-i(\frac{4\pi}{5})}$)
+- $p = e^{i(\frac{8\pi}{5})}$ (or $e^{-i(\frac{2\pi}{5})}$)
+
+**2. Define the square roots of $p$:**
+We are looking for $z$ such that $z^2 = p$.
+Given $p = e^{i(\frac{8\pi}{5})}$, the two square roots are:
+$$z_1 = e^{i(\frac{8\pi}{5} \cdot \frac{1}{2})} = e^{i(\frac{4\pi}{5})}$$
+$$z_2 = e^{i(\frac{8\pi}{5} \cdot \frac{1}{2} + \pi)} = e^{i(\frac{4\pi}{5} + \pi)} = e^{i(\frac{9\pi}{5})}$$
+
+**3. Match the result to the points on the diagram:**
+- The first root $z_1 = e^{i(\frac{4\pi}{5})}$ corresponds exactly to point $c$.
+- The second root $z_2 = e^{i(\frac{9\pi}{5})}$ is equivalent to $e^{-i(\frac{\pi}{5})}$, which is not labeled as one of the points $a, b, c,$ or $d$.
+
+Comparing our result $z_1 = c$ with the given options, we identify that point $c$ is a square root of $p$.
+
+**Final Answer:**
+The point representing the square root of $p$ is $c$, which corresponds to option **C**.
+
+###QUESTION_TYPE
+Multiple Choice Question

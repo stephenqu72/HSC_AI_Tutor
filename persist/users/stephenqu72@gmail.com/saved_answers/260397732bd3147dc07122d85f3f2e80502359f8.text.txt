@@ -1,0 +1,34 @@
+To determine the contrapositive of a conditional statement "if $P$, then $Q$", we use the logical rule:
+The contrapositive is "if (not $Q$), then (not $P$)".
+
+### Step 1: Identify $P$ and $Q$
+The given statement is: "if $x > y > 0$, then $0 < \frac{1}{x} < \frac{1}{y}$".
+
+*   **Hypothesis ($P$):** $x > y > 0$
+*   **Conclusion ($Q$):** $0 < \frac{1}{x} < \frac{1}{y}$
+
+### Step 2: Formulate (not $Q$) and (not $P$)
+*   **Negation of $Q$ ($\neg Q$):** 
+    The original conclusion $Q$ is $(0 < \frac{1}{x})$ AND $(\frac{1}{x} < \frac{1}{y})$.
+    By De Morgan’s Laws, the negation of $(A \land B)$ is $(\neg A \lor \neg B)$.
+    $\neg (0 < \frac{1}{x})$ is $0 \ge \frac{1}{x}$.
+    $\neg (\frac{1}{x} < \frac{1}{y})$ is $\frac{1}{x} \ge \frac{1}{y}$.
+    Therefore, $\neg Q$ is: $0 \ge \frac{1}{x}$ or $\frac{1}{x} \ge \frac{1}{y}$.
+
+*   **Negation of $P$ ($\neg P$):**
+    The original hypothesis $P$ is $(x > y)$ AND $(y > 0)$.
+    By De Morgan’s Laws, the negation is:
+    $\neg (x > y)$ OR $\neg (y > 0)$
+    Which is: $x \le y$ OR $y \le 0$.
+
+### Step 3: Construct the Contrapositive
+Combining these using the structure "if $\neg Q$, then $\neg P$":
+"If $(0 \ge \frac{1}{x} \text{ or } \frac{1}{x} \ge \frac{1}{y})$, then $(x \le y \text{ or } y \le 0)$."
+
+Comparing this to the provided options:
+*   **Option A** matches our derivation exactly.
+
+Final Answer: **A**
+
+###QUESTION_TYPE
+Multiple Choice Question

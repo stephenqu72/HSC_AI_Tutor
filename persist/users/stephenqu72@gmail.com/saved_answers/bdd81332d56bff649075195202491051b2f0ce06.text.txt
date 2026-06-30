@@ -1,0 +1,30 @@
+To identify a counterexample to a logical proposition of the form "If $P$, then $Q$", we must look for a scenario where the condition $P$ is satisfied, but the conclusion $Q$ is false.
+
+### Analysis of the Proposition
+
+The given proposition is: "If a positive integer is **not a perfect square** ($P$), then it is **not prime** ($Q$)."
+
+In formal logic, this is the implication $P \implies Q$. 
+
+A counterexample to this proposition must satisfy:
+1. The antecedent ($P$): The integer is **not a perfect square**.
+2. The negation of the consequent ($\neg Q$): The integer **is prime** (since the negation of "not prime" is "is prime").
+
+### Evaluation of Options
+
+*   **Option A:** "A positive integer that is not a perfect square and is prime."
+    *   This satisfies both conditions ($P$ and $\neg Q$). For example, the number $3$ is not a perfect square and is prime. This directly contradicts the proposition.
+*   **Option B:** "A positive integer that is not a perfect square and is not prime."
+    *   This satisfies the proposition ($P \implies Q$), so it is not a counterexample.
+*   **Option C:** "A positive integer that is a perfect square and is prime."
+    *   There are no prime numbers that are perfect squares (a perfect square $n^2$ where $n > 1$ has at least three factors: $1, n, n^2$), so this does not satisfy the antecedent $P$.
+*   **Option D:** "A positive integer that is a perfect square and is not prime."
+    *   This satisfies the proposition (the proposition says nothing about perfect squares), so it is not a counterexample.
+
+### Conclusion
+A counterexample must demonstrate that it is possible for a number to be "not a perfect square" while still being "prime". Option A describes exactly this condition.
+
+Final Answer: A
+
+###QUESTION_TYPE
+Multiple Choice Question

@@ -1,0 +1,31 @@
+To evaluate the integral $\int \frac{1}{\sqrt{6 - x^2 - x}} \, dx$, we will complete the square for the quadratic expression under the square root and then apply the standard integral form for inverse trigonometric functions.
+
+### Completing the Square
+First, consider the quadratic expression $6 - x^2 - x$. To complete the square, we factor out a $-1$ from the $x$ terms:
+$$6 - (x^2 + x)$$
+To complete the square for $x^2 + x$, we take half of the coefficient of $x$ (which is $1$), square it ($(\frac{1}{2})^2 = \frac{1}{4}$), and add and subtract this value inside the bracket:
+$$6 - \left(x^2 + x + \frac{1}{4} - \frac{1}{4}\right)$$
+Distribute the negative sign back:
+$$6 - \left(x^2 + x + \frac{1}{4}\right) + \frac{1}{4}$$
+Combine the constants:
+$$6 + \frac{1}{4} - \left(x + \frac{1}{2}\right)^2 = \frac{25}{4} - \left(x + \frac{1}{2}\right)^2$$
+
+### Evaluating the Integral
+Now, substitute this expression back into the integral:
+$$\int \frac{1}{\sqrt{\frac{25}{4} - (x + \frac{1}{2})^2}} \, dx$$
+This integral matches the standard form $\int \frac{1}{\sqrt{a^2 - u^2}} \, du = \arcsin(\frac{u}{a}) + C$, where $a^2 = \frac{25}{4}$ (so $a = \frac{5}{2}$) and $u = x + \frac{1}{2}$ (so $du = dx$).
+
+Applying the formula:
+$$\int \frac{1}{\sqrt{(\frac{5}{2})^2 - (x + \frac{1}{2})^2}} \, dx = \arcsin\left( \frac{x + \frac{1}{2}}{\frac{5}{2}} \right) + C$$
+
+Simplify the argument of the $\arcsin$ function by multiplying the numerator and denominator by $2$:
+$$\frac{x + \frac{1}{2}}{\frac{5}{2}} = \frac{2(x + \frac{1}{2})}{5} = \frac{2x + 1}{5}$$
+
+Thus, the final result is:
+$$\arcsin\left( \frac{2x + 1}{5} \right) + C$$
+
+Final Answer:
+$$\arcsin\left( \frac{2x + 1}{5} \right) + C$$
+
+###QUESTION_TYPE
+Calculation Question

@@ -1,0 +1,44 @@
+To prove that triangle $ABC$ is equilateral, given the condition $\frac{z_2 - z_3}{z_1 - z_3} = \frac{z_1 - z_3}{z_1 - z_2}$, we will use the geometric interpretation of complex numbers and the properties of roots of unity.
+
+### Proof
+
+Let the vertices of the triangle be represented by complex numbers $z_1, z_2, z_3$. The given equation is:
+$$\frac{z_2 - z_3}{z_1 - z_3} = \frac{z_1 - z_3}{z_1 - z_2}$$
+
+First, rearrange the equation to collect the terms:
+$$(z_2 - z_3)(z_1 - z_2) = (z_1 - z_3)^2$$
+
+Expand both sides:
+$$z_2 z_1 - z_2^2 - z_3 z_1 + z_3 z_2 = z_1^2 - 2z_1 z_3 + z_3^2$$
+
+Rearrange all terms to one side to form a quadratic equation in terms of $z_1, z_2, z_3$:
+$$z_1^2 - z_1 z_2 - z_1 z_3 + z_2^2 - z_2 z_3 + z_3^2 = 0$$
+*(Note: Multiplying by 2 or observing the symmetric structure is often helpful here).*
+
+Alternatively, consider the condition for an equilateral triangle. A triangle $ABC$ is equilateral if and only if:
+$$z_1^2 + z_2^2 + z_3^2 = z_1 z_2 + z_2 z_3 + z_3 z_1$$
+
+Let us return to our rearranged equation:
+$$z_2 z_1 - z_2^2 - z_3 z_1 + z_3 z_2 = z_1^2 - 2z_1 z_3 + z_3^2$$
+$$0 = z_1^2 - z_1 z_2 - z_1 z_3 + z_2^2 - z_2 z_3 + z_3^2$$
+$$z_1^2 + z_2^2 + z_3^2 = z_1 z_2 + z_2 z_3 + z_3 z_1$$
+
+This identity is a well-known condition for three points $z_1, z_2, z_3$ to form an equilateral triangle in the complex plane. 
+
+To see this via rotation, let $\omega = e^{i\pi/3}$ or $\omega = e^{i\pi/3}$. If the triangle is equilateral, then $z_2 - z_3 = e^{\pm i\pi/3}(z_1 - z_3)$. Substituting this into the ratio:
+$$\frac{z_2 - z_3}{z_1 - z_3} = e^{\pm i\pi/3}$$
+The original equation given in the prompt is $\frac{z_2 - z_3}{z_1 - z_3} = \frac{z_1 - z_3}{z_1 - z_2}$. 
+If we define $\alpha = \frac{z_2 - z_3}{z_1 - z_3}$, then the equation states $\alpha = \frac{1}{\frac{z_1 - z_2}{z_1 - z_3}} = \frac{1}{1 - \frac{z_2 - z_3}{z_1 - z_3}} = \frac{1}{1 - \alpha}$.
+
+Solving $\alpha(1 - \alpha) = 1$:
+$$\alpha - \alpha^2 = 1 \implies \alpha^2 - \alpha + 1 = 0$$
+Using the quadratic formula:
+$$\alpha = \frac{1 \pm \sqrt{1 - 4}}{2} = \frac{1 \pm i\sqrt{3}}{2} = e^{\pm i\pi/3}$$
+
+Since $\left| \frac{z_2 - z_3}{z_1 - z_3} \right| = |e^{\pm i\pi/3}| = 1$, the lengths $|z_2 - z_3| = |z_1 - z_3|$.
+Furthermore, the argument of the ratio is $\pm \pi/3$, meaning the angle at vertex $C$ is $60^\circ$. A triangle with two sides of equal length and an included angle of $60^\circ$ is equilateral.
+
+**Conclusion:** The given condition implies the ratio of sides corresponds to the rotation of an equilateral triangle, therefore $\triangle ABC$ is equilateral.
+
+###QUESTION_TYPE
+Proof Question

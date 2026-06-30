@@ -1,0 +1,48 @@
+To find the value of $\tan \alpha$, we must analyse the forces acting on the particle of mass $m$ while it is in a state of static equilibrium.
+
+### Worked Solution
+
+**1. Identify the forces acting on the particle:**
+The particle is in equilibrium, meaning the vector sum of all forces acting on it must be zero ($\sum \vec{F} = 0$). The three forces acting on the particle are:
+*   **Weight ($mg$):** Acting vertically downwards.
+*   **Horizontal force ($F$):** Acting horizontally to the right.
+*   **Tension ($T$):** Acting along the string. Since the string makes an angle $\alpha$ with the horizontal, we resolve the tension into horizontal and vertical components.
+
+**2. Resolve the tension force ($T$):**
+Using the angle $\alpha$ given with the horizontal:
+*   The horizontal component of the tension acts to the left: $T_x = T \cos \alpha$.
+*   The vertical component of the tension acts upwards: $T_y = T \sin \alpha$.
+
+**3. Apply the conditions for static equilibrium:**
+For the system to be in equilibrium, the net force in both the horizontal ($x$) and vertical ($y$) directions must be zero.
+
+*   **Horizontal Equilibrium ($\sum F_x = 0$):**
+    Taking right as positive:
+    $$F - T \cos \alpha = 0$$
+    $$F = T \cos \alpha \quad \dots \text{(Equation 1)}$$
+
+*   **Vertical Equilibrium ($\sum F_y = 0$):**
+    Taking up as positive:
+    $$T \sin \alpha - mg = 0$$
+    $$T \sin \alpha = mg \quad \dots \text{(Equation 2)}$$
+
+**4. Solve for $\tan \alpha$:**
+We know that $\tan \alpha = \frac{\sin \alpha}{\cos \alpha}$. To isolate this, we divide Equation 2 by Equation 1:
+$$\frac{T \sin \alpha}{T \cos \alpha} = \frac{mg}{F}$$
+Cancelling the tension magnitude $T$ (where $T \neq 0$):
+$$\tan \alpha = \frac{mg}{F}$$
+
+Comparing this result to the given options:
+A. $\frac{mg}{T}$
+B. $\frac{T}{mg}$
+C. $\frac{mg}{F}$
+D. $\frac{mg}{F}$ 
+*(Note: Options C and D in the provided image are identical).*
+
+The derived value matches options C and D.
+
+### Final Answer
+The value of $\tan \alpha$ is $\frac{mg}{F}$.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

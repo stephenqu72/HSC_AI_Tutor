@@ -1,0 +1,42 @@
+To solve for the vector $\vec{FE}$ in terms of $\vec{a}$ and $\vec{b}$, we will use vector addition by finding a path from point $F$ to point $E$.
+
+### Step 1: Establish properties of the rhombus $ABCD$
+In a rhombus $ABCD$:
+1. Opposite sides are parallel and equal in length. Therefore, $\vec{DC} = \vec{AB} = \vec{a}$.
+2. Since $\vec{BC} = \vec{b}$, and $ABCD$ is a parallelogram, we have $\vec{AD} = \vec{BC} = \vec{b}$.
+
+### Step 2: Determine the vectors relative to the rhombus
+*   **Vector $\vec{FC}$**: We are given that $F$ is the midpoint of $DC$. Since $\vec{DC} = \vec{a}$, the vector from $F$ to $C$ is half of $\vec{DC}$:
+    $$\vec{FC} = \frac{1}{2} \vec{DC} = \frac{1}{2} \vec{a}$$
+*   **Vector $\vec{BE}$**: We are given that $AB:BE = 4:3$. Since $\vec{AB} = \vec{a}$, the length of $\vec{AB}$ is $|\vec{a}|$. The length of $\vec{BE}$ is $\frac{3}{4}|\vec{a}|$. Because $E$ lies on the extension of $AB$, $\vec{BE}$ is in the same direction as $\vec{AB}$:
+    $$\vec{BE} = \frac{3}{4} \vec{a}$$
+
+### Step 3: Express $\vec{FE}$ using vector addition
+We can express $\vec{FE}$ as the sum of vectors along the path $F \to C \to B \to E$:
+$$\vec{FE} = \vec{FC} + \vec{CB} + \vec{BE}$$
+
+Substitute the known vectors into this expression:
+1. $\vec{FC} = \frac{1}{2} \vec{a}$
+2. $\vec{CB} = -\vec{BC} = -\vec{b}$ (since the direction is opposite to $\vec{BC}$)
+3. $\vec{BE} = \frac{3}{4} \vec{a}$
+
+Now, combine these:
+$$\vec{FE} = \frac{1}{2} \vec{a} - \vec{b} + \frac{3}{4} \vec{a}$$
+
+### Step 4: Simplify the expression
+Find a common denominator for the $\vec{a}$ terms:
+$$\vec{FE} = \left( \frac{2}{4} + \frac{3}{4} \right) \vec{a} - \vec{b}$$
+$$\vec{FE} = \frac{5}{4} \vec{a} - \vec{b}$$
+
+Comparing this result to the provided options:
+A. $\frac{11}{6}\vec{a} + \vec{b}$
+B. $\frac{5}{4}\vec{a} + \vec{b}$
+C. $\frac{11}{6}\vec{a} - \vec{b}$
+D. $\frac{5}{4}\vec{a} - \vec{b}$
+
+The calculated expression matches option D.
+
+Final Answer: **D**
+
+###QUESTION_TYPE
+<Multiple Choice Question>

@@ -1,0 +1,40 @@
+To solve the integral $I = \int_{0}^{\pi} x \sin x \, dx$ using the substitution $x = \pi - u$, we follow these rigorous steps:
+
+### Worked Solution
+
+**1. Define the substitution and limits:**
+Let $x = \pi - u$.
+Then, differentiate with respect to $u$: $\frac{dx}{du} = -1$, which implies $dx = -du$.
+
+Next, change the limits of integration:
+*   When $x = 0$: $0 = \pi - u \implies u = \pi$.
+*   When $x = \pi$: $\pi = \pi - u \implies u = 0$.
+
+**2. Substitute into the integral:**
+Substitute $x$, $dx$, and the new limits into the original integral $I$:
+$$I = \int_{\pi}^{0} (\pi - u) \sin(\pi - u) (-du)$$
+
+**3. Simplify the expression:**
+*   Use the property of definite integrals $\int_{a}^{b} f(u) (-du) = \int_{b}^{a} f(u) du$ to absorb the negative sign by swapping the limits back:
+    $$I = \int_{0}^{\pi} (\pi - u) \sin(\pi - u) \, du$$
+*   Apply the trigonometric identity $\sin(\pi - u) = \sin u$:
+    $$I = \int_{0}^{\pi} (\pi - u) \sin u \, du$$
+*   Expand the integrand:
+    $$I = \int_{0}^{\pi} \pi \sin u \, du - \int_{0}^{\pi} u \sin u \, du$$
+    $$I = \pi \int_{0}^{\pi} \sin u \, du - I$$
+*   Add $I$ to both sides:
+    $$2I = \pi \int_{0}^{\pi} \sin u \, du$$
+*   Divide by 2:
+    $$I = \frac{\pi}{2} \int_{0}^{\pi} \sin u \, du$$
+
+**4. Final form:**
+Since the variable of integration is a "dummy variable", we can replace $u$ with $x$ without changing the value of the definite integral:
+$$I = \frac{\pi}{2} \int_{0}^{\pi} \sin x \, dx$$
+
+Comparing this result to the given options, it matches option **C**.
+
+**Final Answer:**
+The expression simplifies to $\frac{\pi}{2} \int_{0}^{\pi} \sin x \, dx$, which corresponds to **Option C**.
+
+###QUESTION_TYPE
+Multiple Choice Question

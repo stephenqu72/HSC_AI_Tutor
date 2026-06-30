@@ -1,0 +1,39 @@
+To evaluate the definite integral $\int_{0}^{\ln 2} x e^{-x} \, dx$, we use the method of **Integration by Parts**.
+
+### Worked Solution
+
+The formula for integration by parts is:
+$$\int u \, dv = uv - \int v \, du$$
+
+We choose $u$ and $dv$ as follows to simplify the expression upon differentiation:
+Let $u = x \implies du = dx$
+Let $dv = e^{-x} \, dx \implies v = \int e^{-x} \, dx = -e^{-x}$
+
+Applying the integration by parts formula to the definite integral:
+$$\int_{0}^{\ln 2} x e^{-x} \, dx = \left[ -xe^{-x} \right]_{0}^{\ln 2} - \int_{0}^{\ln 2} (-e^{-x}) \, dx$$
+
+First, simplify the expression:
+$$\int_{0}^{\ln 2} x e^{-x} \, dx = \left[ -xe^{-x} \right]_{0}^{\ln 2} + \int_{0}^{\ln 2} e^{-x} \, dx$$
+
+Now, evaluate each term:
+1. Evaluating $\left[ -xe^{-x} \right]_{0}^{\ln 2}$:
+$$= \left( -(\ln 2)e^{-\ln 2} \right) - \left( -(0)e^{0} \right)$$
+Since $e^{-\ln 2} = e^{\ln(2^{-1})} = \frac{1}{2}$:
+$$= -(\ln 2)\left(\frac{1}{2}\right) - 0 = -\frac{1}{2}\ln 2$$
+
+2. Evaluating $\int_{0}^{\ln 2} e^{-x} \, dx$:
+$$\int_{0}^{\ln 2} e^{-x} \, dx = \left[ -e^{-x} \right]_{0}^{\ln 2}$$
+$$= (-e^{-\ln 2}) - (-e^{0})$$
+$$= -\frac{1}{2} - (-1) = -\frac{1}{2} + 1 = \frac{1}{2}$$
+
+Combining these results:
+$$\int_{0}^{\ln 2} x e^{-x} \, dx = -\frac{1}{2}\ln 2 + \frac{1}{2}$$
+
+Factoring the expression to give the simplest form:
+$$\frac{1}{2}(1 - \ln 2)$$
+
+**Final Answer:**
+The value of the integral is $\frac{1}{2}(1 - \ln 2)$.
+
+###QUESTION_TYPE
+Calculation Question

@@ -1,0 +1,32 @@
+To prove that $\log_2 5$ is irrational, we will use a proof by contradiction.
+
+### Part a
+
+**Assumption:**
+Assume, for the sake of contradiction, that $\log_2 5$ is rational. 
+By definition of a rational number, there must exist two positive integers $p$ and $q$ (where $q \neq 0$) such that:
+$$\log_2 5 = \frac{p}{q}$$
+
+**Algebraic Manipulation:**
+By the definition of a logarithm, we can rewrite this in exponential form:
+$$2^{p/q} = 5$$
+
+To remove the fractional exponent, raise both sides of the equation to the power of $q$:
+$$(2^{p/q})^q = 5^q$$
+$$2^p = 5^q$$
+
+**Logical Analysis:**
+We have reached the equation $2^p = 5^q$, where $p$ and $q$ are positive integers. 
+- The left-hand side, $2^p$, represents a power of 2. By the Fundamental Theorem of Arithmetic (the unique prime factorization of integers), the only prime factor of $2^p$ is 2.
+- The right-hand side, $5^q$, represents a power of 5. The only prime factor of $5^q$ is 5.
+
+For the two sides to be equal, their prime factorizations must be identical. However, 2 and 5 are distinct prime numbers. Therefore, there are no positive integers $p$ and $q$ that can satisfy this equation.
+
+**Conclusion:**
+Our initial assumption that $\log_2 5$ is rational leads to a mathematical impossibility (a contradiction). Therefore, the assumption must be false, and $\log_2 5$ must be irrational.
+
+**Final Answer:**
+$\log_2 5$ is irrational.
+
+###QUESTION_TYPE
+Proof Question

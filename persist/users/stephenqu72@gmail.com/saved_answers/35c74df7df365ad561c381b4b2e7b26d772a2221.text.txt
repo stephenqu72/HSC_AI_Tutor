@@ -1,0 +1,78 @@
+Hello! I am here to help you work through these Extension 2 calculus and algebra problems. Let's tackle them step-by-step with the rigour expected in your HSC exams.
+
+---
+
+### Part a
+**Goal:** Find $\int \ln(x^2 + 1) \, dx$ using integration by parts.
+
+The integration by parts formula is $\int u \, dv = uv - \int v \, du$.
+Let $u = \ln(x^2 + 1)$, so $du = \frac{2x}{x^2+1} \, dx$.
+Let $dv = dx$, so $v = x$.
+
+Applying the formula:
+$$\int \ln(x^2 + 1) \, dx = x \ln(x^2 + 1) - \int \frac{2x^2}{x^2 + 1} \, dx$$
+To integrate $\frac{2x^2}{x^2+1}$, we use algebraic division: $\frac{2x^2}{x^2+1} = \frac{2(x^2+1) - 2}{x^2+1} = 2 - \frac{2}{x^2+1}$.
+$$\int \ln(x^2 + 1) \, dx = x \ln(x^2 + 1) - \int \left( 2 - \frac{2}{x^2+1} \right) \, dx$$
+Integrating term by term:
+$$= x \ln(x^2 + 1) - 2x + 2\tan^{-1}(x) + C$$
+
+**Final Answer:** $x \ln(x^2 + 1) - 2x + 2\tan^{-1}(x) + C$
+
+---
+
+### Part b
+**Goal:** Find $\int \frac{e^{2x}}{(e^x - 1)^2} \, dx$ using $u = e^x - 1$.
+
+Given $u = e^x - 1$, then $du = e^x \, dx$. Note that $e^x = u + 1$.
+The integral becomes:
+$$\int \frac{e^x \cdot e^x}{(e^x - 1)^2} \, dx = \int \frac{u+1}{u^2} \, du = \int \left( \frac{u}{u^2} + \frac{1}{u^2} \right) \, du$$
+$$= \int \left( \frac{1}{u} + u^{-2} \right) \, du$$
+Integrating:
+$$= \ln|u| - \frac{1}{u} + C$$
+Substituting back $u = e^x - 1$:
+**Final Answer:** $\ln|e^x - 1| - \frac{1}{e^x - 1} + C$
+
+---
+
+### Part c
+**Goal:** Evaluate $\int_0^{\pi/2} \frac{1}{3 \cos x - 4 \sin x + 5} \, dx$ using $t = \tan(x/2)$.
+
+Using the Weierstrass substitution: $\cos x = \frac{1-t^2}{1+t^2}$, $\sin x = \frac{2t}{1+t^2}$, and $dx = \frac{2}{1+t^2} \, dt$.
+Limits: when $x=0, t=0$; when $x=\pi/2, t=1$.
+$$\int_0^1 \frac{1}{3(\frac{1-t^2}{1+t^2}) - 4(\frac{2t}{1+t^2}) + 5} \cdot \frac{2}{1+t^2} \, dt = \int_0^1 \frac{2}{3(1-t^2) - 8t + 5(1+t^2)} \, dt$$
+$$= \int_0^1 \frac{2}{3-3t^2-8t+5+5t^2} \, dt = \int_0^1 \frac{2}{2t^2-8t+8} \, dt = \int_0^1 \frac{1}{t^2-4t+4} \, dt$$
+$$= \int_0^1 \frac{1}{(t-2)^2} \, dt = \left[ -\frac{1}{t-2} \right]_0^1$$
+$$= \left( -\frac{1}{1-2} \right) - \left( -\frac{1}{0-2} \right) = 1 - \frac{1}{2} = \frac{1}{2}$$
+**Final Answer:** $\frac{1}{2}$
+
+---
+
+### Part d
+**Goal:** Convert $y = 3x - 5$ to the form $\mathbf{r} = \mathbf{a} + \lambda\mathbf{b}$.
+
+A line in 2D vector form is defined by a point $\mathbf{a}$ on the line and a direction vector $\mathbf{b}$.
+If $x=0, y=-5$, so $\mathbf{a} = \begin{pmatrix} 0 \\ -5 \end{pmatrix}$.
+The gradient $m=3$ means for every change in $x$ of 1, $y$ changes by 3. Thus, the direction vector $\mathbf{b} = \begin{pmatrix} 1 \\ 3 \end{pmatrix}$.
+**Final Answer:** $\mathbf{r} = \begin{pmatrix} 0 \\ -5 \end{pmatrix} + \lambda \begin{pmatrix} 1 \\ 3 \end{pmatrix}$
+
+---
+
+### Part e
+**i) Goal:** Find the other two zeroes of $P(z) = 2z^3 - 19z^2 + 112z + k$.
+
+Since $k$ is real, complex roots appear in conjugate pairs. Thus, $5 - 6i$ is also a zero.
+Let the roots be $\alpha = 5+6i, \beta = 5-6i, \gamma$.
+From the sum of roots: $\alpha + \beta + \gamma = -(\frac{-19}{2}) = 9.5$.
+$$(5+6i) + (5-6i) + \gamma = 9.5 \implies 10 + \gamma = 9.5 \implies \gamma = -0.5$$
+**Final Answer:** $5 - 6i$ and $-0.5$
+
+**ii) Goal:** Find the value of $k$.
+
+Using the product of roots $\alpha\beta\gamma = -\frac{k}{a_n} = -\frac{k}{2}$.
+$$(5+6i)(5-6i)(-0.5) = (25 + 36)(-0.5) = 61(-0.5) = -30.5$$
+$$-\frac{k}{2} = -30.5 \implies k = 61$$
+**Final Answer:** $k = 61$
+
+---
+###QUESTION_TYPE
+Calculation Question

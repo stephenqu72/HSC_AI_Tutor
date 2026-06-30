@@ -1,0 +1,24 @@
+To determine the integral of $\cos^{-1}(x)$, we use the Fundamental Theorem of Calculus in the context of inverse differentiation.
+
+### Step-by-step Solution
+
+We are given the derivative:
+$$\frac{d}{dx}(x \cos^{-1}(x)) = \cos^{-1}(x) - \frac{x}{\sqrt{1-x^2}}$$
+
+By the definition of the indefinite integral, if $\frac{d}{dx}[F(x)] = f(x)$, then $\int f(x) \, dx = F(x) + C$. Applying this to the equation above:
+$$\int \frac{d}{dx}(x \cos^{-1}(x)) \, dx = \int \left( \cos^{-1}(x) - \frac{x}{\sqrt{1-x^2}} \right) \, dx$$
+
+On the left side, the integral of the derivative of a function returns the original function:
+$$x \cos^{-1}(x) = \int \cos^{-1}(x) \, dx - \int \frac{x}{\sqrt{1-x^2}} \, dx + C$$
+
+Our goal is to isolate $\int \cos^{-1}(x) \, dx$. We add $\int \frac{x}{\sqrt{1-x^2}} \, dx$ to both sides of the equation:
+$$\int \cos^{-1}(x) \, dx = x \cos^{-1}(x) + \int \frac{x}{\sqrt{1-x^2}} \, dx + C$$
+
+Comparing this expression with the provided multiple-choice options:
+- A. $x \cos^{-1}(x) + \int \frac{x}{\sqrt{1-x^2}} \, dx + C$ matches our derived expression.
+- B, C, and D do not represent the correct algebraic rearrangement of the given derivative.
+
+Therefore, the correct choice is **A**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

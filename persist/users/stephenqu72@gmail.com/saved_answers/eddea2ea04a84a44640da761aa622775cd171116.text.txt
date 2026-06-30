@@ -1,0 +1,61 @@
+### Part (a)
+**To prove:** $S_n = \frac{a(1-r^n)}{1-r}$ for $n \ge 1$, given $S_1 = a$ and $S_n - S_{n-1} = ar^{n-1}$ for $n \ge 2$.
+
+**Step 1: Base case**
+For $n = 1$:
+LHS = $S_1 = a$ (given).
+RHS = $\frac{a(1-r^1)}{1-r} = \frac{a(1-r)}{1-r} = a$.
+Since LHS = RHS, the statement is true for $n=1$.
+
+**Step 2: Inductive step**
+Assume the statement is true for $n = k$, i.e., $S_k = \frac{a(1-r^k)}{1-r}$.
+We must prove it is true for $n = k+1$, i.e., $S_{k+1} = \frac{a(1-r^{k+1})}{1-r}$.
+
+Using the recurrence relation $S_{k+1} - S_k = ar^{(k+1)-1} = ar^k$:
+$$S_{k+1} = S_k + ar^k$$
+Substitute the inductive hypothesis for $S_k$:
+$$S_{k+1} = \frac{a(1-r^k)}{1-r} + ar^k$$
+Combine over a common denominator:
+$$S_{k+1} = \frac{a - ar^k + ar^k(1-r)}{1-r}$$
+$$S_{k+1} = \frac{a - ar^k + ar^k - ar^{k+1}}{1-r}$$
+$$S_{k+1} = \frac{a - ar^{k+1}}{1-r} = \frac{a(1-r^{k+1})}{1-r}$$
+The statement is true for $n=k+1$ whenever it is true for $n=k$. By the principle of mathematical induction, it is true for all $n \ge 1$.
+
+***
+
+### Part (b)(i)
+Given $z = 1 + i\sqrt{3}$.
+Modulus $|z| = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{1+3} = 2$.
+Argument $\arg(z) = \tan^{-1}\left(\frac{\sqrt{3}}{1}\right) = \frac{\pi}{3}$.
+Mod-arg form: $z = 2(\cos \frac{\pi}{3} + i \sin \frac{\pi}{3}) = 2e^{i\pi/3}$.
+
+Final answer: $z = 2(\cos \frac{\pi}{3} + i \sin \frac{\pi}{3})$
+
+***
+
+### Part (b)(ii)
+Using De Moivre’s Theorem, $z^3 = [2(\cos \frac{\pi}{3} + i \sin \frac{\pi}{3})]^3 = 2^3 (\cos \pi + i \sin \pi) = 8(-1 + 0i) = -8$.
+Therefore, $\sqrt{z^3} = \sqrt{-8} = \sqrt{8} \cdot \sqrt{-1} = 2\sqrt{2}i$.
+
+Final answer: $\sqrt{z^3} = 2\sqrt{2}i$
+
+***
+
+### Part (b)(iii)
+Using De Moivre’s Theorem, $z^n = 2^n (\cos \frac{n\pi}{3} + i \sin \frac{n\pi}{3})$.
+For $z^n$ to be purely imaginary, the real part must be zero:
+$\cos(\frac{n\pi}{3}) = 0$.
+This occurs when the angle is an odd multiple of $\frac{\pi}{2}$:
+$$\frac{n\pi}{3} = \frac{\pi}{2} + k\pi \quad (\text{where } k \in \mathbb{Z})$$
+Divide by $\pi$ and multiply by 3:
+$$n = \frac{3}{2} + 3k = \frac{3(1+2k)}{2}$$
+Since $n$ must be an integer, we test $k$:
+If $k=0, n=1.5$ (not integer). If $k=1, n=4.5$ (not integer).
+Actually, $\cos(\frac{n\pi}{3}) = 0$ implies $\frac{n}{3} = \frac{1}{2}, \frac{3}{2}, \frac{5}{2}, \dots$
+$\implies n = \frac{3}{2}, \frac{9}{2}, \dots$
+There are no integer values of $n$ for which $\cos(\frac{n\pi}{3}) = 0$.
+
+Final answer: No such values of $n$ exist.
+
+###QUESTION_TYPE
+Calculation Question

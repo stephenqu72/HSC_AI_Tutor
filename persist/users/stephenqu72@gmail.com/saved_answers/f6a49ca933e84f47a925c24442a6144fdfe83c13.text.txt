@@ -1,0 +1,35 @@
+To find the value of the integral $I = \int_{0}^{\pi} x \sin x \, dx$ using the substitution $x = \pi - y$, we perform the following steps:
+
+### Worked Solution
+
+1.  **Define the substitution:**
+    Given $x = \pi - y$, we find the differential $dx$ by differentiating with respect to $y$:
+    $$\frac{dx}{dy} = -1 \implies dx = -dy$$
+
+2.  **Change the limits of integration:**
+    *   When $x = 0$, then $0 = \pi - y$, which gives $y = \pi$.
+    *   When $x = \pi$, then $\pi = \pi - y$, which gives $y = 0$.
+
+3.  **Substitute into the integral:**
+    Substitute $x$, $dx$, and the new limits into the integral expression:
+    $$I = \int_{\pi}^{0} (\pi - y) \sin(\pi - y) (-dy)$$
+
+4.  **Simplify the expression:**
+    *   Use the trigonometric identity $\sin(\pi - y) = \sin y$.
+    *   Use the negative sign from $-dy$ to swap the order of the limits (Property of definite integrals: $-\int_{a}^{b} f(y) \, dy = \int_{b}^{a} f(y) \, dy$):
+    $$I = \int_{0}^{\pi} (\pi - y) \sin y \, dy$$
+
+5.  **Expand and split the integral:**
+    $$I = \int_{0}^{\pi} \pi \sin y \, dy - \int_{0}^{\pi} y \sin y \, dy$$
+    Note that the second term $\int_{0}^{\pi} y \sin y \, dy$ is equivalent to the original integral $I$ (as the choice of variable does not change the definite integral value). Therefore:
+    $$I = \pi \int_{0}^{\pi} \sin y \, dy - I$$
+    $$2I = \pi \int_{0}^{\pi} \sin y \, dy$$
+    $$I = \frac{\pi}{2} \int_{0}^{\pi} \sin y \, dy$$
+
+Looking at the options provided, Option C matches this resulting expression.
+
+### Final Answer
+The correct option is **C**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

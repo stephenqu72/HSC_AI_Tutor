@@ -1,0 +1,32 @@
+To find the value of $q$ for the given polynomial equation $z^3 - z^2 + qz + 5 = 0$ where $1+2i$ is a root, we use the fact that the coefficients of the polynomial are real numbers (implied by the format of the equation).
+
+### Worked Solution
+
+Since the polynomial $P(z) = z^3 - z^2 + qz + 5$ has real coefficients, the **Conjugate Root Theorem** states that if $z_1 = 1+2i$ is a root, then its complex conjugate $z_2 = 1-2i$ must also be a root of the equation.
+
+Let the three roots of the cubic equation be $z_1 = 1+2i$, $z_2 = 1-2i$, and $z_3 = \alpha$.
+We use the **Vieta's Formulas** for a cubic equation of the form $az^3 + bz^2 + cz + d = 0$:
+1. The product of the roots is $z_1 z_2 z_3 = -\frac{d}{a}$
+2. The sum of the roots taken two at a time is $z_1 z_2 + z_2 z_3 + z_3 z_1 = \frac{c}{a}$
+
+**Step 1: Find the third root $z_3 = \alpha$ using the product of roots.**
+Given the equation $z^3 - z^2 + qz + 5 = 0$, we have $a=1$ and $d=5$.
+The product is:
+$$(1+2i)(1-2i)\alpha = -\frac{5}{1}$$
+Since $(1+2i)(1-2i) = 1^2 - (2i)^2 = 1 - (-4) = 5$:
+$$5\alpha = -5$$
+$$\alpha = -1$$
+
+**Step 2: Find $q$ using the sum of roots taken two at a time.**
+From Vieta's formulas, $q = \frac{c}{a} = z_1 z_2 + z_2 z_3 + z_3 z_1$.
+We know $z_1 z_2 = 5$, $z_3 = -1$, $z_1 = 1+2i$, and $z_2 = 1-2i$.
+$$q = 5 + (-1)(1-2i) + (-1)(1+2i)$$
+$$q = 5 - 1 + 2i - 1 - 2i$$
+$$q = 5 - 2$$
+$$q = 3$$
+
+**Final Answer:**
+The value of $q$ is $3$, which corresponds to option **C**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

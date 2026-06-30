@@ -1,0 +1,26 @@
+To find the equation of a line in 3D space, we use the vector form $\mathbf{r} = \mathbf{a} + \mu\mathbf{v}$, where:
+*   $\mathbf{a}$ is the position vector of a point on the line.
+*   $\mathbf{v}$ is the direction vector of the line.
+*   $\mu$ is a scalar parameter.
+
+### Worked Solution
+
+**1. Identify the direction vector**
+The given line is $r(\lambda) = (2\mathbf{i} + 3\mathbf{j} - \mathbf{k}) + \lambda(-\mathbf{i} + 2\mathbf{j} - 4\mathbf{k})$.
+Since our required line is parallel to this line, it must share the same direction vector.
+The direction vector is $\mathbf{v} = \begin{pmatrix} -1 \\ 2 \\ -4 \end{pmatrix}$.
+
+**2. Identify the position vector**
+The line must pass through the point with position vector $\mathbf{a} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix}$.
+
+**3. Construct the equation of the line**
+Substituting $\mathbf{a}$ and $\mathbf{v}$ into the general vector equation $\mathbf{r} = \mathbf{a} + \mu\mathbf{v}$, we obtain:
+$$\mathbf{r} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix} + \mu \begin{pmatrix} -1 \\ 2 \\ -4 \end{pmatrix}$$
+Using unit vector notation ($\mathbf{i}, \mathbf{j}, \mathbf{k}$), this is expressed as:
+$$\mathbf{r}(\mu) = (2\mathbf{i} - \mathbf{j} + 3\mathbf{k}) + \mu(-\mathbf{i} + 2\mathbf{j} - 4\mathbf{k})$$
+
+**Final Answer:**
+The equation of the line is $\mathbf{r} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix} + \mu \begin{pmatrix} -1 \\ 2 \\ -4 \end{pmatrix}$ or $\mathbf{r} = (2\mathbf{i} - \mathbf{j} + 3\mathbf{k}) + \mu(-\mathbf{i} + 2\mathbf{j} - 4\mathbf{k})$.
+
+###QUESTION_TYPE
+<Calculation Question>

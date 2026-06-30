@@ -1,0 +1,35 @@
+To determine the correct Argand diagram for the expression $\arg(z + i - 1) + \frac{\pi}{4} = 0$, we follow these logical steps:
+
+### Algebraic Rearrangement
+We begin with the given equation:
+$$\arg(z + i - 1) + \frac{\pi}{4} = 0$$
+Subtract $\frac{\pi}{4}$ from both sides to isolate the argument term:
+$$\arg(z - (1 - i)) = -\frac{\pi}{4}$$
+
+### Interpretation of the Geometry
+The expression $\arg(z - z_0) = \theta$ represents a ray starting from the point $z_0$ (but not including $z_0$ itself, which is why we look for an open circle at that point) extending infinitely at an angle $\theta$ with respect to the positive real axis.
+
+1.  **Identify the starting point ($z_0$):**
+    Comparing $z - (1 - i)$ to $z - z_0$, we identify:
+    $$z_0 = 1 - i$$
+    In the complex plane, this corresponds to the coordinate $(1, -1)$.
+2.  **Identify the angle ($\theta$):**
+    The angle is given as $\theta = -\frac{\pi}{4}$. This corresponds to a direction of $-45^\circ$ from the positive real axis, pointing into the fourth quadrant (down and to the right).
+
+### Matching to the Diagrams
+*   **Starting Point:** We require an open circle at $Re(z) = 1$ and $Im(z) = -1$.
+    *   Diagram A: The open circle is at $(1, -1)$.
+    *   Diagram B: The open circle is at $(1, -1)$.
+    *   Diagram C: The open circle is at $(-1, 1)$. (Incorrect)
+    *   Diagram D: The open circle is at $(-1, 1)$. (Incorrect)
+*   **Direction:** We require a ray pointing at $-\frac{\pi}{4}$ (down and right).
+    *   Diagram A: The ray points up and right. (Incorrect)
+    *   Diagram B: The ray starts at $(1, -1)$ and points down and right into the fourth quadrant, consistent with an angle of $-\frac{\pi}{4}$.
+
+### Conclusion
+Diagram B correctly displays an open circle at $1 - i$ and a ray extending in the direction of $-\frac{\pi}{4}$.
+
+**Final Answer:** B
+
+###QUESTION_TYPE
+<Multiple Choice Question>

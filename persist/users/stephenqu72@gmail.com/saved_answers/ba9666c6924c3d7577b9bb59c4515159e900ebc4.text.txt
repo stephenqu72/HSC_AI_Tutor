@@ -1,0 +1,39 @@
+To solve this problem, we first establish a coordinate system based on the origin $O$ at the centre of the rectangle $EFGH$.
+Given: $EF=10$ (along $\mathbf{i}$), $EH=4$ (along $\mathbf{j}$), height of $A$ above $E$ is 3, height of $C$ above $G$ is 6.
+Coordinates:
+$E = (-5, -2, 0)$, $F = (5, -2, 0)$, $H = (-5, 2, 0)$, $G = (5, 2, 0)$.
+$A = E + (0, 0, 3) = (-5, -2, 3)$.
+$C = G + (0, 0, 6) = (5, 2, 6)$.
+
+### Part i
+To find $\vec{AC}$:
+$$\vec{AC} = \vec{OC} - \vec{OA} = \begin{pmatrix} 5 \\ 2 \\ 6 \end{pmatrix} - \begin{pmatrix} -5 \\ -2 \\ 3 \end{pmatrix} = \begin{pmatrix} 10 \\ 4 \\ 3 \end{pmatrix}$$
+The vector equation of the line passing through $A$ and $C$ is $\mathbf{r} = \vec{OA} + \lambda \vec{AC}$:
+$$\mathbf{r} = \begin{pmatrix} -5 \\ -2 \\ 3 \end{pmatrix} + \lambda \begin{pmatrix} 10 \\ 4 \\ 3 \end{pmatrix}$$
+
+### Part ii
+The spotlight at $Q = \begin{pmatrix} 15 \\ 6 \\ z \end{pmatrix}$ is collinear with $A$ and $C$ if it lies on the line $\mathbf{r}$.
+Setting the $x$ and $y$ components:
+$15 = -5 + 10\lambda \implies 20 = 10\lambda \implies \lambda = 2$.
+$6 = -2 + 4\lambda \implies 8 = 4\lambda \implies \lambda = 2$.
+Substituting $\lambda = 2$ into the $z$-component:
+$z = 3 + 3\lambda = 3 + 3(2) = 9$.
+The height of the pillar is the $z$-coordinate of $Q$, which is 9 m.
+
+### Part iii
+We seek a point $X$ on the line $AC$ such that $DX \perp AC$.
+$X$ has coordinates $(-5 + 10\lambda, -2 + 4\lambda, 3 + 3\lambda)$.
+$D = H + (0, 0, 6) = (-5, 2, 6)$.
+Vector $\vec{DX} = X - D = \begin{pmatrix} -5 + 10\lambda - (-5) \\ -2 + 4\lambda - 2 \\ 3 + 3\lambda - 6 \end{pmatrix} = \begin{pmatrix} 10\lambda \\ 4\lambda - 4 \\ 3\lambda - 3 \end{pmatrix}$.
+For $DX$ to be perpendicular to the line direction $\mathbf{v} = \begin{pmatrix} 10 \\ 4 \\ 3 \end{pmatrix}$, the dot product $\vec{DX} \cdot \mathbf{v} = 0$:
+$$10(10\lambda) + 4(4\lambda - 4) + 3(3\lambda - 3) = 0$$
+$$100\lambda + 16\lambda - 16 + 9\lambda - 9 = 0$$
+$$125\lambda - 25 = 0 \implies \lambda = \frac{25}{125} = 0.2$$
+Substitute $\lambda = 0.2$ into the expression for $X$:
+$x = -5 + 10(0.2) = -5 + 2 = -3$
+$y = -2 + 4(0.2) = -2 + 0.8 = -1.2$
+$z = 3 + 3(0.2) = 3 + 0.6 = 3.6$
+The coordinates of $X$ are $(-3, -1.2, 3.6)$.
+
+###QUESTION_TYPE
+Calculation Question

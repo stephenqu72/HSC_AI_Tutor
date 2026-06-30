@@ -1,0 +1,35 @@
+To evaluate the definite integral $\int_{1}^{e} x^3 \ln(x) \, dx$, we use the technique of **integration by parts**.
+
+### Method: Integration by Parts
+The formula for integration by parts is:
+$$\int u \, dv = uv - \int v \, du$$
+
+We choose $u$ and $dv$ based on the LIATE rule (Logarithmic, Inverse trig, Algebraic, Trig, Exponential). Here, we set:
+- $u = \ln(x)$ $\implies$ $du = \frac{1}{x} \, dx$
+- $dv = x^3 \, dx$ $\implies$ $v = \int x^3 \, dx = \frac{x^4}{4}$
+
+Applying the formula:
+$$\int x^3 \ln(x) \, dx = \left[ \frac{x^4}{4} \ln(x) \right] - \int \frac{x^4}{4} \cdot \frac{1}{x} \, dx$$
+$$\int x^3 \ln(x) \, dx = \frac{x^4}{4} \ln(x) - \frac{1}{4} \int x^3 \, dx$$
+$$\int x^3 \ln(x) \, dx = \frac{x^4}{4} \ln(x) - \frac{1}{4} \left( \frac{x^4}{4} \right) + C = \frac{x^4 \ln(x)}{4} - \frac{x^4}{16} + C$$
+
+### Evaluating the Definite Integral
+Now, we evaluate from $1$ to $e$:
+$$\int_{1}^{e} x^3 \ln(x) \, dx = \left[ \frac{x^4 \ln(x)}{4} - \frac{x^4}{16} \right]_{1}^{e}$$
+
+Substitute the upper limit $x = e$:
+$$\left( \frac{e^4 \ln(e)}{4} - \frac{e^4}{16} \right) = \frac{e^4(1)}{4} - \frac{e^4}{16} = \frac{4e^4}{16} - \frac{e^4}{16} = \frac{3e^4}{16}$$
+
+Substitute the lower limit $x = 1$:
+$$\left( \frac{1^4 \ln(1)}{4} - \frac{1^4}{16} \right) = \left( 0 - \frac{1}{16} \right) = -\frac{1}{16}$$
+
+Subtracting the lower limit from the upper limit:
+$$\frac{3e^4}{16} - \left( -\frac{1}{16} \right) = \frac{3e^4 + 1}{16} = \frac{1}{16}(3e^4 + 1)$$
+
+Comparing this result to the given options, we find it matches option **D**.
+
+**Final Answer:**
+The value of the integral is $\frac{1}{16}(3e^4 + 1)$, which corresponds to **D**.
+
+###QUESTION_TYPE
+Multiple Choice Question

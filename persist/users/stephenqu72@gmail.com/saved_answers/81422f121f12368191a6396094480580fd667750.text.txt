@@ -1,0 +1,26 @@
+To find a unit vector perpendicular to two given vectors $\mathbf{u}$ and $\mathbf{v}$, we use the cross product to find a perpendicular vector, and then normalise it (divide by its magnitude).
+
+### Step 1: Find the cross product $\mathbf{u} \times \mathbf{v}$
+Given $\mathbf{u} = \mathbf{i} + \mathbf{j} + 0\mathbf{k} = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$ and $\mathbf{v} = \mathbf{i} + 0\mathbf{j} + 2\mathbf{k} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}$.
+
+The cross product $\mathbf{w} = \mathbf{u} \times \mathbf{v}$ is given by the determinant:
+$$\mathbf{w} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 1 & 1 & 0 \\ 1 & 0 & 2 \end{vmatrix}$$
+Expanding along the top row:
+$$\mathbf{w} = \mathbf{i}(1 \times 2 - 0 \times 0) - \mathbf{j}(1 \times 2 - 0 \times 1) + \mathbf{k}(1 \times 0 - 1 \times 1)$$
+$$\mathbf{w} = \mathbf{i}(2) - \mathbf{j}(2) + \mathbf{k}(-1) = 2\mathbf{i} - 2\mathbf{j} - \mathbf{k} = \begin{pmatrix} 2 \\ -2 \\ -1 \end{pmatrix}$$
+
+### Step 2: Find the magnitude of $\mathbf{w}$
+The magnitude $|\mathbf{w}|$ is calculated as:
+$$|\mathbf{w}| = \sqrt{2^2 + (-2)^2 + (-1)^2} = \sqrt{4 + 4 + 1} = \sqrt{9} = 3$$
+
+### Step 3: Determine the unit vector
+A unit vector $\mathbf{\hat{w}}$ is obtained by dividing the vector by its magnitude. Note that the negative of this vector is also a unit vector perpendicular to $\mathbf{u}$ and $\mathbf{v}$.
+$$\mathbf{\hat{w}} = \pm \frac{\mathbf{w}}{|\mathbf{w}|} = \pm \frac{1}{3} (2\mathbf{i} - 2\mathbf{j} - \mathbf{k})$$
+
+Thus, the unit vectors are $\pm \left( \frac{2}{3}\mathbf{i} - \frac{2}{3}\mathbf{j} - \frac{1}{3}\mathbf{k} \right)$.
+
+**Final Answer:**
+The unit vectors are $\frac{2}{3}\mathbf{i} - \frac{2}{3}\mathbf{j} - \frac{1}{3}\mathbf{k}$ and $-\frac{2}{3}\mathbf{i} + \frac{2}{3}\mathbf{j} + \frac{1}{3}\mathbf{k}$.
+
+###QUESTION_TYPE
+Calculation Question

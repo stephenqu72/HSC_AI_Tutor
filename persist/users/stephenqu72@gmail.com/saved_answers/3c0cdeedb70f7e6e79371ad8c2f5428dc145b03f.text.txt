@@ -1,0 +1,36 @@
+To find $z^5$ where $z = \dfrac{\sqrt{3} + i}{1 + i}$, it is most efficient to convert the numerator and denominator into polar (exponential) form.
+
+### Step 1: Convert the numerator and denominator to polar form
+Let $z_1 = \sqrt{3} + i$.
+*   The modulus is $|z_1| = \sqrt{(\sqrt{3})^2 + (1)^2} = \sqrt{3+1} = 2$.
+*   The argument $\theta_1$ satisfies $\cos \theta_1 = \frac{\sqrt{3}}{2}$ and $\sin \theta_1 = \frac{1}{2}$, so $\theta_1 = \frac{\pi}{6}$.
+*   Thus, $z_1 = 2e^{i\frac{\pi}{6}}$.
+
+Let $z_2 = 1 + i$.
+*   The modulus is $|z_2| = \sqrt{1^2 + 1^2} = \sqrt{2}$.
+*   The argument $\theta_2$ satisfies $\cos \theta_2 = \frac{1}{\sqrt{2}}$ and $\sin \theta_2 = \frac{1}{\sqrt{2}}$, so $\theta_2 = \frac{\pi}{4}$.
+*   Thus, $z_2 = \sqrt{2}e^{i\frac{\pi}{4}}$.
+
+### Step 2: Express $z$ in exponential form
+Using the quotient rule for complex numbers in exponential form, $\frac{r_1 e^{i\theta_1}}{r_2 e^{i\theta_2}} = \frac{r_1}{r_2} e^{i(\theta_1 - \theta_2)}$:
+$$z = \frac{2e^{i\frac{\pi}{6}}}{\sqrt{2}e^{i\frac{\pi}{4}}} = \frac{2}{\sqrt{2}} e^{i\left(\frac{\pi}{6} - \frac{\pi}{4}\right)}$$
+$$z = \sqrt{2} e^{i\left(\frac{2\pi}{12} - \frac{3\pi}{12}\right)} = \sqrt{2} e^{-i\frac{\pi}{12}}$$
+
+### Step 3: Calculate $z^5$
+Using De Moivre's Theorem in exponential form, $(re^{i\theta})^n = r^n e^{in\theta}$:
+$$z^5 = (\sqrt{2})^5 \cdot (e^{-i\frac{\pi}{12}})^5$$
+*   For the modulus: $(\sqrt{2})^5 = (\sqrt{2})^4 \cdot \sqrt{2} = 4\sqrt{2}$.
+*   For the argument: $e^{i\left(-5 \cdot \frac{\pi}{12}\right)} = e^{-i\frac{5\pi}{12}}$.
+
+Now, we compare our result $4\sqrt{2}e^{-i\frac{5\pi}{12}}$ with the options provided. Since angles are equivalent modulo $2\pi$, we add $2\pi$ (which is $\frac{24\pi}{12}$) to the argument:
+$$-\frac{5\pi}{12} + \frac{24\pi}{12} = \frac{19\pi}{12}$$
+Thus:
+$$z^5 = 4\sqrt{2}e^{i\frac{19\pi}{12}}$$
+
+Comparing this to the given options, we find it matches option **D**.
+
+### Final Answer
+The correct option is **D**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

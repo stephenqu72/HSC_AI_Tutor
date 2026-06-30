@@ -1,0 +1,55 @@
+### Part a) i
+We are given the equation of motion for simple harmonic motion (SHM): $\ddot{x} = -16x$.
+We use the identity $\ddot{x} = v \frac{dv}{dx}$, where $v$ is the velocity. Substituting this into the equation of motion gives:
+$$v \frac{dv}{dx} = -16x$$
+Integrate both sides with respect to $x$:
+$$\int v \, dv = \int -16x \, dx$$
+$$\frac{1}{2}v^2 = -8x^2 + C$$
+To determine the constant of integration $C$, we use the definition of amplitude $a$. At $x = a$, the velocity $v = 0$:
+$$0 = -8a^2 + C \implies C = 8a^2$$
+Substituting $C$ back into the equation:
+$$\frac{1}{2}v^2 = -8x^2 + 8a^2$$
+$$v^2 = 16(a^2 - x^2)$$
+**Final Answer:** $v^2 = 16(a^2 - x^2)$
+
+### Part a) ii
+We are given $x = \sqrt{3} \sin 4t - \cos 4t$. We want to express this in the form $R \sin(4t - \alpha) = R \sin 4t \cos \alpha - R \cos 4t \sin \alpha$.
+Comparing coefficients:
+$R \cos \alpha = \sqrt{3}$
+$R \sin \alpha = 1$
+Squaring and adding: $R^2(\cos^2 \alpha + \sin^2 \alpha) = (\sqrt{3})^2 + 1^2 \implies R^2 = 4 \implies R = 2$.
+Dividing the equations: $\tan \alpha = \frac{1}{\sqrt{3}} \implies \alpha = \frac{\pi}{6}$.
+**Final Answer:** $x = 2 \sin(4t - \frac{\pi}{6})$
+
+### Part a) iii
+Maximum speed in SHM occurs at the equilibrium position, i.e., when $x = 0$.
+Using the result from (ii), $x = 2 \sin(4t - \frac{\pi}{6}) = 0$.
+This occurs when $4t - \frac{\pi}{6} = n\pi$ for integers $n$.
+$4t = n\pi + \frac{\pi}{6} \implies t = \frac{n\pi}{4} + \frac{\pi}{24}$.
+For $t > 0$, the smallest value occurs when $n=0$:
+$t = \frac{\pi}{24}$.
+**Final Answer:** $t = \frac{\pi}{24}$ seconds.
+
+### Part b) i
+Given $z = \cos \theta + i \sin \theta$, by De Moivre's Theorem, $z^n = \cos n\theta + i \sin n\theta$ and $z^{-n} = \cos n\theta - i \sin n\theta$.
+Subtracting $z^{-n}$ from $z^n$:
+$z^n - \frac{1}{z^n} = (\cos n\theta + i \sin n\theta) - (\cos n\theta - i \sin n\theta) = 2i \sin n\theta$.
+For $n=1$:
+$z - \frac{1}{z} = 2i \sin \theta$.
+**Final Answer:** Proven.
+
+### Part b) ii
+From (i), $2i \sin \theta = z - z^{-1}$. Raising both sides to the power of 5:
+$(2i \sin \theta)^5 = (z - z^{-1})^5$
+$32i \sin^5 \theta = z^5 - 5z^4(z^{-1}) + 10z^3(z^{-2}) - 10z^2(z^{-3}) + 5z(z^{-4}) - z^{-5}$
+Group terms using the identity from (b)(i):
+$32i \sin^5 \theta = (z^5 - z^{-5}) - 5(z^3 - z^{-3}) + 10(z - z^{-1})$
+Substitute $z^n - z^{-n} = 2i \sin n\theta$:
+$32i \sin^5 \theta = 2i \sin 5\theta - 5(2i \sin 3\theta) + 10(2i \sin \theta)$
+Divide by $32i$:
+$\sin^5 \theta = \frac{2}{32} \sin 5\theta - \frac{10}{32} \sin 3\theta + \frac{20}{32} \sin \theta$
+$\sin^5 \theta = \frac{1}{16} \sin 5\theta - \frac{5}{16} \sin 3\theta + \frac{5}{8} \sin \theta$.
+**Final Answer:** $\sin^5 \theta = \frac{1}{16} \sin 5\theta - \frac{5}{16} \sin 3\theta + \frac{5}{8} \sin \theta$
+
+###QUESTION_TYPE
+<Calculation Question>

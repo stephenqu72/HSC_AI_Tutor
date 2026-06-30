@@ -1,0 +1,86 @@
+Hello! I am your NSW HSC Mathematics Extension 2 tutor. Let's work through this mechanics problem step-by-step. Remember that in motion problems, defining your coordinate system is the first crucial step. We will define the downward direction as positive, so $x$ is the distance fallen, $v = \dot{x}$ is the downward velocity, and $\ddot{x}$ is the downward acceleration.
+
+---
+
+### Part i
+**Goal:** Show that $\ddot{x} = g - \frac{v^2}{100}$.
+
+**Derivation:**
+According to Newton's Second Law, the net force acting on the body is the sum of the gravitational force acting downwards and the resistance force acting upwards (opposing motion).
+The body has unit mass ($m = 1$).
+- Gravitational force = $mg = (1)(g) = g$.
+- Resistance force = $\frac{v^2}{100}$.
+
+Net force $F = ma = m\ddot{x}$.
+$$m\ddot{x} = mg - R$$
+$$(1)\ddot{x} = g - \frac{v^2}{100}$$
+$$\ddot{x} = g - \frac{v^2}{100}$$
+
+**Final Answer:**
+$\ddot{x} = g - \frac{v^2}{100}$
+
+---
+
+### Part ii
+**Goal:** Determine the terminal velocity $V$.
+
+**Method:**
+Terminal velocity occurs when the acceleration is zero ($\ddot{x} = 0$). As the body falls, the resistance increases until it equals the gravitational force, resulting in no further change in velocity.
+Setting the equation from part (i) to zero:
+$$0 = g - \frac{V^2}{100}$$
+$$\frac{V^2}{100} = g$$
+$$V^2 = 100g$$
+$$V = \sqrt{100g} = 10\sqrt{g}$$
+
+**Final Answer:**
+$V = 10\sqrt{g} \text{ m/s}$
+
+---
+
+### Part iii
+**Goal:** Show $v^2 = V^2\left(1 - e^{-\frac{x}{50}}\right)$.
+
+**Derivation:**
+We use the alternative expression for acceleration: $\ddot{x} = v \frac{dv}{dx}$.
+Substituting this into the equation from part (i):
+$$v \frac{dv}{dx} = g - \frac{v^2}{100}$$
+Since $V^2 = 100g$, then $g = \frac{V^2}{100}$. Substituting this:
+$$v \frac{dv}{dx} = \frac{V^2}{100} - \frac{v^2}{100} = \frac{1}{100}(V^2 - v^2)$$
+Separate the variables $v$ and $x$:
+$$\frac{v}{V^2 - v^2} \, dv = \frac{1}{100} \, dx$$
+Integrate both sides. To integrate the left side, use substitution $u = V^2 - v^2$, so $du = -2v \, dv$:
+$$-\frac{1}{2} \int \frac{1}{u} \, du = \int \frac{1}{100} \, dx$$
+$$-\frac{1}{2} \ln|V^2 - v^2| = \frac{x}{100} + C$$
+At $x=0$, $v=0$. Thus, $-\frac{1}{2} \ln|V^2| = C$.
+$$-\frac{1}{2} \ln(V^2 - v^2) = \frac{x}{100} - \frac{1}{2} \ln(V^2)$$
+$$\frac{1}{2} \ln(V^2) - \frac{1}{2} \ln(V^2 - v^2) = \frac{x}{100}$$
+$$\ln\left(\frac{V^2}{V^2 - v^2}\right) = \frac{2x}{100} = \frac{x}{50}$$
+Exponentiate both sides:
+$$\frac{V^2}{V^2 - v^2} = e^{\frac{x}{50}}$$
+$$V^2 = (V^2 - v^2)e^{\frac{x}{50}} \implies V^2e^{-\frac{x}{50}} = V^2 - v^2$$
+$$v^2 = V^2 - V^2e^{-\frac{x}{50}} = V^2\left(1 - e^{-\frac{x}{50}}\right)$$
+
+**Final Answer:**
+$v^2 = V^2\left(1 - e^{-\frac{x}{50}}\right)$
+
+---
+
+### Part iv
+**Goal:** Determine the distance $x$ when $v = \frac{V}{2}$.
+
+**Method:**
+Substitute $v = \frac{V}{2}$ into the formula derived in part (iii):
+$$\left(\frac{V}{2}\right)^2 = V^2\left(1 - e^{-\frac{x}{50}}\right)$$
+$$\frac{V^2}{4} = V^2\left(1 - e^{-\frac{x}{50}}\right)$$
+Divide by $V^2$ (as $V \neq 0$):
+$$\frac{1}{4} = 1 - e^{-\frac{x}{50}}$$
+$$e^{-\frac{x}{50}} = 1 - \frac{1}{4} = \frac{3}{4}$$
+Take the natural logarithm of both sides:
+$$-\frac{x}{50} = \ln\left(\frac{3}{4}\right)$$
+$$x = -50 \ln\left(\frac{3}{4}\right) = 50 \ln\left(\frac{4}{3}\right)$$
+
+**Final Answer:**
+$x = 50 \ln\left(\frac{4}{3}\right) \text{ metres}$
+
+###QUESTION_TYPE
+Calculation Question

@@ -1,0 +1,40 @@
+To find the velocity $v$ in terms of displacement $x$ given the acceleration $a$ as a function of $x$, we use the identity for acceleration:
+$$a = \frac{1}{2} \frac{d}{dx}(v^2)$$
+
+### Step 1: Set up the differential equation
+Given $a = 2x^3 - 5x$, we substitute this into the identity:
+$$\frac{1}{2} \frac{d}{dx}(v^2) = 2x^3 - 5x$$
+Multiply by 2 to isolate the derivative:
+$$\frac{d}{dx}(v^2) = 4x^3 - 10x$$
+
+### Step 2: Integrate with respect to $x$
+Integrate both sides with respect to $x$:
+$$v^2 = \int (4x^3 - 10x) \, dx$$
+$$v^2 = x^4 - 5x^2 + C$$
+
+### Step 3: Solve for the constant of integration $C$
+We are given the initial condition that $v = 2$ when $x = 0$. Substituting these values into our expression for $v^2$:
+$$2^2 = (0)^4 - 5(0)^2 + C$$
+$$4 = 0 - 0 + C \implies C = 4$$
+Thus, the expression for $v^2$ is:
+$$v^2 = x^4 - 5x^2 + 4$$
+Taking the square root (noting that $v$ can be positive or negative):
+$$v = \pm \sqrt{x^4 - 5x^2 + 4}$$
+
+### Step 4: Determine the possible values of $x$
+For the velocity $v$ to be a real number, we require $v^2 \geq 0$. We must solve the inequality:
+$$x^4 - 5x^2 + 4 \geq 0$$
+Let $u = x^2$. The inequality becomes $u^2 - 5u + 4 \geq 0$. Factorising the quadratic:
+$$(u - 4)(u - 1) \geq 0$$
+The roots are $u = 1$ and $u = 4$. The inequality holds when $u \leq 1$ or $u \geq 4$.
+Substituting back $u = x^2$:
+1. $x^2 \leq 1 \implies -1 \leq x \leq 1$
+2. $x^2 \geq 4 \implies x \leq -2$ or $x \geq 2$
+
+**Final Answer:**
+The expression for velocity is $v = \pm \sqrt{x^4 - 5x^2 + 4}$ (or $v = \pm \sqrt{(x^2-1)(x^2-4)}$).
+The possible values for $x$ are $x \in (-\infty, -2] \cup [-1, 1] \cup
+ [2, \infty)$.
+
+###QUESTION_TYPE
+Calculation Question

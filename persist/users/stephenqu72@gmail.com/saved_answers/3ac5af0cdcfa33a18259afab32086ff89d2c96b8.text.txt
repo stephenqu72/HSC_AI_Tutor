@@ -1,0 +1,32 @@
+To describe the motion of these particles, we express the position vectors $\underset{\sim}{R}(t) = x(t)\underset{\sim}{i} + y(t)\underset{\sim}{j}$ in Cartesian form by eliminating the parameter $t$.
+
+### Particle 1: $\underset{\sim}{R_1}(t) = \cos(t)\underset{\sim}{i} + \sin(t)\underset{\sim}{j}$
+
+1. **Shape of the path:** We have $x = \cos(t)$ and $y = \sin(t)$. Using the Pythagorean identity $\cos^2(t) + \sin^2(t) = 1$, we get $x^2 + y^2 = 1$. The path is a **unit circle** centered at the origin.
+2. **Period of the motion:** The functions $\sin(t)$ and $\cos(t)$ repeat every $2\pi$. Thus, the period is $T = \frac{2\pi}{1} = 2\pi$.
+3. **Direction of the motion:** Test points: at $t=0$, $(1, 0)$; at $t=\pi/2$, $(0, 1)$. The particle moves **counter-clockwise**.
+
+**Final Answer:** Path: unit circle; Period: $2\pi$; Direction: counter-clockwise.
+
+---
+
+### Particle 2: $\underset{\sim}{R_2}(t) = \cos(2t)\underset{\sim}{i} + \sin(2t)\underset{\sim}{j}$
+
+1. **Shape of the path:** We have $x = \cos(2t)$ and $y = \sin(2t)$. Again, $x^2 + y^2 = \cos^2(2t) + \sin^2(2t) = 1$. The path is a **unit circle** centered at the origin.
+2. **Period of the motion:** For a function of the form $\sin(nt)$ or $\cos(nt)$, the period is $T = \frac{2\pi}{n}$. Here $n=2$, so the period is $T = \frac{2\pi}{2} = \pi$.
+3. **Direction of the motion:** Test points: at $t=0$, $(1, 0)$; at $t=\pi/4$, $(0, 1)$. The particle moves **counter-clockwise**.
+
+**Final Answer:** Path: unit circle; Period: $\pi$; Direction: counter-clockwise.
+
+---
+
+### Particle 3: $\underset{\sim}{R_3}(t) = \sin(t)\underset{\sim}{i} + \cos(t)\underset{\sim}{j}$
+
+1. **Shape of the path:** We have $x = \sin(t)$ and $y = \cos(t)$. Using the Pythagorean identity, $x^2 + y^2 = \sin^2(t) + \cos^2(t) = 1$. The path is a **unit circle** centered at the origin.
+2. **Period of the motion:** The functions $\sin(t)$ and $\cos(t)$ repeat every $2\pi$. Thus, the period is $T = 2\pi$.
+3. **Direction of the motion:** Test points: at $t=0$, $(0, 1)$; at $t=\pi/2$, $(1, 0)$. As $t$ increases from $0$ to $\pi/2$, the particle moves from the positive $y$-axis to the positive $x$-axis. This corresponds to a **clockwise** motion.
+
+**Final Answer:** Path: unit circle; Period: $2\pi$; Direction: clockwise.
+
+###QUESTION_TYPE
+<Calculation Question>

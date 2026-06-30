@@ -1,0 +1,45 @@
+Hello! As an HSC Mathematics Extension 2 tutor, I am happy to help you work through this problem on complex numbers. These properties rely heavily on the conjugate identity $|z|^2 = z\bar{z}$.
+
+### Part i
+**Goal:** Show that $|z_1| = |z_2| = 1 \implies \frac{1}{z_1} + \frac{1}{z_2} + 1 = 0$, given $z_1 + z_2 + 1 = 0$.
+
+1.  We know that for any non-zero complex number $z$, $|z|^2 = z\bar{z}$. Since $|z_1| = 1$ and $|z_2| = 1$, we have:
+    $$z_1 \bar{z_1} = 1 \implies \frac{1}{z_1} = \bar{z_1}$$
+    $$z_2 \bar{z_2} = 1 \implies \frac{1}{z_2} = \bar{z_2}$$
+2.  Take the conjugate of the original equation $z_1 + z_2 + 1 = 0$:
+    $$\overline{z_1 + z_2 + 1} = \bar{0}$$
+    $$\bar{z_1} + \bar{z_2} + 1 = 0$$ (Since the conjugate of 1 is 1).
+3.  Substitute the results from step 1 into this new equation:
+    $$\frac{1}{z_1} + \frac{1}{z_2} + 1 = 0$$
+**Final Answer:** The condition follows directly from conjugating the given equation and using the property $\bar{z} = \frac{1}{z}$ for unit complex numbers.
+
+### Part ii
+**Goal:** Show that $\frac{1}{z_1} + \frac{1}{z_2} + 1 = 0 \implies |z_1| = |z_2| = 1$, given $z_1 + z_2 + 1 = 0$.
+
+1.  Start with the equation $\frac{1}{z_1} + \frac{1}{z_2} + 1 = 0$. Combine the fractions:
+    $$\frac{z_1 + z_2}{z_1 z_2} + 1 = 0$$
+2.  From the given $z_1 + z_2 + 1 = 0$, we know $z_1 + z_2 = -1$. Substitute this:
+    $$\frac{-1}{z_1 z_2} + 1 = 0 \implies 1 = \frac{1}{z_1 z_2} \implies z_1 z_2 = 1$$
+3.  Taking the modulus of both sides:
+    $$|z_1 z_2| = |1| \implies |z_1| |z_2| = 1$$
+4.  Since $z_1 + z_2 = -1$, and the sum of two complex numbers $-1$ is real, their imaginary parts must cancel out. Given $z_1 z_2 = 1$, we have $z_2 = 1/z_1$. Substituting this into $z_1 + z_2 = -1$:
+    $$z_1 + \frac{1}{z_1} = -1 \implies z_1^2 + z_1 + 1 = 0$$
+    The solutions to this quadratic are $z = \frac{-1 \pm i\sqrt{3}}{2}$. Both these solutions have a modulus of 1 ($|z| = \sqrt{(-1/2)^2 + (\sqrt{3}/2)^2} = 1$). Thus, $|z_1| = 1$ and $|z_2| = 1$.
+**Final Answer:** By showing $z_1 z_2 = 1$ and substituting into the original sum, we find $z_1$ and $z_2$ satisfy a quadratic with roots of modulus 1.
+
+### Part iii
+**Goal:** Show that $|z_1| = |z_2| = 1 \implies z_1^2 + z_2^2 + 1 = 0$.
+
+1.  From part (i), we know $|z_1| = |z_2| = 1$ implies $z_1 + z_2 = -1$.
+2.  Square both sides of $z_1 + z_2 = -1$:
+    $$(z_1 + z_2)^2 = (-1)^2$$
+    $$z_1^2 + 2z_1 z_2 + z_2^2 = 1$$
+3.  From step 2 of part (ii), we know that if $|z_1| = |z_2| = 1$ and $z_1 + z_2 = -1$, then $z_1 z_2 = 1$.
+4.  Substitute $z_1 z_2 = 1$ into the squared equation:
+    $$z_1^2 + 2(1) + z_2^2 = 1$$
+    $$z_1^2 + z_2^2 + 2 = 1$$
+    $$z_1^2 + z_2^2 + 1 = 0$$
+**Final Answer:** Using the identity $(z_1+z_2)^2 = z_1^2 + 2z_1z_2 + z_2^2$ with $z_1+z_2 = -1$ and $z_1z_2 = 1$, we obtain $z_1^2 + z_2^2 + 1 = 0$.
+
+###QUESTION_TYPE
+Proof Question

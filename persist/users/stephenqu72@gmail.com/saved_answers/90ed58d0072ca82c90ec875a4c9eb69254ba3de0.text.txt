@@ -1,0 +1,28 @@
+To find the value of the product $(1 - w)(1 - w^2)(1 - w^3)(1 - w^4)$ where $w = e^{i\frac{2\pi}{5}}$, we use the properties of the roots of unity.
+
+### Step 1: Identify the polynomial roots
+The value $w = e^{i\frac{2\pi}{5}}$ is a primitive $5^{th}$ root of unity. This means that $w$ satisfies the equation $z^5 - 1 = 0$. The roots of this equation are $1, w, w^2, w^3, w^4$.
+
+We can factorise the polynomial $z^5 - 1$ as:
+$$z^5 - 1 = (z - 1)(z - w)(z - w^2)(z - w^3)(z - w^4)$$
+
+### Step 2: Use the property of polynomial division
+Dividing both sides of the equation by $(z - 1)$, we obtain the geometric series:
+$$\frac{z^5 - 1}{z - 1} = z^4 + z^3 + z^2 + z + 1$$
+Thus, we have the identity:
+$$z^4 + z^3 + z^2 + z + 1 = (z - w)(z - w^2)(z - w^3)(z - w^4)$$
+
+### Step 3: Evaluate at $z = 1$
+To find the required product $(1 - w)(1 - w^2)(1 - w^3)(1 - w^4)$, we substitute $z = 1$ into the identity derived in Step 2:
+$$(1 - w)(1 - w^2)(1 - w^3)(1 - w^4) = 1^4 + 1^3 + 1^2 + 1 + 1$$
+
+Calculating the sum on the right-hand side:
+$$1 + 1 + 1 + 1 + 1 = 5$$
+
+### Conclusion
+The product is equal to $5$, which corresponds to option D.
+
+Final Answer: **5** (Option D)
+
+###QUESTION_TYPE
+<Multiple Choice Question>

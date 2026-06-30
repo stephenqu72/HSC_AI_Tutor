@@ -1,0 +1,40 @@
+To sketch the region defined by the given inequalities, we break the problem into its geometric components in the Argand plane, where $z = x + iy$.
+
+### Part a: Analysis of Inequalities
+
+**1. The inequality $1 \leq |z - i| \leq 2$:**
+This represents the region between and including two circles centered at $z_0 = i$ (which is the coordinate $(0, 1)$ in the Cartesian plane).
+*   $|z - i| = 1$ is a circle with center $(0, 1)$ and radius $r_1 = 1$.
+*   $|z - i| = 2$ is a circle with center $(0, 1)$ and radius $r_2 = 2$.
+The inequality describes an **annulus** (a ring shape) centered at $(0, 1)$ with radii $1$ and $2$.
+
+**2. The inequality $\text{Im}(z) \geq 0$:**
+This corresponds to the upper half-plane, including the real axis ($y \geq 0$). We must restrict our annulus to this region.
+
+### Calculation of Intercepts
+
+*   **$y$-intercepts:** Set $x = 0$.
+    *   Inner circle: $|iy - i| = 1 \implies |y-1| = 1 \implies y = 2$ or $y = 0$.
+    *   Outer circle: $|iy - i| = 2 \implies |y-1| = 2 \implies y = 3$ or $y = -1$.
+    Since $y \geq 0$, the $y$-intercepts are $(0, 0), (0, 2),$ and $(0, 3)$.
+
+*   **$x$-intercepts:** Set $y = 0$. The equation is $|x + iy - i| = |x + i(y-1)| = \sqrt{x^2 + (y-1)^2}$.
+    *   Inner circle: $\sqrt{x^2 + (-1)^2} = 1 \implies x^2 + 1 = 1 \implies x = 0$. (Already found).
+    *   Outer circle: $\sqrt{x^2 + (-1)^2} = 2 \implies x^2 + 1 = 4 \implies x^2 = 3 \implies x = \pm\sqrt{3}$.
+    The $x$-intercepts are $(-\sqrt{3}, 0)$ and $(\sqrt{3}, 0)$.
+
+### Sketching the Region
+1.  Draw the Argand plane with real axis ($x$) and imaginary axis ($y$).
+2.  Mark the center of the circles at $(0, 1)$.
+3.  Draw the semicircle of radius $1$ centered at $(0, 1)$ from $x = -1$ to $x = 1$ above the real axis (the boundary $|z-i|=1$).
+4.  Draw the semicircle of radius $2$ centered at $(0, 1)$ from $x = -2$ to $x = 2$ above the real axis (the boundary $|z-i|=2$).
+5.  Include the segment of the real axis connecting the two boundaries: from $x = -2$ to $x = -\sqrt{3}$ and from $x = \sqrt{3}$ to $x = 2$, and the point at the origin $(0,0)$.
+6.  Shade the region between the two semicircles.
+
+**Final Answer:**
+The region is a semi-annulus in the upper half-plane centered at $(0, 1)$.
+*   **$y$-intercepts:** $(0,0), (0, 2), (0, 3)$.
+*   **$x$-intercepts:** $(-\sqrt{3}, 0), (\sqrt{3}, 0)$.
+
+###QUESTION_TYPE
+Calculation Question

@@ -1,0 +1,35 @@
+To determine the constant $a$ such that the distance between the two magpies is minimized at $t = 5$ seconds, we use the vector equations for their positions.
+
+### Part d
+Let the positions of magpies $A$ and $B$ at time $t$ be given by $\mathbf{r}_A(t)$ and $\mathbf{r}_B(t)$ respectively. Given constant velocities, their position vectors are defined by $\mathbf{r}(t) = \mathbf{r}_0 + \mathbf{v}t$.
+
+For magpie $A$:
+$$\mathbf{r}_A(t) = (\mathbf{i} - 2\mathbf{j} + 4\mathbf{k}) + t(2\mathbf{i} + 3\mathbf{j} + 6\mathbf{k}) = (1 + 2t)\mathbf{i} + (-2 + 3t)\mathbf{j} + (4 + 6t)\mathbf{k}$$
+
+For magpie $B$:
+$$\mathbf{r}_B(t) = (-2\mathbf{i} + a\mathbf{j} + 6\mathbf{k}) + t(3\mathbf{i} + 12\mathbf{j} + 4\mathbf{k}) = (-2 + 3t)\mathbf{i} + (a + 12t)\mathbf{j} + (6 + 4t)\mathbf{k}$$
+
+The relative position vector $\mathbf{r}_{rel}(t) = \mathbf{r}_B(t) - \mathbf{r}_A(t)$ is:
+$$\mathbf{r}_{rel}(t) = [(-2 + 3t) - (1 + 2t)]\mathbf{i} + [(a + 12t) - (-2 + 3t)]\mathbf{j} + [(6 + 4t) - (4 + 6t)]\mathbf{k}$$
+$$\mathbf{r}_{rel}(t) = (t - 3)\mathbf{i} + (a + 2 + 9t)\mathbf{j} + (2 - 2t)\mathbf{k}$$
+
+The distance squared $D^2(t) = |\mathbf{r}_{rel}(t)|^2$ is given by:
+$$D^2(t) = (t - 3)^2 + (9t + a + 2)^2 + (2 - 2t)^2$$
+
+To find the minimum distance, we differentiate $D^2(t)$ with respect to $t$ and set the derivative to zero at $t = 5$:
+$$\frac{d}{dt}(D^2) = 2(t - 3)(1) + 2(9t + a + 2)(9) + 2(2 - 2t)(-2) = 0$$
+
+Dividing by 2 and substituting $t = 5$:
+$$(5 - 3) + 9(9(5) + a + 2) - 2(2 - 2(5)) = 0$$
+$$2 + 9(45 + a + 2) - 2(2 - 10) = 0$$
+$$2 + 9(a + 47) - 2(-8) = 0$$
+$$2 + 9a + 423 + 16 = 0$$
+$$9a + 441 = 0$$
+$$9a = -441$$
+$$a = -49$$
+
+**Final Answer:**
+The constant $a$ is $-49$.
+
+###QUESTION_TYPE
+<Calculation Question>

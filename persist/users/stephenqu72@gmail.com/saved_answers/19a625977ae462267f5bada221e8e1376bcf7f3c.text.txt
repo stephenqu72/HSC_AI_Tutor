@@ -1,0 +1,45 @@
+This problem involves a reduction formula for the integral of a power of the secant function, a classic topic in NSW HSC Mathematics Extension 2.
+
+### Part i
+We aim to show that for $n \geq 2$, $I_n = \frac{(\sqrt{2})^{n-2}}{n-1} + \frac{n-2}{n-1} I_{n-2}$, where $I_n = \int_{0}^{\frac{\pi}{4}} \sec^n x \, dx$.
+
+We use integration by parts. Let $I_n = \int_{0}^{\frac{\pi}{4}} \sec^{n-2} x \cdot \sec^2 x \, dx$.
+Assign the components as follows:
+Let $u = \sec^{n-2} x$, so $\frac{du}{dx} = (n-2)\sec^{n-3} x \cdot (\sec x \tan x) = (n-2)\sec^{n-2} x \tan x$.
+Let $dv = \sec^2 x \, dx$, so $v = \tan x$.
+
+Applying the integration by parts formula $\int u \, dv = uv - \int v \, du$:
+$$I_n = \left[ \sec^{n-2} x \tan x \right]_{0}^{\frac{\pi}{4}} - \int_{0}^{\frac{\pi}{4}} \tan x \cdot (n-2)\sec^{n-2} x \tan x \, dx$$
+Evaluating the boundary term:
+At $x = \frac{\pi}{4}$, $\sec(\frac{\pi}{4}) = \sqrt{2}$ and $\tan(\frac{\pi}{4}) = 1$.
+At $x = 0$, $\sec(0) = 1$ and $\tan(0) = 0$.
+Boundary term $= (\sqrt{2})^{n-2}(1) - (1)^{n-2}(0) = (\sqrt{2})^{n-2}$.
+
+For the integral term, use the identity $\tan^2 x = \sec^2 x - 1$:
+$$I_n = (\sqrt{2})^{n-2} - (n-2) \int_{0}^{\frac{\pi}{4}} \sec^{n-2} x (\sec^2 x - 1) \, dx$$
+$$I_n = (\sqrt{2})^{n-2} - (n-2) \int_{0}^{\frac{\pi}{4}} (\sec^n x - \sec^{n-2} x) \, dx$$
+$$I_n = (\sqrt{2})^{n-2} - (n-2)I_n + (n-2)I_{n-2}$$
+Rearranging to solve for $I_n$:
+$$I_n + (n-2)I_n = (\sqrt{2})^{n-2} + (n-2)I_{n-2}$$
+$$(n-1)I_n = (\sqrt{2})^{n-2} + (n-2)I_{n-2}$$
+$$I_n = \frac{(\sqrt{2})^{n-2}}{n-1} + \frac{n-2}{n-1} I_{n-2}$$
+**Conclusion:** We have derived the required reduction formula.
+
+### Part ii
+We evaluate $I_6 = \int_{0}^{\frac{\pi}{4}} \sec^6 x \, dx$ using the reduction formula from Part (i).
+
+First, calculate $I_4$:
+Using $n=4$: $I_4 = \frac{(\sqrt{2})^{4-2}}{4-1} + \frac{4-2}{4-1} I_2 = \frac{2}{3} + \frac{2}{3} I_2$.
+Next, calculate $I_2$:
+$I_2 = \int_{0}^{\frac{\pi}{4}} \sec^2 x \, dx = [\tan x]_{0}^{\frac{\pi}{4}} = 1 - 0 = 1$.
+Substitute $I_2$ into $I_4$:
+$I_4 = \frac{2}{3} + \frac{2}{3}(1) = \frac{4}{3}$.
+
+Now, calculate $I_6$:
+Using $n=6$: $I_6 = \frac{(\sqrt{2})^{6-2}}{6-1} + \frac{6-2}{6-1} I_4 = \frac{(\sqrt{2})^4}{5} + \frac{4}{5} I_4$.
+$I_6 = \frac{4}{5} + \frac{4}{5} \left( \frac{4}{3} \right) = \frac{4}{5} + \frac{16}{15} = \frac{12}{15} + \frac{16}{15} = \frac{28}{15}$.
+
+**Final Answer:** $\int_{0}^{\frac{\pi}{4}} \sec^6 x \, dx = \frac{28}{15}$.
+
+###QUESTION_TYPE
+Calculation Question

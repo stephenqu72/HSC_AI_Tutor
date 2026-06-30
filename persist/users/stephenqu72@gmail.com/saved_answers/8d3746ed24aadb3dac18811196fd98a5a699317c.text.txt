@@ -1,0 +1,49 @@
+### Part c (i)
+To find the Cartesian equation of a line passing through the point $\mathbf{a} = (1, -2, 4)$ with direction vector $\mathbf{v} = (5, 2, -1)$, we use the vector equation $\mathbf{r} = \mathbf{a} + \lambda \mathbf{v}$. This gives the parametric equations:
+$$x = 1 + 5\lambda, \quad y = -2 + 2\lambda, \quad z = 4 - \lambda$$
+We solve each for $\lambda$:
+$$\lambda = \frac{x - 1}{5}, \quad \lambda = \frac{y + 2}{2}, \quad \lambda = \frac{z - 4}{-1}$$
+Equating these expressions for $\lambda$, we obtain the Cartesian equations:
+$$\frac{x - 1}{5} = \frac{y + 2}{2} = \frac{4 - z}{1}$$
+
+Final Answer: $\frac{x - 1}{5} = \frac{y + 2}{2} = 4 - z$
+
+### Part c (ii)
+The $x-z$ plane is defined by the condition $y = 0$. Using the parametric equation for $y$ from Part (i):
+$$0 = -2 + 2\lambda \implies 2\lambda = 2 \implies \lambda = 1$$
+Substitute $\lambda = 1$ into the parametric equations for $x$ and $z$:
+$$x = 1 + 5(1) = 6$$
+$$z = 4 - (1) = 3$$
+Thus, the line meets the $x-z$ plane at the point $(6, 0, 3)$.
+
+Final Answer: $(6, 0, 3)$
+
+### Part d
+We prove by contradiction. Assume $\log_2 9$ is rational. Then $\log_2 9 = \frac{p}{q}$ for some integers $p, q$ where $q \neq 0$ and $\gcd(p, q) = 1$.
+By the definition of logarithms, $2^{p/q} = 9$.
+Raising both sides to the power of $q$:
+$$2^p = 9^q = (3^2)^q = 3^{2q}$$
+By the Fundamental Theorem of Arithmetic, every integer has a unique prime factorization. The left side has only prime factor $2$, while the right side has only prime factor $3$. This is a contradiction as $2^p \neq 3^{2q}$ for any positive integers $p, q$. Thus, our assumption is false and $\log_2 9$ must be irrational.
+
+Final Answer: $\log_2 9$ is irrational.
+
+### Part e
+Given $\omega$ is a complex solution of $z^3 = 1$ and $\omega \neq 1$, we know $1 + \omega + \omega^2 = 0$. Thus, $1 + \omega = -\omega^2$ and $1 + \omega^2 = -\omega$.
+Substituting these into the expression:
+$$(1 + \omega)^2 + (1 + \omega^2)^2 = (-\omega^2)^2 + (-\omega)^2 = \omega^4 + \omega^2$$
+Since $\omega^3 = 1$, we have $\omega^4 = \omega^3 \cdot \omega = \omega$.
+The expression becomes:
+$$\omega + \omega^2$$
+Since $1 + \omega + \omega^2 = 0$, then $\omega + \omega^2 = -1$.
+
+Final Answer: $-1$
+
+### Part f
+The statement is $\exists x \in \mathbb{R}^+, \forall y \in \mathbb{R}^+ : xy = 1$.
+The negation is formed by swapping the quantifiers and negating the predicate:
+$$\forall x \in \mathbb{R}^+, \exists y \in \mathbb{R}^+ : xy \neq 1$$
+
+Final Answer: $\forall x \in \mathbb{R}^+, \exists y \in \mathbb{R}^+ : xy \neq 1$
+
+###QUESTION_TYPE
+<Calculation Question>

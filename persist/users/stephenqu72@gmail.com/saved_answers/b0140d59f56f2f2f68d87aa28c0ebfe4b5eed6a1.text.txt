@@ -1,0 +1,37 @@
+To find the position vector $\underset{\sim}{r}$ of point $R$, we use the properties of vectors in a collinear arrangement.
+
+### Analysis of the Section Formula
+Given that points $P, Q,$ and $R$ are collinear and $Q$ lies between $P$ and $R$ such that the ratio $PQ : QR = 2 : 1$, we can express the position vector of $Q$ using the section formula.
+
+The section formula states that if a point $Q$ divides the segment $PR$ in the ratio $m:n$, its position vector $\underset{\sim}{q}$ is given by:
+$$\underset{\sim}{q} = \frac{n\underset{\sim}{p} + m\underset{\sim}{r}}{m + n}$$
+
+In this problem, $m = 2$ and $n = 1$. Substituting these values:
+$$\underset{\sim}{q} = \frac{1\underset{\sim}{p} + 2\underset{\sim}{r}}{2 + 1}$$
+$$\underset{\sim}{q} = \frac{\underset{\sim}{p} + 2\underset{\sim}{r}}{3}$$
+
+### Solving for $\underset{\sim}{r}$
+Now, we perform algebraic rearrangement to isolate $\underset{\sim}{r}$ in terms of $\underset{\sim}{p}$ and $\underset{\sim}{q}$:
+
+1. Multiply both sides by 3:
+   $$3\underset{\sim}{q} = \underset{\sim}{p} + 2\underset{\sim}{r}$$
+
+2. Subtract $\underset{\sim}{p}$ from both sides:
+   $$2\underset{\sim}{r} = 3\underset{\sim}{q} - \underset{\sim}{p}$$
+
+3. Divide both sides by 2:
+   $$\underset{\sim}{r} = \frac{3}{2}\underset{\sim}{q} - \frac{1}{2}\underset{\sim}{p}$$
+
+### Conclusion
+Comparing this result to the given options:
+A) $\underset{\sim}{r} = \frac{1}{2}\underset{\sim}{q} + \frac{3}{2}\underset{\sim}{p}$
+B) $\underset{\sim}{r} = \frac{3}{2}\underset{\sim}{p} - \frac{1}{2}\underset{\sim}{q}$
+C) $\underset{\sim}{r} = \frac{3}{2}\underset{\sim}{q} - \frac{1}{2}\underset{\sim}{p}$
+D) $\underset{\sim}{r} = \frac{1}{2}\underset{\sim}{p} + \frac{3}{2}\underset{\sim}{q}$
+
+The derived expression matches option **C**.
+
+Final Answer: **C**
+
+###QUESTION_TYPE
+Multiple Choice Question

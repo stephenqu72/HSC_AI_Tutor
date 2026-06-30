@@ -1,0 +1,52 @@
+Given the position vectors relative to the origin $O$:
+$\mathbf{a} = \begin{pmatrix} 3 \\ 2 \\ 9 \end{pmatrix}$, $\mathbf{b} = \begin{pmatrix} -5 \\ 11 \\ 6 \end{pmatrix}$, and $\mathbf{c} = \begin{pmatrix} 4 \\ 0 \\ -8 \end{pmatrix}$.
+
+### Part i
+To find the displacement vectors $\vec{AB}$ and $\vec{AC}$, we use the definition of a displacement vector between two points: $\vec{PQ} = \mathbf{q} - \mathbf{p}$.
+
+For $\vec{AB}$:
+$$\vec{AB} = \mathbf{b} - \mathbf{a} = \begin{pmatrix} -5 - 3 \\ 11 - 2 \\ 6 - 9 \end{pmatrix} = \begin{pmatrix} -8 \\ 9 \\ -3 \end{pmatrix}$$
+
+For $\vec{AC}$:
+$$\vec{AC} = \mathbf{c} - \mathbf{a} = \begin{pmatrix} 4 - 3 \\ 0 - 2 \\ -8 - 9 \end{pmatrix} = \begin{pmatrix} 1 \\ -2 \\ -17 \end{pmatrix}$$
+
+**Final Answer:** $\vec{AB} = \begin{pmatrix} -8 \\ 9 \\ -3 \end{pmatrix}$ and $\vec{AC} = \begin{pmatrix} 1 \\ -2 \\ -17 \end{pmatrix}$
+
+---
+
+### Part ii
+To find $\angle BAC$, we use the scalar (dot) product formula: $\mathbf{u} \cdot \mathbf{v} = |\mathbf{u}| |\mathbf{v}| \cos \theta$, where $\theta = \angle BAC$. 
+Here, $\mathbf{u} = \vec{AB}$ and $\mathbf{v} = \vec{AC}$.
+
+1. Calculate the dot product:
+$$\vec{AB} \cdot \vec{AC} = (-8)(1) + (9)(-2) + (-3)(-17) = -8 - 18 + 51 = 25$$
+
+2. Calculate the magnitudes:
+$|\vec{AB}| = \sqrt{(-8)^2 + 9^2 + (-3)^2} = \sqrt{64 + 81 + 9} = \sqrt{154}$
+$|\vec{AC}| = \sqrt{1^2 + (-2)^2 + (-17)^2} = \sqrt{1 + 4 + 289} = \sqrt{294}$
+
+3. Solve for $\cos \theta$:
+$$\cos \theta = \frac{\vec{AB} \cdot \vec{AC}}{|\vec{AB}| |\vec{AC}|} = \frac{25}{\sqrt{154} \cdot \sqrt{294}} \approx \frac{25}{212.78} \approx 0.11749$$
+$\theta = \cos^{-1}(0.11749) \approx 83.25^\circ$
+
+**Final Answer:** $\angle BAC \approx 83^\circ$
+
+---
+
+### Part iii
+The area of a triangle formed by vectors $\vec{AB}$ and $\vec{AC}$ is given by $\text{Area} = \frac{1}{2} |\vec{AB} \times \vec{AC}|$.
+
+1. Calculate the cross product:
+$$\vec{AB} \times \vec{AC} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ -8 & 9 & -3 \\ 1 & -2 & -17 \end{vmatrix} = \mathbf{i}((9)(-17) - (-3)(-2)) - \mathbf{j}((-8)(-17) - (-3)(1)) + \mathbf{k}((-8)(-2) - (9)(1))$$
+$$= \mathbf{i}(-153 - 6) - \mathbf{j}(136 + 3) + \mathbf{k}(16 - 9) = \begin{pmatrix} -159 \\ -139 \\ 7 \end{pmatrix}$$
+
+2. Find the magnitude of the cross product:
+$$|\vec{AB} \times \vec{AC}| = \sqrt{(-159)^2 + (-139)^2 + 7^2} = \sqrt{25281 + 19321 + 49} = \sqrt{44651}$$
+
+3. Calculate the area:
+$$\text{Area} = \frac{1}{2} \sqrt{44651} \approx \frac{211.31}{2} \approx 105.65$$
+
+**Final Answer:** The area is approximately $105.65$ square units.
+
+###QUESTION_TYPE
+<Calculation Question>

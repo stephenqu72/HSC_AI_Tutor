@@ -1,0 +1,52 @@
+### Part i
+
+To show that the two sections of the tunnel meet, we express each section as a vector equation of a line. Let the point at Blackheath be $A(-9, 15, 7)$ and the point at Springwood be $B(33, 5, -1)$.
+
+Let $\mathbf{r}_1$ be the line representing the tunnel starting at $A$ in direction $\mathbf{u} = 7\mathbf{i} - 5\mathbf{j} - \mathbf{k}$:
+$$\mathbf{r}_1 = \begin{pmatrix} -9 \\ 15 \\ 7 \end{pmatrix} + s \begin{pmatrix} 7 \\ -5 \\ -1 \end{pmatrix} = \begin{pmatrix} -9 + 7s \\ 15 - 5s \\ 7 - s \end{pmatrix}$$
+
+Let $\mathbf{r}_2$ be the line representing the tunnel starting at $B$ in direction $\mathbf{v} = -14\mathbf{i} + 3\mathbf{j} + 0\mathbf{k}$ (as no $\mathbf{j}$ component is given, we assume it is $0\mathbf{j}$, though let's check the direction $14\mathbf{i} + 0\mathbf{j} + 3\mathbf{k}$ is likely meant given the visual context). Looking at the provided text, the direction is $-14\mathbf{i} + 3\mathbf{k}$. We interpret this as $-14\mathbf{i} + 0\mathbf{j} + 3\mathbf{k}$:
+$$\mathbf{r}_2 = \begin{pmatrix} 33 \\ 5 \\ -1 \end{pmatrix} + t \begin{pmatrix} -14 \\ 0 \\ 3 \end{pmatrix} = \begin{pmatrix} 33 - 14t \\ 5 \\ -1 + 3t \end{pmatrix}$$
+
+Equating the $y$-components to find the intersection:
+$15 - 5s = 5 \implies 5s = 10 \implies s = 2$.
+
+Substitute $s = 2$ into $\mathbf{r}_1$:
+$x = -9 + 7(2) = 5$
+$y = 15 - 5(2) = 5$
+$z = 7 - 2 = 5$
+The point is $(5, 5, 5)$.
+
+Check if this point lies on $\mathbf{r}_2$:
+$x = 33 - 14t = 5 \implies 14t = 28 \implies t = 2$.
+Check $z$: $z = -1 + 3(2) = 5$.
+Since both the $x, y, z$ coordinates match for $s=2$ and $t=2$, the lines intersect.
+
+**Final Answer:** The sections meet at the point $(5, 5, 5)$.
+
+---
+
+### Part ii
+
+First, we find the lengths of the two segments using the distance formula. One unit = 500 metres = 0.5 km.
+
+**Segment 1:** From $A(-9, 15, 7)$ to $(5, 5, 5)$.
+The vector $\vec{AP} = \begin{pmatrix} 5 - (-9) \\ 5 - 15 \\ 5 - 7 \end{pmatrix} = \begin{pmatrix} 14 \\ -10 \\ -2 \end{pmatrix}$.
+Length $|\vec{AP}| = \sqrt{14^2 + (-10)^2 + (-2)^2} = \sqrt{196 + 100 + 4} = \sqrt{300} = 10\sqrt{3}$ units.
+
+**Segment 2:** From $B(33, 5, -1)$ to $(5, 5, 5)$.
+The vector $\vec{BP} = \begin{pmatrix} 5 - 33 \\ 5 - 5 \\ 5 - (-1) \end{pmatrix} = \begin{pmatrix} -28 \\ 0 \\ 6 \end{pmatrix}$.
+Length $|\vec{BP}| = \sqrt{(-28)^2 + 0^2 + 6^2} = \sqrt{784 + 36} = \sqrt{820} \approx 28.636$ units.
+
+**Total length in units:**
+Total $= 10\sqrt{3} + \sqrt{820} \approx 17.321 + 28.636 = 45.957$ units.
+
+**Convert to kilometres:**
+Since 1 unit = 0.5 km:
+Total distance $= 45.957 \times 0.5 \text{ km} = 22.9785 \text{ km}$.
+Rounding to the nearest kilometre, we get 23 km.
+
+**Final Answer:** The total length is 23 km.
+
+###QUESTION_TYPE
+<Calculation Question>

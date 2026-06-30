@@ -1,0 +1,56 @@
+Here are the rigorous worked solutions for the problems provided.
+
+### Part i
+We are given the partial fraction decomposition:
+$$\frac{1}{x(\pi - 2x)} = \frac{A}{x} + \frac{B}{\pi - 2x}$$
+To find $B$, we multiply both sides by the denominator $x(\pi - 2x)$:
+$$1 = A(\pi - 2x) + Bx$$
+Substitute $A = \frac{1}{\pi}$:
+$$1 = \frac{1}{\pi}(\pi - 2x) + Bx$$
+$$1 = 1 - \frac{2x}{\pi} + Bx$$
+$$0 = x\left(B - \frac{2}{\pi}\right)$$
+For this identity to hold for all $x$, the coefficient of $x$ must be zero:
+$$B - \frac{2}{\pi} = 0 \implies B = \frac{2}{\pi}$$
+**Final Answer:** $B = \frac{2}{\pi}$
+
+---
+
+### Part ii
+We wish to evaluate $I = \int_{\pi/6}^{\pi/3} \frac{dx}{x(\pi - 2x)}$. Using the partial fractions from Part i with $A = \frac{1}{\pi}$ and $B = \frac{2}{\pi}$:
+$$I = \int_{\pi/6}^{\pi/3} \left( \frac{1/\pi}{x} + \frac{2/\pi}{\pi - 2x} \right) dx$$
+$$I = \frac{1}{\pi} \int_{\pi/6}^{\pi/3} \frac{1}{x} dx + \frac{2}{\pi} \int_{\pi/6}^{\pi/3} \frac{1}{\pi - 2x} dx$$
+Integrating term by term:
+$$I = \frac{1}{\pi} \left[ \ln|x| \right]_{\pi/6}^{\pi/3} + \frac{2}{\pi} \left[ -\frac{1}{2} \ln|\pi - 2x| \right]_{\pi/6}^{\pi/3}$$
+$$I = \frac{1}{\pi} \left( \ln\left(\frac{\pi}{3}\right) - \ln\left(\frac{\pi}{6}\right) \right) - \frac{1}{\pi} \left( \ln|\pi - 2(\pi/3)| - \ln|\pi - 2(\pi/6)| \right)$$
+$$I = \frac{1}{\pi} \ln\left( \frac{\pi/3}{\pi/6} \right) - \frac{1}{\pi} \left( \ln(\pi/3) - \ln(2\pi/3) \right)$$
+$$I = \frac{1}{\pi} \ln(2) - \frac{1}{\pi} \ln\left( \frac{\pi/3}{2\pi/3} \right) = \frac{1}{\pi} \ln 2 - \frac{1}{\pi} \ln(1/2)$$
+$$I = \frac{1}{\pi} \ln 2 - \frac{1}{\pi} (-\ln 2) = \frac{2}{\pi} \ln 2$$
+**Final Answer:** $\int_{\pi/6}^{\pi/3} \frac{dx}{x(\pi - 2x)} = \frac{2}{\pi} \ln 2$
+
+---
+
+### Part iii
+Let $I = \int_a^b f(x) dx$. Use the substitution $u = a + b - x$.
+Then $du = -dx$, or $dx = -du$.
+Change the limits: when $x = a$, $u = b$; when $x = b$, $u = a$.
+$$I = \int_b^a f(a + b - u) (-du) = \int_a^b f(a + b - u) du$$
+Since the variable of integration is a dummy variable, we can replace $u$ with $x$:
+$$I = \int_a^b f(a + b - x) dx$$
+**Conclusion:** $\int_a^b f(x) dx = \int_a^b f(a + b - x) dx$
+
+---
+
+### Part iv
+Let $I = \int_{\pi/6}^{\pi/3} \frac{\cos^2 x}{x(\pi - 2x)} dx$. Here $a = \pi/6$ and $b = \pi/3$, so $a+b = \pi/2$.
+Using the identity from Part iii:
+$$I = \int_{\pi/6}^{\pi/3} \frac{\cos^2(\pi/2 - x)}{(\pi/2 - x)(\pi - 2(\pi/2 - x))} dx$$
+Since $\cos(\pi/2 - x) = \sin x$ and $(\pi - (\pi - 2x)) = 2x$:
+$$I = \int_{\pi/6}^{\pi/3} \frac{\sin^2 x}{(\pi/2 - x)(2x)} dx = \int_{\pi/6}^{\pi/3} \frac{\sin^2 x}{x(\pi - 2x)} dx$$
+Adding the two expressions for $I$:
+$$2I = \int_{\pi/6}^{\pi/3} \frac{\cos^2 x + \sin^2 x}{x(\pi - 2x)} dx = \int_{\pi/6}^{\pi/3} \frac{1}{x(\pi - 2x)} dx$$
+Using the result from Part ii:
+$$2I = \frac{2}{\pi} \ln 2 \implies I = \frac{1}{\pi} \ln 2$$
+**Final Answer:** $\int_{\pi/6}^{\pi/3} \frac{\cos^2 x}{x(\pi - 2x)} dx = \frac{1}{\pi} \ln 2$
+
+###QUESTION_TYPE
+<Calculation Question>

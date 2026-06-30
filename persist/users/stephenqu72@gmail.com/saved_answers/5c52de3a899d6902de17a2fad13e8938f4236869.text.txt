@@ -1,0 +1,38 @@
+To determine the negation of the given statement, we apply the rules of formal logic regarding quantifiers.
+
+### Analysis of the Statement
+The original statement is:
+$$\forall x \in \mathbb{R}^+, \exists y \in \mathbb{R}^+ \text{ such that } xy = 1$$
+
+*   $\forall$ denotes the **universal quantifier** ("for all").
+*   $\exists$ denotes the **existential quantifier** ("there exists").
+*   $\mathbb{R}^+$ denotes the set of positive real numbers.
+
+### Rules of Negation
+When negating a statement involving quantifiers:
+1.  The universal quantifier $\forall$ becomes the existential quantifier $\exists$.
+2.  The existential quantifier $\exists$ becomes the universal quantifier $\forall$.
+3.  The predicate (the condition $xy = 1$) is negated ($xy \neq 1$).
+
+Applying these rules systematically:
+*   The initial part $\forall x \in \mathbb{R}^+$ becomes $\exists x \in \mathbb{R}^+$.
+*   The middle part $\exists y \in \mathbb{R}^+$ becomes $\forall y \in \mathbb{R}^+$.
+*   The final part $xy = 1$ becomes $xy \neq 1$.
+
+### Constructing the Negated Statement
+Combining these transformed parts, the negation is:
+$$\exists x \in \mathbb{R}^+ \text{ such that } \forall y \in \mathbb{R}^+, xy \neq 1$$
+
+### Evaluating the Options
+*   **A:** $\exists x, y \in \mathbb{R}^+$ such that $xy \neq 1$ (Incorrect quantifier structure).
+*   **B:** $\exists x \in \mathbb{R}^+ \text{ such that } \forall y \in \mathbb{R}^+, xy \neq 1$ (Matches our derived negation).
+*   **C:** $\forall x, y \in \mathbb{R}^+, xy \neq 1$ (Incorrect quantifier structure).
+*   **D:** $\forall x \in \mathbb{R}^+, \dots$ (Incorrect, as the leading universal quantifier must change to an existential one).
+
+The correct statement is **B**.
+
+### Final Answer
+B
+
+###QUESTION_TYPE
+Multiple Choice Question

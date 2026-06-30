@@ -1,0 +1,29 @@
+To determine the simplified expression for $i^{2n+3}$ in terms of $p$, given that $i^n = p$, we use the index laws for powers.
+
+### Step-by-step Derivation
+
+1.  **Identify the goal:** We need to express $i^{2n+3}$ in terms of $p$, where $p = i^n$.
+2.  **Apply index laws:** Using the power of a power rule $(a^{m \cdot k} = (a^m)^k)$ and the product rule $(a^{m+k} = a^m \cdot a^k)$, we can rewrite the expression as follows:
+    $$i^{2n+3} = i^{2n} \cdot i^3$$
+    $$i^{2n+3} = (i^n)^2 \cdot i^3$$
+3.  **Substitute the known value:** We are given $p = i^n$, so substitute $p$ into the expression:
+    $$i^{2n+3} = p^2 \cdot i^3$$
+4.  **Simplify powers of $i$:** Recall the fundamental property of the imaginary unit $i$, where $i^2 = -1$. Therefore:
+    $$i^3 = i^2 \cdot i = (-1) \cdot i = -i$$
+5.  **Final substitution:** Replace $i^3$ with $-i$ in the expression:
+    $$i^{2n+3} = p^2 \cdot (-i)$$
+    $$i^{2n+3} = -p^2 i$$
+
+Comparing this result to the given options:
+A. $p^2 - i$
+B. $p^2 + i$
+C. $-p^2 i$
+D. $p^2 i$
+
+The correct expression is $-p^2 i$, which corresponds to option **C**.
+
+### Final Answer
+The simplified expression is $-p^2 i$.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

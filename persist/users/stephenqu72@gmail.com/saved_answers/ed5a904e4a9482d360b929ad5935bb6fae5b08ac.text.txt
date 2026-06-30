@@ -1,0 +1,51 @@
+### Part (a)
+
+We are asked to evaluate $I = \int_{\pi/2}^{\pi} \frac{x}{1 - x \cot x} \, dx$ using the substitution $u = \sin x - x \cos x$.
+
+First, find the differential $du$ with respect to $x$:
+$$u = \sin x - x \cos x$$
+$$\frac{du}{dx} = \cos x - (1 \cdot \cos x + x(-\sin x)) = \cos x - \cos x + x \sin x = x \sin x$$
+Thus, $du = x \sin x \, dx$.
+
+Rewrite the integrand to introduce $x \sin x$ in the numerator:
+$$\frac{x}{1 - x \cot x} = \frac{x}{1 - x \frac{\cos x}{\sin x}} = \frac{x \sin x}{\sin x - x \cos x}$$
+Using the substitution $u = \sin x - x \cos x$ and $du = x \sin x \, dx$, the integral becomes:
+$$I = \int \frac{1}{u} \, du = \ln|u|$$
+
+Now, update the limits of integration:
+When $x = \frac{\pi}{2}$: $u = \sin(\frac{\pi}{2}) - \frac{\pi}{2} \cos(\frac{\pi}{2}) = 1 - 0 = 1$.
+When $x = \pi$: $u = \sin(\pi) - \pi \cos(\pi) = 0 - \pi(-1) = \pi$.
+
+Evaluate the definite integral:
+$$I = \left[ \ln|u| \right]_1^{\pi} = \ln(\pi) - \ln(1) = \ln(\pi) - 0 = \ln \pi$$
+
+**Final Answer:** $\ln \pi$
+
+---
+
+### Part (b)
+
+We are given $a, b > 0$ and the expressions for $D, U, B, O$. We need to show $D \le U \le B \le O$.
+
+**1. Show $D \le U$:**
+$D = \frac{2ab}{a+b}$ and $U = \sqrt{ab}$. We compare $\frac{2ab}{a+b} \le \sqrt{ab}$.
+Since $a, b > 0$, divide by $\sqrt{ab}$: $\frac{2\sqrt{ab}}{a+b} \le 1 \iff 2\sqrt{ab} \le a + b$.
+This is equivalent to $0 \le a - 2\sqrt{ab} + b = (\sqrt{a} - \sqrt{b})^2$, which is true for all real $a, b$.
+
+**2. Show $U \le B$:**
+$U = \sqrt{ab}$ and $B = \frac{a+b}{2}$. We compare $\sqrt{ab} \le \frac{a+b}{2}$.
+Multiplying by 2: $2\sqrt{ab} \le a+b \iff 0 \le a - 2\sqrt{ab} + b = (\sqrt{a} - \sqrt{b})^2$, which is true for all real $a, b$.
+
+**3. Show $B \le O$:**
+$B = \frac{a+b}{2}$ and $O = \sqrt{\frac{a^2+b^2}{2}}$. We compare $\frac{a+b}{2} \le \sqrt{\frac{a^2+b^2}{2}}$.
+Square both sides (both are positive): $\frac{(a+b)^2}{4} \le \frac{a^2+b^2}{2}$.
+Multiply by 4: $(a+b)^2 \le 2(a^2+b^2) \iff a^2 + 2ab + b^2 \le 2a^2 + 2b^2$.
+Rearranging: $0 \le a^2 - 2ab + b^2 = (a-b)^2$, which is true for all real $a, b$.
+
+**Conclusion:**
+Since $D \le U$, $U \le B$, and $B \le O$, it follows that $D \le U \le B \le O$.
+
+**Final Answer:** Proven by showing the non-negativity of squared differences.
+
+###QUESTION_TYPE
+<Calculation Question, Proof Question>

@@ -1,0 +1,38 @@
+To determine the projection of the curve $r(t) = (t^2, t^4, t^6)$ onto the $xz$-plane, we analyze the relationship between the $x$-coordinate and the $z$-coordinate.
+
+### Step 1: Identify the components
+The curve is defined by the parametric equations:
+- $x = t^2$
+- $y = t^4$
+- $z = t^6$
+
+### Step 2: Establish the relationship for the projection
+The projection onto the $xz$-plane ignores the $y$-coordinate and considers only the relationship between $x$ and $z$. We are given:
+- $x = t^2$
+- $z = t^6$
+
+Since $x = t^2$, we can express $z$ in terms of $x$ by substituting $t^2$ into the expression for $z$:
+$$z = (t^2)^3$$
+$$z = x^3$$
+
+### Step 3: Analyse the domain and behaviour
+- **Domain of $x$**: Since $x = t^2$ and $t$ is any real value, $x$ must be greater than or equal to zero ($x \ge 0$).
+- **Relationship**: For $x \ge 0$, the relationship is $z = x^3$.
+    - When $x = 0$, $z = 0^3 = 0$.
+    - When $x = 1$, $z = 1^3 = 1$.
+    - When $x = 2$, $z = 2^3 = 8$.
+
+### Step 4: Compare with the options
+We are looking for the graph of $z = x^3$ restricted to the domain $x \ge 0$.
+- **Option A**: Shows a cubic function $z=x^3$ defined for all real $x$. This is incorrect because $x$ cannot be negative.
+- **Option B**: Shows a parabola opening upwards (symmetric about the $z$-axis), which does not represent $z=x^3$.
+- **Option C**: Starts at $(0,0)$ and passes through $(1,1)$ and $(2, 8)$, correctly representing $z = x^3$ for $x \ge 0$.
+- **Option D**: Shows a curve that does not match the growth rate of a cubic function for the given points.
+
+The curve represented in **Option C** matches the function $z = x^3$ for $x \ge 0$.
+
+### Final Answer
+The correct graph is **C**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

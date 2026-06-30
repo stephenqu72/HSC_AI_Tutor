@@ -1,0 +1,24 @@
+To determine which parametric form best describes the given curve, we analyze the geometric properties shown in the graph.
+
+### Analysis of the Curve
+
+1.  **Projection on the $xy$-plane**: The curve forms a circle in the $xy$-plane with radius $1$ centred at the origin $(0,0)$. The parametric equations for a circle in the $xy$-plane with radius $1$ are:
+    $$x = \cos t$$
+    $$y = \sin t$$
+    All four options provided share these components for $x$ and $y$.
+
+2.  **Behaviour in the $z$-direction**: We observe the relationship between the height $z$ and the curve's rotation.
+    *   The graph shows that as the curve progresses (moving away from the origin in $z$), the height $z$ increases monotonically and unbounded (it continues upwards toward $10$ and beyond).
+    *   **Option A**: $z = t$. As $t$ increases, $z$ increases linearly. This creates a standard helix, which matches the visual representation of constant vertical growth per revolution.
+    *   **Option B**: $z = e^{-0.5t}$. As $t \to \infty$, $z \to 0$. This would result in a curve that compresses toward the $xy$-plane, which contradicts the graph showing the curve moving upwards.
+    *   **Option C**: $z = \ln t$. This is only defined for $t > 0$ and grows very slowly. It does not fit the starting position and shape shown.
+    *   **Option D**: $z = \cos 2t$. This is periodic, meaning the curve would oscillate up and down between $z = -1$ and $z = 1$, rather than spiralling upwards to $z=10$.
+
+3.  **Conclusion**:
+    The curve is a helix. A helix is parametrised by $r(t) = (\cos t)i + (\sin t)j + (ct)k$, where $c$ is a constant determining the pitch. Looking at the graph, the curve passes through roughly $z=0$ at the start and reaches higher values of $z$ as it circles the $z$-axis. Option A is the only expression that provides a monotonically increasing $z$ component consistent with the visual trajectory.
+
+### Final Answer
+The correct parametric form is **A**.
+
+###QUESTION_TYPE
+Multiple Choice Question

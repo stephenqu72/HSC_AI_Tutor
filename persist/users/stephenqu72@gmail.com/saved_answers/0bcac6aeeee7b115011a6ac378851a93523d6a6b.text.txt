@@ -1,0 +1,68 @@
+Here is a rigorous, step-by-step worked solution to the question.
+
+---
+
+### **Question 1**
+
+**Given:** $0 < \theta < \frac{\pi}{2}$
+
+We want to find the magnitude of the vector:
+$$\underset{\sim}{v} = (\cos\theta)\underset{\sim}{i} + (\sin\theta)\underset{\sim}{j} + (\tan\theta)\underset{\sim}{k}$$
+
+---
+
+### **Step-by-step Mathematical Solution**
+
+#### **Step 1: Apply the definition of the magnitude of a 3D vector**
+The magnitude of a vector $\underset{\sim}{v} = x\underset{\sim}{i} + y\underset{\sim}{j} + z\underset{\sim}{k}$ is given by the formula:
+$$\big|\underset{\sim}{v}\big| = \sqrt{x^2 + y^2 + z^2}$$
+
+Substituting the components $x = \cos\theta$, $y = \sin\theta$, and $z = \tan\theta$:
+$$\big|\underset{\sim}{v}\big| = \sqrt{(\cos\theta)^2 + (\sin\theta)^2 + (\tan\theta)^2}$$
+
+---
+
+#### **Step 2: Simplify using Pythagorean trigonometric identities**
+Recall the fundamental Pythagorean identity:
+$$\cos^2\theta + \sin^2\theta = 1$$
+
+Substituting this into the magnitude expression gives:
+$$\big|\underset{\sim}{v}\big| = \sqrt{1 + \tan^2\theta}$$
+
+Next, we use the second Pythagorean identity:
+$$1 + \tan^2\theta = \sec^2\theta$$
+
+Substituting this simplifies the expression further:
+$$\big|\underset{\sim}{v}\big| = \sqrt{\sec^2\theta}$$
+
+---
+
+#### **Step 3: Resolve the square root using the given domain**
+Mathematically, $\sqrt{x^2} = |x|$. Therefore:
+$$\big|\underset{\sim}{v}\big| = |\sec\theta|$$
+
+We are given the domain restriction:
+$$0 < \theta < \frac{\pi}{2}$$
+
+In the first quadrant ($0 < \theta < \frac{\pi}{2}$), the cosine function is strictly positive ($\cos\theta > 0$). Consequently, the secant function is also positive:
+$$\sec\theta = \frac{1}{\cos\theta} > 0$$
+
+Therefore, we can safely remove the absolute value signs:
+$$\big|\underset{\sim}{v}\big| = \sec\theta$$
+
+---
+
+### **Conclusion**
+Comparing this result with the given choices:
+* **A)** $1$
+* **B)** $\operatorname{cosec}\theta$
+* **C)** $\cot\theta$
+* **D)** $\sec\theta$
+
+The correct option is **D**.
+
+**Correct Answer:** **D**
+
+---
+###QUESTION_TYPE
+Multiple Choice Question

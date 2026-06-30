@@ -1,0 +1,9 @@
+### Front
+A cubic polynomial $P(z)$ has real coefficients and roots at $z = 3$ and $z = 2 + i$. Determine the remaining root and the quadratic factor associated with the complex roots.
+
+### Back
+- **Key idea:** Complex roots of polynomials with real coefficients must appear as conjugate pairs.
+- **Theorem, identity, or method:** Conjugate Root Theorem: if $z = a + bi$ is a root, then $\bar{z} = a - bi$ is also a root.
+- **Conditions / restrictions:** The polynomial must have **real coefficients**.
+- **When to use it:** Whenever you are given one complex root of a polynomial with real coefficients and need to find the remaining factors or the full polynomial.
+- **Common trap:** Forgetting to include the conjugate as a root, or failing to identify that $(z - (a+bi))(z - (a-bi)) = z^2 - 2az + (a^2+b^2)$.

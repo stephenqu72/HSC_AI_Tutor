@@ -1,0 +1,39 @@
+To prove that $a_n \leq \left(\frac{7}{4}\right)^n$ for all $n \geq 1$, we will use the principle of **Strong Mathematical Induction**.
+
+### Step 1: Base Cases
+We must verify the statement $P(n): a_n \leq \left(\frac{7}{4}\right)^n$ for the first two values of $n$, as the recurrence relation is defined for $k \geq 3$.
+
+*   For $n=1$: $a_1 = 1$. The RHS is $\left(\frac{7}{4}\right)^1 = 1.75$. Since $1 \leq 1.75$, $P(1)$ is true.
+*   For $n=2$: $a_2 = 3$. The RHS is $\left(\frac{7}{4}\right)^2 = \frac{49}{16} = 3.0625$. Since $3 \leq 3.0625$, $P(2)$ is true.
+
+### Step 2: Inductive Hypothesis
+Assume that $P(m)$ is true for all $m$ such that $1 \leq m \leq k$, where $k \geq 2$.
+Specifically, assume:
+$a_k \leq \left(\frac{7}{4}\right)^k$ and $a_{k-1} \leq \left(\frac{7}{4}\right)^{k-1}$.
+
+### Step 3: Inductive Step
+We want to show that $P(k+1)$ is true, i.e., $a_{k+1} \leq \left(\frac{7}{4}\right)^{k+1}$.
+Using the recurrence relation $a_{k+1} = a_k + a_{k-1}$:
+
+$$a_{k+1} \leq \left(\frac{7}{4}\right)^k + \left(\frac{7}{4}\right)^{k-1}$$
+
+Factor out the common term $\left(\frac{7}{4}\right)^{k-1}$:
+
+$$a_{k+1} \leq \left(\frac{7}{4}\right)^{k-1} \left( \frac{7}{4} + 1 \right)$$
+$$a_{k+1} \leq \left(\frac{7}{4}\right)^{k-1} \left( \frac{11}{4} \right)$$
+
+To complete the proof, we compare $\frac{11}{4}$ to $\frac{7}{4} \times \frac{7}{4} = \frac{49}{16}$.
+Since $\frac{11}{4} = \frac{44}{16}$ and $\frac{44}{16} < \frac{49}{16}$, it follows that:
+
+$$\frac{11}{4} < \left(\frac{7}{4}\right)^2$$
+
+Substituting this inequality back into our expression for $a_{k+1}$:
+
+$$a_{k+1} < \left(\frac{7}{4}\right)^{k-1} \cdot \left(\frac{7}{4}\right)^2$$
+$$a_{k+1} < \left(\frac{7}{4}\right)^{k+1}$$
+
+### Conclusion
+Since the base cases $P(1)$ and $P(2)$ hold, and the truth of $P(k-1)$ and $P(k)$ implies the truth of $P(k+1)$, by the principle of strong mathematical induction, the statement $a_n \leq \left(\frac{7}{4}\right)^n$ is true for all $n \geq 1$.
+
+###QUESTION_TYPE
+Proof Question

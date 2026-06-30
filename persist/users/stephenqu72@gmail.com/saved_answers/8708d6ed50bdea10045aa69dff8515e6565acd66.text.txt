@@ -1,0 +1,39 @@
+To solve for $z = \frac{2 - 3i}{1 + i}$, we first express $z$ in the standard Cartesian form $x + iy$ by rationalising the denominator. We multiply the numerator and the denominator by the conjugate of the denominator, $1 - i$:
+
+$$z = \frac{2 - 3i}{1 + i} \times \frac{1 - i}{1 - i}$$
+
+Expanding the numerator:
+$$(2 - 3i)(1 - i) = 2(1) - 2(i) - 3i(1) + 3i(i)$$
+$$= 2 - 2i - 3i + 3i^2$$
+Since $i^2 = -1$:
+$$= 2 - 5i + 3(-1) = 2 - 5i - 3 = -1 - 5i$$
+
+Expanding the denominator:
+$$(1 + i)(1 - i) = 1^2 - i^2 = 1 - (-1) = 2$$
+
+Thus, $z = \frac{-1 - 5i}{2} = -\frac{1}{2} - \frac{5}{2}i$.
+
+### Part i
+We are asked to find $\bar{z}$ in the form $x + iy$. The conjugate of a complex number $z = x + iy$ is defined as $\bar{z} = x - iy$.
+Given $z = -\frac{1}{2} - \frac{5}{2}i$, the conjugate is:
+$$\bar{z} = -\frac{1}{2} + \frac{5}{2}i$$
+
+Final Answer: $\bar{z} = -\frac{1}{2} + \frac{5}{2}i$
+
+### Part ii
+We are asked to evaluate $|z|$. We use the property of the modulus of a quotient, which states that for any complex numbers $z_1$ and $z_2$ (where $z_2 \neq 0$), $\left| \frac{z_1}{z_2} \right| = \frac{|z_1|}{|z_2|}$.
+
+Given $z = \frac{2 - 3i}{1 + i}$:
+$$|z| = \frac{|2 - 3i|}{|1 + i|}$$
+
+Using the definition $|a + bi| = \sqrt{a^2 + b^2}$:
+$$|2 - 3i| = \sqrt{2^2 + (-3)^2} = \sqrt{4 + 9} = \sqrt{13}$$
+$$|1 + i| = \sqrt{1^2 + 1^2} = \sqrt{1 + 1} = \sqrt{2}$$
+
+Substituting these values:
+$$|z| = \frac{\sqrt{13}}{\sqrt{2}} = \sqrt{\frac{13}{2}} = \frac{\sqrt{26}}{2}$$
+
+Final Answer: $|z| = \frac{\sqrt{26}}{2}$
+
+###QUESTION_TYPE
+Calculation Question

@@ -1,0 +1,62 @@
+###ANSWER
+
+i. $OACB$ is a rhombus because the sides $OA, OB, BC,$ and $AC$ all have a modulus (length) of 1, meaning it is a parallelogram with equal adjacent sides.
+
+ii. $r = 2 \cos\left(\frac{\beta - \alpha}{2}\right)$
+
+iii. $\theta = \frac{\alpha + \beta}{2}$; the identity follows from equating the real parts of $z_1 + z_2 = r(\cos \theta + i \sin \theta)$.
+
+###PLOT_CODE
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+def generate_plot():
+    alpha, beta = np.pi/6, np.pi/3
+    z1 = np.exp(1j * alpha)
+    z2 = np.exp(1j * beta)
+    z_sum = z1 + z2
+    
+    fig, ax = plt.subplots(figsize=(6,6))
+    pts = [0, z1, z_sum, z2]
+    x = [p.real for p in pts] + [0]
+    y = [p.imag for p in pts] + [0]
+    
+    ax.plot(x, y, 'b-o')
+    ax.plot([0, z_sum.real], [0, z_sum.imag], 'r--', label='OC')
+    ax.plot([z1.real, z2.real], [z1.imag, z2.imag], 'g--', label='AB')
+    
+    ax.set_aspect('equal')
+    ax.axhline(0, color='black', lw=1)
+    ax.axvline(0, color='black', lw=1)
+    ax.set_title("Argand Diagram of Rhombus OACB")
+    ax.legend()
+    return fig
+
+###EXPLANATION
+
+### Part i
+$z_1 = \cos \alpha + i \sin \alpha$ and $z_2 = \cos \beta + i \sin \beta$ both lie on the unit circle in the Argand diagram. Thus, $|z_1| = |z_2| = 1$. Since $C$ represents $z_1 + z_2$, the quadrilateral $OACB$ has sides of length $|OA| = |z_1| = 1$, $|OB| = |z_2| = 1$, $|AC| = |z_2| = 1$, and $|BC| = |z_1| = 1$. A quadrilateral with all sides equal is a rhombus.
+
+### Part ii
+We know $z_1 + z_2 = (\cos \alpha + \cos \beta) + i(\sin \alpha + \sin \beta)$.
+The modulus squared $r^2 = |z_1 + z_2|^2 = (\cos \alpha + \cos \beta)^2 + (\sin \alpha + \sin \beta)^2$.
+Expanding this:
+$r^2 = (\cos^2 \alpha + 2\cos \alpha \cos \beta + \cos^2 \beta) + (\sin^2 \alpha + 2\sin \alpha \sin \beta + \sin^2 \beta)$
+Using $\cos^2 x + \sin^2 x = 1$:
+$r^2 = 1 + 1 + 2(\cos \alpha \cos \beta + \sin \alpha \sin \beta)$
+Using the identity $\cos(\beta - \alpha) = \cos \beta \cos \alpha + \sin \beta \sin \alpha$:
+$r^2 = 2 + 2\cos(\beta - \alpha)$
+Using the double angle formula $\cos(2A) = 2\cos^2 A - 1$, let $A = \frac{\beta - \alpha}{2}$:
+$r^2 = 2(1 + \cos(\beta - \alpha)) = 2(1 + 2\cos^2(\frac{\beta - \alpha}{2}) - 1) = 4\cos^2(\frac{\beta - \alpha}{2})$
+Taking the positive square root ($r > 0$): $r = 2\cos(\frac{\beta - \alpha}{2})$.
+
+### Part iii
+The angle $\theta$ is the argument of $z_1 + z_2$. In a rhombus, the diagonal $OC$ bisects the angle $\angle AOB$. Since the argument of $z_1$ is $\alpha$ and $z_2$ is $\beta$, the diagonal $OC$ bisects the angle between them at $\frac{\alpha + \beta}{2}$.
+To show the identity:
+$z_1 + z_2 = r(\cos \theta + i \sin \theta) = 2\cos(\frac{\beta - \alpha}{2}) (\cos(\frac{\alpha + \beta}{2}) + i \sin(\frac{\alpha + \beta}{2}))$
+Equating the real parts:
+$\cos \alpha + \cos \beta = 2\cos(\frac{\beta - \alpha}{2}) \cos(\frac{\beta + \alpha}{2})$.
+
+###OTHERS
+A common trap is forgetting to restrict the argument $\theta$ or using incorrect sign conventions for the compound angle identities. Always verify using values like $\alpha = 0, \beta = \pi/3$ to check the formula logic.

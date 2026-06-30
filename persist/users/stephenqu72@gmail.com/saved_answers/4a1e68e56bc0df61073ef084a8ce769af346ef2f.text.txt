@@ -1,0 +1,35 @@
+To solve this problem, we start by defining the properties of the vectors $\underset{\sim}{u}$ and $\underset{\sim}{v}$ provided in the question.
+
+### Worked Solution
+
+Given that $\underset{\sim}{u}$ and $\underset{\sim}{v}$ are unit vectors, their magnitudes are 1:
+$$|\underset{\sim}{u}| = 1, \quad |\underset{\sim}{v}| = 1$$
+We are also given that their sum, $\underset{\sim}{u} + \underset{\sim}{v}$, is a unit vector:
+$$|\underset{\sim}{u} + \underset{\sim}{v}| = 1$$
+
+Square both sides of this magnitude equation to eliminate the radical:
+$$|\underset{\sim}{u} + \underset{\sim}{v}|^2 = 1^2$$
+$$(\underset{\sim}{u} + \underset{\sim}{v}) \cdot (\underset{\sim}{u} + \underset{\sim}{v}) = 1$$
+Expanding the dot product:
+$$\underset{\sim}{u} \cdot \underset{\sim}{u} + 2(\underset{\sim}{u} \cdot \underset{\sim}{v}) + \underset{\sim}{v} \cdot \underset{\sim}{v} = 1$$
+Using the identity $\underset{\sim}{a} \cdot \underset{\sim}{a} = |\underset{\sim}{a}|^2$:
+$$|\underset{\sim}{u}|^2 + 2(\underset{\sim}{u} \cdot \underset{\sim}{v}) + |\underset{\sim}{v}|^2 = 1$$
+Substitute $|\underset{\sim}{u}| = 1$ and $|\underset{\sim}{v}| = 1$:
+$$1^2 + 2(\underset{\sim}{u} \cdot \underset{\sim}{v}) + 1^2 = 1$$
+$$2 + 2(\underset{\sim}{u} \cdot \underset{\sim}{v}) = 1$$
+$$2(\underset{\sim}{u} \cdot \underset{\sim}{v}) = -1 \implies \underset{\sim}{u} \cdot \underset{\sim}{v} = -\frac{1}{2}$$
+
+Now, we need to find the magnitude of the difference, $|\underset{\sim}{u} - \underset{\sim}{v}|$. We start by squaring the expression:
+$$|\underset{\sim}{u} - \underset{\sim}{v}|^2 = (\underset{\sim}{u} - \underset{\sim}{v}) \cdot (\underset{\sim}{u} - \underset{\sim}{v})$$
+$$|\underset{\sim}{u} - \underset{\sim}{v}|^2 = \underset{\sim}{u} \cdot \underset{\sim}{u} - 2(\underset{\sim}{u} \cdot \underset{\sim}{v}) + \underset{\sim}{v} \cdot \underset{\sim}{v}$$
+$$|\underset{\sim}{u} - \underset{\sim}{v}|^2 = |\underset{\sim}{u}|^2 - 2(\underset{\sim}{u} \cdot \underset{\sim}{v}) + |\underset{\sim}{v}|^2$$
+Substitute $|\underset{\sim}{u}| = 1$, $|\underset{\sim}{v}| = 1$, and our found value $\underset{\sim}{u} \cdot \underset{\sim}{v} = -\frac{1}{2}$:
+$$|\underset{\sim}{u} - \underset{\sim}{v}|^2 = 1 - 2\left(-\frac{1}{2}\right) + 1$$
+$$|\underset{\sim}{u} - \underset{\sim}{v}|^2 = 1 + 1 + 1 = 3$$
+Taking the square root (since magnitude must be non-negative):
+$$|\underset{\sim}{u} - \underset{\sim}{v}| = \sqrt{3}$$
+
+Comparing this result to the given options, the correct choice is **C**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

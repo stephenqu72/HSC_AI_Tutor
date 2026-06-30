@@ -1,0 +1,34 @@
+To determine the representation of $i\bar{z}$ on the Argand diagram, we use the geometric interpretation of complex multiplication and conjugation.
+
+### Step-by-step Solution
+
+1.  **Define $z$ in polar form:**
+    Let $z = r(\cos \theta + i\sin \theta) = re^{i\theta}$, where $r > 0$ and $0 < \theta < \frac{\pi}{2}$ (as observed from the initial Argand diagram where $z$ is in the first quadrant).
+
+2.  **Find $\bar{z}$:**
+    The complex conjugate $\bar{z}$ is obtained by reflecting $z$ across the real axis.
+    $$\bar{z} = re^{-i\theta}$$
+    Geometrically, this point has the same modulus $r$ but an argument of $-\theta$.
+
+3.  **Find $i\bar{z}$:**
+    We know that $i = e^{i\frac{\pi}{2}}$. Multiplying by $i$ corresponds to a counter-clockwise rotation by $90^\circ$ ($\frac{\pi}{2}$ radians) about the origin.
+    $$i\bar{z} = (e^{i\frac{\pi}{2}})(re^{-i\theta}) = re^{i(\frac{\pi}{2} - \theta)}$$
+    The modulus remains $r$, and the new argument is $\frac{\pi}{2} - \theta$.
+
+4.  **Analyze the resulting position:**
+    Since $\theta$ is in the first quadrant ($0 < \theta < \frac{\pi}{2}$), the new argument $\frac{\pi}{2} - \theta$ is also in the first quadrant. 
+    Specifically, if $\theta$ is a small positive angle, $\frac{\pi}{2} - \theta$ is an angle close to $90^\circ$. This places the point $i\bar{z}$ in the first quadrant, but closer to the imaginary (vertical) axis than the original $z$.
+
+5.  **Evaluate the options:**
+    *   **A)** Shows $i\bar{z}$ in the first quadrant, rotated counter-clockwise from the real axis, consistent with our derivation.
+    *   **B)** Shows $i\bar{z}$ in the second quadrant.
+    *   **C)** Shows $i\bar{z}$ in the third quadrant.
+    *   **D)** Shows $i\bar{z}$ in the fourth quadrant.
+
+The calculation $i\bar{z} = re^{i(\frac{\pi}{2} - \theta)}$ confirms the point lies in the first quadrant. Option A is the only diagram that satisfies this.
+
+**Final Answer:**
+The correct representation is A.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

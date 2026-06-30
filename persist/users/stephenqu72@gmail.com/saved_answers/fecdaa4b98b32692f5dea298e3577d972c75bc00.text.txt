@@ -1,0 +1,30 @@
+To find the exact value of $i^i$ (where $i = \sqrt{-1}$), we use Euler’s formula, $e^{i\theta} = \cos \theta + i \sin \theta$.
+
+### Worked Solution
+
+**1. Express the base in Euler form**
+The complex number $i$ can be written in polar form as $i = 0 + 1i$. The modulus is $r = |i| = 1$, and the argument is $\theta = \frac{\pi}{2} + 2k\pi$ for any integer $k$.
+Using Euler's representation, we write:
+$$i = e^{i(\frac{\pi}{2} + 2k\pi)}$$
+
+**2. Apply the exponent**
+We are asked to evaluate $i^i$. Substituting the expression above:
+$$i^i = \left( e^{i(\frac{\pi}{2} + 2k\pi)} \right)^i$$
+
+**3. Simplify using exponent laws**
+Using the rule $(e^a)^b = e^{ab}$:
+$$i^i = e^{i \cdot i (\frac{\pi}{2} + 2k\pi)}$$
+Since $i^2 = -1$, the expression becomes:
+$$i^i = e^{-(\frac{\pi}{2} + 2k\pi)}$$
+
+**4. Consider the principal value**
+In standard complex analysis, unless otherwise specified, we consider the principal value where $k = 0$:
+$$i^i = e^{-\frac{\pi}{2}}$$
+
+**Conclusion**
+The exact principal value of $\sqrt{-1}^{\sqrt{-1}}$ is $e^{-\frac{\pi}{2}}$.
+
+Final Answer: $e^{-\frac{\pi}{2}}$
+
+###QUESTION_TYPE
+Calculation Question

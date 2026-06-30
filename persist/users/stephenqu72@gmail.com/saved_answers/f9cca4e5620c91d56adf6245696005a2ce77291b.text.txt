@@ -1,0 +1,33 @@
+To solve the indefinite integral
+$$\int \frac{2x+1}{\sqrt{9-x^2}} \, dx$$
+we split the integrand into two separate parts to evaluate them using standard techniques.
+
+### Step 1: Splitting the integral
+We can write the numerator $2x+1$ as $2x$ and $1$:
+$$\int \frac{2x+1}{\sqrt{9-x^2}} \, dx = \int \frac{2x}{\sqrt{9-x^2}} \, dx + \int \frac{1}{\sqrt{9-x^2}} \, dx$$
+
+### Step 2: Evaluating the first part
+For the first part, $I_1 = \int \frac{2x}{\sqrt{9-x^2}} \, dx$, we use the method of substitution.
+Let $u = 9 - x^2$. Then, the derivative is $\frac{du}{dx} = -2x$, which implies $du = -2x \, dx$, or $-du = 2x \, dx$.
+Substituting these into the integral:
+$$I_1 = \int \frac{-du}{\sqrt{u}} = -\int u^{-1/2} \, du$$
+Applying the power rule for integration ($\int u^n \, du = \frac{u^{n+1}}{n+1} + C$):
+$$I_1 = -\frac{u^{1/2}}{1/2} + C_1 = -2\sqrt{u} + C_1 = -2\sqrt{9-x^2} + C_1$$
+
+### Step 3: Evaluating the second part
+For the second part, $I_2 = \int \frac{1}{\sqrt{9-x^2}} \, dx$, we recognise the standard integral form $\int \frac{1}{\sqrt{a^2-x^2}} \, dx = \sin^{-1}\left(\frac{x}{a}\right) + C$.
+Here, $a^2 = 9$, so $a = 3$:
+$$I_2 = \sin^{-1}\left(\frac{x}{3}\right) + C_2$$
+
+### Step 4: Combining the results
+Combining $I_1$ and $I_2$:
+$$\int \frac{2x+1}{\sqrt{9-x^2}} \, dx = -2\sqrt{9-x^2} + \sin^{-1}\left(\frac{x}{3}\right) + C$$
+where $C = C_1 + C_2$ is the constant of integration.
+
+### Conclusion
+Comparing our result $\sin^{-1}\left(\frac{x}{3}\right) - 2\sqrt{9-x^2} + C$ with the given options, we find it matches option **C**.
+
+Final Answer: **C**
+
+###QUESTION_TYPE
+<Multiple Choice Question>

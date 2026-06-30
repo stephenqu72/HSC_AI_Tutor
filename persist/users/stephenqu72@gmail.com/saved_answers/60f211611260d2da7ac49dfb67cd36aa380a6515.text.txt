@@ -1,0 +1,37 @@
+To determine the value of $A$, we equate the integrand to its partial fraction decomposition and solve for the unknown constant.
+
+### Worked Solution
+
+Given that the integrand $\frac{3x - A}{1 - x^2}$ is equivalent to the sum of the partial fractions $\frac{-1}{1+x} + \frac{2}{1-x}$, we set up the following equation:
+
+$$\frac{3x - A}{1 - x^2} = \frac{-1}{1+x} + \frac{2}{1-x}$$
+
+To combine the right-hand side, we find a common denominator, which is $(1+x)(1-x) = 1-x^2$:
+
+$$\frac{3x - A}{1 - x^2} = \frac{-1(1-x) + 2(1+x)}{(1+x)(1-x)}$$
+
+Expand the terms in the numerator:
+
+$$\frac{3x - A}{1 - x^2} = \frac{-1 + x + 2 + 2x}{1 - x^2}$$
+
+Combine like terms in the numerator:
+
+$$\frac{3x - A}{1 - x^2} = \frac{(x + 2x) + (-1 + 2)}{1 - x^2}$$
+$$\frac{3x - A}{1 - x^2} = \frac{3x + 1}{1 - x^2}$$
+
+By comparing the numerators of the expressions on both sides of the equation:
+
+$$3x - A = 3x + 1$$
+
+Subtracting $3x$ from both sides, we obtain:
+
+$$-A = 1$$
+$$A = -1$$
+
+Checking this value, if $A = -1$, the numerator becomes $3x - (-1) = 3x + 1$, which matches our derived expression. This corresponds to option B.
+
+**Final Answer:**
+The value of $A$ is $-1$, which corresponds to option **B**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

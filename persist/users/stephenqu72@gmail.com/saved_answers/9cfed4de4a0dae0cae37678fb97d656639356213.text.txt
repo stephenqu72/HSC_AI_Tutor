@@ -1,0 +1,36 @@
+To find the coordinates of point $P$, we represent the points $A$ and $B$ as position vectors $\mathbf{a} = \begin{pmatrix} 6 \\ -18 \\ -6 \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} 7 \\ -1 \\ 3 \end{pmatrix}$ relative to the origin $O(0,0,0)$.
+
+### Part i: Defining points $N$ and $M$
+Given that $N$ lies on $OA$ such that $ON:NA = 1:2$, the position vector $\mathbf{n}$ is:
+$$\mathbf{n} = \frac{2\mathbf{o} + 1\mathbf{a}}{1+2} = \frac{1}{3}\mathbf{a} = \begin{pmatrix} 2 \\ -6 \\ -2 \end{pmatrix}$$
+Given that $M$ is the midpoint of $OB$, the position vector $\mathbf{m}$ is:
+$$\mathbf{m} = \frac{1}{2}(\mathbf{o} + \mathbf{b}) = \frac{1}{2}\mathbf{b} = \begin{pmatrix} 3.5 \\ -0.5 \\ 1.5 \end{pmatrix}$$
+
+### Part ii: Expressing $P$ using vector parameters
+Since $P$ lies on the line segment $BN$, we can express $\mathbf{p}$ using a parameter $s \in [0,1]$:
+$$\mathbf{p} = (1-s)\mathbf{b} + s\mathbf{n} = (1-s)\mathbf{b} + s\left(\frac{1}{3}\mathbf{a}\right) = \frac{s}{3}\mathbf{a} + (1-s)\mathbf{b} \quad \text{--- (1)}$$
+Since $P$ also lies on the line segment $AM$, we express $\mathbf{p}$ using a parameter $t \in [0,1]$:
+$$\mathbf{p} = (1-t)\mathbf{a} + t\mathbf{m} = (1-t)\mathbf{a} + t\left(\frac{1}{2}\mathbf{b}\right) = (1-t)\mathbf{a} + \frac{t}{2}\mathbf{b} \quad \text{--- (2)}$$
+
+### Part iii: Solving for the parameters
+Equating (1) and (2) (since $O, A, B$ are linearly independent vectors in this triangle):
+$$\left( \frac{s}{3} \right)\mathbf{a} + (1-s)\mathbf{b} = (1-t)\mathbf{a} + \left( \frac{t}{2} \right)\mathbf{b}$$
+By equating coefficients of $\mathbf{a}$ and $\mathbf{b}$:
+1) $\frac{s}{3} = 1 - t \implies t = 1 - \frac{s}{3}$
+2) $1 - s = \frac{t}{2} \implies t = 2 - 2s$
+
+Set the two expressions for $t$ equal:
+$$1 - \frac{s}{3} = 2 - 2s$$
+$$2s - \frac{s}{3} = 2 - 1$$
+$$\frac{5s}{3} = 1 \implies s = \frac{3}{5}$$
+
+### Part iv: Calculating the coordinates of $P$
+Substitute $s = \frac{3}{5}$ into equation (1):
+$$\mathbf{p} = \frac{1/5}{1} \mathbf{a} + \left(1 - \frac{3}{5}\right)\mathbf{b} = \frac{1}{5}\mathbf{a} + \frac{2}{5}\mathbf{b}$$
+$$\mathbf{p} = \frac{1}{5} \begin{pmatrix} 6 \\ -18 \\ -6 \end{pmatrix} + \frac{2}{5} \begin{pmatrix} 7 \\ -1 \\ 3 \end{pmatrix}$$
+$$\mathbf{p} = \frac{1}{5} \begin{pmatrix} 6 + 14 \\ -18 - 2 \\ -6 + 6 \end{pmatrix} = \frac{1}{5} \begin{pmatrix} 20 \\ -20 \\ 0 \end{pmatrix} = \begin{pmatrix} 4 \\ -4 \\ 0 \end{pmatrix}$$
+
+The coordinates of $P$ are $(4, -4, 0)$.
+
+###QUESTION_TYPE
+Calculation Question

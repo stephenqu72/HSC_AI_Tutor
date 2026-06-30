@@ -1,0 +1,48 @@
+### Part i
+To calculate $I_1 = \int_{0}^{\frac{1}{4}} x e^{-x} \, dx$, we use integration by parts. The formula is $\int u \, dv = uv - \int v \, du$.
+
+Let $u = x$ and $dv = e^{-x} \, dx$.
+Then $du = dx$ and $v = -e^{-x}$.
+
+Applying the formula:
+$$I_1 = \left[ -xe^{-x} \right]_{0}^{\frac{1}{4}} - \int_{0}^{\frac{1}{4}} (-e^{-x}) \, dx$$
+$$I_1 = \left( -\frac{1}{4}e^{-\frac{1}{4}} - 0 \right) + \int_{0}^{\frac{1}{4}} e^{-x} \, dx$$
+$$I_1 = -\frac{1}{4}e^{-\frac{1}{4}} + \left[ -e^{-x} \right]_{0}^{\frac{1}{4}}$$
+$$I_1 = -\frac{1}{4}e^{-\frac{1}{4}} - (e^{-\frac{1}{4}} - e^0)$$
+$$I_1 = 1 - \frac{5}{4}e^{-\frac{1}{4}}$$
+
+**Final Answer:** $I_1 = 1 - \frac{5}{4}e^{-\frac{1}{4}}$
+
+---
+
+### Part ii
+We wish to show that $kI_k = I_{k+1} - I_k + \frac{(1/4)^{k+1}}{e^{1/4}}$ (noting the denominator in the image is $e^{1/4}$ based on standard calculus contexts). 
+We use the definition $I_k = \int_{0}^{1/4} x^k e^{-x} \, dx$. Consider the derivative of the product $x^{k+1}e^{-x}$:
+$$\frac{d}{dx}(x^{k+1}e^{-x}) = (k+1)x^k e^{-x} - x^{k+1}e^{-x}$$
+Integrate both sides from $0$ to $1/4$:
+$$\left[ x^{k+1}e^{-x} \right]_0^{1/4} = (k+1) \int_0^{1/4} x^k e^{-x} \, dx - \int_0^{1/4} x^{k+1} e^{-x} \, dx$$
+$$\left( \frac{1}{4} \right)^{k+1} e^{-1/4} - 0 = (k+1)I_k - I_{k+1}$$
+Rearranging for $kI_k$:
+$$(k+1)I_k = I_{k+1} + \frac{(1/4)^{k+1}}{e^{1/4}}$$
+$$kI_k + I_k = I_{k+1} + \frac{(1/4)^{k+1}}{e^{1/4}}$$
+$$kI_k = I_{k+1} - I_k + \frac{(1/4)^{k+1}}{e^{1/4}}$$
+This matches the required form.
+
+---
+
+### Part iii
+We want to calculate $\sum_{k=1}^n kI_k$. Using the result from Part ii:
+$$\sum_{k=1}^n kI_k = \sum_{k=1}^n \left( I_{k+1} - I_k + \frac{(1/4)^{k+1}}{e^{1/4}} \right)$$
+By linearity of summation:
+$$\sum_{k=1}^n kI_k = \sum_{k=1}^n (I_{k+1} - I_k) + \frac{1}{e^{1/4}} \sum_{k=1}^n \left( \frac{1}{4} \right)^{k+1}$$
+The first sum is a telescoping sum:
+$$(I_2 - I_1) + (I_3 - I_2) + \dots + (I_{n+1} - I_n) = I_{n+1} - I_1$$
+The second sum is a geometric series with $a = (1/4)^2 = 1/16$ and $r = 1/4$:
+$$\sum_{k=1}^n \left( \frac{1}{4} \right)^{k+1} = \frac{\frac{1}{16}(1 - (1/4)^n)}{1 - 1/4} = \frac{1}{16} \cdot \frac{4}{3} \left( 1 - (1/4)^n \right) = \frac{1 - (1/4)^n}{12}$$
+Substituting these back:
+$$\sum_{k=1}^n kI_k = I_{n+1} - I_1 + \frac{1 - (1/4)^n}{12e^{1/4}}$$
+
+**Final Answer:** $\sum_{k=1}^n kI_k = I_{n+1} - I_1 + \frac{1 - (1/4)^n}{12e^{1/4}}$
+
+###QUESTION_TYPE
+Calculation Question

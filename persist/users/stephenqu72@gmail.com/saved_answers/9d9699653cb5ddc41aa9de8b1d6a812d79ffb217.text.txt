@@ -1,0 +1,77 @@
+### Part a(i)
+Given $z = a - 2bi$, the conjugate is $\bar{z} = a + 2bi$. We seek to find $\frac{1}{\bar{z}}$ in the form $x + iy$:
+$$\frac{1}{\bar{z}} = \frac{1}{a + 2bi}$$
+Multiply the numerator and denominator by the conjugate of the denominator, $(a - 2bi)$:
+$$\frac{1}{a + 2bi} \cdot \frac{a - 2bi}{a - 2bi} = \frac{a - 2bi}{a^2 - (2bi)^2} = \frac{a - 2bi}{a^2 + 4b^2}$$
+Separating into real and imaginary parts:
+$$\frac{1}{\bar{z}} = \frac{a}{a^2 + 4b^2} - \frac{2b}{a^2 + 4b^2}i$$
+**Final Answer:** $\frac{a}{a^2 + 4b^2} - \frac{2b}{a^2 + 4b^2}i$
+
+### Part a(ii)
+Given $z = a - 2bi$, calculate $z^2$:
+$$z^2 = (a - 2bi)^2 = a^2 - 2(a)(2bi) + (2bi)^2$$
+$$z^2 = a^2 - 4abi - 4b^2$$
+Grouping real and imaginary parts:
+$$z^2 = (a^2 - 4b^2) - 4abi$$
+**Final Answer:** $(a^2 - 4b^2) - 4abi$
+
+### Part b(i)
+Given Euler's formula $e^{i\theta} = \cos \theta + i \sin \theta$. To find $e^{-i\theta}$, substitute $-\theta$ for $\theta$:
+$$e^{-i\theta} = \cos(-\theta) + i \sin(-\theta)$$
+Since $\cos$ is an even function ($\cos(-\theta) = \cos \theta$) and $\sin$ is an odd function ($\sin(-\theta) = -\sin \theta$):
+**Final Answer:** $e^{-i\theta} = \cos \theta - i \sin \theta$
+
+### Part b(ii)
+Starting with the expressions from (i):
+$e^{i\theta} = \cos \theta + i \sin \theta$
+$e^{-i\theta} = \cos \theta - i \sin \theta$
+Subtract the second equation from the first:
+$$e^{i\theta} - e^{-i\theta} = (\cos \theta + i \sin \theta) - (\cos \theta - i \sin \theta)$$
+$$e^{i\theta} - e^{-i\theta} = 2i \sin \theta$$
+Dividing by $2i$:
+**Final Answer:** $\sin \theta = \frac{1}{2i}(e^{i\theta} - e^{-i\theta})$
+
+### Part b(iii)
+We use the result $\sin \theta = \frac{1}{2i}(e^{i\theta} - e^{-i\theta})$:
+$$\sin^3 \theta = \left( \frac{1}{2i}(e^{i\theta} - e^{-i\theta}) \right)^3 = \frac{1}{-8i} (e^{i\theta} - e^{-i\theta})^3$$
+Using the binomial expansion $(a-b)^3 = a^3 - 3a^2b + 3ab^2 - b^3$:
+$$\sin^3 \theta = \frac{1}{-8i} \left( (e^{i\theta})^3 - 3(e^{i\theta})^2(e^{-i\theta}) + 3(e^{i\theta})(e^{-i\theta})^2 - (e^{-i\theta})^3 \right)$$
+$$\sin^3 \theta = \frac{1}{-8i} \left( e^{i3\theta} - 3e^{i\theta} + 3e^{-i\theta} - e^{-i3\theta} \right)$$
+Rearrange terms:
+$$\sin^3 \theta = \frac{1}{-8i} \left( (e^{i3\theta} - e^{-i3\theta}) - 3(e^{i\theta} - e^{-i\theta}) \right)$$
+From part (ii), we know $\sin(n\theta) = \frac{1}{2i}(e^{in\theta} - e^{-in\theta})$, so $(e^{in\theta} - e^{-in\theta}) = 2i \sin(n\theta)$:
+$$\sin^3 \theta = \frac{1}{-8i} \left( 2i \sin 3\theta - 3(2i \sin \theta) \right) = \frac{2i}{-8i} \sin 3\theta - \frac{-6i}{-8i} \sin \theta$$
+**Final Answer:** $\sin^3 \theta = -\frac{1}{4} \sin 3\theta + \frac{3}{4} \sin \theta = \frac{3}{4} \sin \theta - \frac{1}{4} \sin 3\theta$
+
+### Part c(i)
+Equate the partial fractions:
+$$\frac{6x^2 + 3x + 17}{(x-3)(x^2 + 2x + 5)} = \frac{A}{x-3} + \frac{Bx+1}{x^2 + 2x + 5}$$
+Multiply by the denominator:
+$$6x^2 + 3x + 17 = A(x^2 + 2x + 5) + (Bx + 1)(x - 3)$$
+Let $x = 3$:
+$$6(9) + 3(3) + 17 = A(9 + 6 + 5) + 0 \implies 54 + 9 + 17 = 20A \implies 80 = 20A \implies A = 4$$
+Expand the RHS:
+$$6x^2 + 3x + 17 = 4x^2 + 8x + 20 + Bx^2 - 3Bx + x - 3$$
+$$6x^2 + 3x + 17 = (4+B)x^2 + (9-3B)x + 17$$
+Equate coefficients of $x^2$: $6 = 4 + B \implies B = 2$.
+**Final Answer:** $A = 4, B = 2$
+
+### Part c(ii)
+$$\int \left( \frac{4}{x-3} + \frac{2x+1}{x^2 + 2x + 5} \right) dx$$
+The first term is $4 \ln|x-3|$. For the second, note $\frac{d}{dx}(x^2+2x+5) = 2x+2$. Rewrite $2x+1$ as $(2x+2) - 1$:
+$$\int \frac{2x+2}{x^2+2x+5} dx - \int \frac{1}{(x+1)^2 + 4} dx$$
+$= 4 \ln|x-3| + \ln(x^2+2x+5) - \frac{1}{2}\arctan\left(\frac{x+1}{2}\right) + C$
+**Final Answer:** $4 \ln|x-3| + \ln(x^2+2x+5) - \frac{1}{2}\arctan\left(\frac{x+1}{2}\right) + C$
+
+### Part d
+**Proof by contradiction:**
+Assume that for an irrational number $n$, $\sqrt{n}$ is rational.
+If $\sqrt{n}$ is rational, then $\sqrt{n} = \frac{p}{q}$ for some integers $p, q$ ($q \neq 0$) in simplest form.
+Squaring both sides gives $n = \frac{p^2}{q^2}$, which implies $n = \frac{p^2}{q^2}$.
+This implies $n$ is a ratio of two integers, which by definition means $n$ is a rational number.
+This contradicts the given premise that $n$ is an irrational number.
+Therefore, the assumption must be false, and $\sqrt{n}$ must be irrational.
+**Final Answer:** Proved by contradiction.
+
+###QUESTION_TYPE
+Calculation Question

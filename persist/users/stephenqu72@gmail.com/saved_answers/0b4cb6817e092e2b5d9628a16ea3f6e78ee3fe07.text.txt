@@ -1,0 +1,45 @@
+To determine the correct expression for the cubic polynomial $P(z)$, we use the properties of polynomials with real coefficients and the relationship between roots and factors.
+
+### Step 1: Identify all roots
+We are given that $P(z)$ is a cubic polynomial with real coefficients.
+1.  One root is given as $z_1 = 3$.
+2.  A second root is given as $z_2 = 2 + i$.
+3.  By the **Conjugate Root Theorem**, since $P(z)$ has real coefficients, complex roots must occur in conjugate pairs. Therefore, if $z = 2 + i$ is a root, its conjugate $z_3 = 2 - i$ must also be a root.
+
+### Step 2: Form the factors
+Using the Factor Theorem, if $z = r$ is a root, then $(z - r)$ is a factor. The polynomial can be expressed as:
+$$P(z) = k(z - 3)(z - (2 + i))(z - (2 - i))$$
+where $k$ is a non-zero constant. Examining the provided options, the leading coefficient is 1, so we set $k = 1$.
+
+### Step 3: Expand the factors
+First, expand the product of the complex conjugate factors:
+$$(z - (2 + i))(z - (2 - i)) = ((z - 2) - i)((z - 2) + i)$$
+This is in the form of a difference of squares $(a - b)(a + b) = a^2 - b^2$:
+$$= (z - 2)^2 - i^2$$
+Since $i^2 = -1$:
+$$= (z^2 - 4z + 4) - (-1)$$
+$$= z^2 - 4z + 5$$
+
+Now, multiply by the remaining real factor $(z - 3)$:
+$$P(z) = (z - 3)(z^2 - 4z + 5)$$
+$$P(z) = z(z^2 - 4z + 5) - 3(z^2 - 4z + 5)$$
+$$P(z) = (z^3 - 4z^2 + 5z) - (3z^2 - 12z + 15)$$
+
+### Step 4: Simplify the expression
+Combine like terms:
+$$P(z) = z^3 + (-4z^2 - 3z^2) + (5z + 12z) - 15$$
+$$P(z) = z^3 - 7z^2 + 17z - 15$$
+
+Comparing this result to the given options:
+A. $z^3 - 7z^2 - 17z + 15$
+B. $z^3 - 7z^2 + 17z - 15$
+C. $z^3 + 7z^2 - 35z + 15$
+D. $z^3 + 7z^2 + 35z - 15$
+
+The calculated polynomial matches option B.
+
+**Final Answer:**
+The correct equation describing $P(z)$ is $P(z) = z^3 - 7z^2 + 17z - 15$, which corresponds to option **B**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

@@ -1,0 +1,39 @@
+To find the principal argument of the complex number $z = \frac{-3\sqrt{2} - i\sqrt{6}}{2 + 2i}$, we use the property of arguments for complex numbers: 
+$$\text{arg}\left(\frac{z_1}{z_2}\right) = \text{arg}(z_1) - \text{arg}(z_2)$$
+
+### Step 1: Find the argument of the numerator $z_1 = -3\sqrt{2} - i\sqrt{6}$
+The complex number $z_1$ is in the third quadrant (both real and imaginary parts are negative).
+The reference angle $\alpha_1$ is:
+$$\tan(\alpha_1) = \left| \frac{-\sqrt{6}}{-3\sqrt{2}} \right| = \frac{\sqrt{6}}{3\sqrt{2}} = \frac{\sqrt{3}}{3} = \frac{1}{\sqrt{3}}$$
+Since $\tan(\alpha_1) = \frac{1}{\sqrt{3}}$, we have $\alpha_1 = \frac{\pi}{6}$.
+In the third quadrant, the argument is $\theta_1 = -\pi + \alpha_1$:
+$$\theta_1 = -\pi + \frac{\pi}{6} = -\frac{5\pi}{6}$$
+
+### Step 2: Find the argument of the denominator $z_2 = 2 + 2i$
+The complex number $z_2$ is in the first quadrant.
+$$\tan(\theta_2) = \frac{2}{2} = 1$$
+Since $z_2$ is in the first quadrant, $\theta_2 = \frac{\pi}{4}$.
+
+### Step 3: Calculate the argument of the quotient
+Using the property $\text{arg}\left(\frac{z_1}{z_2}\right) = \theta_1 - \theta_2$:
+$$\text{arg}(z) = -\frac{5\pi}{6} - \frac{\pi}{4}$$
+To subtract these, find a common denominator (12):
+$$\text{arg}(z) = -\frac{10\pi}{12} - \frac{3\pi}{12} = -\frac{13\pi}{12}$$
+
+### Step 4: Determine the principal argument
+The principal argument must lie in the interval $(-\pi, \pi]$. Since $-\frac{13\pi}{12} < -\pi$, we add $2\pi$ to bring the angle into the required range:
+$$\text{Arg}(z) = -\frac{13\pi}{12} + 2\pi = -\frac{13\pi}{12} + \frac{24\pi}{12} = \frac{11\pi}{12}$$
+
+Comparing this result to the given options:
+A. $-\frac{11\pi}{12}$
+B. $\frac{7\pi}{12}$
+C. $\frac{11\pi}{12}$
+D. $\frac{13\pi}{12}$
+
+The result matches option C.
+
+### Final Answer:
+The principal argument is $\frac{11\pi}{12}$, which corresponds to option **C**.
+
+###QUESTION_TYPE
+Multiple Choice Question

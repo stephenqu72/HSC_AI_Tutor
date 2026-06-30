@@ -1,0 +1,42 @@
+To determine the possible values of $r$ for which the spheres are tangential, we must examine the geometric relationship between their centres and radii.
+
+### Worked Solution
+
+**1. Identify the centres and radii of the spheres**
+The standard equation of a sphere is $(x-x_0)^2 + (y-y_0)^2 + (z-z_0)^2 = R^2$, where $(x_0, y_0, z_0)$ is the centre and $R$ is the radius.
+
+*   For $S_1: (x+1)^2 + (y-3)^2 + (z+2)^2 = 4 = 2^2$:
+    Centre $C_1 = (-1, 3, -2)$ and radius $R_1 = 2$.
+*   For $S_2: (x-1)^2 + (y+1)^2 + (z-2)^2 = r^2$:
+    Centre $C_2 = (1, -1, 2)$ and radius $R_2 = r$ (where $r > 0$).
+
+**2. Calculate the distance between the centres**
+The distance $d$ between $C_1(-1, 3, -2)$ and $C_2(1, -1, 2)$ is given by the distance formula:
+$$d = \sqrt{(1 - (-1))^2 + (-1 - 3)^2 + (2 - (-2))^2}$$
+$$d = \sqrt{2^2 + (-4)^2 + 4^2} = \sqrt{4 + 16 + 16} = \sqrt{36} = 6$$
+
+**3. Determine the condition for the spheres to be tangential**
+Two spheres are tangential to each other if the distance between their centres $d$ is equal to either the sum or the absolute difference of their radii.
+
+*   **Case 1: Externally tangential**
+    In this case, the distance between the centres is the sum of the radii:
+    $$d = R_1 + R_2$$
+    $$6 = 2 + r$$
+    $$r = 4$$
+
+*   **Case 2: Internally tangential**
+    In this case, the distance between the centres is the absolute difference of the radii:
+    $$d = |R_1 - R_2|$$
+    $$6 = |2 - r|$$
+    This implies two possibilities:
+    1. $2 - r = 6 \implies r = -4$ (Reject, since $r > 0$)
+    2. $2 - r = -6 \implies r = 8$
+
+**Conclusion**
+The possible values for $r$ are $4$ and $8$. Comparing this result to the given options, we find it matches option B.
+
+### Final Answer
+$r = 4$ or $8$
+
+###QUESTION_TYPE
+Multiple Choice Question

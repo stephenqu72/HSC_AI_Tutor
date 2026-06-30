@@ -1,0 +1,38 @@
+To prove that $a^2 + 3b^2 + 5c^2 \le 1$ given $a \ge b \ge c > 0$ and $a+b+c \le 1$, we follow the suggestion to consider the expansion of $(a+b+c)^2$.
+
+### Proof
+
+Given $a, b, c > 0$ and $a+b+c \le 1$, we know that $(a+b+c)^2 \le 1^2 = 1$.
+The expansion of the square of a trinomial is given by:
+$$(a+b+c)^2 = a^2 + b^2 + c^2 + 2ab + 2bc + 2ca \le 1$$
+
+We wish to show $a^2 + 3b^2 + 5c^2 \le 1$. We can rewrite our inequality as:
+$$a^2 + 3b^2 + 5c^2 = (a^2 + b^2 + c^2 + 2ab + 2bc + 2ca) + (2b^2 + 4c^2 - 2ab - 2bc - 2ca)$$
+
+Since $(a+b+c)^2 \le 1$, the proof holds if we can show that:
+$$2b^2 + 4c^2 - 2ab - 2bc - 2ca \le 0$$
+Dividing by 2, this is equivalent to showing:
+$$b^2 + 2c^2 - ab - bc - ca \le 0$$
+
+Using the given condition $a \ge b \ge c$, we can apply the following bounds to the variables:
+1. Since $a \ge b$, then $-ab \le -b^2$.
+2. Since $a \ge c$, then $-ca \le -c^2$.
+
+Substituting these inequalities into the expression:
+$$b^2 + 2c^2 - ab - bc - ca \le b^2 + 2c^2 - b^2 - bc - c^2$$
+Simplifying the terms:
+$$b^2 - b^2 + 2c^2 - c^2 - bc = c^2 - bc$$
+$$= c(c - b)$$
+
+Because we are given $b \ge c$, it follows that $(c - b) \le 0$. Since $c > 0$, the product $c(c - b) \le 0$.
+
+Thus:
+$$a^2 + 3b^2 + 5c^2 \le (a+b+c)^2 + c(c-b)$$
+Since $(a+b+c)^2 \le 1$ and $c(c-b) \le 0$, it follows that:
+$$a^2 + 3b^2 + 5c^2 \le 1 + (\text{something } \le 0) \le 1$$
+
+**Conclusion:** 
+We have shown that $a^2 + 3b^2 + 5c^2 \le 1$ under the conditions $a \ge b \ge c > 0$ and $a+b+c \le 1$.
+
+###QUESTION_TYPE
+Proof Question

@@ -1,0 +1,40 @@
+To solve the expression $z^2 - \bar{w}$ given $z = 2 - 2i$ and $w = -3 + i$, we will calculate each part separately and then perform the subtraction.
+
+### Step 1: Calculate $z^2$
+Given $z = 2 - 2i$, we square the complex number:
+$$z^2 = (2 - 2i)^2$$
+Using the expansion identity $(a - b)^2 = a^2 - 2ab + b^2$:
+$$z^2 = (2)^2 - 2(2)(2i) + (2i)^2$$
+$$z^2 = 4 - 8i + 4i^2$$
+Recalling that $i^2 = -1$:
+$$z^2 = 4 - 8i + 4(-1)$$
+$$z^2 = 4 - 8i - 4$$
+$$z^2 = -8i$$
+
+### Step 2: Calculate $\bar{w}$
+The conjugate of a complex number $w = a + bi$ is defined as $\bar{w} = a - bi$.
+Given $w = -3 + i$:
+$$\bar{w} = -3 - i$$
+
+### Step 3: Calculate $z^2 - \bar{w}$
+Now, substitute the results from Step 1 and Step 2 into the expression:
+$$z^2 - \bar{w} = (-8i) - (-3 - i)$$
+Distribute the negative sign:
+$$z^2 - \bar{w} = -8i + 3 + i$$
+Combine the real parts and the imaginary parts:
+$$z^2 - \bar{w} = 3 + (-8i + i)$$
+$$z^2 - \bar{w} = 3 - 7i$$
+
+Comparing this result to the given options:
+A. $3 - 9i$
+B. $3 - 7i$
+C. $11 - 9i$
+D. $11 - 7i$
+
+The calculated value corresponds to option **B**.
+
+### Final Answer
+The value of $z^2 - \bar{w}$ is $3 - 7i$.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

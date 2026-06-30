@@ -1,0 +1,46 @@
+### Part i
+From $0 \le t \le 10$, the only retarding force is the constant frictional force $F = -\frac{1}{5}M$.
+Using Newton's Second Law, $F = M a = M \frac{dv}{dt}$:
+$$M \frac{dv}{dt} = -\frac{1}{5}M \implies \frac{dv}{dt} = -0.2$$
+Integrating with respect to $t$ gives $v(t) = -0.2t + C$. At $t=0$, $v=80$, so $C=80$.
+$$v(t) = 80 - 0.2t$$
+At $t=10$:
+$$v(10) = 80 - 0.2(10) = 80 - 2 = 78 \text{ m/s.}$$
+To find displacement $x(t)$, integrate $v(t)$:
+$$x(t) = \int (80 - 0.2t) dt = 80t - 0.1t^2 + C_2$$
+Taking the touchdown point as $x(0) = 0$, we find $C_2 = 0$. At $t=10$:
+$$x(10) = 80(10) - 0.1(10)^2 = 800 - 10 = 790 \text{ m.}$$
+Thus, at $t=10$, $v=78$ m/s and $x=790$ m.
+
+### Part ii
+For $t > 10$, the total force is the sum of the constant friction and the reverse thrust:
+$$F_{total} = -\frac{1}{5}M - \frac{1}{125}Mv^2 = M \frac{d^2x}{dt^2}$$
+Dividing both sides by $M$:
+$$\frac{d^2x}{dt^2} = -\frac{1}{5} - \frac{1}{125}v^2 = -\frac{25}{125} - \frac{1}{125}v^2 = -\frac{1}{125}(25 + v^2)$$
+This confirms the required expression.
+
+### Part iii
+We know $a = v \frac{dv}{dx} = -\frac{1}{125}(25 + v^2)$. Separating variables:
+$$\frac{v}{25 + v^2} dv = -\frac{1}{125} dx$$
+Integrate both sides:
+$$\int \frac{v}{25 + v^2} dv = \int -\frac{1}{125} dx$$
+Let $u = 25 + v^2$, so $du = 2v \, dv \implies v \, dv = \frac{1}{2} du$:
+$$\frac{1}{2} \ln(25 + v^2) = -\frac{1}{125}x + C$$
+At $t=10$, $x=790$ and $v=78$:
+$$\frac{1}{2} \ln(25 + 78^2) = -\frac{790}{125} + C \implies C = \frac{1}{2} \ln(6109) + 6.32$$
+Substitute $C$ back into the equation:
+$$\frac{1}{125}x = \frac{1}{2} \ln(6109) - \frac{1}{2} \ln(25 + v^2) + 6.32$$
+$$x = 62.5 \ln(6109) - 62.5 \ln(25 + v^2) + 125(6.32)$$
+Since $125 \times 6.32 = 790$:
+$$x = 790 + 62.5 [\ln(6109) - \ln(25 + v^2)]$$
+
+### Part iv
+The aircraft stops when $v=0$. Substitute $v=0$ into the expression from Part iii:
+$$x = 790 + 62.5 [\ln(6109) - \ln(25 + 0)]$$
+$$x = 790 + 62.5 \ln\left(\frac{6109}{25}\right)$$
+$$x = 790 + 62.5 \ln(244.36) \approx 790 + 62.5(5.4986) \approx 790 + 343.66$$
+$$x \approx 1133.66$$
+Rounding to the nearest metre, the distance is $1134$ m.
+
+###QUESTION_TYPE
+Calculation Question

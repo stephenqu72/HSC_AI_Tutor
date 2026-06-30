@@ -1,0 +1,30 @@
+To determine the Argand diagram representing the locus defined by $\text{Arg}(z - i) = \text{Arg}(z + 1)$, we follow these steps:
+
+### Analysis of the Locus
+1.  **Geometric Interpretation**: The expression $\text{Arg}(z - z_0)$ represents the angle of the vector from the point $z_0$ to the point $z$ relative to the positive real axis.
+    *   Let $A$ be the point representing $-1$, which is $(-1, 0)$ in the complex plane.
+    *   Let $B$ be the point representing $i$, which is $(0, 1)$ in the complex plane.
+    *   The equation $\text{Arg}(z - i) = \text{Arg}(z + 1)$ implies that the vector from $i$ to $z$ and the vector from $-1$ to $z$ make the same angle with the positive real axis.
+
+2.  **Implications**: 
+    *   If two vectors from different points to the same point $z$ have the same argument, the point $z$ must lie on the line passing through both $i$ and $-1$.
+    *   The points $A(-1, 0)$ and $B(0, 1)$ are the "excluded points" because the argument is undefined at the points themselves ($z \neq -1$ and $z \neq i$).
+
+3.  **The Geometry of the Locus**:
+    *   The locus consists of the points on the straight line passing through $(-1, 0)$ and $(0, 1)$, excluding the points $(-1, 0)$ and $(0, 1)$ themselves.
+    *   The line equation can be found using the slope $m = \frac{1-0}{0-(-1)} = 1$. Using the point-slope form $y - y_1 = m(x - x_1)$, we get $y - 1 = 1(x - 0)$, or $y = x + 1$.
+    *   We must restrict the locus to ensure the condition $\text{Arg}(z - i) = \text{Arg}(z + 1)$ is satisfied exactly, not differing by $2\pi$ or $\pi$.
+    *   If $z$ lies on the line *between* $A$ and $B$, the vectors point in opposite directions (an argument difference of $\pi$), which does not satisfy the equation.
+    *   Therefore, the locus consists of two rays: the part of the line extending from $i$ upwards to the right, and the part of the line extending from $-1$ downwards to the left.
+
+4.  **Evaluating the Diagrams**:
+    *   Diagram A shows exactly these two rays originating from $(-1, 0)$ and $(0, 1)$, extending outwards along the line $y = x + 1$. This matches our derivation.
+    *   Diagrams B, C, and D depict segments or lines that do not correctly represent the equality of the arguments (or represent segments where the arguments differ by $\pi$).
+
+**Conclusion**: Diagram A is the correct representation.
+
+### Final Answer
+The correct Argand diagram is **A**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

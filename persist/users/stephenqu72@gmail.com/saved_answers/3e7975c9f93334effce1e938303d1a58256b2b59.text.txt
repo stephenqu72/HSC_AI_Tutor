@@ -1,0 +1,115 @@
+An elegant and mathematically rigorous solution to the problem is presented below. This can be used as a model for HSC Mathematics Extension 2 exam responses.
+
+---
+
+### **Problem Statement**
+
+Let $S_n = \sum_{p=1}^n \tan^{-1}\left(\frac{1}{2p^2}\right)$. 
+
+Prove by mathematical induction that for all integers $n \ge 1$:
+$$\tan(S_n) = \frac{n}{n+1}$$
+
+---
+
+### **Proof by Mathematical Induction**
+
+Let $P(n)$ be the proposition that:
+$$\tan(S_n) = \frac{n}{n+1} \quad \text{where} \quad S_n = \sum_{p=1}^n \tan^{-1}\left(\frac{1}{2p^2}\right)$$
+
+#### **Step 1: Base Case**
+Prove that the statement $P(1)$ is true.
+
+For $n = 1$:
+$$\text{LHS} = \tan(S_1) = \tan\left( \sum_{p=1}^1 \tan^{-1}\left(\frac{1}{2p^2}\right) \right) = \tan\left( \tan^{-1}\left(\frac{1}{2(1)^2}\right) \right)$$
+
+Using the property $\tan(\tan^{-1}(x)) = x$ for all $x \in \mathbb{R}$:
+$$\text{LHS} = \frac{1}{2}$$
+
+Now calculate the right-hand side for $n = 1$:
+$$\text{RHS} = \frac{1}{1+1} = \frac{1}{2}$$
+
+Since $\text{LHS} = \text{RHS}$, the statement $P(1)$ is true.
+
+---
+
+#### **Step 2: Inductive Hypothesis**
+Assume that the statement $P(k)$ is true for some positive integer $k \ge 1$. That is, we assume:
+$$\tan(S_k) = \frac{k}{k+1} \tag{1}$$
+where $S_k = \sum_{p=1}^k \tan^{-1}\left(\frac{1}{2p^2}\right)$.
+
+---
+
+#### **Step 3: Inductive Step**
+We must show that $P(k+1)$ is true. That is, we want to prove:
+$$\tan(S_{k+1}) = \frac{k+1}{(k+1)+1} = \frac{k+1}{k+2}$$
+
+By the definition of the sum $S_{k+1}$:
+$$S_{k+1} = \sum_{p=1}^{k+1} \tan^{-1}\left(\frac{1}{2p^2}\right) = S_k + \tan^{-1}\left(\frac{1}{2(k+1)^2}\right)$$
+
+Taking the tangent of both sides:
+$$\tan(S_{k+1}) = \tan\left( S_k + \tan^{-1}\left(\frac{1}{2(k+1)^2}\right) \right)$$
+
+We use the compound angle formula for tangent:
+$$\tan(A + B) = \frac{\tan A + \tan B}{1 - \tan A \tan B}$$
+
+Let $A = S_k$ and $B = \tan^{-1}\left(\frac{1}{2(k+1)^2}\right)$. Note that $\tan B = \frac{1}{2(k+1)^2}$. 
+
+Substituting these into the formula yields:
+$$\tan(S_{k+1}) = \frac{\tan(S_k) + \tan\left(\tan^{-1}\left(\frac{1}{2(k+1)^2}\right)\right)}{1 - \tan(S_k) \cdot \tan\left(\tan^{-1}\left(\frac{1}{2(k+1)^2}\right)\right)}$$
+
+$$\tan(S_{k+1}) = \frac{\tan(S_k) + \frac{1}{2(k+1)^2}}{1 - \tan(S_k) \cdot \frac{1}{2(k+1)^2}}$$
+
+Applying our inductive hypothesis $(1)$, we substitute $\tan(S_k) = \frac{k}{k+1}$:
+$$\tan(S_{k+1}) = \frac{\frac{k}{k+1} + \frac{1}{2(k+1)^2}}{1 - \frac{k}{k+1} \cdot \frac{1}{2(k+1)^2}}$$
+
+To simplify this complex fraction, we find a common denominator for both the numerator and the denominator. The common denominator is $2(k+1)^2$:
+
+* **Numerator:**
+  $$\frac{k}{k+1} + \frac{1}{2(k+1)^2} = \frac{2k(k+1) + 1}{2(k+1)^2} = \frac{2k^2 + 2k + 1}{2(k+1)^2}$$
+
+* **Denominator:**
+  $$1 - \frac{k}{2(k+1)^3} = \frac{2(k+1)^3 - k}{2(k+1)^3}$$
+
+Now substitute these back into the expression for $\tan(S_{k+1})$:
+$$\tan(S_{k+1}) = \frac{\frac{2k^2 + 2k + 1}{2(k+1)^2}}{\frac{2(k+1)^3 - k}{2(k+1)^3}}$$
+
+Multiply the numerator by the reciprocal of the denominator:
+$$\tan(S_{k+1}) = \frac{2k^2 + 2k + 1}{2(k+1)^2} \times \frac{2(k+1)^3}{2(k+1)^3 - k}$$
+
+Cancel the common term $2(k+1)^2$ from the numerator and denominator:
+$$\tan(S_{k+1}) = \frac{(2k^2 + 2k + 1)(k+1)}{2(k+1)^3 - k}$$
+
+Let's expand and simplify the denominator:
+$$\begin{aligned}
+2(k+1)^3 - k &= 2(k^3 + 3k^2 + 3k + 1) - k \\
+&= 2k^3 + 6k^2 + 6k + 2 - k \\
+&= 2k^3 + 6k^2 + 5k + 2
+\end{aligned}$$
+
+We want to show that the overall fraction simplifies to $\frac{k+1}{k+2}$. Let's expand the denominator's proposed factored form $(2k^2 + 2k + 1)(k+2)$ to see if it matches our simplified denominator:
+$$\begin{aligned}
+(2k^2 + 2k + 1)(k+2) &= k(2k^2 + 2k + 1) + 2(2k^2 + 2k + 1) \\
+&= 2k^3 + 2k^2 + k + 4k^2 + 4k + 2 \\
+&= 2k^3 + 6k^2 + 5k + 2
+\end{aligned}$$
+
+Since this matches the denominator perfectly, we can factor the denominator as:
+$$2(k+1)^3 - k = (2k^2 + 2k + 1)(k+2)$$
+
+Thus:
+$$\tan(S_{k+1}) = \frac{(2k^2 + 2k + 1)(k+1)}{(2k^2 + 2k + 1)(k+2)}$$
+
+Since $2k^2 + 2k + 1 > 0$ for all real $k$ (as the discriminant $\Delta = 2^2 - 4(2)(1) = -4 < 0$), we can cancel this non-zero factor from both the numerator and the denominator:
+$$\tan(S_{k+1}) = \frac{k+1}{k+2}$$
+
+This is the required expression for $P(k+1)$. Therefore, $P(k+1)$ is true whenever $P(k)$ is true.
+
+---
+
+#### **Conclusion**
+Since the base case $P(1)$ is true, and the truth of $P(k)$ implies the truth of $P(k+1)$, by the principle of mathematical induction, the statement $P(n)$ is true for all integers $n \ge 1$. 
+
+$$\text{That is, } \tan(S_n) = \frac{n}{n+1} \text{ for all } n \ge 1.$$
+
+###QUESTION_TYPE
+Proof Question

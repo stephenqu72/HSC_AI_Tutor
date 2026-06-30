@@ -1,0 +1,30 @@
+To solve the integral $\displaystyle \int \sqrt{\frac{5-x}{5+x}} \, dx$, we will follow the hint provided in the question: making the numerator rational.
+
+### Step 1: Rationalize the numerator
+We multiply the numerator and the denominator inside the square root by $\sqrt{5-x}$:
+$$\sqrt{\frac{5-x}{5+x}} = \sqrt{\frac{(5-x)(5-x)}{(5+x)(5-x)}} = \frac{\sqrt{(5-x)^2}}{\sqrt{25-x^2}} = \frac{5-x}{\sqrt{25-x^2}}$$
+Thus, the integral becomes:
+$$I = \int \frac{5-x}{\sqrt{25-x^2}} \, dx$$
+
+### Step 2: Split the integral
+We can split this into two separate integrals:
+$$I = \int \frac{5}{\sqrt{25-x^2}} \, dx - \int \frac{x}{\sqrt{25-x^2}} \, dx$$
+$$I = 5 \int \frac{1}{\sqrt{5^2-x^2}} \, dx - \int x(25-x^2)^{-1/2} \, dx$$
+
+### Step 3: Evaluate the integrals
+For the first integral, we recall the standard result $\int \frac{1}{\sqrt{a^2-x^2}} \, dx = \arcsin\left(\frac{x}{a}\right) + C$. Here $a=5$:
+$$5 \int \frac{1}{\sqrt{5^2-x^2}} \, dx = 5 \arcsin\left(\frac{x}{5}\right)$$
+
+For the second integral, let $u = 25-x^2$. Then $du = -2x \, dx$, which implies $x \, dx = -\frac{1}{2} \, du$:
+$$\int x(25-x^2)^{-1/2} \, dx = \int u^{-1/2} \left(-\frac{1}{2} \, du\right) = -\frac{1}{2} \cdot \frac{u^{1/2}}{1/2} = -u^{1/2} = -\sqrt{25-x^2}$$
+
+### Step 4: Combine the results
+Substituting these back into the expression for $I$:
+$$I = 5 \arcsin\left(\frac{x}{5}\right) - (-\sqrt{25-x^2}) + C$$
+$$I = 5 \arcsin\left(\frac{x}{5}\right) + \sqrt{25-x^2} + C$$
+
+**Final Answer:**
+The integral is $\displaystyle 5 \arcsin\left(\frac{x}{5}\right) + \sqrt{25-x^2} + C$.
+
+###QUESTION_TYPE
+Calculation Question

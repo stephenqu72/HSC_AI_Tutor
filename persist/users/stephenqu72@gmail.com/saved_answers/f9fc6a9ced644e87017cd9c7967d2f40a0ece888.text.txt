@@ -1,0 +1,34 @@
+To prove that $u_n = 3 - \left(\frac{1}{2}\right)^{n-1}$ for all $n \in \mathbb{Z}^+$, where $u_1 = 2$ and $u_{r+1} = u_r + \frac{1}{2^r}$, we proceed by the Principle of Mathematical Induction.
+
+### Step 1: Base Case
+Check the formula for $n=1$:
+Left-hand side (LHS): $u_1 = 2$ (given).
+Right-hand side (RHS): $3 - \left(\frac{1}{2}\right)^{1-1} = 3 - \left(\frac{1}{2}\right)^0 = 3 - 1 = 2$.
+Since LHS = RHS, the statement is true for $n=1$.
+
+### Step 2: Inductive Hypothesis
+Assume the statement is true for some positive integer $k$, where $k \in \mathbb{Z}^+$. That is, assume:
+$$u_k = 3 - \left(\frac{1}{2}\right)^{k-1}$$
+
+### Step 3: Inductive Step
+We must show that the statement is true for $n=k+1$, i.e., $u_{k+1} = 3 - \left(\frac{1}{2}\right)^{(k+1)-1} = 3 - \left(\frac{1}{2}\right)^k$.
+
+Using the recurrence relation $u_{k+1} = u_k + \frac{1}{2^k}$ and the inductive hypothesis:
+$$u_{k+1} = \left[ 3 - \left(\frac{1}{2}\right)^{k-1} \right] + \frac{1}{2^k}$$
+
+To combine these terms, express $\left(\frac{1}{2}\right)^{k-1}$ with a denominator of $2^k$:
+$$\left(\frac{1}{2}\right)^{k-1} = \frac{1}{2^{k-1}} = \frac{2}{2 \cdot 2^{k-1}} = \frac{2}{2^k}$$
+
+Substitute this back into the expression for $u_{k+1}$:
+$$u_{k+1} = 3 - \frac{2}{2^k} + \frac{1}{2^k}$$
+$$u_{k+1} = 3 - \left( \frac{2 - 1}{2^k} \right)$$
+$$u_{k+1} = 3 - \frac{1}{2^k}$$
+$$u_{k+1} = 3 - \left(\frac{1}{2}\right)^k$$
+
+This matches the required form for $n=k+1$.
+
+### Conclusion
+Since the statement is true for $n=1$ and the truth of $n=k$ implies the truth of $n=k+1$, by the Principle of Mathematical Induction, the formula $u_n = 3 - \left(\frac{1}{2}\right)^{n-1}$ is true for all $n \in \mathbb{Z}^+$.
+
+###QUESTION_TYPE
+Proof Question

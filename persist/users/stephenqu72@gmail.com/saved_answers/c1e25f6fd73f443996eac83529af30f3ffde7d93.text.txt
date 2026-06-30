@@ -1,0 +1,42 @@
+### Part i
+
+We wish to prove by mathematical induction that $\frac{P_n'(x)}{P_n(x)} = \sum_{k=1}^{n} \frac{1}{x-a_k}$ for $n \ge 2$, where $P_n(x) = \prod_{k=1}^{n} (x-a_k)$.
+
+**Base Case:** Let $n=2$.
+$P_2(x) = (x-a_1)(x-a_2)$.
+By the product rule, $P_2'(x) = 1(x-a_2) + (x-a_1)(1) = 2x - a_1 - a_2$.
+Then, $\frac{P_2'(x)}{P_2(x)} = \frac{(x-a_2) + (x-a_1)}{(x-a_1)(x-a_2)} = \frac{x-a_2}{(x-a_1)(x-a_2)} + \frac{x-a_1}{(x-a_1)(x-a_2)} = \frac{1}{x-a_1} + \frac{1}{x-a_2}$.
+The base case holds.
+
+**Inductive Step:** Assume the statement is true for $n=m$, where $m \ge 2$:
+$$\frac{P_m'(x)}{P_m(x)} = \sum_{k=1}^{m} \frac{1}{x-a_k} \implies P_m'(x) = P_m(x) \sum_{k=1}^{m} \frac{1}{x-a_k}$$
+Consider $P_{m+1}(x) = P_m(x)(x-a_{m+1})$. By the product rule:
+$$P_{m+1}'(x) = P_m'(x)(x-a_{m+1}) + P_m(x)(1)$$
+Substitute the inductive hypothesis for $P_m'(x)$:
+$$P_{m+1}'(x) = \left[ P_m(x) \sum_{k=1}^{m} \frac{1}{x-a_k} \right](x-a_{m+1}) + P_m(x)$$
+Divide by $P_{m+1}(x) = P_m(x)(x-a_{m+1})$:
+$$\frac{P_{m+1}'(x)}{P_{m+1}(x)} = \frac{P_m(x) \sum_{k=1}^{m} \frac{1}{x-a_k}(x-a_{m+1}) + P_m(x)}{P_m(x)(x-a_{m+1})} = \sum_{k=1}^{m} \frac{1}{x-a_k} + \frac{1}{x-a_{m+1}} = \sum_{k=1}^{m+1} \frac{1}{x-a_k}$$
+Thus, the statement holds for $n=m+1$. By the principle of mathematical induction, the result holds for all $n \ge 2$.
+
+---
+
+### Part ii
+
+We are given $P(z) = (z-\omega)(z-\omega^2)\dots(z-\omega^{n-1})$. We also know that the roots of $z^n - 1 = 0$ are $1, \omega, \omega^2, \dots, \omega^{n-1}$.
+Thus, $z^n - 1 = (z-1)(z-\omega)(z-\omega^2)\dots(z-\omega^{n-1})$.
+Therefore, $P(z) = \frac{z^n - 1}{z-1} = z^{n-1} + z^{n-2} + \dots + z + 1$.
+
+From Part (i), we know that for $P(z) = \prod_{k=1}^{n-1} (z-\omega^k)$, the logarithmic derivative is:
+$$\frac{P'(z)}{P(z)} = \sum_{k=1}^{n-1} \frac{1}{z-\omega^k}$$
+Evaluating at $z=1$ is problematic due to the denominator. However, using $P(z) = \sum_{j=0}^{n-1} z^j$, we have $P(1) = \sum_{j=0}^{n-1} 1^j = n$.
+Also, $P'(z) = \sum_{j=1}^{n-1} j z^{j-1}$.
+Thus, $P'(1) = \sum_{j=1}^{n-1} j = \frac{(n-1)n}{2}$.
+
+Taking the limit as $z \to 1$ for the logarithmic derivative identity:
+$$\lim_{z \to 1} \frac{P'(z)}{P(z)} = \frac{P'(1)}{P(1)} = \frac{\frac{n(n-1)}{2}}{n} = \frac{n-1}{2}$$
+Comparing this to the sum expression:
+$$\sum_{k=1}^{n-1} \frac{1}{1-\omega^k} = \frac{n-1}{2}$$
+This shows $\frac{1}{1-\omega} + \frac{1}{1-\omega^2} + \dots + \frac{1}{1-\omega^{n-1}} = \frac{n-1}{2}$.
+
+###QUESTION_TYPE
+Proof Question

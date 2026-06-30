@@ -1,0 +1,40 @@
+To evaluate the integral $\int \frac{x + 16}{x^2 + 2x - 8} \, dx$, we use the method of partial fractions.
+
+### Step 1: Factor the denominator
+First, we factor the quadratic denominator $x^2 + 2x - 8$:
+$$x^2 + 2x - 8 = (x + 4)(x - 2)$$
+
+### Step 2: Set up the partial fractions
+We express the integrand as a sum of simpler fractions:
+$$\frac{x + 16}{(x + 4)(x - 2)} = \frac{A}{x + 4} + \frac{B}{x - 2}$$
+To solve for $A$ and $B$, we clear the denominators:
+$$x + 16 = A(x - 2) + B(x + 4)$$
+
+### Step 3: Solve for coefficients $A$ and $B$
+We substitute strategic values of $x$ to isolate the constants:
+*   **Let $x = 2$:**
+    $$2 + 16 = A(2 - 2) + B(2 + 4)$$
+    $$18 = 6B \implies B = 3$$
+*   **Let $x = -4$:**
+    $$-4 + 16 = A(-4 - 2) + B(-4 + 4)$$
+    $$12 = -6A \implies A = -2$$
+
+Thus, the partial fraction decomposition is:
+$$\frac{x + 16}{x^2 + 2x - 8} = \frac{-2}{x + 4} + \frac{3}{x - 2}$$
+
+### Step 4: Integrate the resulting expression
+Now, substitute the decomposition back into the integral:
+$$\int \left( \frac{-2}{x + 4} + \frac{3}{x - 2} \right) \, dx$$
+Using the standard integral result $\int \frac{1}{u} \, du = \ln|u| + C$:
+$$= -2 \int \frac{1}{x + 4} \, dx + 3 \int \frac{1}{x - 2} \, dx$$
+$$= -2 \ln|x + 4| + 3 \ln|x - 2| + C$$
+
+Applying the logarithm power rule $n \ln(a) = \ln(a^n)$ and the quotient rule $\ln(a) - \ln(b) = \ln(\frac{a}{b})$, we can write the final result as:
+$$= \ln|x - 2|^3 - \ln|x + 4|^2 + C$$
+$$= \ln \left| \frac{(x - 2)^3}{(x + 4)^2} \right| + C$$
+
+**Final Answer:**
+$$\int \frac{x + 16}{x^2 + 2x - 8} \, dx = 3\ln|x - 2| - 2\ln|x + 4| + C$$
+
+###QUESTION_TYPE
+Calculation Question

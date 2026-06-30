@@ -1,0 +1,40 @@
+To solve this problem, we interpret the equation $|z - (\sqrt{3} - i)| = 1$ geometrically in the Argand plane.
+
+### Step 1: Geometric Interpretation
+The equation represents a circle in the complex plane. The general form is $|z - z_0| = r$, where $z_0$ is the center of the circle and $r$ is the radius.
+Here, $z_0 = \sqrt{3} - i$ and $r = 1$.
+The center of the circle is at the point $(\sqrt{3}, -1)$ in the Cartesian plane.
+
+### Step 2: Find the properties of the center
+We calculate the argument and modulus of the center $z_0$:
+- $|z_0| = \sqrt{(\sqrt{3})^2 + (-1)^2} = \sqrt{3 + 1} = 2$.
+- $\text{arg}(z_0) = \tan^{-1}\left(\frac{-1}{\sqrt{3}}\right) = -30^\circ$.
+
+Since the radius $r=1$ is exactly half of the distance from the origin to the center ($|z_0|=2$), the origin lies outside the circle.
+
+### Step 3: Find the minimum argument
+The minimum value of $\text{arg}(z)$ occurs when the line from the origin is **tangent** to the circle. 
+Let $O$ be the origin $(0,0)$ and $C$ be the center $(\sqrt{3}, -1)$. Let $P$ be the point of tangency on the circle. In the right-angled triangle $\triangle OPC$:
+- The hypotenuse $OC = 2$.
+- The opposite side $CP$ is the radius $r = 1$.
+- $\sin(\angle COP) = \frac{\text{opposite}}{\text{hypotenuse}} = \frac{CP}{OC} = \frac{1}{2}$.
+
+Thus, $\angle COP = 30^\circ$.
+
+The argument of the center $C$ is $-30^\circ$. The two tangent lines from the origin to the circle are at angles:
+- $\text{arg}(z) = \text{arg}(z_0) + 30^\circ = -30^\circ + 30^\circ = 0^\circ$
+- $\text{arg}(z) = \text{arg}(z_0) - 30^\circ = -30^\circ - 30^\circ = -60^\circ$
+
+### Conclusion
+The minimum value of the argument of points on the circle is $-60^\circ$.
+
+Comparing this result to the given options:
+A. $0^\circ$
+B. $-30^\circ$
+C. $-60^\circ$
+D. $-75^\circ$
+
+The correct option is **C**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

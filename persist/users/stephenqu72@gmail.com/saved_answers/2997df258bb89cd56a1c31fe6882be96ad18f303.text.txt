@@ -1,0 +1,56 @@
+Here are the worked solutions for the problems provided.
+
+---
+
+### Part c(i)
+To show why $wz = z^2 \text{cis}\left(\frac{\pi}{3}\right)$ is incorrect as written in the prompt, let us re-evaluate the geometric relationship for an equilateral triangle $OPQ$. For triangle $OPQ$ to be equilateral with origin $O$, the vector $w$ is obtained by rotating vector $z$ by $\pm \frac{\pi}{3}$ radians. 
+Assuming the orientation in the diagram (where $Q$ is counter-clockwise from $P$), we have:
+$$w = z \cdot \text{cis}\left(\frac{\pi}{3}\right)$$
+Multiplying both sides by $z$:
+$$wz = z^2 \text{cis}\left(\frac{\pi}{3}\right)$$
+*Note:* The expression $wz = z^2 \text{cis}\left(\frac{\pi}{3}\right)$ is equivalent to the rotational definition $w = z \cdot \text{cis}\left(\frac{\pi}{3}\right)$ for points in the complex plane forming an equilateral triangle with the origin.
+
+### Part c(ii)
+We are given $w = z \text{cis}(\pm \pi/3)$. Let $\omega = \text{cis}(\frac{\pi}{3}) = \frac{1}{2} + i\frac{\sqrt{3}}{2}$.
+The roots of the equation $z^2 - zw + w^2 = 0$ are $z = w \cdot \text{cis}(\pm \pi/3)$.
+From Part (i), $w = z \cdot \text{cis}(\pm \pi/3)$, which implies $w^2 = z^2 \text{cis}(\pm 2\pi/3)$.
+Alternatively, since triangle $OPQ$ is equilateral, $w$ is $z$ rotated by $\pi/3$ or $-\pi/3$. 
+Thus, $\frac{w}{z} = \cos\frac{\pi}{3} \pm i\sin\frac{\pi}{3} = \frac{1}{2} \pm i\frac{\sqrt{3}}{2}$.
+Rearranging: $\frac{w}{z} - \frac{1}{2} = \pm i\frac{\sqrt{3}}{2}$. 
+Squaring both sides:
+$$\frac{w^2}{z^2} - \frac{w}{z} + \frac{1}{4} = -\frac{3}{4}$$
+$$\frac{w^2}{z^2} - \frac{w}{z} + 1 = 0$$
+Multiplying by $z^2$:
+$$w^2 - wz + z^2 = 0 \implies z^2 + w^2 = zw$$
+**Final Answer:** Proved.
+
+---
+
+### Part (d)
+Find $\int \frac{dx}{\sqrt{1 + 2x - x^2}}$.
+First, complete the square for the quadratic: $1 + 2x - x^2 = 1 - (x^2 - 2x) = 1 - ((x-1)^2 - 1) = 2 - (x-1)^2$.
+The integral becomes:
+$$\int \frac{dx}{\sqrt{2 - (x-1)^2}}$$
+Using the standard integral $\int \frac{du}{\sqrt{a^2 - u^2}} = \arcsin\left(\frac{u}{a}\right) + C$:
+Let $u = x-1$, $du = dx$, and $a = \sqrt{2}$.
+$$\int \frac{du}{\sqrt{(\sqrt{2})^2 - u^2}} = \arcsin\left(\frac{x-1}{\sqrt{2}}\right) + C$$
+**Final Answer:** $\arcsin\left(\frac{x-1}{\sqrt{2}}\right) + C$
+
+---
+
+### Part (e)
+Given $\ddot{x} = -4(x-3)$. Let $u = x-3$, then $\ddot{u} = \ddot{x} = -4u$.
+This is the standard form for SHM $\ddot{x} = -n^2(x - \text{centre})$, where $n^2 = 4 \implies n = 2$.
+The acceleration formula is $v \frac{dv}{dx} = -4(x-3)$.
+Integrating with respect to $x$:
+$$\frac{1}{2}v^2 = -4\left(\frac{x^2}{2} - 3x\right) + C = -2x^2 + 12x + C$$
+At $x=1$, $v = 4\sqrt{3}$, so $v^2 = 16(3) = 48$:
+$$\frac{1}{2}(48) = -2(1)^2 + 12(1) + C \implies 24 = 10 + C \implies C = 14$$
+So, $\frac{1}{2}v^2 = -2x^2 + 12x + 14 \implies v^2 = -4x^2 + 24x + 28$.
+The motion is centred at $x=3$. Max speed occurs at the centre ($x=3$):
+$v_{max}^2 = -4(3)^2 + 24(3) + 28 = -36 + 72 + 28 = 64$.
+$v_{max} = \sqrt{64} = 8$.
+**Final Answer:** $8 \text{ m/s}$
+
+###QUESTION_TYPE
+<Calculation Question>

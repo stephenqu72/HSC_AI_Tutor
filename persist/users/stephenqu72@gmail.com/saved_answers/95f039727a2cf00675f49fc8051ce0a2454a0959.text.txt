@@ -1,0 +1,36 @@
+To solve the integral $I = \int 3\sqrt{x} \ln x \, dx$, we use the method of **Integration by Parts**.
+
+### Worked Solution
+
+The formula for integration by parts is:
+$$\int u \, dv = uv - \int v \, du$$
+
+We choose $u$ and $dv$ based on the LIATE rule (Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential). Here, we have a logarithmic function and an algebraic function.
+
+1. Let $u = \ln x$. Then, the derivative is $du = \frac{1}{x} \, dx$.
+2. Let $dv = 3\sqrt{x} \, dx = 3x^{1/2} \, dx$.
+3. Integrating $dv$ to find $v$:
+   $$v = \int 3x^{1/2} \, dx = 3 \left( \frac{x^{3/2}}{3/2} \right) = 3 \left( \frac{2}{3} x^{3/2} \right) = 2x^{3/2}$$
+
+Applying the integration by parts formula:
+$$I = (\ln x)(2x^{3/2}) - \int (2x^{3/2}) \left( \frac{1}{x} \right) \, dx$$
+
+Simplify the integrand:
+$$I = 2x^{3/2} \ln x - \int 2x^{1/2} \, dx$$
+
+Perform the remaining integration:
+$$I = 2x^{3/2} \ln x - 2 \left( \frac{x^{3/2}}{3/2} \right) + C$$
+$$I = 2x^{3/2} \ln x - 2 \left( \frac{2}{3} x^{3/2} \right) + C$$
+$$I = 2x^{3/2} \ln x - \frac{4}{3} x^{3/2} + C$$
+
+To match the format of the given options, we factor out $2\sqrt{x}$ (noting that $x^{3/2} = x\sqrt{x}$):
+$$I = 2x\sqrt{x} \ln x - \frac{4}{3} x\sqrt{x} + C$$
+$$I = 2x\sqrt{x} \left( \ln x - \frac{2}{3} \right) + C$$
+
+Comparing this result to the provided options, it matches Option A.
+
+**Final Answer:**
+The expression is $2x\sqrt{x} \left( \ln x - \frac{2}{3} \right) + C$, which is Option **A**.
+
+###QUESTION_TYPE
+Multiple Choice Question

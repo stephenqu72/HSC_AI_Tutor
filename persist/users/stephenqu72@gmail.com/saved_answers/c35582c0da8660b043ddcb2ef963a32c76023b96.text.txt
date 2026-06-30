@@ -1,0 +1,33 @@
+To find the negation of a conditional statement, we must use the principles of formal logic.
+
+### Logical Analysis
+
+1.  **Define the propositions:**
+    Let $P$ be the statement "Snow is falling".
+    Let $Q$ be the statement "I will be at the park".
+    The original statement is "If snow is falling, then I will not be at the park".
+    Symbolically, this is written as: $P \implies \neg Q$ (If $P$, then not $Q$).
+
+2.  **Recall the rule for negation:**
+    The negation of a conditional statement $P \implies R$ is $P \land \neg R$ (P and not R).
+    In this case, our "result" part of the implication is $\neg Q$. Therefore, the negation of the entire implication is:
+    $$P \land \neg(\neg Q)$$
+
+3.  **Simplify the expression:**
+    By the Law of Double Negation, $\neg(\neg Q)$ is equivalent to $Q$.
+    Thus, the logical form of the negation is:
+    $$P \land Q$$
+    In plain English, this translates to: "Snow is falling AND I will be at the park."
+
+4.  **Evaluate the options:**
+    *   A) If $P$, then $Q$. (This is a different conditional statement).
+    *   B) If $\neg P$, then $Q$. (This is a different conditional statement).
+    *   C) Snow is falling and I will be at the park. (Matches our derived form $P \land Q$).
+    *   D) $\neg P \land Q$. (This is not the negation of the original statement).
+
+The negation of the statement is: **Snow is falling and I will be at the park.**
+
+This corresponds to option **C**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

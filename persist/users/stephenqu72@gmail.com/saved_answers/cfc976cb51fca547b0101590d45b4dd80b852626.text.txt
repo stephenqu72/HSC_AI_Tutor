@@ -1,0 +1,45 @@
+### Part a
+
+To prove the rectangular prism is a cube, we must show that its side lengths are equal, i.e., $p = q = r$ (assuming $p, q, r > 0$). We use the definition of the dot product for vectors $\mathbf{u}$ and $\mathbf{v}$: $\mathbf{u} \cdot \mathbf{v} = |\mathbf{u}| |\mathbf{v}| \cos \theta$, where $\theta$ is the angle between the vectors.
+
+The vectors representing the face diagonals are:
+$\vec{OA} = p\mathbf{i} + q\mathbf{j}$
+$\vec{OB} = p\mathbf{i} + r\mathbf{k}$
+$\vec{OC} = q\mathbf{j} + r\mathbf{k}$
+
+The magnitudes are:
+$|\vec{OA}| = \sqrt{p^2 + q^2}$
+$|\vec{OB}| = \sqrt{p^2 + r^2}$
+$|\vec{OC}| = \sqrt{q^2 + r^2}$
+
+Given that the angle between each pair is $\frac{\pi}{3}$, we use $\cos(\frac{\pi}{3}) = \frac{1}{2}$.
+
+**Step 1: Using $\angle AOB = \frac{\pi}{3}$**
+$\vec{OA} \cdot \vec{OB} = |\vec{OA}| |\vec{OB}| \cos\left(\frac{\pi}{3}\right)$
+$(p\mathbf{i} + q\mathbf{j}) \cdot (p\mathbf{i} + r\mathbf{k}) = \sqrt{p^2 + q^2} \sqrt{p^2 + r^2} \cdot \frac{1}{2}$
+$p^2 = \frac{1}{2} \sqrt{(p^2 + q^2)(p^2 + r^2)}$
+$4p^4 = (p^2 + q^2)(p^2 + r^2) = p^4 + p^2r^2 + q^2p^2 + q^2r^2$
+$3p^4 - p^2r^2 - q^2p^2 - q^2r^2 = 0 \quad \dots (1)$
+
+**Step 2: Using $\angle AOC = \frac{\pi}{3}$**
+$(p\mathbf{i} + q\mathbf{j}) \cdot (q\mathbf{j} + r\mathbf{k}) = \sqrt{p^2 + q^2} \sqrt{q^2 + r^2} \cdot \frac{1}{2}$
+$q^2 = \frac{1}{2} \sqrt{(p^2 + q^2)(q^2 + r^2)}$
+$4q^4 = p^2q^2 + p^2r^2 + q^4 + q^2r^2$
+$3q^4 - p^2q^2 - p^2r^2 - q^2r^2 = 0 \quad \dots (2)$
+
+**Step 3: Comparing equations**
+Subtract (2) from (1):
+$(3p^4 - p^2q^2 - p^2r^2 - q^2r^2) - (3q^4 - p^2q^2 - p^2r^2 - q^2r^2) = 0$
+$3p^4 - 3q^4 = 0 \implies p^4 = q^4$
+Since $p, q > 0$, we have $p = q$.
+
+Substitute $p=q$ into equation (1):
+$3p^4 - p^2r^2 - p^4 - p^2r^2 = 0$
+$2p^4 - 2p^2r^2 = 0 \implies p^2 = r^2$
+Since $p, r > 0$, we have $p = r$.
+
+**Conclusion:**
+Since $p = q$ and $p = r$, then $p = q = r$. The side lengths of the rectangular prism are equal, so the prism is a cube.
+
+###QUESTION_TYPE
+Proof Question

@@ -1,0 +1,37 @@
+To prove Pythagoras' Theorem using vectors for the right-angled triangle provided, we utilize the properties of the dot product and the geometric definition of orthogonality.
+
+### Proof
+
+**1. Definitions and Geometric Setup:**
+Let $\underset{\sim}{a}$ and $\underset{\sim}{b}$ be the vectors representing the two legs of the right-angled triangle. From the diagram, the vectors $\underset{\sim}{a}$ and $\underset{\sim}{b}$ are perpendicular.
+The property of orthogonality implies that their dot product is zero:
+$$\underset{\sim}{a} \cdot \underset{\sim}{b} = 0$$
+
+The vector $\underset{\sim}{c}$ represents the hypotenuse, given as:
+$$\underset{\sim}{c} = \underset{\sim}{a} - \underset{\sim}{b}$$
+
+**2. Relating the magnitude to the dot product:**
+Recall that the square of the magnitude of a vector $\underset{\sim}{v}$ is given by the dot product of the vector with itself: $|\underset{\sim}{v}|^2 = \underset{\sim}{v} \cdot \underset{\sim}{v}$.
+We apply this to the hypotenuse vector $\underset{\sim}{c}$:
+$$|\underset{\sim}{c}|^2 = \underset{\sim}{c} \cdot \underset{\sim}{c}$$
+
+**3. Expanding the expression:**
+Substitute $\underset{\sim}{c} = \underset{\sim}{a} - \underset{\sim}{b}$ into the expression:
+$$|\underset{\sim}{c}|^2 = (\underset{\sim}{a} - \underset{\sim}{b}) \cdot (\underset{\sim}{a} - \underset{\sim}{b})$$
+
+Using the distributive property (FOIL method) of the dot product:
+$$|\underset{\sim}{c}|^2 = \underset{\sim}{a} \cdot \underset{\sim}{a} - \underset{\sim}{a} \cdot \underset{\sim}{b} - \underset{\sim}{b} \cdot \underset{\sim}{a} + \underset{\sim}{b} \cdot \underset{\sim}{b}$$
+
+**4. Applying properties and simplifying:**
+Since the dot product is commutative ($\underset{\sim}{a} \cdot \underset{\sim}{b} = \underset{\sim}{b} \cdot \underset{\sim}{a}$) and $\underset{\sim}{a} \cdot \underset{\sim}{a} = |\underset{\sim}{a}|^2$ and $\underset{\sim}{b} \cdot \underset{\sim}{b} = |\underset{\sim}{b}|^2$:
+$$|\underset{\sim}{c}|^2 = |\underset{\sim}{a}|^2 - 2(\underset{\sim}{a} \cdot \underset{\sim}{b}) + |\underset{\sim}{b}|^2$$
+
+Substitute the orthogonality condition $\underset{\sim}{a} \cdot \underset{\sim}{b} = 0$ into the equation:
+$$|\underset{\sim}{c}|^2 = |\underset{\sim}{a}|^2 - 2(0) + |\underset{\sim}{b}|^2$$
+$$|\underset{\sim}{c}|^2 = |\underset{\sim}{a}|^2 + |\underset{\sim}{b}|^2$$
+
+**Conclusion:**
+This result confirms that the square of the hypotenuse equals the sum of the squares of the other two sides, which is Pythagoras' Theorem.
+
+###QUESTION_TYPE
+Proof Question

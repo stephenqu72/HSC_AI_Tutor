@@ -1,0 +1,33 @@
+To find the integral $\int \sin^3 x \cos^3 x \, dx$, we use trigonometric identities and the method of integration by substitution. This is a standard HSC Extension 2 technique for integrands involving powers of sine and cosine.
+
+### Part d
+
+We wish to evaluate:
+$$I = \int \sin^3 x \cos^3 x \, dx$$
+
+**Step 1: Simplify the integrand using trigonometric identities**
+Since both sine and cosine have odd powers, we can isolate one $\cos x$ term to serve as the derivative for a substitution $u = \sin x$. We use the identity $\cos^2 x = 1 - \sin^2 x$:
+$$I = \int \sin^3 x \cos^2 x (\cos x \, dx)$$
+$$I = \int \sin^3 x (1 - \sin^2 x) (\cos x \, dx)$$
+
+**Step 2: Apply substitution**
+Let $u = \sin x$. Then, the differential is $du = \cos x \, dx$. Substituting these into the integral:
+$$I = \int u^3 (1 - u^2) \, du$$
+
+**Step 3: Expand and integrate with respect to $u$**
+Distribute $u^3$ across the terms in the parentheses:
+$$I = \int (u^3 - u^5) \, du$$
+Now, integrate using the power rule $\int u^n \, du = \frac{u^{n+1}}{n+1} + C$:
+$$I = \frac{u^4}{4} - \frac{u^6}{6} + C$$
+
+**Step 4: Back-substitute to return to the original variable $x$**
+Replace $u$ with $\sin x$:
+$$I = \frac{\sin^4 x}{4} - \frac{\sin^6 x}{6} + C$$
+
+(Alternative note: The answer can also be expressed in terms of $\cos x$ using $v = \cos x$, resulting in $-\frac{\cos^4 x}{4} + \frac{\cos^6 x}{6} + C$, which is equivalent up to the constant of integration).
+
+**Final Answer:**
+$$\int \sin^3 x \cos^3 x \, dx = \frac{\sin^4 x}{4} - \frac{\sin^6 x}{6} + C$$
+
+###QUESTION_TYPE
+Calculation Question

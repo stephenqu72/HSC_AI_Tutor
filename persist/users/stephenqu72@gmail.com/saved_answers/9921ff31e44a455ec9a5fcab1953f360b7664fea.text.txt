@@ -1,0 +1,28 @@
+To prove that $n^3 - n$ is divisible by 6 for all integers $n$, we can use algebraic factorisation and the properties of consecutive integers.
+
+### Part c
+**Goal:** Prove that $n^3 - n$ is divisible by 6 for all $n \in \mathbb{Z}$.
+
+**Step 1: Factorise the expression.**
+We begin by factorising the expression $n^3 - n$:
+$$n^3 - n = n(n^2 - 1)$$
+Using the difference of two squares identity, $a^2 - b^2 = (a-b)(a+b)$, we can factorise $(n^2 - 1)$:
+$$n^3 - n = n(n - 1)(n + 1)$$
+Rearranging the factors in ascending order, we have:
+$$n^3 - n = (n - 1)n(n + 1)$$
+
+**Step 2: Justification using properties of consecutive integers.**
+The expression $(n - 1)n(n + 1)$ represents the product of three consecutive integers.
+1.  **Divisibility by 2:** In any two consecutive integers, at least one must be even (divisible by 2). Therefore, the product of three consecutive integers must be divisible by 2.
+2.  **Divisibility by 3:** In any three consecutive integers, exactly one must be a multiple of 3. Therefore, the product of three consecutive integers must be divisible by 3.
+
+**Step 3: Conclusion.**
+Since the expression is divisible by both 2 and 3, and because 2 and 3 are coprime (i.e., their greatest common divisor is 1), the expression must be divisible by their product:
+$$2 \times 3 = 6$$
+Thus, $(n-1)n(n+1)$ is divisible by 6 for all integers $n$.
+
+**Final Answer:**
+Since $n^3 - n = (n-1)n(n+1)$ is the product of three consecutive integers, it contains at least one multiple of 2 and one multiple of 3. Therefore, it is divisible by $2 \times 3 = 6$.
+
+###QUESTION_TYPE
+Proof Question

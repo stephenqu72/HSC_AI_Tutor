@@ -1,0 +1,56 @@
+Hello! As your HSC Mathematics Extension 2 tutor, I will walk you through this problem step-by-step. These types of questions require a strong grasp of calculus techniques and an ability to manipulate integrals effectively. Let's work through this systematically.
+
+---
+
+### Part i
+**Goal:** Find the coordinates of the stationary point of $y = \frac{e^x}{x}$.
+
+A stationary point occurs where the first derivative $\frac{dy}{dx} = 0$. Using the quotient rule, where $u = e^x$ and $v = x$, then $u' = e^x$ and $v' = 1$:
+$$\frac{dy}{dx} = \frac{v u' - u v'}{v^2} = \frac{x e^x - e^x(1)}{x^2} = \frac{e^x(x - 1)}{x^2}$$
+For a stationary point, we set $\frac{dy}{dx} = 0$:
+$$\frac{e^x(x - 1)}{x^2} = 0$$
+Since $e^x > 0$ for all real $x$ and $x \neq 0$, the numerator must be zero:
+$$x - 1 = 0 \implies x = 1$$
+To find the $y$-coordinate, substitute $x = 1$ into the original function:
+$$y = \frac{e^1}{1} = e$$
+**Final Answer:** The coordinates of the stationary point are $(1, e)$.
+
+---
+
+### Part ii
+**Goal:** Find $a$ such that $\int_a^{2a} \frac{e^x}{x} \, dx = \int_a^{2a} \frac{e^x}{x^2} \, dx$.
+
+First, rearrange the equation by subtracting the right integral from the left:
+$$\int_a^{2a} \frac{e^x}{x} \, dx - \int_a^{2a} \frac{e^x}{x^2} \, dx = 0 \implies \int_a^{2a} \left( \frac{e^x}{x} - \frac{e^x}{x^2} \right) \, dx = 0$$
+Recognize that $\frac{d}{dx} \left( \frac{e^x}{x} \right) = \frac{x e^x - e^x}{x^2} = \frac{e^x}{x} - \frac{e^x}{x^2}$ (from Part i). 
+Thus, the integral of the derivative is the function itself:
+$$\left[ \frac{e^x}{x} \right]_a^{2a} = 0$$
+Substitute the limits:
+$$\frac{e^{2a}}{2a} - \frac{e^a}{a} = 0 \implies \frac{e^{2a}}{2a} = \frac{e^a}{a}$$
+Since $a$ must be positive (the function is defined for $x>0$ at the stationary point and the provided graph segment), we can multiply by $a$ ($a \neq 0$):
+$$\frac{e^{2a}}{2} = e^a \implies e^{2a} = 2e^a$$
+Divide both sides by $e^a$ (which is never zero):
+$$e^a = 2 \implies a = \ln(2)$$
+**Final Answer:** $a = \ln(2)$.
+
+---
+
+### Part iii
+**Goal:** Show that there are no distinct integers $m$ and $n$ such that $\int_m^n \frac{e^x}{x} \, dx = \int_m^n \frac{e^x}{x^2} \, dx$.
+
+Using the method from Part ii, the equation is equivalent to:
+$$\left[ \frac{e^x}{x} \right]_m^n = 0 \implies \frac{e^n}{n} = \frac{e^m}{m}$$
+Rearranging this:
+$$\frac{e^n}{e^m} = \frac{n}{m} \implies e^{n-m} = \frac{n}{m}$$
+Let $k = n - m$. Since $n$ and $m$ are distinct integers, $k$ is a non-zero integer. The equation becomes $e^k = \frac{m+k}{m} = 1 + \frac{k}{m}$, which implies:
+$$e^k - 1 = \frac{k}{m} \implies m = \frac{k}{e^k - 1}$$
+For $m$ to be an integer, $e^k - 1$ must be a divisor of $k$.
+1. If $k > 0$: $e^k - 1 > k$ for all $k \geq 1$. (e.g., $e^1-1 \approx 1.718 > 1$). Thus, $\frac{k}{e^k - 1}$ is a fraction between 0 and 1, so $m$ cannot be an integer.
+2. If $k < 0$: Let $k = -j$ where $j > 0$. Then $m = \frac{-j}{e^{-j} - 1} = \frac{-j}{\frac{1}{e^j} - 1} = \frac{-j e^j}{1 - e^j} = \frac{j e^j}{e^j - 1}$. 
+Since $e^j > e^j - 1$, then $\frac{e^j}{e^j - 1} > 1$. Thus $m > j > 0$. However, checking values like $j=1$ gives $m = \frac{e}{e-1} \approx 1.58$, not an integer.
+Since $m$ cannot be an integer for any non-zero integer $k$, no such distinct integers $m$ and $n$ exist.
+
+**Final Answer:** It is not possible as it requires $m = \frac{n-m}{e^{n-m}-1}$, which yields no integer solutions for $m, n$.
+
+###QUESTION_TYPE
+<Proof Question>

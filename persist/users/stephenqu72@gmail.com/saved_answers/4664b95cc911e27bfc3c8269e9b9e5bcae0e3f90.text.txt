@@ -1,0 +1,44 @@
+### Part i
+**Goal:** Prove that for $k \in \mathbb{R}^+$, $\frac{2}{\sqrt{k+1} + \sqrt{k}} < \frac{1}{\sqrt{k}}$.
+
+**Proof:**
+Since $k \in \mathbb{R}^+$, we know that $\sqrt{k+1} > \sqrt{k}$. 
+Adding $\sqrt{k}$ to both sides of this inequality gives:
+$$\sqrt{k+1} + \sqrt{k} > 2\sqrt{k}$$
+
+Since both sides are strictly positive, we can take the reciprocal of both sides, which reverses the inequality:
+$$\frac{1}{\sqrt{k+1} + \sqrt{k}} < \frac{1}{2\sqrt{k}}$$
+
+Multiplying both sides by 2 gives:
+$$\frac{2}{\sqrt{k+1} + \sqrt{k}} < \frac{2}{2\sqrt{k}} = \frac{1}{\sqrt{k}}$$
+
+**Conclusion:** We have shown that for all $k > 0$, $\frac{2}{\sqrt{k+1} + \sqrt{k}} < \frac{1}{\sqrt{k}}$.
+
+***
+
+### Part ii
+**Goal:** Hence prove $16 < \sum_{k=1}^{80} \frac{1}{\sqrt{k}} < 17$.
+
+**Proof:**
+First, we rationalise the denominator of the expression from part (i):
+$$\frac{2}{\sqrt{k+1} + \sqrt{k}} = \frac{2(\sqrt{k+1} - \sqrt{k})}{(\sqrt{k+1} + \sqrt{k})(\sqrt{k+1} - \sqrt{k})} = \frac{2(\sqrt{k+1} - \sqrt{k})}{(k+1) - k} = 2(\sqrt{k+1} - \sqrt{k})$$
+
+From part (i), we have $2(\sqrt{k+1} - \sqrt{k}) < \frac{1}{\sqrt{k}}$.
+Summing this from $k=1$ to $80$:
+$$\sum_{k=1}^{80} 2(\sqrt{k+1} - \sqrt{k}) < \sum_{k=1}^{80} \frac{1}{\sqrt{k}}$$
+The left side is a telescoping sum:
+$$2[(\sqrt{2}-1) + (\sqrt{3}-\sqrt{2}) + \dots + (\sqrt{81}-\sqrt{80})] = 2(\sqrt{81} - 1) = 2(9-1) = 16$$
+Thus, $16 < \sum_{k=1}^{80} \frac{1}{\sqrt{k}}$.
+
+Now, consider the inequality $2(\sqrt{k} - \sqrt{k-1})$. Since $\sqrt{k} + \sqrt{k-1} < 2\sqrt{k}$, we have $\frac{1}{\sqrt{k}} < \frac{2}{\sqrt{k} + \sqrt{k-1}} = 2(\sqrt{k} - \sqrt{k-1})$.
+Summing from $k=2$ to $80$:
+$$\sum_{k=2}^{80} \frac{1}{\sqrt{k}} < \sum_{k=2}^{80} 2(\sqrt{k} - \sqrt{k-1}) = 2(\sqrt{80} - \sqrt{1}) = 2\sqrt{80} - 2$$
+Since $\sqrt{80} < \sqrt{81} = 9$, we have $2\sqrt{80} - 2 < 2(9) - 2 = 16$.
+Adding the $k=1$ term ($\frac{1}{\sqrt{1}} = 1$) to both sides:
+$$\sum_{k=1}^{80} \frac{1}{\sqrt{k}} < 1 + 2\sqrt{80} - 2 = 2\sqrt{80} - 1$$
+Since $\sqrt{80} < 9$, $2\sqrt{80} - 1 < 18 - 1 = 17$.
+
+**Conclusion:** Combining both results, $16 < \sum_{k=1}^{80} \frac{1}{\sqrt{k}} < 17$.
+
+###QUESTION_TYPE
+Proof Question

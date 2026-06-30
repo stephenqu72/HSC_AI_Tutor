@@ -1,0 +1,58 @@
+### Part a(i)
+To express $z = 1 + i\sqrt{3}$ in modulus-argument form $r(\cos \theta + i \sin \theta)$, we calculate:
+
+1. **Modulus ($r$):**
+   $$r = |z| = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{1 + 3} = \sqrt{4} = 2$$
+
+2. **Argument ($\theta$):**
+   Since $z$ is in the first quadrant (both real and imaginary parts are positive), the argument is:
+   $$\theta = \tan^{-1}\left(\frac{\text{Im}(z)}{\text{Re}(z)}\right) = \tan^{-1}\left(\frac{\sqrt{3}}{1}\right) = \frac{\pi}{3}$$
+
+Thus, in modulus-argument form:
+$$z = 2\left(\cos\frac{\pi}{3} + i\sin\frac{\pi}{3}\right)$$
+
+**Final Answer:** $z = 2\left(\cos\frac{\pi}{3} + i\sin\frac{\pi}{3}\right)$
+
+---
+
+### Part a(ii)
+We are asked to simplify $z^{10} + 512z$ using the result from part (i). By De Moivre's Theorem, $z^n = r^n(\cos n\theta + i \sin n\theta)$:
+
+1. **Calculate $z^{10}$:**
+   $$z^{10} = 2^{10} \left(\cos\left(10 \times \frac{\pi}{3}\right) + i \sin\left(10 \times \frac{\pi}{3}\right)\right) = 1024 \left(\cos\frac{10\pi}{3} + i \sin\frac{10\pi}{3}\right)$$
+   Since $\frac{10\pi}{3} = 2\pi + \frac{4\pi}{3}$, which is coterminal with $\frac{4\pi}{3}$:
+   $$\cos\frac{4\pi}{3} = -\frac{1}{2}, \quad \sin\frac{4\pi}{3} = -\frac{\sqrt{3}}{2}$$
+   $$z^{10} = 1024\left(-\frac{1}{2} - i\frac{\sqrt{3}}{2}\right) = -512 - 512i\sqrt{3}$$
+
+2. **Calculate $512z$:**
+   $$512z = 512(1 + i\sqrt{3}) = 512 + 512i\sqrt{3}$$
+
+3. **Sum the terms:**
+   $$z^{10} + 512z = (-512 - 512i\sqrt{3}) + (512 + 512i\sqrt{3}) = 0$$
+
+**Final Answer:** $0$
+
+---
+
+### Part b
+In parallelogram $ABCD$, the angle $ABC$ is the angle between the vectors $\vec{BA}$ and $\vec{BC}$. 
+Note that we are given $\vec{AB} = 6i - 2j + 3k$. Therefore, $\vec{BA} = -\vec{AB} = -6i + 2j - 3k$.
+We use the dot product formula: $\vec{u} \cdot \vec{v} = |\vec{u}||\vec{v}| \cos \theta$, where $\theta$ is the angle between the vectors.
+
+1. **Calculate dot product:**
+   $$\vec{BA} \cdot \vec{BC} = (-6)(2) + (2)(5) + (-3)(8) = -12 + 10 - 24 = -26$$
+
+2. **Calculate magnitudes:**
+   $$|\vec{BA}| = \sqrt{(-6)^2 + 2^2 + (-3)^2} = \sqrt{36 + 4 + 9} = \sqrt{49} = 7$$
+   $$|\vec{BC}| = \sqrt{2^2 + 5^2 + 8^2} = \sqrt{4 + 25 + 64} = \sqrt{93}$$
+
+3. **Calculate angle $\theta$:**
+   $$\cos \theta = \frac{\vec{BA} \cdot \vec{BC}}{|\vec{BA}||\vec{BC}|} = \frac{-26}{7\sqrt{93}}$$
+   $$\theta = \cos^{-1}\left(\frac{-26}{7\sqrt{93}}\right) \approx \cos^{-1}(-0.3852) \approx 112.659...^\circ$$
+
+Rounding to two decimal places, we get $112.66^\circ$.
+
+**Final Answer:** $112.66^\circ$
+
+###QUESTION_TYPE
+Calculation Question

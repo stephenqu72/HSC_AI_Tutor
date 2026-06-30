@@ -1,0 +1,46 @@
+### Part a) i
+To prove that $x + y \geq 2\sqrt{xy}$ for positive real numbers $x, y$:
+We start with the fact that the square of any real number is non-negative:
+$$(\sqrt{x} - \sqrt{y})^2 \geq 0$$
+Expanding the binomial:
+$$(\sqrt{x})^2 - 2\sqrt{x}\sqrt{y} + (\sqrt{y})^2 \geq 0$$
+$$x - 2\sqrt{xy} + y \geq 0$$
+Adding $2\sqrt{xy}$ to both sides:
+$$x + y \geq 2\sqrt{xy}$$
+Thus, the inequality is proven.
+
+### Part a) ii
+Using the AM-GM inequality $x + y \geq 2\sqrt{xy}$ established in part i:
+Apply the inequality to pairs of the terms on the left-hand side:
+$$a^2 + 4b^2 \geq 2\sqrt{a^2 \cdot 4b^2} = 2(2ab) = 4ab$$
+$$4c^2 + d^2 \geq 2\sqrt{4c^2 \cdot d^2} = 2(2cd) = 4cd$$
+Summing these two inequalities:
+$$a^2 + 4b^2 + 4c^2 + d^2 \geq 4ab + 4cd = 4(ab + cd)$$
+Now apply the AM-GM inequality again to the terms $(ab)$ and $(cd)$:
+$$ab + cd \geq 2\sqrt{abcd}$$
+Multiplying by 4:
+$$4(ab + cd) \geq 8\sqrt{abcd}$$
+By transitivity, since $a^2 + 4b^2 + 4c^2 + d^2 \geq 4(ab + cd)$ and $4(ab + cd) \geq 8\sqrt{abcd}$, we conclude:
+$$a^2 + 4b^2 + 4c^2 + d^2 \geq 8\sqrt{abcd}$$
+
+### Part b) i
+The line is given by $r = \begin{pmatrix} -5 \\ 1 \\ -1 \end{pmatrix} + \lambda \begin{pmatrix} 2 \\ -2 \\ 1 \end{pmatrix}$. 
+Let the direction vector be $\mathbf{v} = \begin{pmatrix} 2 \\ -2 \\ 1 \end{pmatrix}$. Note $|\mathbf{v}| = \sqrt{2^2 + (-2)^2 + 1^2} = 3$.
+Point $A$ corresponds to $\lambda = 1$: $\vec{A} = \begin{pmatrix} -5 \\ 1 \\ -1 \end{pmatrix} + 1 \begin{pmatrix} 2 \\ -2 \\ 1 \end{pmatrix} = \begin{pmatrix} -3 \\ -1 \\ 0 \end{pmatrix}$.
+Vector $\vec{AP} = \vec{P} - \vec{A} = \begin{pmatrix} 6 \\ 0 \\ 2 \end{pmatrix} - \begin{pmatrix} -3 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} 9 \\ 1 \\ 2 \end{pmatrix}$.
+The projection of $\vec{AP}$ onto the line (direction $\mathbf{v}$) is $\text{proj}_{\mathbf{v}}(\vec{AP}) = \frac{\vec{AP} \cdot \mathbf{v}}{|\mathbf{v}|^2} \mathbf{v}$.
+$\vec{AP} \cdot \mathbf{v} = (9)(2) + (1)(-2) + (2)(1) = 18 - 2 + 2 = 18$.
+$|\mathbf{v}|^2 = 9$.
+Projection $= \frac{18}{9} \begin{pmatrix} 2 \\ -2 \\ 1 \end{pmatrix} = 2 \begin{pmatrix} 2 \\ -2 \\ 1 \end{pmatrix} = \begin{pmatrix} 4 \\ -4 \\ 2 \end{pmatrix}$.
+
+### Part b) ii
+Let $M$ be the point on the line that is the projection of $P$.
+The vector $\vec{AM} = \text{proj}_{\mathbf{v}}(\vec{AP}) = \begin{pmatrix} 4 \\ -4 \\ 2 \end{pmatrix}$.
+The position vector of $M$ is $\vec{A} + \vec{AM} = \begin{pmatrix} -3 \\ -1 \\ 0 \end{pmatrix} + \begin{pmatrix} 4 \\ -4 \\ 2 \end{pmatrix} = \begin{pmatrix} 1 \\ -5 \\ 2 \end{pmatrix}$.
+Since $M$ is the midpoint of $PP'$, where $P'$ is the reflection of $P$:
+$\vec{M} = \frac{\vec{P} + \vec{P'}}{2} \implies \vec{P'} = 2\vec{M} - \vec{P}$.
+$\vec{P'} = 2 \begin{pmatrix} 1 \\ -5 \\ 2 \end{pmatrix} - \begin{pmatrix} 6 \\ 0 \\ 2 \end{pmatrix} = \begin{pmatrix} 2 \\ -10 \\ 4 \end{pmatrix} - \begin{pmatrix} 6 \\ 0 \\ 2 \end{pmatrix} = \begin{pmatrix} -4 \\ -10 \\ 2 \end{pmatrix}$.
+The coordinates of $P'$ are $(-4, -10, 2)$.
+
+###QUESTION_TYPE
+Calculation Question

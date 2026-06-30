@@ -1,0 +1,37 @@
+To solve this problem, we resolve the forces acting on the object of mass $m$ into components parallel and perpendicular to the inclined plane. We are given that the angle of friction $\alpha$ satisfies $\tan \alpha = \mu$.
+
+### Preliminary Analysis
+When the object is about to move, the friction force $F$ reaches its limiting value $F = \mu N = N \tan \alpha$. The forces acting on the mass are gravity ($mg$ downwards), the normal force ($N$ perpendicular to the plane), the applied horizontal force ($H$ horizontally), and friction ($F$ parallel to the plane).
+
+Resolving forces perpendicular to the plane (where there is no motion):
+$$N - mg \cos \theta - H \sin \theta = 0 \implies N = mg \cos \theta + H \sin \theta$$
+
+### Case 1: Limiting equilibrium for sliding down
+The object is about to slide down, so friction $F = \mu N$ acts **up the plane**. Resolving forces parallel to the plane:
+$$mg \sin \theta - H \cos \theta - \mu N = 0$$
+Substitute $N = mg \cos \theta + H \sin \theta$ and $\mu = \tan \alpha = \frac{\sin \alpha}{\cos \alpha}$:
+$$mg \sin \theta - H \cos \theta - \tan \alpha (mg \cos \theta + H \sin \theta) = 0$$
+Multiply by $\cos \alpha$:
+$$mg \sin \theta \cos \alpha - H \cos \theta \cos \alpha - mg \cos \theta \sin \alpha - H \sin \theta \sin \alpha = 0$$
+$$mg (\sin \theta \cos \alpha - \cos \theta \sin \alpha) = H (\cos \theta \cos \alpha + \sin \theta \sin \alpha)$$
+Using the compound angle identities $\sin(A-B) = \sin A \cos B - \cos A \sin B$ and $\cos(A-B) = \cos A \cos B + \sin A \sin B$:
+$$mg \sin(\theta - \alpha) = H \cos(\theta - \alpha) \implies H = mg \tan(\theta - \alpha)$$
+
+### Case 2: Limiting equilibrium for sliding up
+The object is about to slide up, so friction $F = \mu N$ acts **down the plane**. Resolving forces parallel to the plane:
+$$H \cos \theta - mg \sin \theta - \mu N = 0$$
+Substitute $N = mg \cos \theta + H \sin \theta$ and $\mu = \tan \alpha$:
+$$H \cos \theta - mg \sin \theta - \tan \alpha (mg \cos \theta + H \sin \theta) = 0$$
+Multiply by $\cos \alpha$:
+$$H \cos \theta \cos \alpha - mg \sin \theta \cos \alpha - mg \cos \theta \sin \alpha - H \sin \theta \sin \alpha = 0$$
+$$H (\cos \theta \cos \alpha - \sin \theta \sin \alpha) = mg (\sin \theta \cos \alpha + \cos \theta \sin \alpha)$$
+Using the compound angle identities $\cos(A+B) = \cos A \cos B - \sin A \sin B$ and $\sin(A+B) = \sin A \cos B + \cos A \sin B$:
+$$H \cos(\theta + \alpha) = mg \sin(\theta + \alpha) \implies H = mg \tan(\theta + \alpha)$$
+
+### Conclusion
+For the object to remain motionless, $H$ must be between these two limiting values. Thus:
+$$mg \tan(\theta - \alpha) \le H \le mg \tan(\theta + \alpha)$$
+This confirms the required inequality.
+
+###QUESTION_TYPE
+Proof Question

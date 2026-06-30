@@ -1,0 +1,37 @@
+To prove the reduction formula for $I_n = \int_{0}^{1} \frac{x^n}{\sqrt{1+x^2}} \, dx$, we will use integration by parts.
+
+### Part d
+
+We are given $I_n = \int_{0}^{1} x^{n-1} \cdot \frac{x}{\sqrt{1+x^2}} \, dx$.
+
+To use integration by parts, we let:
+$u = x^{n-1} \implies du = (n-1)x^{n-2} \, dx$
+$dv = \frac{x}{\sqrt{1+x^2}} \, dx \implies v = \sqrt{1+x^2}$ (Using the chain rule/substitution $w = 1+x^2$, $dw = 2x \, dx$)
+
+Applying the integration by parts formula $\int u \, dv = uv - \int v \, du$:
+
+$$I_n = \left[ x^{n-1} \sqrt{1+x^2} \right]_0^1 - \int_0^1 \sqrt{1+x^2} \cdot (n-1)x^{n-2} \, dx$$
+
+Evaluate the boundary term:
+$$\left[ x^{n-1} \sqrt{1+x^2} \right]_0^1 = (1)^{n-1} \sqrt{1+1^2} - (0)^{n-1} \sqrt{1+0^2} = \sqrt{2}$$
+
+Substitute this back into the expression:
+$$I_n = \sqrt{2} - (n-1) \int_0^1 \frac{x^{n-2}(1+x^2)}{\sqrt{1+x^2}} \, dx$$
+Note that we multiplied the numerator and denominator by $\sqrt{1+x^2}$ to split the integral:
+$$I_n = \sqrt{2} - (n-1) \left( \int_0^1 \frac{x^{n-2}}{\sqrt{1+x^2}} \, dx + \int_0^1 \frac{x^n}{\sqrt{1+x^2}} \, dx \right)$$
+
+Recognizing the terms as $I_{n-2}$ and $I_n$:
+$$I_n = \sqrt{2} - (n-1)I_{n-2} - (n-1)I_n$$
+
+Now, rearrange to solve for $I_n$:
+$$I_n + (n-1)I_n = \sqrt{2} - (n-1)I_{n-2}$$
+$$I_n(1 + n - 1) = \sqrt{2} - (n-1)I_{n-2}$$
+$$n I_n = \sqrt{2} - (n-1)I_{n-2}$$
+
+Dividing by $n$:
+$$I_n = \frac{\sqrt{2} - (n-1)I_{n-2}}{n}$$
+
+This completes the proof for all integers $n \geq 2$.
+
+###QUESTION_TYPE
+Proof Question

@@ -1,0 +1,84 @@
+### Part i
+
+We are given the equation of motion $a = \frac{dv}{dt} = g - kv$. Since the object is dropped, the initial velocity at $t=0$ is $v=0$. We solve this separable differential equation:
+
+$$\frac{dv}{g - kv} = dt$$
+
+Integrating both sides:
+$$\int \frac{1}{g - kv} \, dv = \int dt$$
+$$-\frac{1}{k} \ln|g - kv| = t + C$$
+
+At $t = 0, v = 0$:
+$$-\frac{1}{k} \ln(g) = 0 + C \implies C = -\frac{1}{k} \ln(g)$$
+
+Substitute $C$ back into the equation:
+$$-\frac{1}{k} \ln(g - kv) = t - \frac{1}{k} \ln(g)$$
+$$\frac{1}{k} \ln\left(\frac{g}{g - kv}\right) = t$$
+$$\ln\left(\frac{g}{g - kv}\right) = kt$$
+$$\frac{g}{g - kv} = e^{kt} \implies g - kv = ge^{-kt}$$
+$$kv = g - ge^{-kt} \implies v = \frac{g}{k}(1 - e^{-kt})$$
+
+Final Answer: $v = \frac{g}{k}(1 - e^{-kt})$
+
+---
+
+### Part ii
+
+Using $v = \frac{dx}{dt} = \frac{g}{k} - \frac{g}{k}e^{-kt}$, we integrate with respect to $t$ to find the position $x$. We define $x=0$ at $t=0$:
+
+$$x = \int \left( \frac{g}{k} - \frac{g}{k}e^{-kt} \right) dt$$
+$$x = \frac{gt}{k} - \frac{g}{k} \left( \frac{e^{-kt}}{-k} \right) + C$$
+$$x = \frac{gt}{k} + \frac{g}{k^2} e^{-kt} + C$$
+
+At $t=0, x=0$:
+$$0 = 0 + \frac{g}{k^2} + C \implies C = -\frac{g}{k^2}$$
+
+Therefore:
+$$x = \frac{gt}{k} + \frac{g}{k^2}e^{-kt} - \frac{g}{k^2}$$
+$$x = \frac{gt}{k} + \frac{g}{k^2}(e^{-kt} - 1)$$
+
+Final Answer: $x = \frac{gt}{k} + \frac{g}{k^2}(e^{-kt} - 1)$
+
+---
+
+### Part iii
+
+The second particle is projected upward from the ground ($x=0$ at $t=0$) with velocity $v = \frac{g+ku}{k}e^{-kt} - \frac{g}{k}$. Let its position be $x_2$:
+
+$$x_2 = \int \left( \frac{g+ku}{k}e^{-kt} - \frac{g}{k} \right) dt$$
+$$x_2 = \frac{g+ku}{k} \left( \frac{e^{-kt}}{-k} \right) - \frac{gt}{k} + C$$
+$$x_2 = -\frac{g+ku}{k^2} e^{-kt} - \frac{gt}{k} + C$$
+
+At $t=0, x_2=0$:
+$$0 = -\frac{g+ku}{k^2} - 0 + C \implies C = \frac{g+ku}{k^2}$$
+$$x_2 = \frac{g+ku}{k^2}(1 - e^{-kt}) - \frac{gt}{k}$$
+
+The position $X$ below $h$ is given by $X = h - x_2$:
+$$X = h - \left( \frac{g+ku}{k^2} - \frac{g+ku}{k^2}e^{-kt} - \frac{gt}{k} \right)$$
+$$X = h + \frac{g+ku}{k^2}(e^{-kt} - 1) + \frac{gt}{k}$$
+
+Final Answer: $X = h + \frac{g+ku}{k^2}(e^{-kt} - 1) + \frac{gt}{k}$
+
+---
+
+### Part iv
+
+For the objects to collide, their positions relative to the ground must be equal. Let $x_1$ be the position of the first object from the ground. Since $x$ from Part ii is the distance *below release* ($h$), $x_1 = h - x$:
+$$x_1 = h - \left( \frac{gt}{k} + \frac{g}{k^2}(e^{-kt} - 1) \right)$$
+Setting $x_1 = x_2$:
+$$h - \frac{gt}{k} - \frac{g}{k^2}(e^{-kt} - 1) = \frac{g+ku}{k^2}(1 - e^{-kt}) - \frac{gt}{k}$$
+$$h - \frac{g}{k^2}(e^{-kt} - 1) = \frac{g}{k^2}(1 - e^{-kt}) + \frac{ku}{k^2}(1 - e^{-kt})$$
+$$h = \frac{g}{k^2}(1 - e^{-kt}) + \frac{g}{k^2}(1 - e^{-kt}) + \frac{u}{k}(1 - e^{-kt})$$
+$$h = \left( \frac{2g}{k^2} + \frac{u}{k} \right)(1 - e^{-kT})$$
+*(Note: Interpreting the question's target expression involving $u-kh$, we re-evaluate the collision condition $x_1 = x_2$ directly as $h - x = x_2$)*:
+$$h = x + x_2 = \left( \frac{gt}{k} + \frac{g}{k^2}(e^{-kt} - 1) \right) + \left( \frac{g+ku}{k^2}(1 - e^{-kt}) - \frac{gt}{k} \right)$$
+$$h = \frac{g}{k^2}(e^{-kt} - 1) + \frac{g}{k^2}(1 - e^{-kt}) + \frac{u}{k}(1 - e^{-kt})$$
+$$h = \frac{u}{k}(1 - e^{-kT}) \implies 1 - e^{-kT} = \frac{kh}{u}$$
+$$e^{-kT} = 1 - \frac{kh}{u} = \frac{u - kh}{u}$$
+$$-kT = \ln\left( \frac{u - kh}{u} \right) \implies kT = -\ln\left( \frac{u - kh}{u} \right) = \ln\left( \frac{u}{u - kh} \right)$$
+$$T = \frac{1}{k} \ln\left( \frac{u}{u - kh} \right)$$
+
+Final Answer: $T = \frac{1}{k} \ln\left( \frac{u}{u - kh} \right)$
+
+###QUESTION_TYPE
+Calculation Question

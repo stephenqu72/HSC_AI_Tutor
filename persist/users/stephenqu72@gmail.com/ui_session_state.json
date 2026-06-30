@@ -1,23 +1,11 @@
 {
-  "selected_subtopics_filter": [
-    "M6.Electromagnetism||5.Charged particles, conductors and electric and magnetic fields||5.1.Particles in electric fields"
-  ],
-  "selected_topic": "5.Charged particles, conductors and electric and magnetic fields",
   "course_level": "M6.Electromagnetism",
-  "llm_choice": "gemini-3.1-flash-lite",
-  "practice_mode": "Topic by Topic",
-  "selected_note_pdf": "None",
-  "question_type_filter": "All types",
-  "course_levels_filter": [
-    "M6.Electromagnetism"
-  ],
-  "selected_paper": "",
+  "question_index": 0,
   "selected_subtopic": "5.1.Particles in electric fields",
-  "selected_topics_filter": [
-    "M6.Electromagnetism||5.Charged particles, conductors and electric and magnetic fields"
-  ],
-  "question_index": 2,
-  "question_type_filters": [
-    "All types"
-  ]
+  "practice_mode": "Past Paper",
+  "selected_topic": "5.Charged particles, conductors and electric and magnetic fields",
+  "question_type_filter": "All types",
+  "llm_choice": "gemini-3.1-flash-lite",
+  "selected_paper": "Baulkham Hills 2025",
+  "selected_note_pdf": "None"
 }

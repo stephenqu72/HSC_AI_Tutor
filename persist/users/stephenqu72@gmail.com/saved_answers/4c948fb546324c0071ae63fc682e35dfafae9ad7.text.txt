@@ -1,0 +1,37 @@
+To find the expression for the indefinite integral $I = \int \frac{2x \ln(2x^2 + 1)}{2x^2 + 1} \, dx$, we will use the method of integration by substitution.
+
+### Part a
+
+**Step 1: Identify a suitable substitution.**
+Observe the structure of the integrand. We have a function of $(2x^2 + 1)$ and its derivative present (up to a constant).
+Let $u = \ln(2x^2 + 1)$.
+
+**Step 2: Differentiate the substitution with respect to $x$.**
+Using the chain rule, where $\frac{d}{dx}[\ln(f(x))] = \frac{f'(x)}{f(x)}$:
+$$\frac{du}{dx} = \frac{d}{dx}[\ln(2x^2 + 1)] = \frac{1}{2x^2 + 1} \cdot \frac{d}{dx}(2x^2 + 1)$$
+$$\frac{du}{dx} = \frac{4x}{2x^2 + 1}$$
+
+**Step 3: Rearrange to express the integral in terms of $u$.**
+From the expression for $\frac{du}{dx}$, we have:
+$$du = \frac{4x}{2x^2 + 1} \, dx$$
+Our integral is $I = \int \ln(2x^2 + 1) \cdot \frac{2x}{2x^2 + 1} \, dx$.
+Note that $\frac{2x}{2x^2 + 1} \, dx = \frac{1}{2} \cdot \left( \frac{4x}{2x^2 + 1} \, dx \right) = \frac{1}{2} \, du$.
+
+Substituting these into the integral:
+$$I = \int u \cdot \left( \frac{1}{2} \, du \right)$$
+$$I = \frac{1}{2} \int u \, du$$
+
+**Step 4: Integrate with respect to $u$.**
+Applying the power rule for integration $\int u^n \, du = \frac{u^{n+1}}{n+1} + C$:
+$$I = \frac{1}{2} \cdot \frac{u^2}{2} + C$$
+$$I = \frac{u^2}{4} + C$$
+
+**Step 5: Back-substitute to return to the original variable $x$.**
+Replace $u$ with $\ln(2x^2 + 1)$:
+$$I = \frac{[\ln(2x^2 + 1)]^2}{4} + C$$
+
+**Final Answer:**
+The expression for the integral is $\frac{1}{4}(\ln(2x^2 + 1))^2 + C$.
+
+###QUESTION_TYPE
+<Calculation Question>

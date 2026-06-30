@@ -1,0 +1,9 @@
+### Front
+Given $|z| = r$, prove that $\text{arg}(z + r) = \frac{\theta}{2}$ for $z$ in the first quadrant, where $\text{arg } z = \theta$.
+
+### Back
+- **Key idea:** The geometry of isosceles triangles formed by the origin, $z$, and the point on the circle.
+- **Theorem, identity, or method:** Exterior angle theorem and properties of isosceles triangles. Since $Oz = r$ and $O(-r) = r$, the triangle is isosceles with vertex angle $\pi - \theta$. The base angles are $\frac{\pi - (\pi - \theta)}{2} = \frac{\theta}{2}$.
+- **Conditions / restrictions:** $|z| = |r| = |z - (-r)|$ must hold; the point $z$ must lie on a circle centered at the origin passing through $-r$.
+- **When to use it:** To simplify arguments of complex numbers involving additions or subtractions of real constants (e.g., $|z \pm r|$).
+- **Common trap:** Forgetting to check the orientation/quadrant of the vector; $\text{arg}(z-r)$ often results in a negative angle because the vector points "downward" relative to the real axis.

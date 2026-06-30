@@ -1,0 +1,31 @@
+To find the position vector of point $M$ in the tetrahedron $ABCD$, we will use the definition of the midpoint of a line segment in vector geometry.
+
+### Step 1: Define the position vectors for midpoints $E$ and $F$
+Given that $E$ is the midpoint of $AB$, its position vector $\vec{e}$ is the average of the position vectors of $A$ and $B$:
+$$\vec{e} = \frac{\vec{a} + \vec{b}}{2}$$
+
+Similarly, $F$ is the midpoint of $CD$, so its position vector $\vec{f}$ is the average of the position vectors of $C$ and $D$:
+$$\vec{f} = \frac{\vec{c} + \vec{d}}{2}$$
+
+### Step 2: Define the position vector for midpoint $M$
+$M$ is the midpoint of the line segment $EF$. By the midpoint formula for vectors, the position vector $\vec{m}$ (representing $\vec{OM}$) is the average of the position vectors of $E$ and $F$:
+$$\vec{m} = \frac{\vec{e} + \vec{f}}{2}$$
+
+### Step 3: Substitute and simplify
+Substitute the expressions for $\vec{e}$ and $\vec{f}$ obtained in Step 1 into the equation from Step 2:
+$$\vec{m} = \frac{1}{2} \left( \left( \frac{\vec{a} + \vec{b}}{2} \right) + \left( \frac{\vec{c} + \vec{d}}{2} \right) \right)$$
+
+Combine the terms inside the parentheses:
+$$\vec{m} = \frac{1}{2} \left( \frac{\vec{a} + \vec{b} + \vec{c} + \vec{d}}{2} \right)$$
+
+Perform the final scalar multiplication:
+$$\vec{m} = \frac{\vec{a} + \vec{b} + \vec{c} + \vec{d}}{4}$$
+
+Thus, the position vector $\vec{OM}$ is:
+$$\vec{OM} = \frac{1}{4}(\vec{a} + \vec{b} + \vec{c} + \vec{d})$$
+
+### Final Answer:
+$$\vec{OM} = \frac{\vec{a} + \vec{b} + \vec{c} + \vec{d}}{4}$$
+
+###QUESTION_TYPE
+<Calculation Question>

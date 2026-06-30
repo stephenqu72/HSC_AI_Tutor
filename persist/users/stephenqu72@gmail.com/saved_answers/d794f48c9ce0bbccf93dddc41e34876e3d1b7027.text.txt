@@ -1,0 +1,36 @@
+To prove the inequality $(a+b-c)(b+c-a)(c+a-b) \leq abc$ given that $a, b, c$ are positive numbers where each is less than the sum of the other two, we use the provided inequality:
+$$(x + y)(x + z)(y + z) \geq 8xyz$$
+
+### Proof
+
+1.  **Define the variables:**
+    Given the condition that each of $a, b, c$ is less than the sum of the other two, we know:
+    - $a < b + c \implies b + c - a > 0$
+    - $b < a + c \implies a + c - b > 0$
+    - $c < a + b \implies a + b - c > 0$
+    Since these expressions are all positive, we can make the following substitutions for $x, y, z$:
+    - Let $x = b + c - a$
+    - Let $y = a + c - b$
+    - Let $z = a + b - c$
+
+2.  **Evaluate the sums of the substituted variables:**
+    - $x + y = (b + c - a) + (a + c - b) = 2c$
+    - $x + z = (b + c - a) + (a + b - c) = 2b$
+    - $y + z = (a + c - b) + (a + b - c) = 2a$
+
+3.  **Apply the provided inequality:**
+    Substitute these expressions into the given inequality $(x + y)(x + z)(y + z) \geq 8xyz$:
+    $$(2c)(2b)(2a) \geq 8(b + c - a)(a + c - b)(a + b - c)$$
+
+4.  **Simplify and conclude:**
+    The left-hand side simplifies as follows:
+    $$8abc \geq 8(b + c - a)(a + c - b)(a + b - c)$$
+    Dividing both sides by 8, we obtain:
+    $$abc \geq (b + c - a)(a + c - b)(a + b - c)$$
+    Rearranging the factors into the order requested in the prompt:
+    $$(a + b - c)(b + c - a)(c + a - b) \leq abc$$
+    
+    This completes the proof.
+
+###QUESTION_TYPE
+Proof Question

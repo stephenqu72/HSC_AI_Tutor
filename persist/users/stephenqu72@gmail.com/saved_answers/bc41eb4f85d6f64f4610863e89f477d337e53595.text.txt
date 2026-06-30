@@ -1,0 +1,60 @@
+### Part a
+**Proposition:** There are no integers $a$ and $b$ such that $a^2 - 8b = 7$.
+
+**Proof by Contradiction:**
+Assume there exist integers $a$ and $b$ such that $a^2 - 8b = 7$.
+Rearranging the equation:
+$$a^2 = 8b + 7$$
+$$a^2 = 8b + 8 - 1$$
+$$a^2 = 8(b + 1) - 1$$
+This implies that $a^2 \equiv -1 \pmod 8$.
+Since $-1 \equiv 7 \pmod 8$, we check the possible values of $a^2 \pmod 8$ for any integer $a$:
+- If $a$ is even, $a = 2k$, then $a^2 = 4k^2$. If $k$ is even, $a^2 \equiv 0 \pmod 8$; if $k$ is odd, $a^2 \equiv 4 \pmod 8$.
+- If $a$ is odd, $a = 2k+1$, then $a^2 = 4k^2 + 4k + 1 = 4k(k+1) + 1$. Since $k(k+1)$ is always even, $4k(k+1)$ is a multiple of 8. Thus $a^2 \equiv 1 \pmod 8$.
+
+The possible remainders of $a^2$ when divided by 8 are $\{0, 1, 4\}$. None of these equal 7. This contradicts our assumption. Therefore, no such integers $a$ and $b$ exist.
+
+### Part b
+We wish to evaluate $\int \left( 2\sqrt{1+x^3} + \frac{3x^3}{\sqrt{1+x^3}} \right) dx$.
+Let $I = \int 2\sqrt{1+x^3} \, dx + \int \frac{3x^3}{\sqrt{1+x^3}} \, dx$.
+Applying integration by parts to the second term: let $u = x$ and $dv = \frac{3x^2}{\sqrt{1+x^3}} dx$.
+Then $du = dx$, and $v = \int 3x^2(1+x^3)^{-1/2} dx = 2(1+x^3)^{1/2}$.
+Using $\int u \, dv = uv - \int v \, du$:
+$$\int \frac{3x^3}{\sqrt{1+x^3}} dx = x \cdot 2\sqrt{1+x^3} - \int 2\sqrt{1+x^3} dx$$
+Substituting this back into $I$:
+$$I = \int 2\sqrt{1+x^3} dx + 2x\sqrt{1+x^3} - \int 2\sqrt{1+x^3} dx$$
+$$I = 2x\sqrt{1+x^3} + C$$
+Final answer: $2x\sqrt{1+x^3} + C$.
+
+### Part c
+The line $l$ has direction vector $\mathbf{v} = (h, 3, -6)$. The $x$-axis is represented by the unit vector $\mathbf{i} = (1, 0, 0)$.
+The angle $\theta$ between the line and the $x$-axis is $120^\circ$. The cosine of the angle between vectors is:
+$$\cos(120^\circ) = \frac{|\mathbf{v} \cdot \mathbf{i}|}{|\mathbf{v}| |\mathbf{i}|}$$
+$$-\frac{1}{2} = \frac{|h|}{\sqrt{h^2 + 3^2 + (-6)^2} \cdot 1}$$
+Since we take the absolute value of the cosine for the angle between lines (or consider the direction vector components), we equate:
+$$\frac{1}{2} = \frac{|h|}{\sqrt{h^2 + 45}}$$
+Square both sides:
+$$\frac{1}{4} = \frac{h^2}{h^2 + 45} \implies h^2 + 45 = 4h^2 \implies 3h^2 = 45 \implies h^2 = 15$$
+$$h = \pm\sqrt{15}$$
+Final answer: $h = \pm\sqrt{15}$.
+
+### Part d(i)
+Evaluate $\int_{\pi/3}^{2\pi/3} \frac{1}{1+\sin x} dx$.
+Multiply numerator and denominator by $(1-\sin x)$:
+$$\int_{\pi/3}^{2\pi/3} \frac{1-\sin x}{1-\sin^2 x} dx = \int_{\pi/3}^{2\pi/3} \frac{1-\sin x}{\cos^2 x} dx = \int_{\pi/3}^{2\pi/3} (\sec^2 x - \sec x \tan x) dx$$
+$$= [\tan x - \sec x]_{\pi/3}^{2\pi/3}$$
+At $2\pi/3$: $\tan(2\pi/3) = -\sqrt{3}$, $\sec(2\pi/3) = -2$. Value: $-\sqrt{3} + 2$.
+At $\pi/3$: $\tan(\pi/3) = \sqrt{3}$, $\sec(\pi/3) = 2$. Value: $\sqrt{3} - 2$.
+Subtracting: $(2 - \sqrt{3}) - (\sqrt{3} - 2) = 4 - 2\sqrt{3}$.
+Final answer: $4 - 2\sqrt{3}$.
+
+### Part d(ii)
+Let $I = \int_{\pi/3}^{2\pi/3} \frac{x}{1+\sin x} dx$. Use property $\int_a^b f(x)dx = \int_a^b f(a+b-x)dx$.
+Here $a+b = \frac{\pi}{3} + \frac{2\pi}{3} = \pi$.
+$I = \int_{\pi/3}^{2\pi/3} \frac{\pi-x}{1+\sin(\pi-x)} dx = \int_{\pi/3}^{2\pi/3} \frac{\pi-x}{1+\sin x} dx = \pi \int_{\pi/3}^{2\pi/3} \frac{1}{1+\sin x} dx - I$
+$2I = \pi (4 - 2\sqrt{3})$
+$I = \frac{\pi(4 - 2\sqrt{3})}{2} = 2\pi - \pi\sqrt{3} = \pi(2 - \sqrt{3})$.
+Final answer: $\pi(2 - \sqrt{3})$.
+
+###QUESTION_TYPE
+Calculation Question

@@ -1,0 +1,63 @@
+Hello! As an HSC Mathematics Extension 2 tutor, I am happy to help you work through these problems. These topics—integration by parts and the geometry of spheres—are core skills for your exam. Let's break them down step-by-step.
+
+### Part a
+
+**Goal:** Evaluate the definite integral $I = \int_0^1 \ln(x^2 + 1) \, dx$.
+
+We use **Integration by Parts**, defined as $\int u \, dv = uv - \int v \, du$. 
+Let $u = \ln(x^2 + 1)$, so $du = \frac{2x}{x^2 + 1} \, dx$.
+Let $dv = dx$, so $v = x$.
+
+Applying the formula:
+$$I = \left[ x \ln(x^2 + 1) \right]_0^1 - \int_0^1 x \cdot \frac{2x}{x^2 + 1} \, dx$$
+
+Calculate the first term:
+$$\left[ x \ln(x^2 + 1) \right]_0^1 = (1 \ln(2)) - (0 \ln(1)) = \ln 2$$
+
+Now focus on the integral:
+$$\int_0^1 \frac{2x^2}{x^2 + 1} \, dx = \int_0^1 \frac{2(x^2 + 1) - 2}{x^2 + 1} \, dx = \int_0^1 \left( 2 - \frac{2}{x^2 + 1} \right) \, dx$$
+
+Integrate the expression:
+$$\left[ 2x - 2 \tan^{-1}(x) \right]_0^1 = (2(1) - 2 \tan^{-1}(1)) - (2(0) - 2 \tan^{-1}(0))$$
+Since $\tan^{-1}(1) = \frac{\pi}{4}$ and $\tan^{-1}(0) = 0$:
+$$= 2 - 2\left(\frac{\pi}{4}\right) = 2 - \frac{\pi}{2}$$
+
+Combine the parts:
+$$I = \ln 2 - \left( 2 - \frac{\pi}{2} \right) = \ln 2 - 2 + \frac{\pi}{2}$$
+
+**Final Answer:** $\ln 2 - 2 + \frac{\pi}{2}$
+
+---
+
+### Part b
+
+**Goal:** Explain why spheres $S_1$ and $S_2$ intersect at a single point.
+
+First, identify the centre $C$ and radius $r$ of each sphere by completing the square for $x, y,$ and $z$.
+
+**For $S_1$:**
+$x^2 - 2x + y^2 + 4y + z^2 - 4z = 0$
+$(x - 1)^2 - 1 + (y + 2)^2 - 4 + (z - 2)^2 - 4 = 0$
+$(x - 1)^2 + (y + 2)^2 + (z - 2)^2 = 9$
+Thus, $C_1 = (1, -2, 2)$ and $r_1^2 = 9 \implies r_1 = 3$.
+
+**For $S_2$:**
+$x^2 + 10x + y^2 + z^2 + 2z + 10 = 0$
+$(x + 5)^2 - 25 + y^2 + (z + 1)^2 - 1 = -10$
+$(x + 5)^2 + y^2 + (z + 1)^2 = 16$
+Thus, $C_2 = (-5, 0, -1)$ and $r_2^2 = 16 \implies r_2 = 4$.
+
+**The distance between centres $d$:**
+Using the distance formula $d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}$:
+$d = \sqrt{(-5 - 1)^2 + (0 - (-2))^2 + (-1 - 2)^2}$
+$d = \sqrt{(-6)^2 + (2)^2 + (-3)^2} = \sqrt{36 + 4 + 9} = \sqrt{49} = 7$.
+
+**Conclusion:**
+Two spheres intersect at a single point if the distance between their centres is equal to the sum of their radii (externally tangent).
+Here, $r_1 + r_2 = 3 + 4 = 7$.
+Since $d = r_1 + r_2 = 7$, the spheres are externally tangent and therefore intersect at exactly one point.
+
+**Final Answer:** The spheres touch at a single point because the distance between their centres ($d=7$) is exactly equal to the sum of their radii ($r_1+r_2=7$).
+
+###QUESTION_TYPE
+<Calculation Question>

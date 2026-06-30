@@ -1,0 +1,44 @@
+To solve these problems, we use the polar form of the complex number $z = 2(\cos \theta + i \sin \theta) = 2e^{i\theta}$, where $0 < \theta < \frac{\pi}{2}$.
+
+### Part i
+The Argand diagram shows a circle of radius 2 centered at the origin. The point $z$ lies on this circle in the first quadrant, with the vector from the origin to $z$ making an angle $\theta$ with the positive real axis.
+
+*(Diagram description: Draw an Argand plane with a circle of radius 2. Mark point $z$ on the circle in the first quadrant. Draw a line from the origin to $z$ and label the angle with the real axis as $\theta$.)*
+
+### Part ii
+Using the property of arguments for complex multiplication, $\arg(z^n) = n \arg(z) + 2k\pi$.
+Given $\arg z = \theta$ and $0 < \theta < \frac{\pi}{2}$, we have:
+$$\arg(z^2) = 2 \arg z = 2\theta$$
+Since $0 < \theta < \frac{\pi}{2}$, it follows $0 < 2\theta < \pi$, so the principal argument is simply $2\theta$.
+
+**Final Answer:** $\arg(z^2) = 2\theta$
+
+### Part iii (A)
+Consider $z = 2\cos\theta + 2i\sin\theta$. Then $z + 2 = (2\cos\theta + 2) + i(2\sin\theta)$.
+Using the half-angle identities $1 + \cos\theta = 2\cos^2(\frac{\theta}{2})$ and $\sin\theta = 2\sin(\frac{\theta}{2})\cos(\frac{\theta}{2})$:
+$$z + 2 = 2(2\cos^2(\frac{\theta}{2})) + i(4\sin(\frac{\theta}{2})\cos(\frac{\theta}{2})) = 4\cos(\frac{\theta}{2}) \left( \cos(\frac{\theta}{2}) + i\sin(\frac{\theta}{2}) \right)$$
+Since $0 < \theta < \frac{\pi}{2}$, $\cos(\frac{\theta}{2}) > 0$, so $\arg(z+2) = \frac{\theta}{2}$.
+
+**Final Answer:** $\arg(z+2) = \frac{\theta}{2}$
+
+### Part iii (B)
+Consider $z - 2 = (2\cos\theta - 2) + i(2\sin\theta)$.
+Using identities $1 - \cos\theta = 2\sin^2(\frac{\theta}{2})$ and $\sin\theta = 2\sin(\frac{\theta}{2})\cos(\frac{\theta}{2})$:
+$$z - 2 = -2(1 - \cos\theta) + i(2\sin\theta) = -4\sin^2(\frac{\theta}{2}) + i(4\sin(\frac{\theta}{2})\cos(\frac{\theta}{2}))$$
+$$z - 2 = 4\sin(\frac{\theta}{2}) \left( -\sin(\frac{\theta}{2}) + i\cos(\frac{\theta}{2}) \right) = 4\sin(\frac{\theta}{2}) \left( \cos(\frac{\pi}{2} + \frac{\theta}{2}) + i\sin(\frac{\pi}{2} + \frac{\theta}{2}) \right)$$
+Thus, $\arg(z-2) = \frac{\pi}{2} + \frac{\theta}{2}$.
+
+**Final Answer:** $\arg(z-2) = \frac{\pi + \theta}{2}$
+
+### Part iii (C)
+Using the property of moduli $| \frac{z_1}{z_2} | = \frac{|z_1|}{|z_2|}$, we have:
+$$\left| \frac{z - 2}{z + 2} \right| = \frac{|z - 2|}{|z + 2|}$$
+Geometrically, $|z - 2|$ is the distance from $z$ to $2$, and $|z + 2|$ is the distance from $z$ to $-2$.
+In the triangle formed by $-2, 2,$ and $z$, the angle at the origin is $\theta$. Using the Law of Cosines on triangle $OzP$ (where $P$ is $2$): $|z-2|^2 = 2^2 + 2^2 - 2(2)(2)\cos\theta = 8(1-\cos\theta) = 16\sin^2(\frac{\theta}{2})$. So $|z-2| = 4\sin(\frac{\theta}{2})$.
+Similarly, $|z+2|^2 = 2^2 + 2^2 - 2(2)(2)\cos(\pi - \theta) = 8(1+\cos\theta) = 16\cos^2(\frac{\theta}{2})$. So $|z+2| = 4\cos(\frac{\theta}{2})$.
+Dividing these: $\frac{4\sin(\theta/2)}{4\cos(\theta/2)} = \tan(\frac{\theta}{2})$.
+
+**Final Answer:** $\tan\left(\frac{\theta}{2}\right)$
+
+###QUESTION_TYPE
+Calculation Question

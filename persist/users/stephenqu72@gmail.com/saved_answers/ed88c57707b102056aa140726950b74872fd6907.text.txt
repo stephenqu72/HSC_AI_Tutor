@@ -1,0 +1,36 @@
+To determine the vector $\vec{OC}$ for the rectangle $OACB$, we follow these logical steps based on vector geometry.
+
+### Step 1: Geometry of the Rectangle
+In a rectangle $OACB$ (where $O$ is the origin), the vectors representing the sides must be perpendicular. Specifically, since $OA$ and $OB$ are adjacent sides, the dot product of $\vec{OA}$ and $\vec{OB}$ must be zero:
+$$\vec{OA} \cdot \vec{OB} = 0$$
+
+Given $\vec{OA} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix}$ and $\vec{OB} = \begin{pmatrix} -1 \\ 4 \\ b \end{pmatrix}$, we calculate:
+$$(2)(-1) + (-1)(4) + (3)(b) = 0$$
+$$-2 - 4 + 3b = 0$$
+$$-6 + 3b = 0$$
+$$3b = 6 \implies b = 2$$
+So, $\vec{OB} = \begin{pmatrix} -1 \\ 4 \\ 2 \end{pmatrix}$.
+
+### Step 2: Vector Addition
+In any parallelogram (and therefore any rectangle) $OACB$, the diagonal $\vec{OC}$ is the vector sum of the two adjacent sides starting from the origin $O$:
+$$\vec{OC} = \vec{OA} + \vec{OB}$$
+
+Substituting the known vectors:
+$$\vec{OC} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix} + \begin{pmatrix} -1 \\ 4 \\ 2 \end{pmatrix}$$
+$$\vec{OC} = \begin{pmatrix} 2 + (-1) \\ -1 + 4 \\ 3 + 2 \end{pmatrix}$$
+$$\vec{OC} = \begin{pmatrix} 1 \\ 3 \\ 5 \end{pmatrix}$$
+
+### Conclusion
+Comparing this result to the given options:
+A. $\begin{pmatrix} 2 \\ 4 \\ 1 \end{pmatrix}$
+B. $\begin{pmatrix} 2 \\ 4 \\ 5 \end{pmatrix}$
+C. $\begin{pmatrix} 1 \\ 3 \\ 1 \end{pmatrix}$
+D. $\begin{pmatrix} 1 \\ 3 \\ 5 \end{pmatrix}$
+
+The calculated vector matches option **D**.
+
+**Final Answer:**
+D
+
+###QUESTION_TYPE
+Multiple Choice Question

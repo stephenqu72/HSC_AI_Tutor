@@ -1,0 +1,42 @@
+To find the value of $a$ and the roots of $P(x) = x^4 - 2x^2 - 3x + a$, we use the fact that $x^2 + x + 1$ is a factor of $P(x)$.
+
+### Part 1: Finding the value of $a$
+Since $x^2 + x + 1$ is a factor, there must exist a quadratic factor of the form $(x^2 + bx + c)$ such that:
+$$x^4 - 2x^2 - 3x + a = (x^2 + x + 1)(x^2 + bx + c)$$
+
+Expanding the right-hand side:
+$$(x^2 + x + 1)(x^2 + bx + c) = x^4 + bx^3 + cx^2 + x^3 + bx^2 + cx + x^2 + bx + c$$
+Group the terms by powers of $x$:
+$$x^4 + (b + 1)x^3 + (c + b + 1)x^2 + (c + b)x + c$$
+
+By equating the coefficients of $P(x) = x^4 + 0x^3 - 2x^2 - 3x + a$ with the expanded form:
+1.  **$x^3$ term:** $b + 1 = 0 \implies b = -1$
+2.  **Constant term:** $c = a$
+3.  **$x$ term:** $c + b = -3$
+
+Substitute $b = -1$ into the equation for the $x$ term:
+$$c + (-1) = -3 \implies c = -2$$
+Since $c = a$, we find:
+$$a = -2$$
+
+**Final Answer for $a$:** $a = -2$
+
+---
+
+### Part 2: Finding the roots of $P(x)$
+Given $a = -2$, the polynomial is $P(x) = (x^2 + x + 1)(x^2 - x - 2)$. 
+The roots of $P(x)$ are the roots of the two quadratic factors.
+
+**1. Roots of $x^2 - x - 2 = 0$:**
+Factoring the quadratic:
+$$(x - 2)(x + 1) = 0$$
+So, $x = 2$ and $x = -1$.
+
+**2. Roots of $x^2 + x + 1 = 0$:**
+Using the quadratic formula $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$:
+$$x = \frac{-1 \pm \sqrt{1^2 - 4(1)(1)}}{2(1)} = \frac{-1 \pm \sqrt{-3}}{2} = \frac{-1 \pm i\sqrt{3}}{2}$$
+
+**Final Answer for the roots:** The roots are $x = -1, 2, \frac{-1 + i\sqrt{3}}{2}, \frac{-1 - i\sqrt{3}}{2}$.
+
+###QUESTION_TYPE
+Calculation Question

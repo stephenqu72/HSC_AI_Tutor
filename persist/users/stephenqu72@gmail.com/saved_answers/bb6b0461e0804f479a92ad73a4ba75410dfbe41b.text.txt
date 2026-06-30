@@ -1,0 +1,26 @@
+To address the statement "the sum of two irrational numbers is an irrational number," we must investigate whether this holds true for all pairs of irrational numbers.
+
+### Part e
+The statement is **false**. We can disprove the claim by providing a counter-example.
+
+**Definition:** An irrational number is a real number that cannot be expressed as a fraction $\frac{p}{q}$ where $p$ and $q$ are integers and $q \neq 0$.
+
+**Counter-example:**
+Consider the two numbers $x = \sqrt{2}$ and $y = -\sqrt{2}$.
+
+1.  **Justification of irrationality:**
+    It is a standard result that $\sqrt{2}$ is irrational. Since $-\sqrt{2} = -1 \times \sqrt{2}$, and the product of a non-zero rational number and an irrational number is irrational, $-\sqrt{2}$ is also irrational.
+
+2.  **Calculation of the sum:**
+    Summing these two numbers, we get:
+    $$x + y = \sqrt{2} + (-\sqrt{2}) = 0$$
+
+3.  **Conclusion:**
+    The result of the sum is $0$. Since $0$ can be expressed as the fraction $\frac{0}{1}$ (where $0$ and $1$ are integers and $1 \neq 0$), $0$ is a **rational number**.
+
+Because the sum of these two irrational numbers results in a rational number, the original statement is proven false by counter-example.
+
+**Final Answer:** The statement is false. A counter-example is $\sqrt{2} + (-\sqrt{2}) = 0$, which is rational.
+
+###QUESTION_TYPE
+<Proof Question>

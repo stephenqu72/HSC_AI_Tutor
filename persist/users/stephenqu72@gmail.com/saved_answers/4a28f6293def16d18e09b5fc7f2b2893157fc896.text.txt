@@ -1,0 +1,38 @@
+To determine which statement is logically equivalent to the one provided, we use the principles of propositional logic, specifically the concept of the **contrapositive**.
+
+### Step-by-Step Analysis
+
+1.  **Identify the original statement:**
+    The sign reads: "If you are not authorised, then you may not enter."
+    Let $P$ be the proposition: "You are authorised."
+    Let $Q$ be the proposition: "You may enter."
+
+    The original statement can be written in logical notation as:
+    $$\neg P \implies \neg Q$$
+    (Read as: "If not $P$, then not $Q$").
+
+2.  **Define logical equivalence:**
+    In formal logic, a conditional statement of the form $P \implies Q$ is logically equivalent only to its **contrapositive**, which is $\neg Q \implies \neg P$.
+    Specifically, the contrapositive of $\neg P \implies \neg Q$ is:
+    $$\neg(\neg Q) \implies \neg(\neg P)$$
+    Applying the law of double negation ($\neg(\neg X) \equiv X$), this simplifies to:
+    $$Q \implies P$$
+    Translating this back into words: "If you may enter, then you are authorised."
+
+3.  **Evaluate the options:**
+    *   **A: "If you may enter, then you are authorised."**
+        This is $Q \implies P$. As derived above, this is the contrapositive of the original statement and is therefore logically equivalent.
+    *   **B: "If you are authorised, then you may enter."**
+        This is $P \implies Q$. This is the *converse*, which is not logically equivalent to the original implication.
+    *   **C: "If you are not authorised, then you may enter."**
+        This is $\neg P \implies Q$, which has no logical relationship to the original statement.
+    *   **D: "If you may not enter, then you are not authorised."**
+        This is $\neg Q \implies \neg P$. This is the *inverse*, which is not logically equivalent to the original implication.
+
+### Conclusion
+The only statement logically equivalent to the original is the contrapositive.
+
+Final Answer: **A**
+
+###QUESTION_TYPE
+<Multiple Choice Question>

@@ -1,0 +1,32 @@
+To evaluate the integral $I = \int \frac{dx}{x^2 \sqrt{4 - x^2}}$, we use a trigonometric substitution to simplify the radical expression.
+
+### Part a
+Given the form $\sqrt{a^2 - x^2}$, where $a=2$, we use the substitution $x = 2 \sin \theta$.
+
+1. **Substitution:**
+   Let $x = 2 \sin \theta$.
+   Then, the differential is $dx = 2 \cos \theta \, d\theta$.
+   The radical becomes $\sqrt{4 - x^2} = \sqrt{4 - 4 \sin^2 \theta} = \sqrt{4(1 - \sin^2 \theta)} = \sqrt{4 \cos^2 \theta} = 2 \cos \theta$ (assuming $\cos \theta > 0$ for the principal domain $\theta \in (-\frac{\pi}{2}, \frac{\pi}{2})$).
+
+2. **Transform the Integral:**
+   Substitute these expressions into the integral:
+   $$I = \int \frac{2 \cos \theta \, d\theta}{(2 \sin \theta)^2 (2 \cos \theta)}$$
+   Simplify the integrand by cancelling the $2 \cos \theta$ terms:
+   $$I = \int \frac{d\theta}{4 \sin^2 \theta} = \frac{1}{4} \int \csc^2 \theta \, d\theta$$
+
+3. **Integrate:**
+   We know that the integral of $\csc^2 \theta$ is $-\cot \theta$:
+   $$I = -\frac{1}{4} \cot \theta + C$$
+
+4. **Back-substitution:**
+   We need to express $\cot \theta$ in terms of $x$. Since $\sin \theta = \frac{x}{2}$, we can use a right-angled triangle where the opposite side is $x$ and the hypotenuse is $2$. By Pythagoras, the adjacent side is $\sqrt{2^2 - x^2} = \sqrt{4 - x^2}$.
+   Therefore, $\cot \theta = \frac{\text{adjacent}}{\text{opposite}} = \frac{\sqrt{4 - x^2}}{x}$.
+   
+   Substituting this back into our expression for $I$:
+   $$I = -\frac{1}{4} \left( \frac{\sqrt{4 - x^2}}{x} \right) + C$$
+
+**Final Answer:**
+$$\int \frac{dx}{x^2 \sqrt{4 - x^2}} = -\frac{\sqrt{4 - x^2}}{4x} + C$$
+
+###QUESTION_TYPE
+<Calculation Question>

@@ -1,0 +1,37 @@
+To solve the definite integral, we will simplify the integrand using trigonometric identities before integrating.
+
+### Part b
+We are asked to evaluate:
+$$I = \int_{0}^{\pi} \left( \frac{\cot \theta + 1}{\csc \theta} - \frac{\sec \theta}{\tan \theta + \cot \theta} \right) d\theta$$
+
+**Step 1: Simplify the first term**
+Recall that $\cot \theta = \frac{\cos \theta}{\sin \theta}$ and $\csc \theta = \frac{1}{\sin \theta}$.
+$$\frac{\cot \theta + 1}{\csc \theta} = \frac{\frac{\cos \theta}{\sin \theta} + 1}{\frac{1}{\sin \theta}}$$
+Multiply numerator and denominator by $\sin \theta$:
+$$= \cos \theta + \sin \theta$$
+
+**Step 2: Simplify the second term**
+Recall that $\sec \theta = \frac{1}{\cos \theta}$, $\tan \theta = \frac{\sin \theta}{\cos \theta}$, and $\cot \theta = \frac{\cos \theta}{\sin \theta}$.
+$$\tan \theta + \cot \theta = \frac{\sin \theta}{\cos \theta} + \frac{\cos \theta}{\sin \theta} = \frac{\sin^2 \theta + \cos^2 \theta}{\sin \theta \cos \theta} = \frac{1}{\sin \theta \cos \theta}$$
+Now substitute this back into the second fraction:
+$$\frac{\sec \theta}{\tan \theta + \cot \theta} = \frac{\frac{1}{\cos \theta}}{\frac{1}{\sin \theta \cos \theta}} = \frac{1}{\cos \theta} \cdot \frac{\sin \theta \cos \theta}{1} = \sin \theta$$
+
+**Step 3: Evaluate the integral**
+Substituting the simplified terms back into the integral:
+$$I = \int_{0}^{\pi} [(\cos \theta + \sin \theta) - (\sin \theta)] d\theta$$
+$$I = \int_{0}^{\pi} \cos \theta \, d\theta$$
+
+Now, find the antiderivative of $\cos \theta$:
+$$I = [\sin \theta]_{0}^{\pi}$$
+$$I = \sin(\pi) - \sin(0)$$
+Since $\sin(\pi) = 0$ and $\sin(0) = 0$:
+$$I = 0 - 0 = 0$$
+
+*Note: The integrand contains terms like $\cot \theta$ and $\csc \theta$, which are undefined at $\theta = 0$ and $\theta = \pi$. Therefore, this is an improper integral. We check the limit as $\epsilon \to 0^+$:*
+$$\lim_{\epsilon \to 0} \int_{\epsilon}^{\pi-\epsilon} \cos \theta \, d\theta = \lim_{\epsilon \to 0} [\sin(\pi - \epsilon) - \sin(\epsilon)] = \lim_{\epsilon \to 0} [\sin \epsilon - \sin \epsilon] = 0$$
+
+Final Answer:
+$$0$$
+
+###QUESTION_TYPE
+<Calculation Question>

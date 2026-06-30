@@ -1,0 +1,38 @@
+### Part i
+We use De Moivre’s Theorem, which states that $(\cos \theta + i \sin \theta)^n = \cos n\theta + i \sin n\theta$. For $n=3$:
+$$\cos 3\theta + i \sin 3\theta = (\cos \theta + i \sin \theta)^3$$
+Expanding the right-hand side using the binomial expansion $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$:
+$$\cos 3\theta + i \sin 3\theta = \cos^3 \theta + 3\cos^2 \theta (i \sin \theta) + 3\cos \theta (i \sin \theta)^2 + (i \sin \theta)^3$$
+$$\cos 3\theta + i \sin 3\theta = \cos^3 \theta + 3i \cos^2 \theta \sin \theta - 3\cos \theta \sin^2 \theta - i \sin^3 \theta$$
+Equating the real and imaginary parts:
+Real part: $\cos 3\theta = \cos^3 \theta - 3\cos \theta \sin^2 \theta$
+Imaginary part: $\sin 3\theta = 3\cos^2 \theta \sin \theta - \sin^3 \theta$
+
+### Part ii
+We define $\tan 3\theta = \frac{\sin 3\theta}{\cos 3\theta}$. Using the results from Part i:
+$$\tan 3\theta = \frac{3\cos^2 \theta \sin \theta - \sin^3 \theta}{\cos^3 \theta - 3\cos \theta \sin^2 \theta}$$
+Divide both the numerator and the denominator by $\cos^3 \theta$ (assuming $\cos \theta \neq 0$):
+$$\tan 3\theta = \frac{\frac{3\cos^2 \theta \sin \theta}{\cos^3 \theta} - \frac{\sin^3 \theta}{\cos^3 \theta}}{\frac{\cos^3 \theta}{\cos^3 \theta} - \frac{3\cos \theta \sin^2 \theta}{\cos^3 \theta}} = \frac{3\tan \theta - \tan^3 \theta}{1 - 3\tan^2 \theta}$$
+*(Note: To match the requested form $\frac{\tan^3 \theta - 3 \tan \theta}{3 \tan^2 \theta - 1}$, we multiply both numerator and denominator by $-1$)*:
+$$\tan 3\theta = \frac{\tan^3 \theta - 3 \tan \theta}{3 \tan^2 \theta - 1}$$
+
+### Part iii
+Let $x = \tan \theta$. Then $\tan 3\theta = \frac{x^3 - 3x}{3x^2 - 1}$. The given equation is $x^3 - 3x^2 - 3x + 1 = 0$.
+Rearranging: $x^3 - 3x = 3x^2 - 1$. Dividing by $(3x^2 - 1)$ gives $\frac{x^3 - 3x}{3x^2 - 1} = 1$.
+Thus, $\tan 3\theta = 1$, which implies $3\theta = \frac{\pi}{4} + k\pi$ for $k \in \mathbb{Z}$.
+Dividing by 3: $\theta = \frac{\pi}{12} + \frac{k\pi}{3} = \frac{\pi}{12}, \frac{5\pi}{12}, \frac{9\pi}{12}$.
+The solutions for $x = \tan \theta$ are:
+$x_1 = \tan \frac{\pi}{12}, x_2 = \tan \frac{5\pi}{12}, x_3 = \tan \frac{9\pi}{12} = \tan \frac{3\pi}{4} = -1$.
+
+### Part iv
+From the cubic equation $x^3 - 3x^2 - 3x + 1 = 0$, the roots are $\tan \frac{\pi}{12}$, $\tan \frac{5\pi}{12}$, and $-1$.
+By Vieta's formulas, the sum of the roots taken two at a time is $c/a = -3$.
+Let $x_1 = \tan \frac{\pi}{12}$ and $x_2 = \tan \frac{5\pi}{12}$. The sum of products is $x_1x_2 + x_1(-1) + x_2(-1) = -3$.
+Also, the product of the roots is $-d/a = -1$.
+Thus, $x_1x_2(-1) = -1 \implies x_1x_2 = 1$.
+Substitute this into the sum of products: $1 - (x_1 + x_2) = -3$.
+$- (x_1 + x_2) = -4 \implies x_1 + x_2 = 4$.
+Therefore, $\tan \frac{\pi}{12} + \tan \frac{5\pi}{12} = 4$.
+
+###QUESTION_TYPE
+Calculation Question

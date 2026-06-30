@@ -1,0 +1,33 @@
+To determine the contrapositive of the given statement, we apply the formal rules of logic typically used in the HSC Mathematics Extension 2 course (Proof topic).
+
+### Logic Analysis
+
+1.  **Definitions:** 
+    A conditional statement is in the form "If $P$, then $Q$" (denoted $P \implies Q$).
+    The **contrapositive** of a statement $P \implies Q$ is "If not $Q$, then not $P$" (denoted $\neg Q \implies \neg P$).
+    A statement and its contrapositive are logically equivalent.
+
+2.  **Identify Components:**
+    Let $P$ be the proposition: "My cricket team plays badly."
+    Let $Q$ be the proposition: "They are not training enough."
+
+    The original statement is: $P \implies Q$.
+
+3.  **Formulate the Contrapositive:**
+    *   Negation of $Q$ ($\neg Q$): "It is not the case that they are not training enough," which simplifies to "They are training enough."
+    *   Negation of $P$ ($\neg P$): "It is not the case that my cricket team plays badly," which simplifies to "My cricket team does not play badly."
+
+    Applying the structure $\neg Q \implies \neg P$:
+    "If they are training enough, then my cricket team does not play badly."
+
+4.  **Evaluate Options:**
+    *   A. If they are not training enough, then my cricket team plays badly. (This is the *converse*, $Q \implies P$).
+    *   B. If they are training enough, then my cricket team does not play badly. (This matches our derived contrapositive).
+    *   C. If my cricket team doesn't play badly, then they are training enough. (This is the *inverse*, $\neg P \implies \neg Q$).
+    *   D. If my cricket team plays badly, then they need more training. (This is not a logical manipulation of the original statement).
+
+### Final Answer
+The correct statement is **B**.
+
+###QUESTION_TYPE
+<Multiple Choice Question>

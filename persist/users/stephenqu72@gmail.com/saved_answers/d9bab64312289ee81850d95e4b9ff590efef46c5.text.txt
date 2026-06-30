@@ -1,0 +1,56 @@
+Here are the step-by-step solutions for the provided questions.
+
+### Part i
+**To prove:** $\frac{a+b}{2} \geq \sqrt{ab}$ for $a, b \in \mathbb{R}^+$.
+
+Since $a, b > 0$, we can consider the square of the real number $(\sqrt{a} - \sqrt{b})$. Any real number squared is non-negative:
+$$(\sqrt{a} - \sqrt{b})^2 \geq 0$$
+Expanding the binomial:
+$$a - 2\sqrt{a}\sqrt{b} + b \geq 0$$
+$$a + b \geq 2\sqrt{ab}$$
+Dividing both sides by 2:
+$$\frac{a + b}{2} \geq \sqrt{ab}$$
+**Final Answer:** The inequality holds, with equality occurring if and only if $a = b$.
+
+---
+
+### Part ii
+**To prove:** $\frac{xy}{z} + \frac{yz}{x} + \frac{zx}{y} \geq 1$ given $x, y, z \in \mathbb{R}^+$ and $x + y + z = 1$.
+
+We apply the AM-GM inequality (proven in Part i) to pairs of the terms on the left-hand side. Let $A = \frac{xy}{z}$ and $B = \frac{yz}{x}$. Then:
+$$\frac{xy}{z} + \frac{yz}{x} \geq 2\sqrt{\frac{xy}{z} \cdot \frac{yz}{x}} = 2\sqrt{y^2} = 2y$$
+Similarly, for the other pairs:
+$$\frac{yz}{x} + \frac{zx}{y} \geq 2\sqrt{\frac{yz}{x} \cdot \frac{zx}{y}} = 2\sqrt{z^2} = 2z$$
+$$\frac{zx}{y} + \frac{xy}{z} \geq 2\sqrt{\frac{zx}{y} \cdot \frac{xy}{z}} = 2\sqrt{x^2} = 2x$$
+Summing these three inequalities:
+$$2\left(\frac{xy}{z} + \frac{yz}{x} + \frac{zx}{y}\right) \geq 2x + 2y + 2z$$
+$$\frac{xy}{z} + \frac{yz}{x} + \frac{zx}{y} \geq x + y + z$$
+Given that $x + y + z = 1$, we substitute this into the inequality:
+$$\frac{xy}{z} + \frac{yz}{x} + \frac{zx}{y} \geq 1$$
+**Final Answer:** The inequality is proven.
+
+---
+
+### Part iii
+**To prove:** $\frac{a+b+c}{3} \geq \sqrt[3]{abc}$ for $a, b, c \in \mathbb{R}^+$.
+
+We are given the case for four variables:
+$$\frac{a+b+c+d}{4} \geq \sqrt[4]{abcd}$$
+To prove the case for three variables, we use a technique called "backwards substitution." Let $d$ be the arithmetic mean of the other three variables:
+$$d = \frac{a+b+c}{3}$$
+Substituting this into the given four-variable inequality:
+$$\frac{a+b+c + \left(\frac{a+b+c}{3}\right)}{4} \geq \sqrt[4]{abc \left(\frac{a+b+c}{3}\right)}$$
+Simplify the left-hand side (LHS):
+$$\frac{\frac{3(a+b+c) + (a+b+c)}{3}}{4} = \frac{4(a+b+c)}{12} = \frac{a+b+c}{3}$$
+Now the inequality is:
+$$\frac{a+b+c}{3} \geq \sqrt[4]{abc \cdot \frac{a+b+c}{3}}$$
+Raising both sides to the power of 4:
+$$\left(\frac{a+b+c}{3}\right)^4 \geq abc \left(\frac{a+b+c}{3}\right)$$
+Since $a,b,c > 0$, then $\frac{a+b+c}{3} > 0$. We divide both sides by $\left(\frac{a+b+c}{3}\right)$:
+$$\left(\frac{a+b+c}{3}\right)^3 \geq abc$$
+Taking the cube root of both sides:
+$$\frac{a+b+c}{3} \geq \sqrt[3]{abc}$$
+**Final Answer:** The AM-GM inequality for three variables is proven.
+
+###QUESTION_TYPE
+<Proof Question>

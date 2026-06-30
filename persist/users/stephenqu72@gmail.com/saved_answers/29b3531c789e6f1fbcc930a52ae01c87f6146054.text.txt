@@ -1,0 +1,41 @@
+To solve this problem, we use the dynamics of a particle moving in a straight line where acceleration $\ddot{x}$ is a function of position $x$. Recall the fundamental relation $\ddot{x} = v \frac{dv}{dx} = \frac{d}{dx}(\frac{1}{2}v^2)$.
+
+### Part i
+We are given the acceleration $\ddot{x} = 4x^3 - 12x$. Using the identity $\ddot{x} = \frac{d}{dx}(\frac{1}{2}v^2)$:
+$$\frac{d}{dx}\left(\frac{1}{2}v^2\right) = 4x^3 - 12x$$
+Integrate both sides with respect to $x$:
+$$\frac{1}{2}v^2 = \int (4x^3 - 12x) \, dx$$
+$$\frac{1}{2}v^2 = x^4 - 6x^2 + C$$
+To find the constant $C$, we use the initial conditions: at the origin ($x=0$), the velocity is $u$. Substituting these into the equation:
+$$\frac{1}{2}u^2 = (0)^4 - 6(0)^2 + C \implies C = \frac{1}{2}u^2$$
+Substituting $C$ back into the expression:
+$$\frac{1}{2}v^2 = x^4 - 6x^2 + \frac{1}{2}u^2$$
+Multiply the entire equation by 2 to isolate $v^2$:
+$$v^2 = 2x^4 - 12x^2 + u^2$$
+**Final Answer:** $v^2 = 2x^4 - 12x^2 + u^2$
+
+### Part ii
+Given $u = 4$, the velocity equation from Part (i) becomes:
+$$v^2 = 2x^4 - 12x^2 + 16$$
+For a particle to oscillate, it must come to rest ($v=0$) at its extreme points. We set $v^2 = 0$:
+$$0 = 2x^4 - 12x^2 + 16$$
+Dividing by 2:
+$$x^4 - 6x^2 + 8 = 0$$
+Let $w = x^2$. The equation becomes a quadratic in $w$:
+$$w^2 - 6w + 8 = 0$$
+$$(w - 2)(w - 4) = 0$$
+Thus, $x^2 = 2$ or $x^2 = 4$. This gives $x = \pm \sqrt{2}$ and $x = \pm 2$.
+However, we must check the region where motion is possible. The condition for motion is $v^2 \ge 0$. Let $f(x) = 2x^4 - 12x^2 + 16$.
+At $x=0$, $v^2 = 16 > 0$. As $x$ increases from $0$, $v^2$ decreases. It reaches zero at the first turning point, $x = \sqrt{2}$. Since the particle starts at $x=0$ with $v=4$ (positive velocity), it moves towards $x = \sqrt{2}$, stops, and reverses. It cannot reach $x=2$ because it must pass through $x=\sqrt{2}$ where $v=0$. Therefore, the particle is trapped in the potential well bounded by $-\sqrt{2} \le x \le \sqrt{2}$.
+
+**Final Answer:** The particle oscillates within the interval $-\sqrt{2} \le x \le \sqrt{2}$.
+
+### Part iii
+Simple Harmonic Motion (SHM) is defined by the acceleration equation $\ddot{x} = -n^2(x - c)$, where $n$ and $c$ are constants.
+In this problem, $\ddot{x} = 4x^3 - 12x$.
+Since the acceleration is a cubic function of $x$ (it depends on $x^3$) rather than being proportional to the displacement from the equilibrium point, the motion is not Simple Harmonic Motion.
+
+**Final Answer:** No, it is not SHM because the acceleration is not proportional to the displacement (it is a cubic function of $x$).
+
+###QUESTION_TYPE
+Calculation Question

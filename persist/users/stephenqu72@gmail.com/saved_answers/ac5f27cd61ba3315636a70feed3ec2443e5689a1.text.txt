@@ -1,0 +1,41 @@
+To prove the given identity $\tan^{-1}\left(\frac{7}{23}\right) + 2 \tan^{-1}\left(\frac{1}{4}\right) = \frac{\pi}{4}$, we will utilize the properties of the argument of complex numbers. Recall that for any non-zero complex numbers $z_1$ and $z_2$, $\arg(z_1 z_2) = \arg(z_1) + \arg(z_2) \pmod{2\pi}$.
+
+### Proof
+
+Let $z = (1+i)(4-i)^2$. 
+
+First, we calculate $(4-i)^2$:
+$$(4-i)^2 = 16 - 8i + i^2 = 16 - 8i - 1 = 15 - 8i$$
+
+Next, we multiply this result by $(1+i)$:
+$$z = (1+i)(15-8i)$$
+$$z = 15 - 8i + 15i - 8i^2$$
+Since $i^2 = -1$:
+$$z = 15 + 7i + 8 = 23 + 7i$$
+
+Now, consider the argument of $z$:
+$$\arg(z) = \arg((1+i)(4-i)^2)$$
+Using the property $\arg(z_1 z_2) = \arg(z_1) + \arg(z_2)$:
+$$\arg(z) = \arg(1+i) + \arg((4-i)^2)$$
+Using the property $\arg(w^n) = n \arg(w)$:
+$$\arg(z) = \arg(1+i) + 2\arg(4-i)$$
+
+From $z = 23 + 7i$, we know $\arg(z) = \tan^{-1}\left(\frac{7}{23}\right)$, as $z$ is in the first quadrant.
+From $1+i$, we know $\arg(1+i) = \tan^{-1}\left(\frac{1}{1}\right) = \frac{\pi}{4}$.
+From $4-i$, we know $\arg(4-i) = \tan^{-1}\left(-\frac{1}{4}\right) = -\tan^{-1}\left(\frac{1}{4}\right)$ (since $4-i$ is in the fourth quadrant).
+
+Equating these:
+$$\tan^{-1}\left(\frac{7}{23}\right) = \arg(1+i) + 2\arg(4-i)$$
+$$\tan^{-1}\left(\frac{7}{23}\right) = \frac{\pi}{4} + 2\left(-\tan^{-1}\left(\frac{1}{4}\right)\right)$$
+$$\tan^{-1}\left(\frac{7}{23}\right) = \frac{\pi}{4} - 2\tan^{-1}\left(\frac{1}{4}\right)$$
+
+Rearranging the terms:
+$$\tan^{-1}\left(\frac{7}{23}\right) + 2\tan^{-1}\left(\frac{1}{4}\right) = \frac{\pi}{4}$$
+
+This completes the proof.
+
+### Final Answer
+$\tan^{-1}\left(\frac{7}{23}\right) + 2\tan^{-1}\left(\frac{1}{4}\right) = \frac{\pi}{4}$
+
+###QUESTION_TYPE
+Proof Question

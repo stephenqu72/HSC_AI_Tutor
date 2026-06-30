@@ -1,0 +1,38 @@
+To determine the exact value of $e^{i\pi/8}$, we need to examine each of the provided options by converting them into polar form. Recall the definition of the complex number $e^{i\theta} = \cos \theta + i \sin \theta$.
+
+### Evaluation of Options
+
+Let $z = e^{i\pi/8}$. This complex number has a modulus of $1$ and an argument of $\frac{\pi}{8}$. We look for the option that represents a number with the same modulus and argument.
+
+**Option A:** $\sqrt[8]{i}$
+We know that $i = e^{i\pi/2}$.
+Thus, $\sqrt[8]{i} = (e^{i\pi/2})^{1/8} = e^{i\pi/16}$. This does not match $e^{i\pi/8}$.
+
+**Option B:** $\sqrt[8]{-i}$
+We know that $-i = e^{i(3\pi/2)}$ or $e^{-i\pi/2}$.
+Thus, $\sqrt[8]{-i} = (e^{-i\pi/2})^{1/8} = e^{-i\pi/16}$. This does not match $e^{i\pi/8}$.
+
+**Option C:** $\sqrt[4]{-i}$
+We know that $-i$ can be written in polar form as $\cos(-\pi/2) + i \sin(-\pi/2)$, which is $e^{-i\pi/2}$.
+Raising this to the power of $1/4$:
+$(-i)^{1/4} = (e^{i(3\pi/2 + 2k\pi)})^{1/4}$ for $k=0, 1, 2, 3$.
+For $k=0$: $(e^{i3\pi/2})^{1/4} = e^{i3\pi/8}$.
+For $k=-1$: $(e^{-i\pi/2})^{1/4} = e^{-i\pi/8}$.
+None of these result in $e^{i\pi/8}$.
+
+**Option D:** $\sqrt[4]{i}$
+We know that $i = e^{i\pi/2}$.
+Raising this to the power of $1/4$:
+$i^{1/4} = (e^{i(\pi/2 + 2k\pi)})^{1/4}$ for $k=0, 1, 2, 3$.
+Taking the principal root (where $k=0$):
+$i^{1/4} = (e^{i\pi/2})^{1/4} = e^{i\pi/8}$.
+
+Comparing this to our target value $e^{i\pi/8}$, we see that Option D is correct.
+
+### Conclusion
+The complex number $\sqrt[4]{i}$ yields $e^{i\pi/8}$ as one of its values.
+
+Final Answer: D
+
+###QUESTION_TYPE
+Multiple Choice Question

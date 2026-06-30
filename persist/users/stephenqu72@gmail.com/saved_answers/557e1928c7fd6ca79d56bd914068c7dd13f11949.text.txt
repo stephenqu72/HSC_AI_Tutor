@@ -1,0 +1,40 @@
+### Part i
+
+To find the point of intersection between the line $\underset{\sim}{R}(\lambda) = \underset{\sim}{a} + \lambda\underset{\sim}{b}$ and the sphere $S$ defined by $|\underset{\sim}{v} - \underset{\sim}{c}| = r$, we substitute the expression for the line into the sphere equation:
+
+$$|\underset{\sim}{a} + \lambda\underset{\sim}{b} - \underset{\sim}{c}| = r$$
+
+Squaring both sides to eliminate the square root inherent in the modulus definition $|\underset{\sim}{u}| = \sqrt{\underset{\sim}{u} \cdot \underset{\sim}{u}}$:
+
+$$(\underset{\sim}{a} + \lambda\underset{\sim}{b} - \underset{\sim}{c}) \cdot (\underset{\sim}{a} + \lambda\underset{\sim}{b} - \underset{\sim}{c}) = r^2$$
+
+Rearranging the terms to group the $\lambda$ components:
+$$(\lambda\underset{\sim}{b} + (\underset{\sim}{a} - \underset{\sim}{c})) \cdot (\lambda\underset{\sim}{b} + (\underset{\sim}{a} - \underset{\sim}{c})) = r^2$$
+
+Expanding the dot product using the distributive property:
+$$\lambda^2(\underset{\sim}{b} \cdot \underset{\sim}{b}) + 2\lambda\underset{\sim}{b} \cdot (\underset{\sim}{a} - \underset{\sim}{c}) + (\underset{\sim}{a} - \underset{\sim}{c}) \cdot (\underset{\sim}{a} - \underset{\sim}{c}) = r^2$$
+$$\lambda^2|\underset{\sim}{b}|^2 + 2\lambda\underset{\sim}{b} \cdot (\underset{\sim}{a} - \underset{\sim}{c}) + |\underset{\sim}{a} - \underset{\sim}{c}|^2 - r^2 = 0$$
+
+This is a quadratic equation in $\lambda$ of the form $A\lambda^2 + B\lambda + C = 0$. Since the line is tangent to the sphere, there is exactly one point of intersection, meaning the discriminant $\Delta = B^2 - 4AC$ must be zero. However, we are looking for the value of $\lambda$ at the point of contact. For a quadratic equation with a single root, the root is given by $\lambda = -B / (2A)$.
+
+Substituting $A = |\underset{\sim}{b}|^2$ and $B = 2\underset{\sim}{b} \cdot (\underset{\sim}{a} - \underset{\sim}{c})$:
+$$\lambda = -\frac{2\underset{\sim}{b} \cdot (\underset{\sim}{a} - \underset{\sim}{c})}{2|\underset{\sim}{b}|^2} = \frac{\underset{\sim}{b} \cdot (\underset{\sim}{c} - \underset{\sim}{a})}{|\underset{\sim}{b}|^2}$$
+
+Thus, the position vector of the point of contact is $R(\lambda)$ where $\lambda = \frac{\underset{\sim}{b} \cdot (\underset{\sim}{c} - \underset{\sim}{a})}{|\underset{\sim}{b}|^2}$.
+
+### Part ii
+
+To show that the tangent is perpendicular to the radius at the point of contact, we must show that the dot product of the direction vector of the line ($\underset{\sim}{b}$) and the radius vector at the point of contact ($\underset{\sim}{R}(\lambda) - \underset{\sim}{c}$) is zero.
+
+From Part (i), the point of contact is $\underset{\sim}{R}(\lambda) = \underset{\sim}{a} + \lambda\underset{\sim}{b}$ with $\lambda = \frac{\underset{\sim}{b} \cdot (\underset{\sim}{c} - \underset{\sim}{a})}{|\underset{\sim}{b}|^2}$.
+The radius vector is $\underset{\sim}{v}_{rad} = \underset{\sim}{a} + \lambda\underset{\sim}{b} - \underset{\sim}{c}$. We calculate $\underset{\sim}{b} \cdot \underset{\sim}{v}_{rad}$:
+
+$$\underset{\sim}{b} \cdot (\underset{\sim}{a} + \lambda\underset{\sim}{b} - \underset{\sim}{c}) = \underset{\sim}{b} \cdot (\underset{\sim}{a} - \underset{\sim}{c}) + \lambda(\underset{\sim}{b} \cdot \underset{\sim}{b})$$
+$$\underset{\sim}{b} \cdot (\underset{\sim}{a} - \underset{\sim}{c}) + \left( \frac{\underset{\sim}{b} \cdot (\underset{\sim}{c} - \underset{\sim}{a})}{|\underset{\sim}{b}|^2} \right) |\underset{\sim}{b}|^2$$
+$$= \underset{\sim}{b} \cdot (\underset{\sim}{a} - \underset{\sim}{c}) + \underset{\sim}{b} \cdot (\underset{\sim}{c} - \underset{\sim}{a})$$
+$$= \underset{\sim}{b} \cdot (\underset{\sim}{a} - \underset{\sim}{c} + \underset{\sim}{c} - \underset{\sim}{a}) = \underset{\sim}{b} \cdot \underset{\sim}{0} = 0$$
+
+Since the dot product is zero, the tangent line direction vector $\underset{\sim}{b}$ is perpendicular to the radius vector $\underset{\sim}{R}(\lambda) - \underset{\sim}{c}$.
+
+###QUESTION_TYPE
+Proof Question

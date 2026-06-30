@@ -1,0 +1,41 @@
+### Part i
+To find the expression for $P$, we start with Newton's Second Law, $F_{net} = ma$. The net force acting on the train is the propelling force $P$ minus the resistive force $mkv$:
+$$m \frac{dv}{dt} = P - mkv$$
+We can rearrange this as a separable differential equation:
+$$\frac{dv}{P/m - kv} = dt$$
+$$\frac{dv}{\frac{P}{mk} - v} = k \, dt$$
+Integrating both sides:
+$$-\ln\left| \frac{P}{mk} - v \right| = kt + C$$
+At $t=0$, $v=2$:
+$$C = -\ln\left( \frac{P}{mk} - 2 \right)$$
+Substituting $C$ back and simplifying:
+$$\ln\left( \frac{\frac{P}{mk} - 2}{\frac{P}{mk} - v} \right) = kt \implies \frac{P}{mk} - v = \left( \frac{P}{mk} - 2 \right)e^{-kt}$$
+Rearranging for $v$:
+$$v = \frac{P}{mk} - \left( \frac{P}{mk} - 2 \right)e^{-kt}$$
+At $t=5$, $v=4$:
+$$4 = \frac{P}{mk} - \left( \frac{P}{mk} - 2 \right)e^{-5k}$$
+$$4 = \frac{P}{mk}(1 - e^{-5k}) + 2e^{-5k}$$
+$$4 - 2e^{-5k} = \frac{P}{mk}(1 - e^{-5k})$$
+$$P = \frac{mk(4 - 2e^{-5k})}{1 - e^{-5k}} = \frac{2mk(2 - e^{-5k})}{1 - e^{-5k}}$$
+Multiply numerator and denominator by $e^{5k}$:
+$$P = 2mk \left( \frac{2e^{5k} - 1}{e^{5k} - 1} \right)$$
+This matches the required expression.
+
+### Part ii
+To find the distance $x$, we use $v = \frac{dx}{dt}$:
+$$x = \int_0^5 v \, dt = \int_0^5 \left[ \frac{P}{mk} - \left( \frac{P}{mk} - 2 \right)e^{-kt} \right] dt$$
+Let $A = \frac{P}{mk} = 2 \left( \frac{2e^{5k} - 1}{e^{5k} - 1} \right)$:
+$$x = \left[ At + \frac{1}{k}(A - 2)e^{-kt} \right]_0^5$$
+$$x = 5A + \frac{1}{k}(A - 2)(e^{-5k} - 1)$$
+Since $A - 2 = \frac{4e^{5k} - 2 - 2e^{5k} + 2}{e^{5k} - 1} = \frac{2e^{5k}}{e^{5k} - 1}$, and note that $e^{-5k} - 1 = \frac{1 - e^{5k}}{e^{5k}}$, we get:
+$$x = \frac{10(2e^{5k} - 1)}{e^{5k} - 1} + \frac{1}{k} \left( \frac{2e^{5k}}{e^{5k} - 1} \right) \left( \frac{1 - e^{5k}}{e^{5k}} \right) = \frac{20e^{5k} - 10}{e^{5k} - 1} - \frac{2}{k}$$
+Final distance: $x = \frac{20e^{5k} - 10}{e^{5k} - 1} - \frac{2}{k}$ metres.
+
+### Part iii
+The upper bound to the speed occurs as $t \to \infty$ (terminal velocity), where $a = 0$:
+$$0 = P - mkv \implies v_{max} = \frac{P}{mk}$$
+Substituting $P$ from part (i):
+$$v_{max} = \frac{1}{mk} \cdot 2mk \left( \frac{2e^{5k} - 1}{e^{5k} - 1} \right) = 2 \left( \frac{2e^{5k} - 1}{e^{5k} - 1} \right) \text{ ms}^{-1}$$
+
+###QUESTION_TYPE
+Calculation Question

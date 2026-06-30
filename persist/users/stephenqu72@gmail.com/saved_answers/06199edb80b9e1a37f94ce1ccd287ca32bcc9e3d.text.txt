@@ -1,0 +1,39 @@
+To find the expression for displacement $x$ in terms of velocity $v$, we use Newton's Second Law of Motion ($F = ma$).
+
+### Step 1: Set up the equation of motion
+The particle is moving horizontally and is opposed by a resistive force of $mkv + mkv^2$. Using $F = ma$, and noting that the force is resistive (acting in the opposite direction to velocity, hence negative):
+$$ma = - (mkv + mkv^2)$$
+Dividing both sides by $m$ (where $m > 0$):
+$$a = - (kv + kv^2) = -k(v + v^2)$$
+
+### Step 2: Express acceleration in terms of velocity and displacement
+In rectilinear motion, acceleration can be expressed as $a = v \frac{dv}{dx}$. Substituting this into our equation:
+$$v \frac{dv}{dx} = -k(v + v^2)$$
+
+### Step 3: Rearrange to solve for $x$
+We want an expression for $x$, so we separate the variables $x$ and $v$:
+$$v \, dv = -k(v + v^2) \, dx$$
+Rearranging to isolate $dx$:
+$$dx = \frac{v}{-k(v + v^2)} \, dv$$
+Simplify the right-hand side by canceling the $v$ term (assuming $v \neq 0$):
+$$dx = -\frac{1}{k} \cdot \frac{v}{v(1 + v)} \, dv$$
+$$dx = -\frac{1}{k} \cdot \frac{1}{1 + v} \, dv$$
+
+### Step 4: Integrate to find $x$
+To find $x$, we integrate both sides:
+$$x = \int -\frac{1}{k} \frac{1}{1 + v} \, dv$$
+$$x = -\frac{1}{k} \int \frac{1}{1 + v} \, dv$$
+
+Comparing this result to the given options:
+- A. $\frac{1}{k} \int \frac{1}{1+v} dv$
+- B. $\frac{1}{k} \int \frac{1}{v+v^2} dv$
+- C. $-\frac{1}{k} \int \frac{1}{v+v^2} dv$
+- D. $-\frac{1}{k} \int \frac{1}{1+v} dv$
+
+The derived expression matches option **D**.
+
+### Final Answer
+The correct expression is $x = -\frac{1}{k} \int \frac{1}{1+v} \, dv$.
+
+###QUESTION_TYPE
+Multiple Choice Question

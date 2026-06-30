@@ -1,0 +1,33 @@
+### Worked Solution
+
+To determine the correct property of the rhombus defined by adjacent vectors $\underset{\sim}{a}$ and $\underset{\sim}{b}$, we must consider the definition of a rhombus. A rhombus is a parallelogram in which all four sides are equal in length.
+
+**1. Analyze the properties:**
+Since $\underset{\sim}{a}$ and $\underset{\sim}{b}$ represent the adjacent sides of a rhombus, their magnitudes must be equal:
+$$|\underset{\sim}{a}| = |\underset{\sim}{b}|$$
+
+**2. Evaluate the options:**
+*   **A. $\underset{\sim}{a} \cdot \underset{\sim}{b} = 0$**: This is only true if the vectors are perpendicular (a square). This is not true for a general rhombus.
+*   **B. $\underset{\sim}{a} = \underset{\sim}{b}$**: This implies the vectors have the same magnitude *and* direction. In a rhombus, the adjacent sides have different directions. This is false.
+*   **C. $(\underset{\sim}{a} + \underset{\sim}{b}) \cdot (\underset{\sim}{a} - \underset{\sim}{b}) = 0$**:
+    Using the distributive property of the dot product:
+    $$(\underset{\sim}{a} + \underset{\sim}{b}) \cdot (\underset{\sim}{a} - \underset{\sim}{b}) = \underset{\sim}{a} \cdot \underset{\sim}{a} - \underset{\sim}{a} \cdot \underset{\sim}{b} + \underset{\sim}{b} \cdot \underset{\sim}{a} - \underset{\sim}{b} \cdot \underset{\sim}{b}$$
+    Since the dot product is commutative ($\underset{\sim}{a} \cdot \underset{\sim}{b} = \underset{\sim}{b} \cdot \underset{\sim}{a}$):
+    $$= |\underset{\sim}{a}|^2 - |\underset{\sim}{b}|^2$$
+    Because it is a rhombus, $|\underset{\sim}{a}| = |\underset{\sim}{b}|$, therefore $|\underset{\sim}{a}|^2 = |\underset{\sim}{b}|^2$.
+    The expression equals $0$. This is a known geometric property: the diagonals of a rhombus are perpendicular. The vectors $(\underset{\sim}{a} + \underset{\sim}{b})$ and $(\underset{\sim}{a} - \underset{\sim}{b})$ represent the diagonals of the rhombus.
+*   **D. $|\underset{\sim}{a} + \underset{\sim}{b}| = |\underset{\sim}{a} - \underset{\sim}{b}|$**:
+    Squaring both sides:
+    $$(\underset{\sim}{a} + \underset{\sim}{b}) \cdot (\underset{\sim}{a} + \underset{\sim}{b}) = (\underset{\sim}{a} - \underset{\sim}{b}) \cdot (\underset{\sim}{a} - \underset{\sim}{b})$$
+    $$|\underset{\sim}{a}|^2 + 2(\underset{\sim}{a} \cdot \underset{\sim}{b}) + |\underset{\sim}{b}|^2 = |\underset{\sim}{a}|^2 - 2(\underset{\sim}{a} \cdot \underset{\sim}{b}) + |\underset{\sim}{b}|^2$$
+    Subtracting $|\underset{\sim}{a}|^2 + |\underset{\sim}{b}|^2$ from both sides:
+    $$2(\underset{\sim}{a} \cdot \underset{\sim}{b}) = -2(\underset{\sim}{a} \cdot \underset{\sim}{b}) \implies 4(\underset{\sim}{a} \cdot \underset{\sim}{b}) = 0$$
+    This is only true if $\underset{\sim}{a} \perp \underset{\sim}{b}$, which is only true for a square.
+
+**Conclusion:**
+Option C correctly identifies the property that the diagonals of a rhombus are perpendicular.
+
+Final Answer: **C**
+
+###QUESTION_TYPE
+<Multiple Choice Question>

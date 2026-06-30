@@ -1,0 +1,34 @@
+To determine the expression for the maximum height reached by the particle, we apply Newton's Second Law of Motion.
+
+### Step 1: Establish the Equation of Motion
+The particle has a mass $m = 1 \text{ kg}$. The forces acting on the particle while it is moving vertically upwards are:
+1. The force due to gravity, acting downwards: $F_g = mg = (1)g = g$.
+2. The air resistance, which acts in the direction opposite to motion. Since the particle is moving upwards, the resistance acts downwards. The problem states this is proportional to half the square of its velocity $v$ with a constant of proportionality $k$. Thus, $F_{res} = k \cdot \frac{1}{2}v^2 = \frac{k}{2}v^2$.
+
+Applying $F_{net} = ma$, and taking the upward direction as positive:
+$$ma = -g - \frac{k}{2}v^2$$
+Since $m = 1$:
+$$a = -g - \frac{k}{2}v^2$$
+
+### Step 2: Relate acceleration to displacement
+We use the chain rule to express acceleration $a$ in terms of velocity $v$ and displacement $x$:
+$$a = \frac{dv}{dt} = v \frac{dv}{dx}$$
+Substituting this into our equation of motion:
+$$v \frac{dv}{dx} = -g - \frac{k}{2}v^2$$
+
+### Step 3: Separate variables and integrate
+To find the displacement $x$ (the height), we rearrange the equation to isolate $dx$:
+$$dx = \frac{v \, dv}{-g - \frac{k}{2}v^2}$$
+We are interested in the height reached from the origin ($x=0$) to the maximum height ($x=H$). At the origin, the initial velocity is $v=u$. At the maximum height, the velocity is $v=0$. Integrating both sides:
+$$\int_{0}^{H} dx = \int_{u}^{0} \frac{v \, dv}{-g - \frac{k}{2}v^2}$$
+$$H = \int_{u}^{0} \frac{v \, dv}{-g - \frac{k}{2}v^2}$$
+
+Comparing this result to the given options, it matches expression **B**.
+
+### Final Answer
+The maximum height is given by:
+$$\int_{u}^{0} \frac{v \, dv}{-g - \frac{k}{2}v^2}$$
+Thus, the correct option is **B**.
+
+###QUESTION_TYPE
+Multiple Choice Question

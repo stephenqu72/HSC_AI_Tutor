@@ -1,0 +1,52 @@
+### Part i
+For $f(x) = \sqrt{2 - \sqrt{x}}$ to be defined in the real number system, two conditions must be satisfied:
+1. The inner square root requires $x \geq 0$.
+2. The outer square root requires the radicand to be non-negative: $2 - \sqrt{x} \geq 0$.
+
+Solving $2 - \sqrt{x} \geq 0$:
+$$2 \geq \sqrt{x}$$
+Squaring both sides (since both sides are non-negative):
+$$4 \geq x \implies x \leq 4$$
+Combining these conditions, we must have $0 \leq x \leq 4$.
+
+Final Answer: The domain is $0 \leq x \leq 4$.
+
+---
+
+### Part ii
+To show $f(x)$ is decreasing, we examine the derivative $f'(x)$.
+Let $f(x) = (2 - x^{1/2})^{1/2}$. Using the chain rule:
+$$f'(x) = \frac{1}{2}(2 - x^{1/2})^{-1/2} \cdot \left( -\frac{1}{2}x^{-1/2} \right) = -\frac{1}{4\sqrt{x}\sqrt{2 - \sqrt{x}}}$$
+For all $x$ in the domain $(0, 4)$, $\sqrt{x} > 0$ and $\sqrt{2 - \sqrt{x}} > 0$. Therefore, $f'(x) < 0$ for all $x \in (0, 4)$, which proves $f(x)$ is a strictly decreasing function.
+
+Since the function is continuous and decreasing on $[0, 4]$, the maximum value occurs at the left endpoint ($x=0$) and the minimum occurs at the right endpoint ($x=4$):
+- $f(0) = \sqrt{2 - \sqrt{0}} = \sqrt{2}$
+- $f(4) = \sqrt{2 - \sqrt{4}} = 0$
+
+Final Answer: The range is $0 \leq f(x) \leq \sqrt{2}$.
+
+---
+
+### Part iii
+We seek the area $A = \int_{0}^{4} \sqrt{2 - \sqrt{x}} \, dx$.
+Using the substitution $u = 2 - \sqrt{x}$:
+- When $x = 0$, $u = 2$.
+- When $x = 4$, $u = 0$.
+- Rearranging for $x$: $\sqrt{x} = 2 - u \implies x = (2 - u)^2$.
+- Differentiating with respect to $u$: $dx = 2(2 - u)(-1) \, du = (2u - 4) \, du$.
+
+Substituting into the integral:
+$$A = \int_{2}^{0} \sqrt{u} (2u - 4) \, du = \int_{2}^{0} (2u^{3/2} - 4u^{1/2}) \, du$$
+Reversing the limits to remove the negative sign:
+$$A = \int_{0}^{2} (4u^{1/2} - 2u^{3/2}) \, du$$
+Integrating term by term:
+$$A = \left[ 4 \cdot \frac{u^{3/2}}{3/2} - 2 \cdot \frac{u^{5/2}}{5/2} \right]_{0}^{2} = \left[ \frac{8}{3}u^{3/2} - \frac{4}{5}u^{5/2} \right]_{0}^{2}$$
+Evaluating at $u=2$:
+$$A = \frac{8}{3}(2\sqrt{2}) - \frac{4}{5}(4\sqrt{2}) = \frac{16\sqrt{2}}{3} - \frac{16\sqrt{2}}{5}$$
+Finding a common denominator ($15$):
+$$A = \frac{80\sqrt{2} - 48\sqrt{2}}{15} = \frac{32\sqrt{2}}{15}$$
+
+Final Answer: The area is $\frac{32\sqrt{2}}{15}$ square units.
+
+###QUESTION_TYPE
+<Calculation Question>

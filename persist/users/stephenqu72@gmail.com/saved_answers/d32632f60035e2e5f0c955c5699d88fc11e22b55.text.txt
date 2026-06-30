@@ -1,0 +1,46 @@
+To find the complex numbers $\omega$ and $z$ in the form $a+ib$, we are given the system of equations:
+1) $z = i(\omega + 2)$
+2) $\omega z = -4i$
+
+### Step 1: Substitution and forming a quadratic
+Substitute expression (1) into equation (2):
+$$\omega [i(\omega + 2)] = -4i$$
+
+Divide both sides by $i$ (noting $i \neq 0$):
+$$\omega(\omega + 2) = -4$$
+$$\omega^2 + 2\omega = -4$$
+$$\omega^2 + 2\omega + 4 = 0$$
+
+### Step 2: Solving for $\omega$
+This is a quadratic equation of the form $a\omega^2 + b\omega + c = 0$ where $a=1, b=2, c=4$. Using the quadratic formula $\omega = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$:
+$$\omega = \frac{-2 \pm \sqrt{2^2 - 4(1)(4)}}{2(1)}$$
+$$\omega = \frac{-2 \pm \sqrt{4 - 16}}{2}$$
+$$\omega = \frac{-2 \pm \sqrt{-12}}{2}$$
+$$\omega = \frac{-2 \pm 2i\sqrt{3}}{2}$$
+$$\omega = -1 \pm i\sqrt{3}$$
+
+### Step 3: Applying the constraint
+The problem states that $\text{Im}(\omega) < 0$. 
+Comparing our two potential values for $\omega$:
+- If $\omega = -1 + i\sqrt{3}$, then $\text{Im}(\omega) = \sqrt{3} > 0$ (Reject)
+- If $\omega = -1 - i\sqrt{3}$, then $\text{Im}(\omega) = -\sqrt{3} < 0$ (Accept)
+
+Thus, $\omega = -1 - i\sqrt{3}$.
+
+### Step 4: Solving for $z$
+Substitute the accepted value of $\omega$ into equation (1):
+$$z = i((-1 - i\sqrt{3}) + 2)$$
+$$z = i(1 - i\sqrt{3})$$
+Distribute the $i$:
+$$z = i - i^2\sqrt{3}$$
+Since $i^2 = -1$:
+$$z = i - (-1)\sqrt{3}$$
+$$z = \sqrt{3} + i$$
+
+### Final Answer
+The exact values are:
+$\omega = -1 - i\sqrt{3}$
+$z = \sqrt{3} + i$
+
+###QUESTION_TYPE
+Calculation Question

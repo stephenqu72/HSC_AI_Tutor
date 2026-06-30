@@ -1,0 +1,37 @@
+### Part i
+To show $I_n = \frac{1}{2^n} + 2n \int_{0}^{1} \frac{x^2}{(1+x^2)^{n+1}} dx$, we use integration by parts on $I_n = \int_{0}^{1} (1+x^2)^{-n} dx$.
+
+Let $u = (1+x^2)^{-n}$ and $dv = dx$.
+Then, $du = -n(1+x^2)^{-n-1} \cdot 2x \, dx = -2nx(1+x^2)^{-n-1} \, dx$ and $v = x$.
+
+Using the integration by parts formula $\int u \, dv = uv - \int v \, du$:
+$$I_n = \left[ x(1+x^2)^{-n} \right]_{0}^{1} - \int_{0}^{1} x \left( -2nx(1+x^2)^{-n-1} \right) dx$$
+$$I_n = \left( 1(1+1^2)^{-n} - 0 \right) + 2n \int_{0}^{1} \frac{x^2}{(1+x^2)^{n+1}} dx$$
+$$I_n = \frac{1}{2^n} + 2n \int_{0}^{1} \frac{x^2}{(1+x^2)^{n+1}} dx$$
+This matches the required expression.
+
+### Part ii
+We want to show $I_{n+1} = \frac{1}{n2^{n+1}} + \frac{2n-1}{2n}I_n$ (assuming the question intended to relate $I_{n+1}$ to $I_n$). Note: The prompt asks to show $I_{n+1} = \frac{1}{n2^{n+1}} + \dots$. Let's manipulate the result from Part i:
+$$I_n = \frac{1}{2^n} + 2n \int_{0}^{1} \frac{x^2}{(1+x^2)^{n+1}} dx$$
+Rewrite the numerator $x^2$ as $(1+x^2) - 1$:
+$$I_n = \frac{1}{2^n} + 2n \int_{0}^{1} \frac{1+x^2-1}{(1+x^2)^{n+1}} dx$$
+$$I_n = \frac{1}{2^n} + 2n \left( \int_{0}^{1} \frac{1+x^2}{(1+x^2)^{n+1}} dx - \int_{0}^{1} \frac{1}{(1+x^2)^{n+1}} dx \right)$$
+$$I_n = \frac{1}{2^n} + 2n I_n - 2n I_{n+1}$$
+Rearrange to solve for $2n I_{n+1}$:
+$$2n I_{n+1} = \frac{1}{2^n} + (2n-1)I_n$$
+Divide by $2n$:
+$$I_{n+1} = \frac{1}{n 2^{n+1}} + \frac{2n-1}{2n} I_n$$
+This completes the required proof.
+
+### Part iii
+We need to evaluate $\int_{0}^{1} \frac{1}{(1+x^2)^2} dx$, which is $I_2$.
+Using the reduction formula from Part ii with $n=1$:
+$$I_2 = \frac{1}{1 \cdot 2^{1+1}} + \frac{2(1)-1}{2(1)} I_1$$
+$$I_2 = \frac{1}{4} + \frac{1}{2} I_1$$
+Calculate $I_1 = \int_{0}^{1} \frac{1}{1+x^2} dx = [\tan^{-1} x]_{0}^{1} = \tan^{-1}(1) - \tan^{-1}(0) = \frac{\pi}{4}$.
+Substitute $I_1$ into the equation for $I_2$:
+$$I_2 = \frac{1}{4} + \frac{1}{2} \left( \frac{\pi}{4} \right) = \frac{1}{4} + \frac{\pi}{8} = \frac{2+\pi}{8}$$
+Final Answer: $\frac{\pi+2}{8}$
+
+###QUESTION_TYPE
+<Calculation Question>

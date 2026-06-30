@@ -1,0 +1,36 @@
+To find the maximum height $H$ of a particle of unit mass ($m=1$) projected vertically upwards, we use Newton’s Second Law.
+
+### Derivation of the Equation of Motion
+The forces acting on the particle are:
+1.  Gravity acting downwards: $-mg = -g$ (since $m=1$).
+2.  Resistive force acting against the motion (downwards during the upward journey): $-\frac{1}{2}kv^2$.
+
+Applying Newton's Second Law ($F = ma$):
+$$m \frac{dv}{dt} = -g - \frac{1}{2}kv^2$$
+Since $m=1$:
+$$\frac{dv}{dt} = -\left(g + \frac{1}{2}kv^2\right)$$
+
+### Expressing Acceleration in terms of Displacement
+We require the maximum height $H$, which occurs when the velocity $v = 0$. We use the identity $a = v \frac{dv}{dx}$:
+$$v \frac{dv}{dx} = -\left(g + \frac{1}{2}kv^2\right)$$
+
+### Separation of Variables
+Rearrange the equation to isolate $dx$:
+$$dx = -\frac{v}{g + \frac{1}{2}kv^2} \, dv$$
+
+### Definite Integration
+We integrate $x$ from the ground ($x=0$) to the maximum height ($x=H$), and $v$ from the initial velocity ($v=u$) to the velocity at maximum height ($v=0$):
+$$\int_{0}^{H} dx = \int_{u}^{0} -\frac{v}{g + \frac{1}{2}kv^2} \, dv$$
+Using the property of definite integrals that $-\int_{a}^{b} f(x) \, dx = \int_{b}^{a} f(x) \, dx$, we can absorb the negative sign into the bounds:
+$$\int_{0}^{H} dx = \int_{0}^{u} \frac{v}{g + \frac{1}{2}kv^2} \, dv$$
+$$H = \int_{0}^{u} \frac{v}{g + \frac{1}{2}kv^2} \, dv$$
+
+Comparing this result to the given options:
+- Option A: $\int_{u}^{0} \frac{v}{g + \frac{kv^2}{2}} dv$ represents the negative of the displacement.
+- Option B: $\int_{0}^{u} \frac{v}{g + \frac{kv^2}{2}} dv$ matches our derivation.
+- Option C and D involve a subtraction in the denominator, which corresponds to an incorrect force direction.
+
+The correct choice is **B**.
+
+###QUESTION_TYPE
+Multiple Choice Question

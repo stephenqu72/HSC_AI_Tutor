@@ -1,0 +1,35 @@
+### Part i
+
+To find the perimeter of the regular $n$-gon formed by the roots of $z^n = 1$, we first identify the roots of the equation. These roots are given by:
+$$z_k = \cos\left(\frac{2\pi k}{n}\right) + i\sin\left(\frac{2\pi k}{n}\right) \quad \text{for } k = 0, 1, \dots, n-1$$
+These roots lie on the unit circle in the complex plane, meaning each vertex is at a distance of $r=1$ from the origin.
+
+Consider two adjacent vertices, $z_1 = \cos(0) + i\sin(0) = 1$ and $z_2 = \cos(\frac{2\pi}{n}) + i\sin(\frac{2\pi}{n})$. The side length $L$ of the $n$-gon is the distance between these two vertices:
+$$L = |z_2 - z_1| = \left| \left(\cos\left(\frac{2\pi}{n}\right) - 1\right) + i\sin\left(\frac{2\pi}{n}\right) \right|$$
+Using the modulus formula $|a+bi| = \sqrt{a^2+b^2}$:
+$$L = \sqrt{\left(\cos\left(\frac{2\pi}{n}\right) - 1\right)^2 + \sin^2\left(\frac{2\pi}{n}\right)}$$
+$$L = \sqrt{\cos^2\left(\frac{2\pi}{n}\right) - 2\cos\left(\frac{2\pi}{n}\right) + 1 + \sin^2\left(\frac{2\pi}{n}\right)}$$
+Applying the identity $\cos^2 \theta + \sin^2 \theta = 1$:
+$$L = \sqrt{2 - 2\cos\left(\frac{2\pi}{n}\right)}$$
+Using the half-angle identity $1 - \cos\theta = 2\sin^2(\theta/2)$:
+$$L = \sqrt{2 \cdot 2\sin^2\left(\frac{\pi}{n}\right)} = \sqrt{4\sin^2\left(\frac{\pi}{n}\right)} = 2\sin\left(\frac{\pi}{n}\right)$$
+Since there are $n$ sides, the total perimeter $P_n$ is:
+$$P_n = n \times L = 2n\sin\left(\frac{\pi}{n}\right)$$
+**Final Answer:** $P_n = 2n\sin\left(\frac{\pi}{n}\right)$
+
+### Part ii
+
+We are given $P_n = 2n\sin\left(\frac{\pi}{n}\right)$ and the limit $\lim_{x \to 0} \frac{\sin x}{x} = 1$. We want to find $\lim_{n \to \infty} P_n$.
+
+Rewrite $P_n$ to match the form of the given limit:
+$$P_n = 2n\sin\left(\frac{\pi}{n}\right) = 2\pi \cdot \frac{\sin(\pi/n)}{\pi/n}$$
+Let $x = \frac{\pi}{n}$. As $n \to \infty$, $x \to 0$. Substituting these into the expression:
+$$\lim_{n \to \infty} P_n = \lim_{x \to 0} \left( 2\pi \cdot \frac{\sin x}{x} \right)$$
+Using the limit property $\lim_{n \to \infty} (k \cdot f(n)) = k \cdot \lim_{n \to \infty} f(n)$:
+$$\lim_{n \to \infty} P_n = 2\pi \cdot \lim_{x \to 0} \frac{\sin x}{x}$$
+Applying the known result $\lim_{x \to 0} \frac{\sin x}{x} = 1$:
+$$\lim_{n \to \infty} P_n = 2\pi \cdot 1 = 2\pi$$
+**Final Answer:** As $n \to \infty$, $P_n \to 2\pi$.
+
+###QUESTION_TYPE
+Calculation Question

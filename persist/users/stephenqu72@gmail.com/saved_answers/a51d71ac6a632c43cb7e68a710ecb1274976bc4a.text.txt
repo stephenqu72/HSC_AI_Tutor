@@ -1,0 +1,30 @@
+This logic puzzle is a classic variation of the **Wason Selection Task**. Let's break it down using formal logic.
+
+### Logical Analysis
+The rule provided is an implication of the form $P \implies Q$, where:
+*   $P$ = The card shows a tree.
+*   $Q$ = The card shows the colour yellow on the other side.
+
+To determine if the rule $P \implies Q$ holds true, we must identify which cases could potentially falsify the statement. An implication $P \implies Q$ is **only false** when $P$ is true and $Q$ is false (i.e., the presence of a tree paired with a colour that is *not* yellow).
+
+1.  **The Tree Card ($P$ is True):** We must turn this over to ensure that the other side is indeed yellow. If it is not yellow, we have found a counterexample.
+2.  **The Tiger Card (not a tree):** The rule says nothing about what happens if there is no tree. Therefore, whether the other side is yellow or not does not affect the validity of the rule. We do not need to turn this over.
+3.  **The Blue Card (not yellow):** This represents $\neg Q$ (not yellow). If the other side of this card is a tree, the rule is violated. Therefore, we must check this card to ensure it does not have a tree on the other side.
+4.  **The Yellow Card ($Q$ is True):** The rule does not state that *only* tree cards have yellow backs. A yellow card could have a tree on the other side (consistent with the rule) or a tiger (also consistent). Therefore, turning this over provides no information that could falsify the rule.
+
+### Selecting the Method
+To verify the truth of a universal conditional statement, we are looking for evidence that could disprove it. If we find a case where the antecedent ($P$) is true but the consequent ($Q$) is false, we have identified a **counterexample**.
+
+*   We check the **Tree** card to see if $Q$ follows.
+*   We check the **Blue** (non-yellow) card to ensure it is not a tree ($P$).
+
+If we find a card that is a tree but not yellow, we have successfully demonstrated the rule is false via a counterexample. The process of testing a logical rule by looking for instances where the rule fails is the application of searching for a **counterexample**.
+
+**Conclusion:**
+Option C is the correct answer because the objective is to verify if there exists any case that violates the rule. Finding such a case—a card with a tree on one side and a non-yellow colour on the other—is the definition of finding a counterexample.
+
+### Final Answer
+**C. Using proof by counterexample.**
+
+###QUESTION_TYPE
+<Multiple Choice Question>

@@ -1,0 +1,34 @@
+### Part i
+We aim to show that for $k \geq 0$, $2k+3 > 2\sqrt{(k+1)(k+2)}$.
+
+Since both sides of the inequality are positive for $k \geq 0$, we can square both sides without changing the direction of the inequality:
+$$ (2k+3)^2 > 4(k+1)(k+2) $$
+Expanding both sides:
+$$ 4k^2 + 12k + 9 > 4(k^2 + 3k + 2) $$
+$$ 4k^2 + 12k + 9 > 4k^2 + 12k + 8 $$
+Subtracting $4k^2 + 12k$ from both sides, we obtain:
+$$ 9 > 8 $$
+Since $9 > 8$ is a true statement, and all steps are reversible for $k \geq 0$, the initial inequality is proven true.
+
+### Part ii
+We aim to show that for $n \geq 1$, $\sum_{k=1}^{n} \frac{1}{\sqrt{k}} > 2(\sqrt{n+1} - 1)$. 
+We use the result from Part i: $2k+3 > 2\sqrt{(k+1)(k+2)}$. 
+Dividing by $2\sqrt{k+1}\sqrt{k+2}$, we consider the identity:
+$$ \frac{1}{\sqrt{k+1}} > 2(\sqrt{k+2} - \sqrt{k+1}) $$
+Verification: $2(\sqrt{k+2} - \sqrt{k+1}) = \frac{2(\sqrt{k+2} - \sqrt{k+1})(\sqrt{k+2} + \sqrt{k+1})}{\sqrt{k+2} + \sqrt{k+1}} = \frac{2(k+2 - (k+1))}{\sqrt{k+2} + \sqrt{k+1}} = \frac{2}{\sqrt{k+2} + \sqrt{k+1}}$.
+From Part i, we know $2k+3 > 2\sqrt{(k+1)(k+2)}$, which implies $\frac{1}{\sqrt{k+1}} > \frac{2\sqrt{(k+1)(k+2)}}{k+1} \cdot \frac{1}{\sqrt{k+1}} \dots$ 
+Actually, a simpler way is to note $\frac{1}{\sqrt{k}} > 2(\sqrt{k+1} - \sqrt{k})$. 
+Checking: $2(\sqrt{k+1} - \sqrt{k}) = \frac{2}{\sqrt{k+1} + \sqrt{k}}$. Since $\sqrt{k} < \sqrt{k+1}$, then $\sqrt{k+1} + \sqrt{k} < 2\sqrt{k+1}$, so $\frac{2}{\sqrt{k+1} + \sqrt{k}} > \frac{2}{2\sqrt{k+1}} = \frac{1}{\sqrt{k+1}}$.
+Summing from $k=1$ to $n$:
+$$ \sum_{k=1}^n \frac{1}{\sqrt{k}} > \sum_{k=1}^n 2(\sqrt{k+1} - \sqrt{k}) $$
+This is a telescoping sum:
+$$ 2[(\sqrt{2} - 1) + (\sqrt{3} - \sqrt{2}) + \dots + (\sqrt{n+1} - \sqrt{n})] $$
+$$ = 2(\sqrt{n+1} - 1) $$
+Thus, $\sum_{k=1}^n \frac{1}{\sqrt{k}} > 2(\sqrt{n+1} - 1)$.
+
+### Part iii
+The statement $\sum_{k=1}^{N} \frac{1}{\sqrt{k}} < 10^{10}$ is **false**.
+Justification: As $N \to \infty$, the series $\sum_{k=1}^{N} \frac{1}{\sqrt{k}}$ diverges to infinity. Since $2(\sqrt{N+1} - 1)$ grows without bound, we can always choose an $N$ large enough such that $2(\sqrt{N+1} - 1) \geq 10^{10}$. Specifically, if $\sqrt{N+1} \geq 5 \times 10^9 + 1$, the sum will exceed $10^{10}$.
+
+###QUESTION_TYPE
+Proof Question

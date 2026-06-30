@@ -1,0 +1,36 @@
+To find the acceleration of a particle given its position vector $\underset{\sim}{x}$ as a function of time $t$, we recall that acceleration $\underset{\sim}{a}$ is the second derivative of the position vector with respect to time:
+$$\underset{\sim}{a} = \frac{d^2\underset{\sim}{x}}{dt^2}$$
+
+### Step 1: Define the position vector
+The position vector is given as:
+$$\underset{\sim}{x}(t) = \begin{pmatrix} 2t \\ t^2 \\ t^3 \end{pmatrix} = 2t\underset{\sim}{i} + t^2\underset{\sim}{j} + t^3\underset{\sim}{k}$$
+
+### Step 2: Find the velocity vector
+The velocity vector $\underset{\sim}{v}(t)$ is the first derivative of the position vector with respect to $t$:
+$$\underset{\sim}{v}(t) = \frac{d\underset{\sim}{x}}{dt} = \frac{d}{dt}(2t)\underset{\sim}{i} + \frac{d}{dt}(t^2)\underset{\sim}{j} + \frac{d}{dt}(t^3)\underset{\sim}{k}$$
+$$\underset{\sim}{v}(t) = 2\underset{\sim}{i} + 2t\underset{\sim}{j} + 3t^2\underset{\sim}{k}$$
+
+### Step 3: Find the acceleration vector
+The acceleration vector $\underset{\sim}{a}(t)$ is the derivative of the velocity vector with respect to $t$:
+$$\underset{\sim}{a}(t) = \frac{d\underset{\sim}{v}}{dt} = \frac{d}{dt}(2)\underset{\sim}{i} + \frac{d}{dt}(2t)\underset{\sim}{j} + \frac{d}{dt}(3t^2)\underset{\sim}{k}$$
+Since the derivative of a constant is 0:
+$$\underset{\sim}{a}(t) = 0\underset{\sim}{i} + 2\underset{\sim}{j} + 6t\underset{\sim}{k}$$
+
+### Step 4: Evaluate at $t = 1$
+Substitute $t = 1$ into the expression for $\underset{\sim}{a}(t)$:
+$$\underset{\sim}{a}(1) = 0\underset{\sim}{i} + 2\underset{\sim}{j} + 6(1)\underset{\sim}{k}$$
+$$\underset{\sim}{a}(1) = 2\underset{\sim}{j} + 6\underset{\sim}{k}$$
+
+Comparing this result to the given options:
+A. $2\underset{\sim}{j} + 6\underset{\sim}{k}$
+B. $\underset{\sim}{i} + \underset{\sim}{j} + 6\underset{\sim}{k}$
+C. $\underset{\sim}{i} + 2\underset{\sim}{j} + 6\underset{\sim}{k}$
+D. $\underset{\sim}{j} + 6\underset{\sim}{k}$
+
+The calculated acceleration matches option **A**.
+
+### Final Answer
+The acceleration at $t=1$ is $2\underset{\sim}{j} + 6\underset{\sim}{k}$, which corresponds to option **A**.
+
+###QUESTION_TYPE
+Multiple Choice Question

@@ -1,0 +1,80 @@
+### Part a (i)
+Given $z_1 = -1 - 5i$ and $z_2 = 2 - i$, we calculate $i(z_1 - z_2)$:
+First, calculate the difference:
+$z_1 - z_2 = (-1 - 5i) - (2 - i) = -1 - 2 - 5i + i = -3 - 4i$.
+Now multiply by $i$:
+$i(z_1 - z_2) = i(-3 - 4i) = -3i - 4i^2$.
+Since $i^2 = -1$:
+$-3i - 4(-1) = -3i + 4 = 4 - 3i$.
+
+**Final Answer:** $4 - 3i$
+
+### Part a (ii)
+To express $\frac{a + ib}{2 - i}$ in the form $x + iy$, we multiply the numerator and denominator by the complex conjugate of the denominator, which is $2 + i$:
+$$\omega = \frac{(a + ib)(2 + i)}{(2 - i)(2 + i)}$$
+Expand the numerator: $(a + ib)(2 + i) = 2a + ai + 2bi + bi^2 = 2a + i(a + 2b) - b = (2a - b) + i(a + 2b)$.
+Expand the denominator: $(2 - i)(2 + i) = 2^2 - i^2 = 4 + 1 = 5$.
+Thus:
+$$\omega = \frac{2a - b}{5} + i\frac{a + 2b}{5}$$
+
+**Final Answer:** $x = \frac{2a-b}{5}, y = \frac{a+2b}{5}$
+
+### Part b
+The statement is: "If $k^2 - 14k$ is odd, then $k$ is odd."
+The contrapositive is: "If $k$ is even, then $k^2 - 14k$ is even."
+**Proof:**
+Assume $k$ is even. By definition of an even integer, $k = 2n$ for some integer $n$.
+Substitute $k = 2n$ into the expression $k^2 - 14k$:
+$k^2 - 14k = (2n)^2 - 14(2n) = 4n^2 - 28n$.
+Factor out a 2:
+$k^2 - 14k = 2(2n^2 - 14n)$.
+Since $n$ is an integer, $2n^2 - 14n$ is an integer, so the expression is $2 \times (\text{integer})$, which is even.
+Since the contrapositive is true, the original statement is true.
+
+**Final Answer:** The statement is proven by the contrapositive.
+
+### Part c (i)
+$P$ is equidistant from $Q(2, -3, 4)$ and $R(-7, 1, 0)$. Thus $PQ^2 = PR^2$:
+$(x - 2)^2 + (y + 3)^2 + (z - 4)^2 = (x + 7)^2 + (y - 1)^2 + (z - 0)^2$
+Expand both sides:
+$(x^2 - 4x + 4) + (y^2 + 6y + 9) + (z^2 - 8z + 16) = (x^2 + 14x + 49) + (y^2 - 2y + 1) + z^2$
+Subtract $x^2 + y^2 + z^2$ from both sides:
+$-4x + 6y - 8z + 29 = 14x - 2y + 50$
+Rearrange to bring variables to one side and constants to the other:
+$-18x + 8y - 8z = 50 - 29$
+$-18x + 8y - 8z = 21$
+Multiply by $-1$:
+$18x - 8y + 8z = -21$
+
+**Final Answer:** $18x - 8y + 8z = -21$
+
+### Part c (ii)
+The equation $18x - 8y + 8z = -21$ is a linear equation in the form $ax + by + cz = d$, which represents a plane in 3D space. Specifically, it is the perpendicular bisector plane of the line segment $QR$.
+
+**Final Answer:** A plane.
+
+### Part d
+Solve $z^2 + (5 + 5i)z + (6 + 15i) = 0$ using the quadratic formula $z = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$:
+$b^2 - 4ac = (5 + 5i)^2 - 4(1)(6 + 15i) = (25 + 50i - 25) - 24 - 60i = -24 - 10i$.
+Let $\sqrt{-24 - 10i} = u + iv$. Then $u^2 - v^2 = -24$ and $2uv = -10$ ($uv = -5$).
+$u^2 - (\frac{-5}{u})^2 = -24 \Rightarrow u^4 + 24u^2 - 25 = 0$. Let $U = u^2$: $(U + 25)(U - 1) = 0$. Since $u \in \mathbb{R}$, $u^2 = 1 \Rightarrow u = \pm 1$.
+If $u=1, v=-5$; if $u=-1, v=5$. Square root is $\pm(1 - 5i)$.
+$z = \frac{-(5 + 5i) \pm (1 - 5i)}{2}$
+$z_1 = \frac{-5 - 5i + 1 - 5i}{2} = \frac{-4 - 10i}{2} = -2 - 5i$.
+$z_2 = \frac{-5 - 5i - 1 + 5i}{2} = \frac{-6}{2} = -3$.
+
+**Final Answer:** $z = -2 - 5i$ or $z = -3$
+
+### Part e
+Partial fractions: $\frac{1 + 7x}{(x - 2)(x + 3)} = \frac{A}{x - 2} + \frac{B}{x + 3}$.
+$1 + 7x = A(x + 3) + B(x - 2)$.
+Let $x = 2$: $1 + 14 = A(5) \Rightarrow A = 3$.
+Let $x = -3$: $1 - 21 = B(-5) \Rightarrow B = 4$.
+$\int_{-2}^{1} (\frac{3}{x - 2} + \frac{4}{x + 3}) dx = [3 \ln|x - 2| + 4 \ln|x + 3|]_{-2}^{1}$
+$= (3 \ln|1 - 2| + 4 \ln|1 + 3|) - (3 \ln|-2 - 2| + 4 \ln|-2 + 3|)$
+$= (3 \ln(1) + 4 \ln(4)) - (3 \ln(4) + 4 \ln(1)) = 4 \ln(4) - 3 \ln(4) = \ln(4) = 2 \ln(2)$.
+
+**Final Answer:** $2 \ln(2)$
+
+###QUESTION_TYPE
+Calculation Question

@@ -1,0 +1,38 @@
+To prove the inequality $(1 - a)(1 - b)(1 - c) \geq 8abc$ given $a^2 + b^2 \geq 2ab$ and $a + b + c = 1$, we will use the property $a + b + c = 1$ to substitute for the factors on the left-hand side.
+
+### Proof
+
+1. **Substitution:**
+   Since $a + b + c = 1$, we can rewrite each term in the product $(1 - a)(1 - b)(1 - c)$ as follows:
+   - $1 - a = b + c$
+   - $1 - b = a + c$
+   - $1 - c = a + b$
+   
+   Substituting these into the left-hand side (LHS) of the inequality gives:
+   $$LHS = (b + c)(a + c)(a + b)$$
+
+2. **Applying the Arithmetic Mean-Geometric Mean (AM-GM) Inequality:**
+   The inequality $a^2 + b^2 \geq 2ab$ is equivalent to $(a - b)^2 \geq 0$, which is always true for real numbers. We can apply the AM-GM inequality, which states that for non-negative real numbers $x$ and $y$, $\frac{x + y}{2} \geq \sqrt{xy}$, or equivalently, $x + y \geq 2\sqrt{xy}$.
+   
+   Applying this to the three factors derived in step 1:
+   - $b + c \geq 2\sqrt{bc}$
+   - $a + c \geq 2\sqrt{ac}$
+   - $a + b \geq 2\sqrt{ab}$
+
+3. **Multiplying the Inequalities:**
+   Since all terms $(b + c)$, $(a + c)$, and $(a + b)$ are positive (assuming $a, b, c > 0$ for the product to be meaningful in the context of the inequality), we can multiply these inequalities together:
+   $$(b + c)(a + c)(a + b) \geq (2\sqrt{bc}) \cdot (2\sqrt{ac}) \cdot (2\sqrt{ab})$$
+
+4. **Simplification:**
+   Simplify the right-hand side (RHS) of the expression:
+   $$RHS = 2 \cdot 2 \cdot 2 \cdot \sqrt{bc \cdot ac \cdot ab}$$
+   $$RHS = 8 \cdot \sqrt{a^2 b^2 c^2}$$
+   $$RHS = 8abc$$
+
+5. **Conclusion:**
+   Combining the steps above, we have shown:
+   $$(1 - a)(1 - b)(1 - c) = (b + c)(a + c)(a + b) \geq 8abc$$
+   Thus, $(1 - a)(1 - b)(1 - c) \geq 8abc$ is proved.
+
+###QUESTION_TYPE
+Proof Question
