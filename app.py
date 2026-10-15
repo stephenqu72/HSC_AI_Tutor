@@ -1299,7 +1299,7 @@ else:
 
 # 🔄 LLM Model Selection
 st.sidebar.markdown("## 🧠 Choose LLM Model")
-model_options = ["gemini-3.1-flash-lite", "gemini-3.5-flash","gemma-4-26b-a4b-it"]
+model_options = ["gemini-flash-lite-latest", "gemini-flash-latest", "gemini-3.1-flash-lite"]
 if st.session_state.get("llm_choice") not in model_options:
     st.session_state.llm_choice = model_options[0]
 selected_model = st.sidebar.selectbox("LLM Provider:", model_options, key="llm_choice")
